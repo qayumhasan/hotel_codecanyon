@@ -1,14 +1,9 @@
 @extends('restaurant.chui.master')
-@section('title', 'Category Wise Sell Report | '.$seo->meta_title)
+@section('title', 'Category Wise Sell Report | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control{
-   height:30px;
-}
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
  <div class="content-page">
       <div class="container-fluid">
@@ -19,9 +14,6 @@ $current = date("d/m/Y");
                      <div class="header-title">
                         <h4 class="card-title">Category Wise Sells Report</h4>
                      </div>
-                     <span class="float-right mr-2">
-                        
-                     </span>
                   </div>
                   <div class="card-body">
                   <form action="{{route('admin.restaurant.categorywise.report')}}" method="post">
@@ -30,13 +22,11 @@ $current = date("d/m/Y");
                         <div class="col-md-3">
                            <div class="form-group">
                               <label for="fname">Category:</label>
-                              <select name="category" class="form-control" id="">
-
+                              <select name="category" class="form-control form-control-sm" id="">
                                  <option value="">--select--</option>
                                  @foreach($allcategory as $category)
                                  <option value="{{$category->id}}">{{$category->name}}</option>
                                  @endforeach
-
                               </select>
                               @error('category')
                                  <div style="color:red">{{ $message }}</div>
@@ -46,13 +36,13 @@ $current = date("d/m/Y");
                         <div class="col-md-2">
                            <div class="form-group">
                               <label for="fname">Form Date:</label>
-                              <input type="text" class="form-control datepicker"  name="formdate" value="{{$current}}"/>
+                              <input type="text" class="form-control form-control-sm datepicker"  name="formdate" value="{{$current}}"/>
                            </div>
                         </div>
                         <div class="col-md-2">
                            <div class="form-group">
                               <label for="fname">To Date:</label>
-                              <input type="text" class="form-control datepicker"  name="todate" value="{{$current}}"/>
+                              <input type="text" class="form-control form-control-sm datepicker"  name="todate" value="{{$current}}"/>
                            </div>
                         </div>
                         <div class="col-md-2 mt-4">
@@ -78,7 +68,6 @@ $current = date("d/m/Y");
                            <tbody class="text-center">
                            @if(isset($itemcategory))
                               @foreach($itemcategory as $key => $item)
-
                                  @php
                                    $allreports=DB::table('restaurant_order_details')
                                     ->select(DB::Raw('sum(qty) as qty'))

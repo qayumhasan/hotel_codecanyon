@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Validator;
 class AdvanceBookingController extends Controller
 {
     /**
+     * Check is Admin is login.
+     */
+
+
+    public function __construct(){
+    	$this->middleware('admin');
+    }
+
+    /**
      * Show Advance Booking Form.
      * @return \Illuminate\View\View
      */
@@ -29,12 +38,24 @@ class AdvanceBookingController extends Controller
         return view('hotelbooking.advancebooking.create', compact('roomtypes', 'guests'));
     }
 
+     /**
+     * Show advance booking get room.
+     * @return Illuminate\Foundation\respones;
+     */
+
+
     public function advanceBookingGetRoom($id)
     {
 
         $rooms = Room::where('room_type', $id)->with('roomtype')->get();
         return response()->json($rooms);
     }
+
+     /**
+     * Advance Booking Guest Name store.
+     * @return Illuminate\Foundation\respones;
+     */
+
 
     public function guestNameStore(Request $request)
     {
@@ -76,6 +97,10 @@ class AdvanceBookingController extends Controller
 
         
     }
+
+     /**
+     * Advance Booking create.
+     */
 
     public function advanceBookingStore(Request $request)
     {
@@ -161,6 +186,12 @@ class AdvanceBookingController extends Controller
         return redirect()->back()->with($notification);
     }
 
+
+    
+     /**
+     * Advance Booking check if room already checked.
+     */
+
     public function advanceBookingCheck(Request $request, $id)
     {
         
@@ -202,6 +233,10 @@ class AdvanceBookingController extends Controller
         }
     }
 
+    
+     /**
+     * Showing Advance Booking Report Page.
+     */
 
     public function showAdvanceBookingReportPage()
     {
@@ -210,6 +245,11 @@ class AdvanceBookingController extends Controller
         return view('hotelbooking.advancebooking.report.report', compact('advances'));
     }
 
+    
+     /**
+     * Showing Advance Booking Report Edit.
+     */
+
     public function showAdvanceBookingReportEdit($id)
     {
         $roomtypes = RoomType::all();
@@ -217,6 +257,11 @@ class AdvanceBookingController extends Controller
         $advancebooking =AdvanceBooking::findOrFail($id);
         return view('hotelbooking.advancebooking.report.edit', compact('advancebooking','roomtypes','guests'));
     }
+
+    /**
+     * Showing Advance Booking Report Update.
+     */
+
 
     public function showAdvanceBookingReportUpdate (Request $request ,$id)
     {
@@ -322,6 +367,10 @@ class AdvanceBookingController extends Controller
 
     }
 
+     /**
+     * Delete Advance Booking Report.
+     */
+
     public function deleteAdvanceBookingReport ($id)
     {
         $advancebooking = AdvanceBooking::findOrFail($id);
@@ -333,6 +382,10 @@ class AdvanceBookingController extends Controller
             );
         return redirect()->route('admin.advance.booking.report')->with($notification);
     }
+
+    /**
+     * Change Advance Booking report status.
+     */
 
 
     public function statusAdvanceBookingReport ($id)
@@ -354,12 +407,21 @@ class AdvanceBookingController extends Controller
         return redirect()->route('admin.advance.booking.report')->with($notification);
     }
 
+     /**
+     * Advance Booking Calender wise report.
+     */
+
 
     public function advanceBookingCalender()
     {
         $roomtypes = RoomType::where('is_active',1)->where('is_deleted',0)->get();
         return view('hotelbooking.advancebooking.report.calender',compact('roomtypes'));
     }
+
+    
+     /**
+     * Get Advance Booking Report data.
+     */
 
     public function getadvanceBookingReport(Request $request)
     {
@@ -368,11 +430,20 @@ class AdvanceBookingController extends Controller
         return new ResourcesAdvanceBooking($advancebooking);
     }
 
+       
+     /**
+     * advance booking room show.
+     */
+
     public function advanceBookingRoom($id)
     {
         $advancebooking = AdvanceBooking::findOrFail($id);
         return view('hotelbooking.advancebooking.report.booking_show',compact('advancebooking'));
     }
+
+    /**
+     * advance booking calender day by day wise Report.
+     */
 
     public function advanceBookingCalenderDaybyDay()
     {
@@ -381,6 +452,9 @@ class AdvanceBookingController extends Controller
         return view('hotelbooking.advancebooking.report.daybydaycalender',compact('roomtypes'));
     }
 
+     /**
+     * advance booking  day by day wise Report.
+     */
 
     public function getadvanceBookingReportDayByDay(Request $request)
     {

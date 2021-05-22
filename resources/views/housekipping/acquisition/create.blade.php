@@ -1,7 +1,9 @@
 @extends('housekipping.master')
-@section('title', 'Order Acquisition | '.$seo->meta_title)
+@section('title', 'Order Acquisition | '.$companyinformation->company_name)
 @section('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+@php
+$current =date("Y/m/d");
+@endphp
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -14,9 +16,7 @@
                        <a href="{{route('admin.acquisition.index')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">All Order</span></i></button></a>
                     </div>
                 </div>
-              
                 <div class="row">
-                    
                     <div class="col-md-12">
                         <form action="#" method="get" id="option-choice-form">
                         @csrf
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="header-title">
                                     <h6 class="card-title">
-                                        <input type="date" class="form-control form-control-sm" name="date" value="">
+                                        <input type="text" class="form-control form-control-sm datepicker" name="date" value="{{$current}}">
                                     </h6>
                                 </div>
                             </div>

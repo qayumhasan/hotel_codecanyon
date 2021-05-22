@@ -24,17 +24,11 @@ class HousekeepingGuestEntryController extends Controller
     }
 
     public function getEntrypaxStore(Request $request)
-    {
-     
-        
+    {   
         date_default_timezone_set("Asia/Dhaka");
-        $current =date("d/m/Y");
-      
-
+        $current =date("Y/m/d");
         $checkentry =HouseKeepingGuestEntry::where('room_id',$request->room_id)->where('is_active',1)->first();
-
         if($checkentry){
-
             if($request->no_of_pax == null){
                 $checkentry->room_id=$request->room_id;
                 $checkentry->no_of_pax=0;
@@ -71,13 +65,10 @@ class HousekeepingGuestEntryController extends Controller
                     'varified_date'=>$current,
                 ]);
             }
-            
-
             return response()->json([
                 'message'=>'Housekeeping Guest Entry Created Successfully!'
             ]);
         }
-        
     }
 
     public function guestEntryReportPage()

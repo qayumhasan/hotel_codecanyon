@@ -1,14 +1,9 @@
 @extends('restaurant.chui.master')
-@section('title', 'Category Wise Sell Report | '.$seo->meta_title)
+@section('title', 'Category Wise Sell Report | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control{
-   height:30px;
-}
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
  <div class="content-page">
       <div class="container-fluid">
@@ -48,13 +43,9 @@ $current = date("d/m/Y");
                                        <td>{{ $data->kot_date }}</td>
                                        <td>{{$data->item_name}}</td>
                                        <td>{{ $data->qty }}</td>
-                                       <td>{{ $data->amount }}</td>
-                                      
-                                      
+                                       <td>{{ $data->amount }}</td>          
                                     </tr>
                                 @endforeach
-                                 
-                         
                            </tbody>
                         </table>
                      </div>

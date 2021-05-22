@@ -1,19 +1,6 @@
 @extends('housekipping.master')
-@section('title', 'Occupancy Report | '.$seo->meta_title)
+@section('title', 'Occupancy Report | '.$companyinformation->company_name)
 @section('content')
-
-
-<style>
-    .search_area {
-        width: 100%;
-
-    }
-
-    #datatable_filter {
-        visibility: hidden;
-    }
-</style>
-
 <div class="content-page">
     <div class="container-fluid printableAreasaveprint">
         <div class="row">
@@ -23,15 +10,9 @@
                         <div class="header-title mx-auto">
                             <h4 class="card-title">Occupancy Report</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="col-md-6 mx-auto">
                         <div class="card-body">
-
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
@@ -48,13 +29,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -75,10 +54,8 @@
                                     <th scope="col">Checkin By</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            
+                            <tbody>              
                             @foreach($rooms as $row)
-                          
                                 <tr>
                                     <th scope="row">{{$row->room_no}}</th>
                                     <td>{{$row->checkin->guest_name?? ''}}</td>
@@ -96,19 +73,14 @@
                                     @endif
                                     <td>{{$row->checkin->tarif?? ''}}</td>
                                     <td>{{$row->checkin->user->username?? ''}}</td>
-                                    
-                                    
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
-
-
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div
         <div class="row text-center">
             <div class="col-md-12">
                 <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
@@ -116,8 +88,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 @endsection

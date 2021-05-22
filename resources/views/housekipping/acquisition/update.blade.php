@@ -1,7 +1,6 @@
 @extends('hotelbooking.master')
 @section('title', 'Order Recusition | '.$seo->meta_title)
 @section('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -27,7 +26,7 @@
                                 </div>
                                 <div class="header-title">
                                     <h6 class="card-title">
-                                        <input type="date" class="form-control" name="date" value="">
+                                        <input type="text" class="form-control form-control-sm datepicker" name="date" value="{{$current}}">
                                     </h6>
                                 </div>
                             </div>
@@ -135,8 +134,6 @@
   $(document).ready(function() {
      $('input[name="item_name"]').on('change', function(){
          var item_name = $(this).val();
-         //alert(item_name);
-
          if(item_name) {
              $.ajax({
                  url: "{{  url('/get/item/all/') }}/"+item_name,
@@ -152,7 +149,6 @@
                     }
              });
          } else {
-             //alert('danger');
          }
 
      });
@@ -173,8 +169,6 @@ $(document).ready(function() {
                 iziToast.success({  message: 'success ',
                                         'position':'topCenter'
                                     });
-                //  document.getElementById('cartdatacount').innerHTML = data.count;
-                //  document.getElementById('checkoutid').innerHTML = data.count;
                 $('#item_name').val("");
                 $('#unit').val("");
                 $('#unit_name').val("");
@@ -182,14 +176,10 @@ $(document).ready(function() {
 
                 alldatashow();
             },
-
             error: function (err) {
                 $('#item_err').html(err.responseJSON.errors.item_name[0]);
             }
-          
         });
-       
-
     });
 });
 </script>
@@ -197,34 +187,24 @@ $(document).ready(function() {
 
 <script>
     function alldatashow() {
-      //alert("ok");
         var invoice = $("#invoice_no").val();
-        //alert(invoice);
         $.post('{{ url('/get/item/show/') }}/'+invoice, {_token: '{{ csrf_token() }}'},
             function(data) {
 			   $('#showallitem').html(data);
-
             });
 	}
-
 	alldatashow();
 </script>
 <script>
     function cartDatadelete(el) {
-        
-        
-       //alert(el.value);
         $.post('{{route('get.item.delete')}}', {_token: '{{ csrf_token() }}',item_id: el.value},
             function(data) {
                 $('#addtocartshow').html(data);
-
                 if (data) {
                   iziToast.success({  message: 'Delete success ',
                                           'position':'topCenter'
                                       });
                 }
-
-
             });
      alldatashow();
 	}
@@ -233,24 +213,16 @@ $(document).ready(function() {
 
 <script>
     function cartdata(el) {
-        
-       //alert(el.value)
         $.post('{{route('get.item.edit')}}', {_token: '{{ csrf_token() }}',item_id: el.value},
             function(data) {
-                //$('#addtocartshow').html(data);
                             $("#item_name").val(data.item_name);
                             $("#i_id").val(data.id);
                             $("#unit").val(data.unit);
                             $("#unit_name").val(data.name);
                             $("#Qty").val(data.qty);
-
-
             });
      alldatashow();
-   
 	}
 	cartheaderdelete();
-
 </script>
-
 @endsection

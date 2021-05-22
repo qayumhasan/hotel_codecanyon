@@ -1,5 +1,5 @@
 @extends('housekipping.master')
-@section('title', 'Order Acquisition | '.$seo->meta_title)
+@section('title', 'Order Acquisition | '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
@@ -43,9 +43,7 @@
                                             @else
                                             <span class=" btn-danger btn-sm">Close</span>
                                             @endif
-
                                         </td>
-
                                     </tr>
                                     @php
                                         $totalqty = 0;
@@ -54,7 +52,6 @@
                                     @if($loop->first)
                                     <tr>
                                         <th></th>
-                                        
                                         <th class="bg-light">Item</th>
                                         <th class="bg-light">Unit</th>
                                         <th class="bg-light">QTY</th>
@@ -62,7 +59,6 @@
                                     </tr>
                                     @endif
                                     <tr>
-
                                        <td></td>
                                         <td>{{$row->item_name}}</td>
                                         <td>{{$row->qty}}</td>
@@ -72,14 +68,12 @@
                                             $totalqty = $totalqty +$row->qty; 
                                         @endphp
                                     </tr>
-                                   
                                     @endforeach
                                     <tr>
                                         <td></td>
                                         <th class="text-primary">Total</th>
                                         <th>{{$totalqty}}</th>
                                         <th></th>
-                                        
                                     </tr>
                                     @endforeach
                                 </tbody>

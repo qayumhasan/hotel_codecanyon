@@ -8,21 +8,16 @@
             <th>Last Log</th>
             <th>Log Date</th>
             <th>Name</th>
-
             <th>Action</th>
         </tr>
     </thead>
     <tbody class="text-center">
         @if(count($rooms) > 0)
         @foreach($rooms as $room)
-
         <tr>
             <td>{{$room->room_no}}</td>
             <td>{{$room->roomtype->room_type?? ''}}</td>
             <td>{{$room->housekeepingreport->keeping_status?? ''}}</td>
-
-
-
             @if($room->room_status == 3)
             <td class="bg_red">Booked</td>
             @elseif($room->room_status == 2)
@@ -38,28 +33,18 @@
             <td>
                 <a class="badge bg-primary-light mr-2 editmodal" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$room}}"><i class="lar la-edit"></i></a>
             </td>
-
-
         </tr>
         @endforeach
+        @else
+        <tr class="text-center">
+            <th class="text-center">No Data Found!</th>
+        </tr>
         @endif
-
-
     </tbody>
-
-
-
-
 </table>
-
-
-
-
-
 <script>
     $(document).ready(function() {
         $(".editmodal").click(function() {
-            
             var modal = $(this)
             var data = modal.data('whatever');
             console.log(data.housekeeping);
@@ -71,7 +56,6 @@
             document.getElementById('remarks').value = data.housekeepingreport.remarks;
             $('#updatedby').val(data.housekeepingreport.keeping_name).selected;
             $('#status').val(data.housekeepingreport.keeping_status).selected;
-
         });
     });
 </script>

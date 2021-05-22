@@ -1,39 +1,29 @@
 @extends('restaurant.chui.master')
-@section('title', 'Customar Credit Report | '.$seo->meta_title)
+@section('title', 'Customar Credit Report | '.$companyinformation->company_name)
 @section('content')
-<style>
-    .form-control {
-        height: 30px;
-    }
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-
-
             <div class="col-sm-12">
                 <div class="card">
                     <form id="searchdatewisereport" action="{{route('admin.payment.method.wise.ajax.list')}}" method="post">
                         @csrf
                         <div class="card-body text-center">
-
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-1 col-form-label text-right">From Date :</label>
                                 <div class="col-sm-2">
                                     <input type="text" value="{{$current}}" class="form-control text-center form-control-sm datepicker searhbydate" name="from_date" id="searhbydate">
                                     <small class="from_date text-danger"></small>
                                 </div>
-
                                 <label for="staticEmail" class="col-sm-1 col-form-label text-right">To Date :</label>
                                 <div class="col-sm-2">
                                     <input type="text" value="{{$current}}" class="form-control text-center form-control-sm datepicker searhbydate" name="to_date" id="searhbydate">
                                     <small class="to_date text-danger"></small>
                                 </div>
-
                                 <label for="staticEmail" class="col-sm-2 col-form-label text-right">Payment Method</label>
                                 <div class="col-sm-2">
                                     <select class="form-control form-control-sm" onchange="searhbypayment(this)" name="payment_method" required="" name="payment_mode" id="payment_mode">
@@ -44,22 +34,16 @@ $current = date("d/m/Y");
                                         <option value="5">Post To Room</option>
                                     </select>
                                 </div>
-
                                 <div class="col-sm-1">
                                     <button type="submit" class="btn btn-sm btn-primary">Search</button>
                                 </div>
-
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
-
         <div class="row printableAreasaveprint" id="datewiseitem">
-
-
             @if(count($paymentwise) > 0)
             @foreach($paymentwise as $key=>$row)
             <div class="col-sm-12">
@@ -77,7 +61,6 @@ $current = date("d/m/Y");
                             @endif
                         </div>
                         <span class="float-right mr-2">
-
                         </span>
                     </div>
                     <div class="card-body p-1">
@@ -92,7 +75,6 @@ $current = date("d/m/Y");
                                         <th>Number Of Item</th>
                                         <th>Number Of Qty</th>
                                         <th>Total Price</th>
-
                                     </tr>
                                 </thead>
                                 @php
@@ -131,37 +113,23 @@ $current = date("d/m/Y");
             </div>
             @endforeach
             @else
-
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h5>No Data Found!</h5>
                     </div>
-
                 </div>
             </div>
-
             @endif
-
-
         </div>
-
         <div class="form-group row">
             <div class="col-sm-12 text-center">
                 <button type="submit" class="btn btn-primary text-center mx-auto savepritbtn">Print</button>
             </div>
         </div>
-
-
-
     </div>
-
 </div>
-
-
 </div>
-
-
 <script>
     $(document).ready(function() {
         $.ajaxSetup({
@@ -170,9 +138,7 @@ $current = date("d/m/Y");
             }
         });
         $(document).on('submit', '#searchdatewisereport', function(e) {
-            e.preventDefault();
-       
-       
+            e.preventDefault(); 
             var url = $(this).attr('action');
             var type = $(this).attr('method');
             var request = $(this).serialize();
@@ -183,15 +149,11 @@ $current = date("d/m/Y");
                 success: function(data) {
                     $('#datewiseitem').empty();
                     $('#datewiseitem').append(data);
-                    
-
                 },
                 error: function(err) {
-                   
                     if (err.responseJSON.errors.from_date) {
                         $('.from_date').html('Income header is required');
                     }
-
                     if (err.responseJSON.errors.to_date) {
                         $('.to_date').html('Income header is required');
                     }
@@ -201,13 +163,9 @@ $current = date("d/m/Y");
     });
 </script>
 @endsection
-
-
-
 <script>
     $(function() {
         $(".savepritbtn").on('click', function() {
-
             var mode = 'iframe'; //popup
             var close = mode == "popup";
             var options = {

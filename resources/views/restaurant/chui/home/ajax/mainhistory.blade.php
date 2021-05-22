@@ -1,11 +1,8 @@
-
-
 <div class="col-md-12">
 <div class="card">
 <input type="hidden" name="table_id" class="table_id" value="{{$table_id}}">
 <div class="card-body">
-    <div class="table-responsive">
-            
+    <div class="table-responsive">            
             <table class="table table-striped table-bordered" >
                 <thead class="text-center">
                     <tr>
@@ -28,12 +25,8 @@
                         <td>@if($data->complement == NULL) -- @else {{$data->complement}} @endif</td>
                     </tr>
                 @endforeach
-            
                 </tbody>
             </table>
-          
-            
-        
     </div>
 </div>
 </div>

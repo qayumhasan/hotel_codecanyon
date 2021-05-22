@@ -12,7 +12,6 @@
             <th>Diffrent</th>
         </tr>
     </thead>
-
     <tbody class="text-center">
         @if(count($rooms) > 0)
         @foreach($rooms as $row)
@@ -45,12 +44,5 @@
             <th colspan="8" class="text-center">No Data Found!</th>
         </tr>
         @endif
-
     </tbody>
-
-
-
-
-
-
 </table>

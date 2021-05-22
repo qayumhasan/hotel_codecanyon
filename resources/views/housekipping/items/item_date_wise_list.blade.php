@@ -1,27 +1,22 @@
 @extends('housekipping.master')
-@section('title', 'Item Issue Room Wise List | '.$seo->meta_title)
+@section('title', 'Item Issue Room Wise List | '.$companyinformation->company_name)
 @section('content')
 
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
-@endphp
 
-@php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("d/m/Y");
+$current =date("Y/m/d");
 $time = date("h:i");
 @endphp
-
 
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card p-4">
-
                     <form id="item_issue_list" action="{{route('admin.housekeeping.distribution.items.issue.date.ajax.list')}}" method="post">
                         @csrf
                         <div class="form-group row">
@@ -30,26 +25,19 @@ $time = date("h:i");
                                 <input class="form-control datepicker form-control-sm" name="from_date" type="text" value="{{$date}}">
                                 <small class="text-danger from_date"></small>
                             </div>
-
                             <label for="inputPassword" class="col-sm-1 col-form-label"><b>To Date:</b></label>
                             <div class="col-sm-4">
-                                <input class="form-control datepicker form-control-sm" name="to_date" type="text">
+                                <input class="form-control datepicker form-control-sm" name="to_date" type="text" value="{{$date}}">
                                 <small class="text-danger to_date"></small>
                             </div>
-
-
-
-
                             <div class="col-sm-2">
                                 <button type="submit" class="btn btn-primary btn-sm">Search</button>
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -57,11 +45,6 @@ $time = date("h:i");
                         <div class="header-title">
                             <h4 class="card-title">Item Issue Date Wise List</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive room_ajax_data">
@@ -75,7 +58,6 @@ $time = date("h:i");
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     @foreach($itemslists as $key=>$value)
                                     @foreach($value as $room_id=>$row )
                                     @php
@@ -87,34 +69,23 @@ $time = date("h:i");
                                         @else
                                         <th></th>
                                         @endif
-
                                         <th @if($loop->first) ''@else class="bg-light" @endif>{{$room_no->room_no?? ''}}</th>
-                                        
-
-                                        
                                         <td @if($loop->first) ''@else class="bg-light" @endif>{{$row->first()->issuedby->username?? ''}}</td>
                                         <td @if($loop->first) ''@else class="bg-light" @endif>{{$row->first()->remarks}}</td>
                                     </tr>
-                                    
                                     @php
                                         $total = 0;
                                     @endphp
-
                                     @foreach($row as $data)
-                                 
                                     <tr>
                                         <td></td>
                                         <td>{{$data->items->item_name?? ''}}</td>
                                         <td>{{$data->qty}}</td>
-                                       
                                         <td>{{$data->unit->name?? ''}}</td>
-
                                         @php
                                             $total = $total + $data->qty;
                                         @endphp
-
                                     </tr>
-                                    
                                     @endforeach
                                     <tr>
                                         <td></td>
@@ -123,27 +94,9 @@ $time = date("h:i");
                                     </tr>
                                     @endforeach
                                     @endforeach
-
-
                                 </tbody>
-
-
-
-
-
-
                             </table>
-
-
-
-
-
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -162,10 +115,9 @@ $time = date("h:i");
     });
 </script>
 
-
 <script>
     $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy/mm/dd',
     });
 </script>
 <script>
@@ -186,7 +138,6 @@ $time = date("h:i");
                 type: type,
                 data: request,
                 success: function(data) {
-                    console.log(data);
                     $('.room_ajax_data').append(data);
                 },
                 error: function(err) {
@@ -197,10 +148,6 @@ $time = date("h:i");
                     if (err.responseJSON.errors.from_date) {
                         $('.from_date').html(err.responseJSON.errors.from_date);
                     }
-
-
-
-                    console.log(err.responseJSON.errors.to_date)
                 }
             });
         });
