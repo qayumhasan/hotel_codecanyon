@@ -1,14 +1,6 @@
 @extends('inventory.master')
 @section('title', 'Update Unit | '.$seo->meta_title)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -76,11 +68,7 @@
                                             <div class="header-title">
                                                 <h4 class="card-title">All Unit</h4>
                                             </div>
-                                            <span class="float-right mr-2">
-                                                <!-- <a href="{{route('admin.branch.create')}}" class="btn btn-sm bg-primary">
-                                                <i class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                                                </a> -->
-                                            </span>
+                                        
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">

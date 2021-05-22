@@ -3,27 +3,8 @@
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
-
+$current = date("Y/m/d");
 @endphp
-<style>
-.form-control {
-    height: 32px;
-
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-
-
-button.editcat.badge.bg-primary-light {
-    border: none;
-}
-button.badge.bg-danger-light {
-    border: antiquewhite;
-}
-
-</style>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">

@@ -2,52 +2,33 @@
 @section('content')
 @php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("Y-m-d");
+$current = date("Y/m/d");
 @endphp
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-                <div class="col-sm-12">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between">
-                            <div class="header-title">
-                                <h4 class="card-title">Advance Booking Calender</h4>
-                            </div>
-
-                
-                            <!-- <span class="float-right mr-2">
-                                <a href="#" class="btn btn-sm bg-primary">
-                                    <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                                </a>
-                            </span> -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">Advance Booking Calender</h4>
                         </div>
-                        <div class="card-body">
-                            <div id='top'>
-
-                                Locales:
-                                <select id='locale-selector'></select>
-
-                            </div>
-
-                            <div id='calendar'></div>
-
-
+                    </div>
+                    <div class="card-body">
+                        <div id='top'>
+                            Locales:
+                            <select id='locale-selector'></select>
                         </div>
+                        <div id='calendar'></div>
                     </div>
                 </div>
             </div>
-
+        </div>
     </div>
 </div>
 
-
-
-
 <script>
- 
- $( document ).ready(function() {
-     
-        
+ $( document ).ready(function() {   
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -160,19 +141,7 @@ $current =date("Y-m-d");
 
             }
         });
-
-
     });
-
-
 </script>
-
-
-
-
-
-
-
-
 
 @endsection

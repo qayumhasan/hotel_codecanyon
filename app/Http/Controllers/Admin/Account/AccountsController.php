@@ -10,7 +10,7 @@ class AccountsController extends Controller
     public function __construct(){
     	$this->middleware('admin');
     }
-
+    //home 
     public function home(){
         return view('accounts.home.index');
     }

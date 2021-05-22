@@ -1,7 +1,6 @@
-                                    
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
 <div class="col-md-3">
     <div class="form-group row">

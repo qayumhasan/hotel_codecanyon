@@ -23,24 +23,39 @@
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/izitost.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-</head>
-
-<body class="  ">
-    <!-- loader Start -->
-    <div id="loading">
-        <div id="loading-center">
-        </div>
-    </div>
     <style>
         .form-control {
             border: 1px solid #443f3f;
         }
         .badge {
-    
-    border: aqua;
+        border: aqua;
+        }
+        .form-control {
+    height: 32px;
+}
+.card-header.d-flex.justify-content-between.asif {
+    background-color: #c1b8b8;
+}
+
+button.btn-sm.btn-primary.mt-2 {
+    border: beige;
+    padding: 2px 9px;
+    font-size: 11px;
 }
     </style>
+</head>
+
+<body class="  ">
+@php
+date_default_timezone_set("asia/dhaka");
+$current = date("m/d/Y");
+@endphp
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+    </div>
+  
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -564,7 +579,9 @@
     <!-- app JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script>
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy/mm/dd',
+        });
     </script>
    <script>
         $("#item_name").select2({

@@ -2,9 +2,7 @@
 @section('title', 'Consumption Report| '.$seo->meta_title)
 @section('content')
 <style>
-.form-control{
-   height:30px;
-}
+
 .table thead th {
  
     background: darkgray;
@@ -14,8 +12,7 @@
 </style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
-
+$current = date("Y/m/d");
 @endphp
  <div class="content-page">
       <div class="container-fluid">

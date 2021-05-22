@@ -1,10 +1,11 @@
 @extends('stock.master')
 @section('title', 'Consumption Report| '.$seo->meta_title)
 @section('content')
+@php
+date_default_timezone_set("asia/dhaka");
+$current = date("Y/m/d");
+@endphp
 <style>
-.form-control{
-   height:30px;
-}
 .table thead th {
  
     background: darkgray;
@@ -12,11 +13,7 @@
     color: #fff;
 }
 </style>
-@php
-date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
 
-@endphp
  <div class="content-page">
       <div class="container-fluid">
          <div class="row">

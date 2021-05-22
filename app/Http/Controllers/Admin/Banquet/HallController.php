@@ -57,7 +57,7 @@ class HallController extends Controller
         }
 
     }
-    //
+    
      // active
      public function active($id){
         $active=Venue::where('id',$id)->update([

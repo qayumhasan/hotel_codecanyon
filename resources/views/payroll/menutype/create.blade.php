@@ -11,10 +11,8 @@
                         <div class="header-title">
                             <h4 class="card-title">Add MenuType</h4>
                         </div>
-                       <!-- <a href="{{route('admin.branch.index')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">All Floor</span></i></button></a> -->
                     </div>
                 </div>
-               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
@@ -94,9 +92,6 @@
                                             <div class="header-title">
                                                 <h4 class="card-title">All Booking For</h4>
                                             </div>
-                                            <span class="float-right mr-2">
-                                              
-                                            </span>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
@@ -135,7 +130,6 @@
                                                         @endif
                                                         <a class="badge bg-primary-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/menutype/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
                                                         <a id="delete" class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/menutype/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
-                                                        
                                                         </td>
                                                     </tr>
                                                     @endforeach

@@ -12,7 +12,6 @@ class InventoryManageController extends Controller
     }
     // inventory
     public function index(){
-        
         return view('inventory.home.index');
     }
 }

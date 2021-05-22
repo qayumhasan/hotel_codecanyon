@@ -23,27 +23,38 @@
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/izitost.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <style>
+        .form-control {
+            border: 1px solid #443f3f;
+            height: 32px;
+        }
+                button.editcat.badge.bg-primary-light {
+            border: none;
+        }
+        button.badge.bg-danger-light {
+            border: antiquewhite;
+        }
+        .card-header.d-flex.justify-content-between.asif {
+            background-color: #c1b8b8;
+        }
+    </style>
 </head>
 
 <body class="  ">
+
     <!-- loader Start -->
     <div id="loading">
         <div id="loading-center">
         </div>
     </div>
-    <style>
-        .form-control {
-            border: 1px solid #443f3f;
-        }
-    </style>
+   
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
 
         <div class="iq-sidebar  sidebar-default ">
             <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
-                <a href="" class="header-logo">
+                <a href="{{route('admin.physicalstock.dashboard')}}" class="header-logo">
                     <img src="{{asset('public/uploads/logo/'.$logos->logo)}}" class="img-fluid rounded-normal light-logo" alt="logo">
                     <img src="{{asset('public/uploads/logo/'.$logos->logo)}}" class="img-fluid rounded-normal darkmode-logo" alt="logo">
                 </a>
@@ -54,8 +65,8 @@
             <div class="data-scrollbar" data-scroll="1">
                 <nav class="iq-sidebar-menu">
                     <ul id="iq-sidebar-toggle" class="iq-menu">
-                        <li class="">
-                            <a href="">
+                        <li class="{{ request()->routeIs('admin.physicalstock.dashboard*') ? 'active' : '' }}">
+                            <a href="{{route('admin.physicalstock.dashboard')}}">
                                 <i class="las la-home"></i><span>Dashboards</span>
                             </a>
                         </li>
@@ -466,7 +477,9 @@
     <!-- app JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script>
-        $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'yyyy/mm/dd',
+        });
     </script>
      
   

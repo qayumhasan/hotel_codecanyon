@@ -1,11 +1,6 @@
 @extends('inventory.master')
 @section('title', 'All Order Recusition|'.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-}
-</style>
  <div class="content-page">
       <div class="container-fluid">
          <div class="row">

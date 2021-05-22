@@ -11,28 +11,31 @@ use App\Models\ChartOfAccount;
 
 class EmployeeSelaryController extends Controller
 {
-    public function __construct(){
-    	$this->middleware('admin');
+    public function __construct()
+    {
+        $this->middleware('admin');
     }
-    public function index(){
-
-        $allemployee=Employee::latest()->get();
-        $allchartofaccount=ChartOfAccount::where('category_id',2)->get();
-    	return view('payroll.employeeselary.allemployee',compact('allemployee','allchartofaccount'));
+    // index
+    public function index()
+    {
+        $allemployee = Employee::latest()->get();
+        $allchartofaccount = ChartOfAccount::where('category_id', 2)->get();
+        return view('payroll.employeeselary.allemployee', compact('allemployee', 'allchartofaccount'));
     }
-    public function store(Request $request){
-        
-        $check=EmployeeSelaryGenerate::where('month',$request->month)->where('year',$request->year)->first();
-        if($check){
+    // store
+    public function store(Request $request)
+    {
+        $check = EmployeeSelaryGenerate::where('month', $request->month)->where('year', $request->year)->first();
+        if ($check) {
             $notification = array(
                 'messege' => 'This Month Salary Allready Created ',
                 'alert-type' => 'info'
             );
             return Redirect()->back()->with($notification);
-        }else{
+        } else {
             foreach ($request->id as $key => $v) {
                 $netsalary = $request->salary[$key];
-                $perdayselary =$netsalary/30 ; 
+                $perdayselary = $netsalary / 30;
                 $totalworking = $request->working_days[$key] + $request->guaranteed_leave[$key] + $request->overtime[$key];
                 $grosslasary = $totalworking * $perdayselary;
                 $data3 = array(
@@ -51,42 +54,41 @@ class EmployeeSelaryController extends Controller
                     'overtime' => $request->overtime[$key],
                     'leave' => $request->leave_days[$key],
                     'created_at' => Carbon::now()->toDateTimeString(),
-    
+
                 );
-                $insert=EmployeeSelaryGenerate::Insert($data3);
-                
+                $insert = EmployeeSelaryGenerate::Insert($data3);
             }
             $notification = array(
                 'messege' => 'success',
                 'alert-type' => 'success'
             );
             return Redirect()->back()->with($notification);
-            
         }
-       
     }
     // all created selary 
-    public function allcreateselary(){
-        $allselary=EmployeeSelaryGenerate::select(['month','year'])->groupby('year','month')->get();
+    public function allcreateselary()
+    {
+        $allselary = EmployeeSelaryGenerate::select(['month', 'year'])->groupby('year', 'month')->get();
         //dd($allselary);
-        return view('payroll.employeeselary.allselary',compact('allselary'));
+        return view('payroll.employeeselary.allselary', compact('allselary'));
     }
-    // 
-    public function allemplyesalaryedit($month,$year){
-       $alldata=EmployeeSelaryGenerate::where('month',$month)->where('year',$year)->get();
-       $allchartofaccount=ChartOfAccount::where('category_id',2)->get();
-       return view('payroll.employeeselary.allemployeeselaryupdate',compact('alldata','month','year','allchartofaccount'));
+    // allemplyesalaryedit
+    public function allemplyesalaryedit($month, $year)
+    {
+        $alldata = EmployeeSelaryGenerate::where('month', $month)->where('year', $year)->get();
+        $allchartofaccount = ChartOfAccount::where('category_id', 2)->get();
+        return view('payroll.employeeselary.allemployeeselaryupdate', compact('alldata', 'month', 'year', 'allchartofaccount'));
     }
     // update
-    public function update(Request $request){
-       // return $request;
+    public function update(Request $request)
+    {
+        // return $request;
         foreach ($request->id as $key => $v) {
-                $netsalary = $request->salary[$key];
-                $perdayselary =$netsalary/30 ; 
-                $totalworking = $request->working_days[$key] + $request->guaranteed_leave[$key] + $request->overtime[$key];
-                $grosslasary = $totalworking * $perdayselary;
-               // echo  $netsalary;
-
+            $netsalary = $request->salary[$key];
+            $perdayselary = $netsalary / 30;
+            $totalworking = $request->working_days[$key] + $request->guaranteed_leave[$key] + $request->overtime[$key];
+            $grosslasary = $totalworking * $perdayselary;
+            // echo  $netsalary;
             $data3 = array(
                 'month' => $request->month,
                 'generate_date' => $request->date,
@@ -99,8 +101,7 @@ class EmployeeSelaryController extends Controller
                 'leave' => $request->leave_days[$key],
                 'updated_at' => Carbon::now()->toDateTimeString(),
             );
-            $insert=EmployeeSelaryGenerate::where('id',$v)->update($data3);
-            
+            $insert = EmployeeSelaryGenerate::where('id', $v)->update($data3);
         }
         $notification = array(
             'messege' => 'success',
@@ -110,102 +111,103 @@ class EmployeeSelaryController extends Controller
     }
 
     // month wise selary report
-    public function monthwiseselary(){
-        $allemployee=Employee::where('status',1)->latest()->get();
-        return view('payroll.reports.monthwiseselary',compact('allemployee'));
+    public function monthwiseselary()
+    {
+        $allemployee = Employee::where('status', 1)->latest()->get();
+        return view('payroll.reports.monthwiseselary', compact('allemployee'));
     }
     // generate
-    public function monthwiseselarygenerate(Request $request){
+    public function monthwiseselarygenerate(Request $request)
+    {
         $validated = $request->validate([
             'employee_id' => 'required',
         ]);
-        $month=$request->month;
-        $year=$request->year;
-        $employee_id=$request->employee_id;
-        $allemployee=Employee::where('status',1)->latest()->get();
-        $data=EmployeeSelaryGenerate::where('employee_id',$request->employee_id)->where('month',$request->month)->where('year',$request->year)->first();
-        return view('payroll.reports.monthwiseselaryresult',compact('data','month','year','allemployee','employee_id'));
+        $month = $request->month;
+        $year = $request->year;
+        $employee_id = $request->employee_id;
+        $allemployee = Employee::where('status', 1)->latest()->get();
+        $data = EmployeeSelaryGenerate::where('employee_id', $request->employee_id)->where('month', $request->month)->where('year', $request->year)->first();
+        return view('payroll.reports.monthwiseselaryresult', compact('data', 'month', 'year', 'allemployee', 'employee_id'));
     }
     // Employee Wise Salary Report
-    public function employeetotalmonthselary(){
+    public function employeetotalmonthselary()
+    {
         //return "ok";
-        $allemployee=Employee::where('status',1)->latest()->get();
-        return view('payroll.reports.totalmontwiseselary',compact('allemployee'));
+        $allemployee = Employee::where('status', 1)->latest()->get();
+        return view('payroll.reports.totalmontwiseselary', compact('allemployee'));
     }
 
-    // 
-    public function employeetotalmonthselarygenerate(Request $request){
+    // employeetotalmonthselarygenerate
+    public function employeetotalmonthselarygenerate(Request $request)
+    {
         $validated = $request->validate([
             'employee_id' => 'required',
         ]);
-        if($request->year=='all'){
-            $year='all';
-            $employee_id=$request->employee_id;
-            $alldata=EmployeeSelaryGenerate::where('employee_id',$request->employee_id)->get();
-            $allemployee=Employee::where('status',1)->latest()->get();
-            return view('payroll.reports.totalmontwiseselaryresult',compact('alldata','allemployee','employee_id','year'));
-        }else{
-            $employee_id=$request->employee_id;
-            $year=$request->year;
-            $alldata=EmployeeSelaryGenerate::where('employee_id',$request->employee_id)->where('year',$request->year)->get();
-            $allemployee=Employee::where('status',1)->latest()->get();
-            return view('payroll.reports.totalmontwiseselaryresult',compact('alldata','allemployee','employee_id','year'));
+        if ($request->year == 'all') {
+            $year = 'all';
+            $employee_id = $request->employee_id;
+            $alldata = EmployeeSelaryGenerate::where('employee_id', $request->employee_id)->get();
+            $allemployee = Employee::where('status', 1)->latest()->get();
+            return view('payroll.reports.totalmontwiseselaryresult', compact('alldata', 'allemployee', 'employee_id', 'year'));
+        } else {
+            $employee_id = $request->employee_id;
+            $year = $request->year;
+            $alldata = EmployeeSelaryGenerate::where('employee_id', $request->employee_id)->where('year', $request->year)->get();
+            $allemployee = Employee::where('status', 1)->latest()->get();
+            return view('payroll.reports.totalmontwiseselaryresult', compact('alldata', 'allemployee', 'employee_id', 'year'));
         }
-       
-
     }
 
     // salary details
-    public function selarydetails(){
-        $allemployee=Employee::where('status',1)->latest()->get();
-        return view('payroll.reports.salarydetails',compact('allemployee'));
-
+    public function selarydetails()
+    {
+        $allemployee = Employee::where('status', 1)->latest()->get();
+        return view('payroll.reports.salarydetails', compact('allemployee'));
     }
     // salary details result
-    public function selarydetailsresult(Request $request){
-        $month=$request->month;
-        $year=$request->year;
-        $alldata=EmployeeSelaryGenerate::where('month',$month)->where('year',$year)->get();
-        return view('payroll.reports.salarydetailsresult',compact('alldata','month','year'));
-
+    public function selarydetailsresult(Request $request)
+    {
+        $month = $request->month;
+        $year = $request->year;
+        $alldata = EmployeeSelaryGenerate::where('month', $month)->where('year', $year)->get();
+        return view('payroll.reports.salarydetailsresult', compact('alldata', 'month', 'year'));
     }
-
     // employe wise attendence report
-    public function employeewiseattendence(){
-        $allemployee=Employee::where('status',1)->latest()->get();
-        return view('payroll.reports.employeewiseattendence',compact('allemployee'));
+    public function employeewiseattendence()
+    {
+        $allemployee = Employee::where('status', 1)->latest()->get();
+        return view('payroll.reports.employeewiseattendence', compact('allemployee'));
     }
     // result
-    public function employeewiseattendenceresult(Request $request){
-
+    public function employeewiseattendenceresult(Request $request)
+    {
         $validated = $request->validate([
             'employee_id' => 'required',
         ]);
-        $month=$request->month;
-        $year=$request->year;
-        $employee_id=$request->employee_id;
-        $alldata=EmployeeSelaryGenerate::where('employee_id',$request->employee_id)->where('month',$month)->where('year',$year)->get();
-        $allemployee=Employee::where('status',1)->latest()->get();
-        return view('payroll.reports.employeewiseattendenceresult',compact('alldata','employee_id','month','year','allemployee'));
-
-
+        $month = $request->month;
+        $year = $request->year;
+        $employee_id = $request->employee_id;
+        $alldata = EmployeeSelaryGenerate::where('employee_id', $request->employee_id)->where('month', $month)->where('year', $year)->get();
+        $allemployee = Employee::where('status', 1)->latest()->get();
+        return view('payroll.reports.employeewiseattendenceresult', compact('alldata', 'employee_id', 'month', 'year', 'allemployee'));
     }
     // monthly attendence report
-    public function monthlyattendence(){
+    public function monthlyattendence()
+    {
         return view('payroll.reports.monthlyattendencereport');
     }
-    // 
-    public function monthlyattendenceresult(Request $request){
-        $year=$request->year;
-        $alldata=EmployeeSelaryGenerate::where('year',$year)->get();
-        $allemployee=Employee::where('status',1)->orderBy('id','DESC')->get();
-        return view('payroll.reports.monthlyattendencereportresult',compact('alldata','allemployee','year'));
+    // monthlyattendenceresult
+    public function monthlyattendenceresult(Request $request)
+    {
+        $year = $request->year;
+        $alldata = EmployeeSelaryGenerate::where('year', $year)->get();
+        $allemployee = Employee::where('status', 1)->orderBy('id', 'DESC')->get();
+        return view('payroll.reports.monthlyattendencereportresult', compact('alldata', 'allemployee', 'year'));
     }
-    // 
-    public function monthwiseselaryprint($id){
-        $data=EmployeeSelaryGenerate::where('id',$id)->first();
-        return view('payroll.reports.ajaxview.monthlyselaryinvoice',compact('data'));
+    // monthwiseselaryprint
+    public function monthwiseselaryprint($id)
+    {
+        $data = EmployeeSelaryGenerate::where('id', $id)->first();
+        return view('payroll.reports.ajaxview.monthlyselaryinvoice', compact('data'));
     }
-
-
 }
