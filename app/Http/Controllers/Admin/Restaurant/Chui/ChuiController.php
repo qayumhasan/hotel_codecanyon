@@ -25,20 +25,28 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class ChuiController extends Controller
 {
+      /**
+     * Check is Admin is login.
+     */
     public function __construct()
     {
         $this->middleware('admin');
     }
+      /**
+     * Show Chui Restaurant Home Menu.
+     */
 
     public function chuiIndex()
     {
-
         $allwaiter = Employee::get();
-
         $allitem = ItemEntry::where('is_deleted', 0)->where('is_active', 1)->orderBy('id', 'DESC')->get();
         $tables = RestaurantTable::where('is_deleted', 0)->where('is_active', 1)->orderBy('id', 'DESC')->get();
         return view('restaurant.chui.home.index', compact('allwaiter', 'allitem', 'tables'));
     }
+
+      /**
+     * GET Freemenu Side Menu Item Ajax Data.
+     */
 
     public function getFreemenuSideMenuItem($id)
     {
@@ -47,11 +55,12 @@ class ChuiController extends Controller
             return json_decode($sidemenu->items);
         }
     }
-
+    /**
+     * Store Kot Details.
+     */
 
     public function storeKotDetails(Request $request)
     {
-
         $request->validate([
             'Waiter_name' => 'required',
             'items' => 'required',
@@ -59,30 +68,16 @@ class ChuiController extends Controller
             'res_date' => 'required',
             'res_hour' => 'required',
         ]);
-
         date_default_timezone_set("Asia/Dhaka");
-
-
-
         $kotdetails = Restaurant_order_detail::where('table_no', $request->table_no)->where('waiter_id', $request->Waiter_name)->where('item_id', $request->items)->where('complement', $request->free_items)->where('kot_status', 0)->where('is_active', 0)->first();
-        // check if kot already exist
-
         if ($kotdetails) {
-
             // decrement previous no_of_sale of this item
             $item = ItemEntry::where('id', $request->items)->decrement('no_of_sale', $kotdetails->qty);
-
             // Increment Current Item
-
             $item = ItemEntry::where('id', $request->items)->increment('no_of_sale', $request->quantity);
-
             // decrement current employee sales report amount
-
             Emploayee_Sales_Report::where('waiter_id', $request->Waiter_name)->decrement('slae_amount', $kotdetails->amount);
-
-
             // update previous kot item
-
             $kotdetails->table_no = $request->table_no;
             $kotdetails->kot_date = $request->res_date;
             $kotdetails->kot_time = $request->res_hour;
@@ -95,28 +90,18 @@ class ChuiController extends Controller
             $kotdetails->updated_date = Carbon::now();
             // get item price
             $item = ItemEntry::findOrFail($request->items);
-
             // check if employee sale report waiter already exist
-
             $employecheck =  Emploayee_Sales_Report::where('waiter_id', $request->Waiter_name)->first();
-
             // chek it item already exist
             if ($item) {
-
                 $amount = $item->rate * $request->quantity;
                 $kotdetails->rate = $item->rate;
                 $kotdetails->amount = $item->rate * $request->quantity;
-
-
-
                 // if waiter alreay exist than update sale_amount
-
                 if ($employecheck) {
                     Emploayee_Sales_Report::where('waiter_id', $request->Waiter_name)->increment('slae_amount', $amount);
                 } else {
-
                     // if waiter can not exist insert employee
-
                     $employeesales =  new Emploayee_Sales_Report();
                     $employeesales->waiter_id = $request->Waiter_name;
                     $employeesales->slae_amount = $amount;
@@ -126,10 +111,8 @@ class ChuiController extends Controller
                     $employeesales->save();
                 }
             }
-
             $kotdetails->save();
         } else {
-
             $kotdetails = new Restaurant_order_detail();
             $kotdetails->table_no = $request->table_no;
             $kotdetails->kot_date = $request->res_date;
@@ -141,21 +124,15 @@ class ChuiController extends Controller
             $kotdetails->kot_remarks = $request->remarks;
             $kotdetails->entry_by = Auth::user()->id;
             $kotdetails->entry_date = Carbon::now();
-
             $employecheck =  Emploayee_Sales_Report::where('waiter_id', $request->Waiter_name)->first();
-
             $item = ItemEntry::findOrFail($request->items);
             if ($item) {
                 $amount = $item->rate * $request->quantity;
                 $kotdetails->rate = $item->rate;
                 $kotdetails->amount = $item->rate * $request->quantity;
-
                 // if waiter alreay exist than update sale_amount
-
                 if ($employecheck) {
-
                     // if empoyee month and year is same than increment
-
                     if (date('n') == $employecheck->month_no && date('Y') == $employecheck->year) {
                         Emploayee_Sales_Report::where('waiter_id', $request->Waiter_name)->increment('slae_amount', $amount);
                     } else {
@@ -168,9 +145,7 @@ class ChuiController extends Controller
                         $employeesales->save();
                     }
                 } else {
-
                     // if waiter can not exist insert employee
-
                     $employeesales =  new Emploayee_Sales_Report();
                     $employeesales->waiter_id = $request->Waiter_name;
                     $employeesales->slae_amount = $amount;
@@ -183,15 +158,13 @@ class ChuiController extends Controller
             $kotdetails->save();
             $item = ItemEntry::where('id', $request->items)->increment('no_of_sale', $request->quantity);
         }
-
         $kotdetails = Restaurant_order_detail::where('kot_status', 0)->where('is_active', 0)->where('table_no', $request->table_no)->orderBy('id', 'DESC')->get();
-
         return view('restaurant.chui.home.ajax.kot_ajax', compact('kotdetails'));
-
-        // return response()->json($kotdetails);
     }
 
-
+    /**
+     * Get All kot status by Table ID.
+     */
     public function getKotStatusByTableID($id)
     {
         $kotdetails = Restaurant_order_detail::where('table_no', $id)->where('kot_status', 0)->orderBy('id', 'DESC')->get();
@@ -199,88 +172,76 @@ class ChuiController extends Controller
         // return response()->json($itemdetails);
     }
 
+    /**
+     * Delete kot status by Table ID.
+     */
+
     public function deleteKotStatusByTableID($id)
     {
-
         $kotdelete = Restaurant_order_detail::findOrFail($id);
-
         $item = ItemEntry::where('id', $kotdelete->item_id)->decrement('no_of_sale', $kotdelete->qty);
-
-
         Emploayee_Sales_Report::where('waiter_id', $kotdelete->waiter_id)->decrement('slae_amount', $kotdelete->amount);
-
         $kotdelete->delete();
     }
+    
+    /**
+     * Edit kot status by Table ID.
+     */
 
     public function editKotStatusByTableID($id)
     {
         $items = Restaurant_order_detail::findOrFail($id);
-
         if (isset($items->freemenu)) {
             $sidemenus = json_decode($items->freemenu->items);
         } else {
             $sidemenus = Null;
         }
-
         return response()->json([$items, $sidemenus]);
     }
+
+    
+    /**
+     * Store Kot in Database.
+     */
 
     public function storeKot(Request $request)
     {
         $kotdetails = Restaurant_order_detail::where('table_no', $request->tbl_no)->where('kot_status', 0)->where('is_active', 0)->get();
-
         $year = Carbon::now()->format('Y');
         $date = Carbon::now()->format('d');
         $sec = Carbon::now()->format('s');
-
         $book_no = rand(111111, 99999);
-
         Restaurant_order_detail::where('table_no', $request->tbl_no)->where('kot_status', 0)->where('is_active', 0)->update([
             'booking_no' => $book_no . $request->tbl_no,
             'invoice_id' => 'KOT-' . $date . 'T-' . $year . $book_no . $request->tbl_no,
         ]);
-
-
         if (count($kotdetails) > 0) {
-
             $qtysum = $kotdetails->sum(function ($item) {
                 return $item->qty;
             });
             $amountsum = $kotdetails->sum(function ($item) {
                 return $item->amount;
             });
-            
-
-
             $head = new Restaurant_Order_head();
-
             $head->invoice_no = 'KOT-' . $date . 'T-' . $year . $book_no . $request->tbl_no;
-
             $head->number_of_item = count($kotdetails);
             $head->number_of_qty = $qtysum;
             $head->total_amount = $amountsum;
             $head->gross_amount = $amountsum;
             $head->food_amount = $amountsum;
             $head->save();
-
-
-
             $kotdetails = Restaurant_order_detail::where('table_no', $request->tbl_no)->where('kot_status', 0)->where('is_active', 0)->latest('id')->first();
-
             $restable = RestaurantTable::findOrFail($request->tbl_no);
             $restable->waiter_id = $kotdetails->waiter_id;
             $restable->total_amounnt = $amountsum;
             $restable->data = Carbon::now();
             $restable->is_booked = 1;
             $restable->save();
-
             $notification = array(
                 'messege' => 'Kot store Successfully',
                 'alert-type' => 'success'
             );
-
             $kotdata = Restaurant_order_detail::where('table_no', $request->tbl_no)->where('kot_status', 0)->where('is_active', 0)->get();
-         
             $data = [
                 'kotdata'=>$kotdata,
                 'kotdetails'=>$kotdetails,
@@ -288,7 +249,6 @@ class ChuiController extends Controller
             $request->session()->put('kotdata',$data);
             return Redirect()->route('admin.chui.restaurant')->with($notification);
         } else {
-
             $notification = array(
                 'messege' => ' No item selected!',
                 'alert-type' => 'warning'
@@ -296,14 +256,18 @@ class ChuiController extends Controller
             return Redirect()->route('admin.chui.restaurant')->with($notification);
         }
     }
-
-
+    /**
+     * KOT Tax Data Edit.
+     */
     public function kotTaxEdit($id)
     {
         $taxhead = Restaurant_Tax_head::findOrFail($id);
         return response()->json($taxhead);
-
     }
+    
+    /**
+     * KOT Tax Update.
+     */
 
     public function kotTaxUpdate(Request $request)
     {
@@ -312,40 +276,32 @@ class ChuiController extends Controller
             $this->KotEditDelete($taxhead);
             $taxhead->delete();
         }
-        
-
         $tax = new KotTaxCalculate($request);
         $tax->Tax();
-
-
-
         $texdatas = Restaurant_Tax_head::where('invoice_id', $request->invoice_no)->get();
-
-
-
         $resgross = Restaurant_Order_head::where('invoice_no', $request->invoice_no)->first();
-
-
-
-
         return view('restaurant.chui.home.ajax.tax_details_ajax', compact('texdatas', 'resgross'));
     }
+    
+    /**
+     * KOT Tax Deleted.
+     */
 
     public function kotTaxDelete($id)
     {
         $taxhead = Restaurant_Tax_head::findOrFail($id);
         $this->KotEditDelete($taxhead);
-
         if ($taxhead) {
             $taxhead->delete();
         }
-
-
         $resgross = Restaurant_Order_head::where('invoice_no', $taxhead->invoice_id)->first();
-
         return response()->json($resgross);
     }
 
+    
+    /**
+     * kot Tax dectement/Increment according to tax effect.
+     */
 
     public function KotEditDelete($taxhead)
     {
@@ -392,60 +348,56 @@ class ChuiController extends Controller
         }
     }
 
+    
+    /**
+     * Get KOT Item History by Table ID.
+     */
 
     public function getKotItemHistoryByTableID($id)
     {
-
-
         $kotdetails = Restaurant_order_detail::where('table_no', $id)->where('kot_status', 0)->where('is_active', 0)->get();
-
         $kotdetailamounts = Restaurant_order_detail::where('table_no', $id)->where('kot_status', 0)->where('is_active', 0)->first();
-
         $taxs =  TaxSetting::where('is_active', 1)->where('is_deleted', 0)->get();
-
         return view('restaurant.chui.home.ajax.billing_ajax', compact('kotdetails', 'kotdetailamounts', 'taxs'));
-
-
         // return response()->json($kotdetails);
     }
 
-
+    
+    /**
+     * Get Kot Item Tax Value.
+     */
 
     public function getKotItemTaxValue(Request $request)
     {
-
-
         $request->validate([
             'tax_discription' => 'required',
             'calculation_on' => 'required',
             'base_on' => 'required',
             'rate' => 'required',
         ]);
-
         $tax = new KotTaxCalculate($request);
         return $tax->amount();
     }
 
-
+    /**
+     * Get Kot Tax Item.
+     */
     public function getKotTaxItem($id)
     {
         $tax = TaxSetting::findOrFail($id);
         return response()->json($tax);
     }
+    
+    /**
+     * kOT Item Tax Calculate.
+     */
 
     public function getKotItemTaxCalculate(Request $request)
     {
-  
         $request->validate([
             'rate' => 'required',
         ]);
-
-
-
-
-
         $resorderhead = Restaurant_Order_head::where('invoice_no', $request->invoice_no)->first();
-
         if ($resorderhead) {
             switch ($request->base_on) {
                 case 'percentage':
@@ -461,31 +413,27 @@ class ChuiController extends Controller
         }
     }
 
+    
+    /**
+     *Add KOT Billing Ttem to grid.
+     */
+
     public function addToGridKotBillingItem(Request $request)
     {
-
         $tax = new KotTaxCalculate($request);
         $tax->Tax();
-
-
-
         $texdatas = Restaurant_Tax_head::where('invoice_id', $request->invoice_no)->get();
-
-
-
         $resgross = Restaurant_Order_head::where('invoice_no', $request->invoice_no)->first();
-
-
-
-
         return view('restaurant.chui.home.ajax.tax_details_ajax', compact('texdatas', 'resgross'));
     }
 
+    
+    /**
+     * Caculate Kot Total Value.
+     */
 
     public function getTotalValue($request, $head)
     {
-
-
         switch ($request->calculation_on) {
             case '1':
                 return $head->total_amount + $head->gross_amount;
@@ -503,6 +451,10 @@ class ChuiController extends Controller
         }
     }
 
+    /**
+     * Select Room For Billing ajax Data.
+     */
+
 
     public function slectRoomForBilling()
     {
@@ -510,43 +462,35 @@ class ChuiController extends Controller
         return response()->json($rooms);
     }
 
+    /**
+     * Select Room For Billing get Room Information.
+     */
+
     public function slectRoomForBillingGet($id)
     {
         $roomdata = Checkin::where('room_id', $id)->where('is_occupy',1)->first();
         return response()->json($roomdata);
     }
 
-
-
+    /**
+     * store kot item by Table ID.
+     */
 
     public function storeKotItemHistoryByTableID(Request $request)
     {
-
-
-        
-    
-
         $kothead = Restaurant_Order_head::where('invoice_no', $request->invoice_no)->first();
-
         if (isset($request->payment_method)) {
-
             if ($kothead) {
-
                 $kothead->no_of_pax = $request->no_of_pax;
                 $kothead->payment_date = $request->paymentdate;
-
                 if (isset($request->payment_method)) {
                     $kothead->is_payment = 1;
                     $kothead->payment_method = $request->payment_method;
-
                     // payment with cash
-
                     if ($request->payment_method == 1) {
                         $kothead->payment_method = $request->payment_method;
                         $kothead->payment_details = $request->cash_name;
                     }
-
-                
                     // Add Payment with bank
 
                     if ($request->payment_method == 2) {
@@ -564,7 +508,6 @@ class ChuiController extends Controller
                         $kothead->pay_amount = $request->customar_pay;
                         $kothead->credit_balance =$kothead->gross_amount-$request->customar_pay;
                         $kothead->customar_credit_date = Carbon::now()->toDateTimeString();
-                        
                     }
 
                     // payment with post to room
@@ -582,11 +525,8 @@ class ChuiController extends Controller
                 $kothead->entry_by = auth()->user()->id;
                 $kothead->entry_date = Carbon::now()->toDateTimeString();
             }
-
-
             if (isset($request->payment_method)) {
                 $kotdetails = Restaurant_order_detail::where('table_no', $request->table_no)->where('is_active', 0)->where('kot_status', 0)->get();
-
                 if (count($kotdetails) > 0) {
                     $kotdetails = Restaurant_order_detail::where('table_no', $request->table_no)->where('is_active', 0)->where('kot_status', 0)->update([
                         'is_active' => 1,
@@ -619,6 +559,10 @@ class ChuiController extends Controller
     }
 
 
+    /**
+     * Show kot Item at glance by Table ID.
+     */
+
     public function getKotItematglanceByTableID($id)
     {
         $kotdetails = Restaurant_order_detail::where('table_no', $id)->where('is_active', 1)->where('kot_status', 1)->get();
@@ -627,6 +571,10 @@ class ChuiController extends Controller
         $kotdetailamounts = Restaurant_order_detail::where('table_no', $id)->where('kot_status', 1)->where('is_active', 1)->first();
         return view('restaurant.chui.home.ajax.at_a_glance', compact('kotdetails', 'kotdetailamounts'));
     }
+    
+    /**
+     * Kot History Delete.
+     */
 
 
     public function kothistorydelete($id)
@@ -634,30 +582,29 @@ class ChuiController extends Controller
 
         Restaurant_order_detail::where('invoice_id', $id)->delete();
         Restaurant_Order_head::where('invoice_no', $id)->delete();
-        // $kotdetails =Restaurant_order_detail::where('invoice_id',$id)->where('is_active',1)->where('kot_status',1)->get();
-        // $kotdetails = $kotdetails->groupBy('invoice_id');
-        // $kotdetails=$kotdetails->all();
-        // $kotdetailamounts = Restaurant_order_detail::where('invoice_id',$id)->where('kot_status',1)->where('is_active',1)->first();
-
         $notification = array(
             'messege' => ' Item Deleted Successfully!',
             'alert-type' => 'error'
         );
         return Redirect()->back()->with($notification);
-
-        // return view('restaurant.chui.home.ajax.at_a_glance',compact('kotdetails','kotdetailamounts'));
-
     }
 
+
+    /**
+     * Show kot item invoice.
+     */
 
     public function getKotItematglanceByInvoiceID($id)
     {
         $orderdetails = Restaurant_order_detail::where('invoice_id', $id)->where('is_active', 1)->where('kot_status', 1)->get();
         $orderhead = Restaurant_Order_head::where('invoice_no', $id)->first();
-
         return view('restaurant.chui.home.ajax.invoice_print', compact('orderdetails', 'orderhead'));
     }
-    // history data
+    
+    /**
+     * Show kot Item History.
+     */
+
     public function getHistory($t_id)
     {
 
@@ -668,7 +615,11 @@ class ChuiController extends Controller
         return view('restaurant.chui.home.ajax.mainhistory', compact('alldata', 'table_id'));
     }
 
-    // ata a glance 
+    
+    /**
+     * Show kot all kot data at a glance.
+     */
+    
     public function getataglance($t_id)
     {
         $to = Carbon::now()->format('d/m/Y');

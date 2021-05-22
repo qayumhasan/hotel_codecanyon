@@ -8,47 +8,35 @@
         </tr>
     </thead>
     <tbody>
-
+        @if(count($itemslists) > 0)
         @foreach($itemslists as $key=>$value)
         @foreach($value as $department_id=>$row )
         @php
         $department = App\Models\Department::where('id',$department_id)->first();
-        
         @endphp
-
-     
-        
         <tr @if($loop->first) class="bg-secondary" @else '' @endif>
             @if($loop->first)
             <th scope="row">{{$key}}</th>
             @else
             <th></th>
             @endif
-
             <th @if($loop->first) ''@else class="bg-light" @endif>{{$department->name?? ''}}</th>
-
             <td @if($loop->first) ''@else class="bg-light" @endif>{{$row->first()->issuedby->username?? ''}}</td>
             <td @if($loop->first) ''@else class="bg-light" @endif>{{$row->first()->remarks}}</td>
         </tr>
-
         @php
         $total = 0;
         @endphp
-
         @foreach($row as $data)
-
         <tr>
             <td></td>
             <td>{{$data->items->item_name?? ''}}</td>
             <td>{{$data->qty}}</td>
             <td>{{$data->unit->name ?? ''}}</td>
-
             @php
             $total = $total + $data->qty;
             @endphp
-
         </tr>
-
         @endforeach
         <tr>
             <td></td>
@@ -57,9 +45,16 @@
         </tr>
         @endforeach
         @endforeach
-
-
     </tbody>
+    @else
+    <tbody>
+        <tr class="text-center">
+            <th colspan="5">
+                No Data Found!
+            </th>
+        </tr>
+    </tbody>
+    @endif
 
 
 

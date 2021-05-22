@@ -1,27 +1,21 @@
 @extends('housekipping.master')
-@section('title', 'Expected Checkout Report | '.$seo->meta_title)
+@section('title', 'Expected Checkout Report | '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
 @endphp
-
 @php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("d/m/Y");
+$current =date("Y/m/d");
 $time = date("h:i");
 @endphp
-
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card p-4">
-
                     <form id="clean_duration_search">
                         <div class="form-group row">
                             <div class="col-sm-2"></div>
@@ -30,24 +24,19 @@ $time = date("h:i");
                                 <input class="form-control datepicker form-control-sm" name="from_date" type="text" value="{{$date}}">
                                 <small class="text-danger from_date"></small>
                             </div>
-
                             <label for="inputPassword" class="col-sm-1 col-form-label"><b>To Date:</b></label>
                             <div class="col-sm-2">
-                                <input class="form-control datepicker form-control-sm" name="to_date" type="text">
+                                <input class="form-control datepicker form-control-sm" name="to_date" type="text" value="{{$date}}">
                                 <small class="text-danger to_date"></small>
                             </div>
-
-
                             <div class="col-sm-2">
                                 <button type="Submit" class="btn btn-primary btn-sm">Search</button>
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -55,11 +44,6 @@ $time = date("h:i");
                         <div class="header-title">
                             <h4 class="card-title">Expected Checkout Report</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive room_ajax_data">
@@ -78,10 +62,8 @@ $time = date("h:i");
                                         <th>Room Type</th>
                                         <th>Tariff</th>
                                         <th>Checkin By</th>
-
                                     </tr>
                                 </thead>
-                             
                                 <tbody class="text-center">
                                 @foreach($occupancyreports as $row)
                                     <tr>
@@ -100,36 +82,22 @@ $time = date("h:i");
                                     </tr>
                                 @endforeach
                                 </tbody>
-
-
-
-
                             </table>
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row text-center">
             <div class="col-md-12">
                 <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
             </div>
         </div>
-
     </div>
 </div>
-
-
-
-
 <script>
     $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy/mm/dd',
     });
 </script>
 
@@ -148,7 +116,6 @@ $time = date("h:i");
             }
         });
         $(document).on('submit', '#clean_duration_search', function(e) {
-
             e.preventDefault();
             $('#datatable').remove();
             $.ajax({
@@ -156,9 +123,7 @@ $time = date("h:i");
                 url: "{{ url('/admin/housekepping/occupancy/exp/report/ajax/list') }}",
                 data: $('#clean_duration_search').serializeArray(),
                 success: function(data) {
-                    
                     $('.room_ajax_data').append(data);
-
                 },
                 error: function(err) {
                     $('.preloader').hide();
@@ -172,15 +137,9 @@ $time = date("h:i");
                     if (err.responseJSON.errors.from_date) {
                         $('.from_date').html(err.responseJSON.errors.from_date[0]);
                     }
-
-
                 }
-
             });
         });
     });
 </script>
-
-
-
 @endsection

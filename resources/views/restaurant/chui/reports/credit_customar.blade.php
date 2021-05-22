@@ -1,14 +1,9 @@
 @extends('restaurant.chui.master')
-@section('title', 'Customar Credit Report | '.$seo->meta_title)
+@section('title', 'Customar Credit Report | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control{
-   height:30px;
-}
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
  <div class="content-page">
       <div class="container-fluid">
@@ -19,12 +14,6 @@ $current = date("d/m/Y");
                      <div class="header-title">
                         <h4 class="card-title">Customar Credit Report</h4>
                      </div>
-                     <span class="float-right mr-2">
-                        
-                     </span>
-                  </div>
-                  <div class="card-body">
-
                   </div>
                   <div class="card-body">
                      <div class="table-responsive">
@@ -37,8 +26,7 @@ $current = date("d/m/Y");
                                  <th>Pay Amount</th>
                                  <th>Due Amount</th>
                                  <th>Balance</th>
-                                 <th>Action</th>
-                               
+                                 <th>Action</th>       
                               </tr>
                            </thead>
                            <tbody class="text-center">
@@ -53,8 +41,6 @@ $current = date("d/m/Y");
                                         <td><a class="badge bg-success-light mr-2" href="{{route('admin.restaurant.credit.customar.voucher',$row->id)}}"><i class="lar la-edit"></i></a></td>
                                     </tr>
                                 @endforeach
-                                 
-                         
                            </tbody>
                         </table>
                      </div>

@@ -1,5 +1,5 @@
 @extends('housekipping.master')
-@section('title', 'Order Acquisition | '.$seo->meta_title)
+@section('title', 'Order Acquisition | '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">

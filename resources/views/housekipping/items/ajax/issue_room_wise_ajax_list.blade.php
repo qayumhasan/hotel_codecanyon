@@ -7,6 +7,7 @@
             <th scope="col">Remarks</th>
         </tr>
     </thead>
+    @if(count($itemslists) > 0)
     @foreach($itemslists as $key=>$value)
 
     <tbody>
@@ -45,6 +46,13 @@
         </tr>
     </tbody>
     @endforeach
+    @else
+    <tbody>
+        <tr class="text-center">
+            <th colspan="5">No Data Found!</th>
+        </tr>
+    </tbody>
+    @endif
 
 
 

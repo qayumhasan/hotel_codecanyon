@@ -14,12 +14,21 @@ class ArrivalDepartureReportController extends Controller
     	$this->middleware('admin');
     }
 
+    
+     /**
+     * show checkinReport.
+     */
 
     public function checkinReport()
     {
         $checkins= Checkin::with('checkout')->get();
         return view('hotelbooking.arrival_departture_report.checkin_report',compact('checkins'));
     }
+
+    
+     /**
+     * show checkin out Report.
+     */
 
 
     public function checkoutReport()
@@ -28,11 +37,19 @@ class ArrivalDepartureReportController extends Controller
         return view('hotelbooking.arrival_departture_report.checkout_report',compact('checkins'));
     }
 
+    /**
+     * show guest Report.
+     */
+
     public function guestReport()
     {
         $checkins= Checkin::with('checkout')->where('is_occupy',0)->get();
         return view('hotelbooking.arrival_departture_report.guest_arrival_summery',compact('checkins'));
     }
+
+    /**
+     * show Pending Invoice Report.
+     */
 
     public function pendingInvoiceReport()
     {
@@ -41,11 +58,20 @@ class ArrivalDepartureReportController extends Controller
         return view('hotelbooking.arrival_departture_report.pending_invoice_report',compact('checkouts'));
     }
     
+    
+    /**
+     * Pending Invoice Report Create.
+     */
 
     public function pendingInvoiceReportCreate($booking_no)
     {
         return redirect()->route('admin.checkout.invoice.page',\Crypt::encrypt($booking_no));
     }
+
+    
+    /**
+     * Pending Invoice Report Delete.
+     */
 
     public function pendingInvoiceReportDelete($booking_no)
     {

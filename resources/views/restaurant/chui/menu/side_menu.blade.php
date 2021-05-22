@@ -1,9 +1,6 @@
 @extends('restaurant.chui.master')
-@section('title', 'Menu Inventory | '.$seo->meta_title)
+@section('title', 'Menu Inventory | '.$companyinformation->company_name)
 @section('content')
-
-
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -15,12 +12,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-
                         <form id="clean_duration_search" action="{{route('admin.restaurant.chui.menu.side.store')}}" method="get">
                             @csrf
                             <input type="text" style="opacity: 0;" name="item_name" id="item_name"/>
                             <div class="form-group row ml-auto">
-
                                 <label for="inputPassword" class="col-sm-1 col-form-label"><b>Main Menu:</b></label>
                                 <div class="col-sm-4">
                                     <select class="form-control form-control-sm select_item" id="modalbtn" name="main_menu">
@@ -33,7 +28,6 @@
                                     <small class="text-danger ">{{$message}}</small>
                                     @enderror
                                 </div>
-
                                 <label for="inputPassword" class="col-sm-1 col-form-label"><b>Side Menu:</b></label>
                                 <div class="col-sm-4">
                                     <select class="form-control form-control-sm select_item" id="side_menu" name="side_menu">
@@ -42,15 +36,10 @@
                                         <option value="{{$row->id}}">{{$row->item_name}}</option>
                                         @endforeach
                                     </select>
-
-                                    
-                                   
                                     @error('side_menu')
                                     <small class="text-danger room_no">{{$message}}</small>
                                     @enderror
-
                                 </div>
-
                                 <div class="col-sm-2">
                                     <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                                 </div>
@@ -59,13 +48,8 @@
                     </div>
                 </div>
             </div>
-
-
-
             <div class="col-sm-12">
-
                 <div class="card" id="sidemenuajax">
-
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
@@ -91,20 +75,12 @@
                                 @endif
                             </tbody>
                         </table>
-
                     </div>
                 </div>
-
             </div>
-
-
         </div>
-
-
     </div>
 </div>
-
-
 <script>
     $(document).ready(function() {
         $('#modalbtn').change(function(params) {
@@ -118,9 +94,7 @@
                 type: 'get',
                 url: "{{ url('/admin/restaurant/chui/menu/side/menu/items') }}/" + val,
                 success: function(data) {
-
                     $('#deletemenu').remove();
-
                     document.querySelector('.addsidemenu').insertAdjacentHTML('afterend', data);
                 }
             });
@@ -136,6 +110,5 @@
         });
     })
 </script>
-
 
 @endsection

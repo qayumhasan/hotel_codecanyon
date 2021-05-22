@@ -3,13 +3,8 @@
 
 @php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("d/m/Y");
+$current =date("Y/m/d");
 @endphp
-
-<script src="{{asset('public/backend')}}/assets/js/select2.js"></script>
-<link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/select2.css">
-
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -39,7 +34,6 @@ $current =date("d/m/Y");
 
                                                 <label>Booking ID: {{$advancebooking->booking_id}}</label>
                                                 <input type="hidden" value="{{$advancebooking->booking_id}}" name="booking_id" />
-
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -50,10 +44,7 @@ $current =date("d/m/Y");
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                     <div class=" row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -77,10 +68,7 @@ $current =date("d/m/Y");
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -90,9 +78,7 @@ $current =date("d/m/Y");
                                                                     <option></option>
                                                                     @foreach($guests as $row)
                                                                     <option {{$advancebooking->guest_id == $row->id?'selected':' '}} value="{{$row->id}}">{{$row->guest_name}}</option>
-
                                                                     @endforeach
-
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-3">
@@ -100,12 +86,7 @@ $current =date("d/m/Y");
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
-
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -123,7 +104,6 @@ $current =date("d/m/Y");
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-4 col-form-label">No OF Rooms :</label>
@@ -133,30 +113,23 @@ $current =date("d/m/Y");
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="row">
-
                                                     <div class="col-lg-12">
                                                         <div class="form-group" id="room_section">
                                                             <label for="exampleInputEmail1">Room Selection</label>
                                                             <div class="row border p-4">
                                                                 <div class="col-sm-6 border-right">
-
                                                                     <div class="room_list mt-3" id="rooms">
-
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="col-sm-6">
                                                                     <div class="selected_room">
                                                                         <table class="table table-bordered">
                                                                             <thead>
                                                                                 <tr>
-
                                                                                     <th scope="col">Room</th>
                                                                                     <th scope="col">Tariff</th>
                                                                                     <th scope="col">Action</th>
-
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody id="selectedroom">
@@ -168,24 +141,18 @@ $current =date("d/m/Y");
                                                                                 </tr>
                                                                             </tbody>
                                                                             <tbody>
-
                                                                                 <tr>
                                                                                     <td>Total:</td>
                                                                                     <td id="totaltariff">$ {{$advancebooking->tariff}}</td>
                                                                                 </tr>
-
                                                                             </tbody>
                                                                         </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -199,7 +166,6 @@ $current =date("d/m/Y");
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <label for="staticEmail" class="col-sm-4 col-form-label">Booking Source :</label>
@@ -213,16 +179,12 @@ $current =date("d/m/Y");
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="row">
-
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Remarks</label>
                                                             <div class="row">
                                                                 <div class="col-sm-12 border-right">
-
                                                                     <div class="room_list mt-3">
                                                                         <textarea name="remarks" class="form-control form-control-sm">
                                                                         {{$advancebooking->remarks}}
@@ -230,18 +192,12 @@ $current =date("d/m/Y");
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                             </div>
-
                                         </div>
                                     </div>
-
                                     <div class="col-md-3">
                                         <div class="card shadow-sm shadow-showcase">
                                             <div class="card-header d-flex justify-content-between">
@@ -261,14 +217,11 @@ $current =date("d/m/Y");
                                                              name="customRadio-10" 
                                                              {{$advancebooking->is_active == 0?'checked':''}} 
                                                              class="custom-control-input bg-warning" value="0">
-
-
                                                             <label class="custom-control-label" for="customRadio-2"> Draft </label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="card shadow-sm shadow-showcase">
                                             <div class="card-body">
@@ -280,19 +233,14 @@ $current =date("d/m/Y");
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade" id="addguest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -304,10 +252,8 @@ $current =date("d/m/Y");
                 </button>
             </div>
             <div class="modal-body">
-
                 <form id="add_guest_name" action="{{route('admin.guest.name.store')}}" method="post">
                     @csrf
-
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">Guest Name:</label>
                         <div class="col-sm-3">
@@ -327,8 +273,6 @@ $current =date("d/m/Y");
                             <span id="guest_name" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </div>
-
-
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">Print Name:</label>
                         <div class="col-sm-5">
@@ -345,70 +289,48 @@ $current =date("d/m/Y");
                             <span id="gender" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </div>
-
-
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">Company Name:</label>
-
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-sm" name="company_name">
                             <span id="company_name" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">City:</label>
-
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-sm" name="city">
                             <span id="city" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">Mobile:</label>
-
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-sm" name="mobile">
                             <span id="mobile" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </div>
-
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-sm">Email:</label>
-
                         <div class="col-sm-6">
                             <input type="text" class="form-control form-control-sm" name="email">
                             <span id="email" class="text-danger" style="font-size: 12px;"></span>
                         </div>
                     </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
-
-
             </div>
-
         </div>
     </div>
 </div>
-
-
 <script>
     var rooms = (function() {
-
         var roomtype = document.querySelector('#room_type');
         var roomsetup = document.querySelector('#rooms');
-
-
-
-
-
         var getRooms = [];
-
         var rooms = [];
         roomtype.addEventListener('change', function(event) {
             $('#room_section').show();
@@ -422,20 +344,15 @@ $current =date("d/m/Y");
             $.ajax({
                 type: 'get',
                 url: "{{ url('/admin/advance/booking/get/room') }}/" + id,
-
                 success: function(data) {
                     rooms.push(data);
                     getRooms.push(data);
-
-
                     if (data.length > 0) {
                         var deletedrooms = document.querySelectorAll('.delete_rooms');
                         deletedrooms.forEach(function(e) {
                             e.remove();
                         })
-
                         data.forEach(function(item, index) {
-
                             var html = '<div class="form-check delete_rooms"><input class="form-check-input" onclick="selectedRoom(this)" type="checkbox" value="%value%" id="defaultCheck1"><input type="hidden" value="%tarrif%"><label class="form-check-label" for="defaultCheck1">%room_no%( %room_type% )</label></div>';
                             var newhtml = html.replace('%room_no%', item.room_no);
                             var newhtml = newhtml.replace('%room_type%', item.roomtype.room_type);
@@ -443,34 +360,20 @@ $current =date("d/m/Y");
                             var newhtml = newhtml.replace('%tarrif%', item.tariff);
                             roomsetup.insertAdjacentHTML('afterend', newhtml);
                         })
-
                     }
-
                 }
             });
-
-
         });
-
         return {
             getRooms: getRooms
         }
-
     })();
-
-    var total = {
-        {
-            $advancebooking - > tariff
-        }
-    };
+    var total = {{$advancebooking->tariff}};
 
     function selectedRoom(el) {
-
         var room = [];
         if (el.checked == true) {
             rooms.getRooms.filter(function(element) {
-
-
                 // return element.id == el.value;
                 element.filter(function(ele) {
                     if (ele.id == el.value) {
@@ -480,20 +383,13 @@ $current =date("d/m/Y");
                     }
                 })
             });
-
         } else if (el.checked == false) {
-
             var deletedroom = document.querySelector('#deletedelement' + el.value);
             deletedroom.remove();
             var tarriffnew = parseInt(el.nextElementSibling.value);
             total = total - tarriffnew;
             document.querySelector('#totaltariff').innerHTML = total;
-
         }
-
-
-
-
         var room_id = room[0].id;
 
         var checkin = document.querySelector('#checkindate');

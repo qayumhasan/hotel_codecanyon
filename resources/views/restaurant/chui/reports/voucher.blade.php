@@ -1,24 +1,16 @@
 @extends('restaurant.chui.master')
-@section('title', 'Customar Credit Report | '.$seo->meta_title)
+@section('title', 'Customar Credit Report | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control{
-   height:30px;
-}
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
  <div class="content-page">
       <div class="container-fluid">
          <div class="row">
             <div class="col-sm-12">
-               
-
     <div class="row">
         <div class="col-sm-12 col-lg-12">
-
         <form action="{{route('admin.transection.create')}}" method="post">
                     @csrf
                     <div class="row">
@@ -26,13 +18,9 @@ $current = date("d/m/Y");
                             <div class="card shadow-sm shadow-showcase">
                                 <div class="card-body">
                                     <div class="row">
-
                                         <div class="col-md-12">
-
-                                        
                                         <table class="table table-borderless">
                                             <tbody>
-                                               
                                                 <tr>
                                                     <td><label>Narration:</label></td>
                                                     <td colspan="5">
@@ -42,12 +30,10 @@ $current = date("d/m/Y");
                                                     </td>
                                                 </tr>
                                             </tbody>
-
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="card shadow-sm shadow-showcase">
                                 <div class="card-body">
@@ -60,7 +46,6 @@ $current = date("d/m/Y");
                                                         <td colspan="5">
                                                             @php
                                                             $datasourche=App\Models\ChartOfAccount::where('maincategory_code',19)->get();
-
                                                             $allsubcategoryone=App\Models\AccountSubCategoryOne::where('is_deleted',0)->where('is_active',1)->get();
                                                             $allsubcategorytwo=App\Models\AccountSubCategoryTwo::where('is_deleted',0)->where('is_active',1)->get();
                                                             @endphp
@@ -79,26 +64,17 @@ $current = date("d/m/Y");
                                                     <tr>
                                                         <td><label>Account Head:</label></td>
                                                         <td colspan="5">
-                                                          
-
                                                             <input type="hidden" id="account_head" name="account_head" value="{{$guestname->id}}">
-
-
                                                             <input type="text" class="form-control" value="{{$guestname->payment_details}}" disabled>
-
                                                             <span style="color:red" id="accont_head_err"></span>
                                                             <input type="hidden" value="" name="acchead_cate_code" id="acchead_cate_code">
                                                             <input type="hidden" value="" name="acchead_Accountcate_code" id="acchead_Accountcate_code">
                                                             <input type="hidden" value="" name="acchead_subcate_codeone" id="acchead_subcate_codeone">
                                                             <input type="hidden" value="" name="acchead_subcate_codetwo" id="acchead_subcate_codetwo">
-
-
                                                             <input type="hidden" name="reference" value="{{$guestname->booking_no}}">
-
                                                         </td>
                                                     </tr>
                                                     <tr>
-
                                                         <td class="qty" style="display:none"> <input type="text" id="qty" name="qty" class="form-control noradious" placeholder="Qty"></td>
                                                         <td class="qty" style="display:none"> <input type="text" id="price" name="price" class="form-control noradious" placeholder="Price"></td>
                                                         <td><label>Remarks:</label></td>
@@ -106,7 +82,6 @@ $current = date("d/m/Y");
                                                             <input type="text" id="remarks" name="remarks" class="form-control noradious">
                                                         </td>
                                                     </tr>
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -159,8 +134,6 @@ $current = date("d/m/Y");
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
                                     <div class="card shadow-sm shadow-showcase">
@@ -179,7 +152,6 @@ $current = date("d/m/Y");
                                                     <div class="form-group row">
                                                         <div class="col-sm-12">
                                                             <select name="amount_cate" id="amount_cate" class="form-control noradious">
-                                                                <!-- <option value="Debit">Debit</option> -->
                                                                 <option value="Cradit" selected>Cradit</option>
                                                             </select>
                                                         </div>
@@ -194,7 +166,6 @@ $current = date("d/m/Y");
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -208,10 +179,6 @@ $current = date("d/m/Y");
                             </div>
                             <div class="card-body">
                                 <div class="row" id="transectiondata">
-
-
-
-
                                 </div>
                             </div>
                         </div>
@@ -227,23 +194,18 @@ $current = date("d/m/Y");
     $(document).ready(function() {
         $('#voucher_type').on('change', function() {
             var voucher_type = $(this).val();
-
             if (voucher_type) {
                 $.ajax({
                     url: "{{  url('/get/admin/vouchertype/voucherno/all/') }}/" + voucher_type,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-                        //console.log(data);
                         $(".newinvoice").val(data);
                         alldata();
-
                     }
                 });
             } else {
-
             }
-
         });
     });
 </script>
@@ -253,78 +215,57 @@ $current = date("d/m/Y");
     $(document).ready(function() {
         $('#voucher_type').on('change', function() {
             var voucher_type = $(this).val();
-
-
             if (voucher_type) {
                 $.ajax({
                     url: "{{  url('/get/admin/vouchertype/sourchaccount/') }}/" + voucher_type,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-
                         //console.log(data);
                         $('#ref_in').empty();
                         $('#ref_in').append(' <option>--select--</option>');
                         $.each(data, function(index, districtObj) {
-
                             $('#ref_in').append('<option value="' + districtObj.desription_of_account + '">' + districtObj.desription_of_account + '</option>');
                         });
-
                     }
                 });
             } else {
-
             }
-
         });
     });
 </script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('#voucher_type').on('change', function() {
             var voucher_type = $(this).val();
-            //alert("okkkkkk");
-
             if (voucher_type) {
                 $.ajax({
                     url: "{{  url('/get/admin/vouchertype/accountheadaccount/') }}/" + voucher_type,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-
-                        console.log(data);
                         $('#ref_inss').empty();
                         $('#ref_inss').append(' <option>--select--</option>');
                         $.each(data, function(index, districtObj) {
                             $('#ref_inss').append('<option value="' + districtObj.desription_of_account + '">' + districtObj.desription_of_account + '</option>');
                         });
-
                     }
                 });
             } else {
-
             }
-
         });
     });
 </script>
-
-
-
-
 <script>
     $(document).ready(function() {
         $('#account_head_main').on('change', function() {
             var account_head = $(this).val();
-            //alert(account_head);
             if (account_head) {
                 $.ajax({
                     url: "{{  url('/get/admin/accounthead/checkbok/all') }}/" + account_head,
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-
                         $('#cheque_reference').empty();
                         $('#cheque_reference').append(' <option value="">--select--</option>');
                         $.each(data, function(index, districtObj) {
@@ -335,7 +276,6 @@ $current = date("d/m/Y");
                     }
                 });
             } else {
-
             }
 
         });
@@ -558,9 +498,6 @@ $current = date("d/m/Y");
                         acchead_subcate_codetwo: acchead_subcate_codetwo,
                         hiddeninvoice: hiddeninvoice,
                         cheque_reference: cheque_reference,
-
-
-
 
                     },
 

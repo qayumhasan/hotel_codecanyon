@@ -50,10 +50,6 @@
                                                    
                                                       </tbody>
                                                    </table>
-                                                   <!-- <button type="button" class="bt btn-success-sm" id="save" value="save" name="submit">Save</button>
-                                                   <button type="button" class="bt btn-success-sm " id="save_print" value="saveandprint" name="submit">Save & Print</button> -->
-                                                 
-                                                
                                             </div>
                                         </div>
                                     </div>

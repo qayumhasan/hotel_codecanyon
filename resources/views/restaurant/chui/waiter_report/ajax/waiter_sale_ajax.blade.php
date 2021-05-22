@@ -6,7 +6,6 @@
         </tr>
     </thead>
     <tbody>
-
         @if(count($sales) > 0)
         @foreach($sales as $row)
         <tr>
@@ -18,10 +17,6 @@
         <tr>
             <th class="text-center" colspan="2">No Item Found!</th>
         </tr>
-
-
-
         @endif
-
     </tbody>
 </table>

@@ -23,14 +23,11 @@
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
                             <ul id="guest_entry" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-
-
                                 <li class="{{ request()->routeIs('admin.restaurant.menu.category*') ? 'active' : '' }}">
                                     <a href="{{route('admin.restaurant.menu.category')}}">
                                         <i class="las la-list-alt"></i><span>Menu Category</span>
                                     </a>
                                 </li>
-
                                 <li class="{{ request()->routeIs('admin.chui.restaurant.menu.config*') ? 'active' : '' }}">
                                     <a href="{{route('admin.restaurant.chui.menu.config')}}">
                                         <i class="las la-list-alt"></i><span>Menu Config</span>

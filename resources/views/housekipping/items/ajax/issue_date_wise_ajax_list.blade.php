@@ -9,6 +9,7 @@
     </thead>
     <tbody>
 
+    @if(count($itemslists) > 0)
         @foreach($itemslists as $key=>$value)
         @foreach($value as $room_id=>$row )
         @php
@@ -53,8 +54,11 @@
         </tr>
         @endforeach
         @endforeach
-
-
+    @else
+        <tr class="text-center">
+            <th colspan="5">No Data Found!</th>
+        </tr>
+    @endif
     </tbody>
 
 

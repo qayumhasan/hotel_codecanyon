@@ -16,9 +16,6 @@
         <h4 style="font-size:12px">Waiter Name: {{$orderdetails->first()->waiter->employee_name?? ''}}</h4>
         <p style="font-size:11px">Table No: {{$orderdetails->first()->tableName->table_no?? ''}}</p>
     </div>
-    <div class="col-md-6 text-left">
-        <!-- <p style="font-size:11px">Booking No: 209876</p> -->
-    </div>
     <div class="col-md-6 text-right">
         <p style="font-size:11px">Billing Date: {{$orderhead->payment_date}}</p>
     </div>
@@ -30,32 +27,24 @@
                     <th scope="col">QTY</th>
                     <th scope="col">Rate</th>
                     <th scope="col">Amount</th>
-
                 </tr>
             </thead>
             <tbody>
                 @if(count($orderdetails) > 0)
                 @foreach($orderdetails as $row)
-
                 <tr class="deletehistory">
                     <td>{{$row->item->item_name?? ''}}</td>
                     <td>{{$row->qty}}</td>
                     <td>{{$row->rate}}</td>
                     <td>{{$row->amount}}</td>
                 <tr>
-
                     @endforeach
                 @else
                 <tr>
                     <th colspan="6" class="text-center">No Data Found!</th>
                 </tr>
                 @endif
-
-
-
-
             </tbody>
-
         </table>
     </div>
     <div class="col-md-12 text-right mb=-2">
@@ -64,7 +53,6 @@
         <hr>
         <p style="font-size:11px">Gross Amount:{!!$currency->symbol ?? ' '!!} {{$orderhead->gross_amount}} </p>
     </div>
-
     <div class="col-md-6 text-left">
         <p style="font-size:11px">Signature: </p>
     </div>

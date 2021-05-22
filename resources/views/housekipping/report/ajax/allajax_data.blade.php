@@ -9,7 +9,6 @@
             <th>Remarks</th>
         </tr>
     </thead>
-
     <tbody class="text-center">
         @if(count($rooms) > 0)
         @foreach($rooms as $row)
@@ -23,11 +22,10 @@
         </tr>
         @endforeach
         @else
-        <tr>
-            <td>No Data Found!</td>
+        <tr class="text-center">
+            <th colspan="6">No Data Found!</th>
         </tr>
         @endif
-        
     </tbody>
 
     

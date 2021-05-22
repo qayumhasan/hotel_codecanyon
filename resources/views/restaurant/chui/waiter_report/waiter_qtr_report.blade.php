@@ -1,13 +1,8 @@
 @extends('restaurant.chui.master')
 @section('title', 'Waiter QTR Reports | '.$seo->meta_title)
 @section('content')
-
-
-
 <div class="content-page">
     <div class="container-fluid">
-
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -22,11 +17,9 @@
                                 @if(count($employees) > 0)
                                 <thead>
                                 @php
-                                    $month = [];
-                                  
+                                    $month = [];                                  
                                 @endphp
                                     <tr>
-                                    
                                         <th scope="col">Waiter</th>
                                         @foreach($months as $key=>$row)
                                         <th scope="col">Total Sale {{$key}}</th>
@@ -38,9 +31,7 @@
                                         <th scope="col">% of Total</th>
                                     </tr>
                                 </thead>
-
                                     <tbody>
-                                  
                                     @foreach($employees as $data)
                                     @php
                                         $monthgroupby = $data->groupBy('month_no');
@@ -57,29 +48,17 @@
                                                 $totalinrow += $row->sum('slae_amount');
                                             @endphp
                                             @endforeach
-                                         
                                             <td>{{$totalinrow}}</td>
                                         </tr>
                                     @endforeach
-                                 
                                     </tbody>
                                 @endif
                             </table>
-
-
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
-
-
 @endsection
