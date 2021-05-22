@@ -1,14 +1,6 @@
 @extends('accounts.master')
 @section('title', 'Account Category Update| '.$seo->meta_title)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -18,10 +10,8 @@
                         <div class="header-title">
                             <h4 class="card-title">Update Account Category</h4>
                         </div>
-                       <!-- <a href="{{route('admin.branch.index')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">All Floor</span></i></button></a> -->
                     </div>
                 </div>
-               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
@@ -76,11 +66,6 @@
                                             <div class="header-title">
                                                 <h4 class="card-title">All Account Category</h4>
                                             </div>
-                                            <span class="float-right mr-2">
-                                                <!-- <a href="{{route('admin.branch.create')}}" class="btn btn-sm bg-primary">
-                                                <i class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                                                </a> -->
-                                            </span>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
@@ -94,28 +79,27 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="text-center">
-                                                @foreach($allcategory as $key => $data)
-                                                    <tr>
-                                                        <td>{{$data->category_code}}</td>
-                                                        <td>{{$data->category_name}}</td>
-                                                        <td>
-                                                        @if($data->is_active==1)
-                                                        <span class="btn btn-success btn-sm">Active<span>
-                                                        @else
-                                                        <span class="btn btn-danger btn-sm">Deactive<span>
-                                                        @endif
-                                                        </td>
-                                                        <td>
-                                                        @if($data->is_active==1)
-                                                        <a class="badge bg-success-light mr-2"  data-toggle="tooltip" data-placement="top"  href="{{url('admin/account/category/deactive/'.$data->id)}}" data-original-title="Active"><i class="la la-thumbs-up"></i></a>
-                                                        @else
-                                                            <a class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/account/category/active/'.$data->id)}}" data-original-title="Deactive"><i class="la la-thumbs-down"></i></a>
-                                                        @endif
-                                                        <a class="badge bg-primary-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/account/category/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
-                                                        <!-- <a id="delete" class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/accounts/category/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a> -->
-                                                        
-                                                        </td>
-                                                    </tr>
+                                                    @foreach($allcategory as $key => $data)
+                                                        <tr>
+                                                            <td>{{$data->category_code}}</td>
+                                                            <td>{{$data->category_name}}</td>
+                                                            <td>
+                                                            @if($data->is_active==1)
+                                                            <span class="btn btn-success btn-sm">Active<span>
+                                                            @else
+                                                            <span class="btn btn-danger btn-sm">Deactive<span>
+                                                            @endif
+                                                            </td>
+                                                            <td>
+                                                            @if($data->is_active==1)
+                                                            <a class="badge bg-success-light mr-2"  data-toggle="tooltip" data-placement="top"  href="{{url('admin/account/category/deactive/'.$data->id)}}" data-original-title="Active"><i class="la la-thumbs-up"></i></a>
+                                                            @else
+                                                                <a class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/account/category/active/'.$data->id)}}" data-original-title="Deactive"><i class="la la-thumbs-down"></i></a>
+                                                            @endif
+                                                            <a class="badge bg-primary-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/account/category/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
+                                                
+                                                            </td>
+                                                        </tr>
                                                     @endforeach
                                                 </tbody>
                                                 </table>

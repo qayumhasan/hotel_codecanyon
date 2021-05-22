@@ -8,7 +8,6 @@
         </div>
     </div>
     @endforeach
- 
 @else
     <p>No Item In This Category</p>
 @endif

@@ -20,13 +20,7 @@
       <td>{{$data->cr_amount}}</td>
       <td>{{$data->remarks}}</td>
       <td>
-      <style>
-      .badge {
-        border: none;
-      }
-      </style>
         <button type="button" onclick="Datadelete(this)" data-toggle="tooltip" title="" class="badge bg-danger-light" value="{{$data->id}}" data-original-title="Remove"><i class="la la-trash"></i></button>
-      
       </td>
     </tr>
 @endforeach

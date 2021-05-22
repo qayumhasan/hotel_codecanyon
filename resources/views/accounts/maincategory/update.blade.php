@@ -18,7 +18,6 @@
                         <div class="header-title">
                             <h4 class="card-title">Update Account MainCategory</h4>
                         </div>
-                       <!-- <a href="{{route('admin.branch.index')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">All Floor</span></i></button></a> -->
                     </div>
                 </div>
                
@@ -91,9 +90,6 @@
                                                 <h4 class="card-title">All Account MainCategory</h4>
                                             </div>
                                             <span class="float-right mr-2">
-                                                <!-- <a href="{{route('admin.branch.create')}}" class="btn btn-sm bg-primary">
-                                                <i class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                                                </a> -->
                                             </span>
                                         </div>
                                         <div class="card-body">

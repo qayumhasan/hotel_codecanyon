@@ -7,14 +7,12 @@
     <title>@yield('title',$seo->meta_title)</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('public/uploads/logo/'.$logos->favicon)}}" />
-
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/backend.css?v=1.0.1">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/datepiker.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/vendor/remixicon/fonts/remixicon.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/vendor/@icon/dripicons/dripicons.css">
-
     <link rel='stylesheet' href="{{asset('public/backend')}}/assets/vendor/fullcalendar/core/main.css" />
     <link rel='stylesheet' href="{{asset('public/backend')}}/assets/vendor/fullcalendar/daygrid/main.css" />
     <link rel='stylesheet' href="{{asset('public/backend')}}/assets/vendor/fullcalendar/timegrid/main.css" />
@@ -24,24 +22,29 @@
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/fullcalender.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <style>
+        .form-control {
+        height: 32px;
+        border: 1px solid #443f3f;
+        }
+        .card-header.d-flex.justify-content-between.asif {
+            background-color: #c1b8b8;
+        }
+        .noradious{
+        border-radius:0px;
+    }
+    </style>
 </head>
 
-<body class="  ">
+<body>
     <!-- loader Start -->
     <div id="loading">
         <div id="loading-center">
         </div>
     </div>
-    <style>
-        .form-control {
-            border: 1px solid #443f3f;
-        }
-    </style>
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
-
         <div class="iq-sidebar  sidebar-default ">
             <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
                 <a href="{{route('admin.banquet.dashboard')}}" class="header-logo">
@@ -62,7 +65,7 @@
                         </li>
                         <li class="">
                             <a href="#reports" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-bed"></i><span>Booking</span>
+                                <i class="fas fa-bed"></i><span>Booking</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -81,7 +84,7 @@
                         </li>
                         <li class="">
                             <a href="#Bookingreports" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-bed"></i><span>Booking Reports</span>
+                                <i class="fas fa-bed"></i><span>Booking Reports</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -105,7 +108,7 @@
                         </li>
                         <li class="">
                             <a href="#Transection" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-bed"></i><span>Transection Reports</span>
+                                <i class="fas fa-bed"></i><span>Transection Reports</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -115,41 +118,11 @@
                                         <i class="las la-list-alt"></i><span>Invoice Date Wise</span>
                                     </a>
                                 </li>
-                                <!-- <li class="">
-                                    <a href="{{route('admin.banquet.index')}}">
-                                        <i class="las la-list-alt"></i><span>Banquet Wise invoice</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="{{route('admin.banquet.index')}}">
-                                        <i class="las la-list-alt"></i><span>Menu Wise  Booking</span>
-                                    </a>
-                                </li> -->
                             </ul>
                         </li>
-                        <!-- <li class="">
-                            <a href="#Collection" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-bed"></i><span>Collection Reports</span>
-                                <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                                <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
-                            </a>
-                            <ul id="Collection" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                                <li class="">
-                                    <a href="">
-                                        <i class="las la-list-alt"></i><span>Banquet Collection</span>
-                                    </a>
-                                </li>
-                                <li class="">
-                                    <a href="{{route('admin.banquet.index')}}">
-                                        <i class="las la-list-alt"></i><span>Voucher Wise Summary</span>
-                                    </a>
-                                </li>
-                               
-                            </ul>
-                        </li> -->
                         <li class="">
                             <a href="#hall" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-map"></i><span>Venue</span>
+                                <i class="fas fa-map"></i><span>Venue</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -168,7 +141,7 @@
                         </li>
                         <li class="">
                             <a href="#bookingfor" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-info"></i><span>Booking For</span>
+                                <i class="fas fa-info"></i><span>Booking For</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -178,12 +151,11 @@
                                         <i class="las la-list-alt"></i><span>All Booking For</span>
                                     </a>
                                 </li>
-                               
                             </ul>
                         </li>
                         <li class="">
                             <a href="#menutype" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                            <i class="fas fa-fw fa-sitemap"></i><span>Menu Type</span>
+                                <i class="fas fa-fw fa-sitemap"></i><span>Menu Type</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -193,7 +165,6 @@
                                         <i class="las la-list-alt"></i><span>Add Menu Type</span>
                                     </a>
                                 </li>
-                               
                             </ul>
                         </li>
                     </ul>
@@ -209,7 +180,6 @@
                         <a href="{{route('admin.inventory.home')}}" class="header-logo">
                             <img src="{{asset('public/uploads/logo/'.$logos->logo)}}" class="img-fluid rounded-normal light-logo" alt="logo">
                             <img src="{{asset('public/backend')}}/assets/images/logo-white.png" class="img-fluid rounded-normal darkmode-logo" alt="logo">
-
                         </a>
                     </div>
                     <div class="iq-search-bar device-search">
@@ -372,7 +342,6 @@
                                                                     <p class="mb-0">{{Auth::user()->email}}</p>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                     <div class="p-3"></div>
@@ -387,12 +356,8 @@
                 </nav>
             </div>
         </div>
-        <!-- yieldd -->
-
+        <!-- yield -->
         @yield('content')
-
-
-
         <!-- yield -->
     </div>
     <!-- Wrapper End-->
@@ -413,54 +378,35 @@
     </footer>
 
     @include('../layouts/inc/footer_menu')
-
-        
-    
-
-
-
     <!-- Backend Bundle JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/backend-bundle.min.js"></script>
-
     <!-- Flextree Javascript-->
     <script src="{{asset('public/backend')}}/assets/js/flex-tree.min.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/tree.js"></script>
     <script src="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.js"></script>
-
     <!-- Table Treeview JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/table-treeview.js"></script>
-
     <!-- Masonary Gallery Javascript -->
     <script src="{{asset('public/backend')}}/assets/js/masonry.pkgd.min.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/imagesloaded.pkgd.min.js"></script>
-
     <!-- Mapbox Javascript -->
     <script src="{{asset('public/backend')}}/assets/js/mapbox-gl.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/mapbox.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/datepiker.js"></script>
-
     <script src="{{asset('public/backend')}}/assets/js/fullcalender.js"></script>
-
     <!-- SweetAlert JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/sweetalert.js"></script>
-
     <!-- Vectoe Map JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/vector-map-custom.js"></script>
-
     <!-- Chart Custom JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/customizer.js"></script>
-
     <!-- Chart Custom JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/chart-custom.js"></script>
-
     <!-- slider JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/slider.js"></script>
-
     <!-- alert -->
     <script src="{{asset('public/backend')}}/assets/js/izitost.js"></script>
     <script src="{{asset('public/backend')}}/assets/jquery.PrintArea.js"></script>
-
-
     <script>
         @if(Session::has('messege'))
         var type = "{{Session::get('alert-type','info')}}"
@@ -468,25 +414,29 @@
             case 'success':
 
                 iziToast.success({
-                    message: '{{ Session::get('messege') }}',
+                    message: '{{ Session::get('
+                    messege ') }}',
                     'position': 'topCenter'
                 });
                 brack;
             case 'info':
                 iziToast.info({
-                    message: '{{ Session::get('messege') }}',
+                    message: '{{ Session::get('
+                    messege ') }}',
                     'position': 'topRight'
                 });
                 brack;
             case 'warning':
                 iziToast.warning({
-                    message: '{{ Session::get('messege')}}',
+                    message: '{{ Session::get('
+                    messege ')}}',
                     'position': 'topRight'
                 });
                 break;
             case 'error':
                 iziToast.error({
-                    message: '{{ Session::get('messege')}}',
+                    message: '{{ Session::get('
+                    messege ')}}',
                     'position': 'topRight'
                 });
                 break;
@@ -518,12 +468,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script>
         $('.datepicker').datepicker({
-            format: 'dd/mm/yyyy',
+            format: 'yyyy/mm/dd',
         });
     </script>
-     
-  
-
     <script src="{{asset('public/backend')}}/assets/js/app.js"></script>
 </body>
 

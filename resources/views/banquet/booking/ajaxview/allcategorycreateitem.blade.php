@@ -3,8 +3,6 @@
     <th scope="col">Manage</th>
     <th scope="col">Category Name</th>
     <th scope="col">ItemName</th>
-    
-    
 </tr>
 </thead>
 <tbody>
@@ -17,5 +15,4 @@
         <td>{{$item->item_name}}</td>
     </tr>
     @endforeach
-
 </tbody>

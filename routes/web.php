@@ -68,7 +68,7 @@ use App\Http\Controllers\Admin\DepartmentController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin/login');
 });
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

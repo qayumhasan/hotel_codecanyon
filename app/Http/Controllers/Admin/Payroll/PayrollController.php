@@ -11,6 +11,7 @@ class PayrollController extends Controller
     public function __construct(){
     	$this->middleware('admin');
     }
+    // index
     public function index(){
         $allemployee=Employee::where('status',1)->latest()->get();
     	return view('payroll.home.index',compact('allemployee'));

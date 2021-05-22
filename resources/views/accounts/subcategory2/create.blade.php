@@ -1,14 +1,6 @@
 @extends('accounts.master')
 @section('title', 'Account SubCategoryone Create| '.$seo->meta_title)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -18,10 +10,8 @@
                         <div class="header-title">
                             <h4 class="card-title">Add Account SubCategory Two</h4>
                         </div>
-                       <!-- <a href="{{route('admin.branch.index')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">All Floor</span></i></button></a> -->
                     </div>
                 </div>
-               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
@@ -80,7 +70,6 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                        
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">

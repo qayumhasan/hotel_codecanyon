@@ -6,14 +6,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
 </script>
 <script src="{{asset('public/backend/')}}/divjs/divjs.js"></script>
-<style>
-.form-control {
-    height: 32px;
-}
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
+$current = date("Y/m/d");
 @endphp
  <div class="content-page">
       <div class="container-fluid">
@@ -24,9 +19,6 @@ $current = date("m/d/Y");
                      <div class="header-title">
                         <h4 class="card-title">Voucher Transection Reports</h4>
                      </div>
-                     <span class="float-right mr-2">
-                       
-                     </span>
                   </div>
                   <form action="{{route('admin.account.reports.vouchertypewise')}}" method="POST">
                   <div class="card-header d-flex justify-content-center">
@@ -49,7 +41,6 @@ $current = date("m/d/Y");
                                 </select>
                            </div>
                      </div>
-       
                      <div class="col-md-3">
                           <button type="submit" class="btn btn-success">Search</button>
                      </div>
@@ -57,7 +48,6 @@ $current = date("m/d/Y");
                   <form>
                   <div class="card-body">
                      <div class="table-responsive printableAreasaveprint">
-                       
                               @if(isset($searchdata))
                               <table  class="table table-striped table-bordered" >
                                  <thead class="text-center">
@@ -128,7 +118,6 @@ $current = date("m/d/Y");
                                        <th>Dabit Amount</th>
                                        <th>Cradit Amount</th>
                                        <th>Balance</th>
-                                      
                                     </tr>
                                  </thead>
                                  <tbody class="text-center">
@@ -144,12 +133,10 @@ $current = date("m/d/Y");
                                  <td>{{$data->DabitAmount}}</td>
                                  <td>{{$data->CreditAmount}}</td>
                                  <td>{{$data->Balance}}</td>
-                                 
                               </tr>
                               @endforeach
                                  </tbody>
                                </table>
-
                               @endif
                           
                      </div>
@@ -162,50 +149,20 @@ $current = date("m/d/Y");
          </div>
       </div>
    </div>
-
-
-
-<!-- <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"  aria-hidden="true">
-   <div class="modal-dialog modal-lg">
-      <div class="modal-content text-center printableAreasaveprint">
-         <div class="modal-header " >
-               <h5 class="modal-title">INVOICE</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-               </button>
-         </div>
-         <div class="modal-body" id="maindata">
-            
-         </div>
-            <div class="modal-footer ">
-               <div class="col-md-12 text-right">
-                  <p>PrintDate:17/90/34</p><br>
-               </div>
-               <div class="col-md-12">
-               <button type="button" class="btn btn-primary savepritbtn">Print</button>
-               </div>
-            </div>
-           
-         </div>
-      </div>
-   </div>
-</div>  -->
-
-   <script>
-        $(function () {
-            $(".savepritbtn").on('click', function () {
-              //alert("ok");
-                var mode = 'iframe'; //popup
-                var close = mode == "popup";
-                var options = {
-                    mode: mode,
-                    popClose: close
-                };
-                $("div.printableAreasaveprint").printArea(options);
-            });
-        });
-   </script>
-
+<script>
+      $(function () {
+         $(".savepritbtn").on('click', function () {
+            //alert("ok");
+               var mode = 'iframe'; //popup
+               var close = mode == "popup";
+               var options = {
+                  mode: mode,
+                  popClose: close
+               };
+               $("div.printableAreasaveprint").printArea(options);
+         });
+      });
+</script>
 <script>
 $(document).ready(function() {
     $('.print_click').on('click', function() {
@@ -231,5 +188,4 @@ $(document).ready(function() {
     });
 });
 </script>
-
 @endsection

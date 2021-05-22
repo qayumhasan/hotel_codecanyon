@@ -1,9 +1,10 @@
 @extends('layouts.admin')
 @section('title', 'Update Order Recusition|'.$companyinformation->company_name)
 @section('content')
+
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
+$current = date("Y/m/d");
 @endphp
 <div class="content-page">
     <div class="container-fluid">
@@ -290,7 +291,7 @@ $current = date("m/d/Y");
 <script>
     function alldatashow() {
         var invoice = $("#invoice_no").val();
-        $.post('{{ url('/get/item/showlol/') }}/' + invoice, {
+        $.post('{{ url(' / get / item / showlol / ') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -302,7 +303,8 @@ $current = date("m/d/Y");
 <script>
     function cartDatadelete(el) {
         $('#searchPreloader').show();
-        $.post('{{route('get.item.delete')}}', {
+        $.post('{{route('
+            get.item.delete ')}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -318,7 +320,9 @@ $current = date("m/d/Y");
 </script>
 <script>
     function cartdata(el) {
-        $.post('{{route('get.item.edit')}}', {_token: '{{ csrf_token() }}',
+        $.post('{{route('
+            get.item.edit ')}}', {
+                _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
             function(data) {
@@ -335,7 +339,9 @@ $current = date("m/d/Y");
 <script>
     function totalqty() {
         var invoice = $("#invoice_no").val();
-        $.post('{{ url('get/totalqty/orderrequ/') }}/' + invoice, {_token: '{{ csrf_token() }}'
+        $.post('{{ url('
+            get / totalqty / orderrequ / ') }}/' + invoice, {
+                _token: '{{ csrf_token() }}'
             },
             function(data) {
                 $('.num_of_qty').val(data.number_qty);

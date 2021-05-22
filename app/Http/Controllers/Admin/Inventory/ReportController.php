@@ -19,17 +19,14 @@ class ReportController extends Controller
     }
     // daily purchase report
     public function dailypurchase(){
-        
         $year= Carbon::now()->format('Y');
         $month= Carbon::now()->format('F');
         $date= Carbon::now()->format('d');
         $maindate=$date.' '.$month.' '.$year;
         date_default_timezone_set("asia/dhaka");
         $current = date("m/d/Y");
-
         $purchase=Purchase::where('is_deleted',0)->where('is_active',1)->where('date',$current)->orderBy('id','DESC')->get();
         $total_amount=Purchase::where('is_deleted',0)->where('is_active',1)->where('date',$current)->sum('total_amount');
-
         return view('inventory.report.dailypurchasereport.dailypurchase',compact('maindate','purchase','total_amount'));
     }
     // 
@@ -42,7 +39,6 @@ class ReportController extends Controller
         $maindate=$date.' '.$month.' '.$year;
         date_default_timezone_set("asia/dhaka");
         $current = date("m/d/Y");
-
         $purchasedata=Purchase::where('is_active',1)->where('date','>=',$fromdate)->where('date','<=',$todate)->get();
         $total_amount=Purchase::where('is_active',1)->where('date','>=',$fromdate)->where('date','<=',$todate)->sum('total_amount');
         return view('inventory.report.dailypurchasereport.dailypurchasereport',compact('purchasedata','current','total_amount','maindate'));
@@ -66,7 +62,6 @@ class ReportController extends Controller
         if($request->stock_id == NULL){
             $fdate=$request->formdate;
             $tdate=$request->todate;
-
             $year= Carbon::now()->format('Y');
             $month= Carbon::now()->format('F');
             $date= Carbon::now()->format('d');
@@ -77,7 +72,6 @@ class ReportController extends Controller
             $allstock=$request->stock_id;
             return view('inventory.report.stocktypewise.result',compact('current','maindate','allstockcenter','fdate','tdate','allstock'));
         }else{
-          
             $fdate=$request->formdate;
             $tdate=$request->todate;
             $year= Carbon::now()->format('Y');
@@ -87,16 +81,12 @@ class ReportController extends Controller
             date_default_timezone_set("asia/dhaka");
             $current = date("m/d/Y");
             $allstockcenter=StockCenter::where('is_deleted',0)->where('is_active',1)->get();
-
             $stock_id=$request->stock_id;
-           
             //$allpurchase=Purchase::where('is_deleted',0)->where('is_active',1)->where('stock_center',$request->stock_id)->whereBetween('date', [$fdate, $tdate])->get();
             $allstock=StockCenter::where('is_deleted',0)->where('is_active',1)->where('id',$request->stock_id)->first();
            //dd($allstock);
             return view('inventory.report.stocktypewise.result',compact('current','maindate','allstockcenter','fdate','tdate','allstock','stock_id'));
         }
-       
-
     }
     // Category wise purchase report
     public function categorywisereport(){
@@ -126,7 +116,7 @@ class ReportController extends Controller
             return view('inventory.report.categorywise.result',compact('current','maindate','allcategory','cateid','fdate','tdate'));
        
     }
-
+    // supplierwisereport
     public function supplierwisereport(){
         $year= Carbon::now()->format('Y');
         $month= Carbon::now()->format('F');
@@ -164,12 +154,10 @@ class ReportController extends Controller
         date_default_timezone_set("asia/dhaka");
         $current = date("m/d/Y");
         $allitem=ItemEntry::where('is_deleted',0)->latest()->get();
-
         $alpurchase = Purchase::where('is_deleted',0)->where('is_active',1)->get();
         $grouped = $alpurchase->groupBy('date');
         $allpurchase=$grouped->all();
         //dd($allpurchase);
-
         return view('inventory.report.datewise.main',compact('current','maindate','allitem','allpurchase'));
     }
 
