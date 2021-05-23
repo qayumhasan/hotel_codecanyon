@@ -346,7 +346,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('/get/alltax/data/') }}/' + invoice, {
+        $.post('{{ url("/get/alltax/data/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -396,7 +396,7 @@ $current = date("Y/m/d");
 <script>
     function taxDatadelete(el) {
         
-        $.post('{{route('get.taxdata.delete')}}', {
+        $.post('{{route("get.taxdata.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 tax_id: el.value
             },
@@ -414,7 +414,7 @@ $current = date("Y/m/d");
 <script>
     function taxedit(el) {
 
-        $.post('{{route('get.taxitem.edit')}}', {
+        $.post('{{route("get.taxitem.edit")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -547,7 +547,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('/get/itempurchase/data/') }}/' + invoice, {
+        $.post('{{ url("/get/itempurchase/data/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -564,7 +564,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('get/total/amount/') }}/' + invoice, {
+        $.post('{{ url("get/total/amount/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -600,7 +600,7 @@ $current = date("Y/m/d");
     function cartDatadelete(el) {
 
 
-        $.post('{{route('get.purchaseitem.delete')}}', {
+        $.post('{{route("get.purchaseitem.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -624,7 +624,7 @@ $current = date("Y/m/d");
     function cartdata(el) {
 
         //alert(el.value)
-        $.post('{{route('get.itempurchase.edit')}}', {
+        $.post('{{route("get.itempurchase.edit")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },

@@ -268,10 +268,7 @@ $current = date("Y/m/d");
                     alldatashow();
                     totalitem();
 
-
-
                 },
-
                 error: function(err) {
                     $('#item_err').html(err.responseJSON.errors.item_name[0]);
                 }
@@ -289,7 +286,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('/get/purchaseorrder/data/') }}/' + invoice, {
+        $.post('{{ url("/get/purchaseorrder/data/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -306,7 +303,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('get/purchaseorder/count/') }}/' + invoice, {
+        $.post('{{ url("get/purchaseorder/count/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -325,11 +322,8 @@ $current = date("Y/m/d");
         $('input[name="paidamount"]').on('keyup', function() {
             var paidamount = $('.paidamount').val();
             var totalamount = $('.totalamount').val();
-
-
             if (paidamount) {
                 $('.dueamount').val(totalamount - paidamount);
-
             } else {
                 $('.dueamount').val(totalamount);
             }
@@ -340,7 +334,7 @@ $current = date("Y/m/d");
 <script>
     function cartDatadelete(el) {
         //alert(el.value);
-        $.post('{{route('get.purchaseorder.delete')}}', {
+        $.post('{{route("get.purchaseorder.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -355,7 +349,7 @@ $current = date("Y/m/d");
 </script>
 <script>
     function cartdata(el) {
-        $.post('{{route('get.purchaseorder.edit')}}', {
+        $.post('{{route("get.purchaseorder.edit")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
