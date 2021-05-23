@@ -1,122 +1,13 @@
 @extends('hotelbooking.master')
+@section('title', 'Checkout Invoice|'.$companyinformation->company_name)
 @section('content')
 
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d-m-Y");
+$current = date("Y/m/d");
 $time = date("h:i");
 @endphp
-<style>
-    .invoice_item:hover {
-        background: gray;
-        color: white;
-        cursor: pointer;
-    }
-
-    .mouse_pointer {
-        cursor: pointer;
-    }
-
-
-    .invoice-card {
-
-        padding: 10px 2em;
-        background-color: #fff;
-        border-radius: 5px;
-    }
-
-    .invoice-card>div {
-        margin: 5px 0;
-    }
-
-    .invoice-title {
-        flex: 3;
-    }
-
-    .invoice-title #date {
-        display: block;
-        margin: 8px 0;
-        font-size: 12px;
-    }
-
-    .invoice-title #main-title {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2em;
-    }
-
-    .invoice-title #main-title h4 {
-        letter-spacing: 2.5px;
-    }
-
-    .invoice-title span {
-        color: rgba(0, 0, 0, 0.4);
-    }
-
-    .invoice-details {
-        flex: 1;
-        border-top: 0.5px dashed grey;
-        border-bottom: 0.5px dashed grey;
-        display: flex;
-        align-items: center;
-    }
-
-    .invoice-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .invoice-table thead tr td {
-        font-size: 12px;
-        letter-spacing: 1px;
-        color: grey;
-        padding: 8px 0;
-    }
-
-    .invoice-table thead tr td:nth-last-child(1),
-    .row-data td:nth-last-child(1),
-    .calc-row td:nth-last-child(1) {
-        text-align: right;
-    }
-
-    .invoice-table tbody tr td {
-        padding: 8px 0;
-        letter-spacing: 0;
-    }
-
-    .invoice-table .row-data #unit {
-        text-align: center;
-    }
-
-    .invoice-table .row-data span {
-        font-size: 13px;
-        color: rgba(0, 0, 0, 0.6);
-    }
-
-    .invoice-footer {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
-
-    .invoice-footer #later {
-        margin-right: 5px;
-    }
-
-    .btn#later {
-        margin-right: 2em;
-    }
-
-    .company_info {
-        font-size: 10px;
-        font-weight: normal;
-    }
-</style>
-
 <!-- print invoice -->
-
-
 <div class="modal fade" id="printvoucer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -127,7 +18,6 @@ $time = date("h:i");
                 </button>
             </div>
             <div class="modal-body" id="showinvoiceprint">
-
             </div>
             <div class="modal-footer">
                 <div class="invoice-footer">
@@ -141,7 +31,6 @@ $time = date("h:i");
 
 
 <div class="content-page">
-
     <form id="invoice_form" action="{{route('admin.checkout.invoice.store')}}" method="post">
         @csrf
         <div class="container-fluid">
@@ -151,7 +40,6 @@ $time = date("h:i");
                         <h5 class="text-white">Invoice Details</h5>
                     </div>
                 </div>
-
                 <div class="col-md-12">
                     <div class="card p-4">
                         <div class="row">
@@ -167,7 +55,6 @@ $time = date("h:i");
                                             <th scope="row">Booking By:</th>
                                             <td class="text-center">{{$checkindata->user->username ?? ''}}</td>
                                         </tr>
-
                                         <tr>
                                             <th scope="row">Guest Name:</th>
                                             <td class="text-center">{{$checkindata->guest_name}}</td>
@@ -175,7 +62,6 @@ $time = date("h:i");
                                     </tbody>
                                 </table>
                             </div>
-
                             <div class="col-md-6 p-2">
                                 <table class="table table-bordered">
                                     <tbody>
@@ -187,18 +73,13 @@ $time = date("h:i");
                                         <tr>
                                             <th scope="row">Invoice Date</th>
                                             <td class="text-center">
-
                                                 <div class="row">
                                                     <div class="col">
                                                         <input type="text" id="invoice_date" name="invoicedate" value="{{$current}}" class="form-control form-control-sm datepickernew">
                                                     </div>
                                                 </div>
-
-
                                             </td>
-
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -206,11 +87,9 @@ $time = date("h:i");
                     </div>
                 </div>
             </div>
-
             <!-- guest details area start from here -->
 
             <!-- service area start from here -->
-
             <div class="addcheckout">
                 <div class="row">
                     <div class="col-sm-12">
@@ -218,46 +97,29 @@ $time = date("h:i");
                             <h5 class="text-white">Services</h5>
                         </div>
                     </div>
-
                     <div class="col-md-12">
                         <div class="card p-4">
                             <div class="row">
                                 <div class="col-md-12 p-2">
                                 <table class="table table-bordered">
                                         <tbody>
-
-
                                             <tr>
                                                 <th scope="row">Room Charge</th>
-
-
                                                 @php
                                                 $totalroomamount = 0;
                                                 @endphp
-
                                                 @foreach($roomdata as $row)
                                                 @if(!$loop->first)
                                                 <td></td>
                                                 @endif
-
-
-
-
                                                 <!-- if room alreay checkout -->
                                                 @if($row->is_occupy == 0)
-
-
                                                 @php
-
                                                 $gettarrif = $roomTarrif->getTotalTarrif($row->tarif, $row->booking_no, $row->checkin_date,$row->add_room_checkout_date, $row->room_no);
-
                                                 $totalroomamount = $totalroomamount + $row->additional_room_amount;
                                                 @endphp
-
-
                                                 <td class="text-center">
                                             <tr class="text-center">
-
                                                 @if(!$loop->first)
                                                 <td></td>
                                                 @endif
@@ -270,49 +132,34 @@ $time = date("h:i");
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="room_details">
-
                                                                 <ul class="list-group">
                                                                     @foreach($gettarrif['date_show'] as $item)
                                                                     @php
-
                                                                     $startdate = strtotime($item['start_date']);
                                                                     $startdate = date('d F Y', $startdate);
-
                                                                     $end_date = strtotime($item['end_date']);
                                                                     $end_date = date('d F Y', $end_date);
-
                                                                     @endphp
                                                                     <li class="list-group-item mt-1">{{$startdate}} <b>To</b> {{$end_date}} @ {{$item['day']}} ✖ {!!$currency->symbol ?? ' '!!} {{$item['tarrif']}}</li>
                                                                     @endforeach
                                                                 </ul>
-
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-
                                                 <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$gettarrif['total_tarrif']}}</td>
                                                 </td>
                                                 @endif
                                                 <!-- if room alreay checkout -->
-
-
-
-
                                                 <!-- if room alreay not checkout -->
                                                 @if($row->is_occupy == 1)
-
                                                 @php
                                                 $date = 0;
-
                                                 @endphp
                                                 @php
                                                 $gettarrif = $roomTarrif->getTotalTarrif($row->tarif, $row->booking_no, $row->checkin_date,date('Y-m-d'), $row->room_no);
                                                 @endphp
-
                                                 <td class="text-center" width="45%">
-
-
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="room_no">
@@ -321,78 +168,48 @@ $time = date("h:i");
                                                         </div>
                                                         <div class="col-md-12">
                                                             <div class="room_details">
-
                                                                 <ul class="list-group">
                                                                     @foreach($gettarrif['date_show'] as $item)
                                                                     @php
-
                                                                     $startdate = strtotime($item['start_date']);
                                                                     $startdate = date('d F Y', $startdate);
-
                                                                     $end_date = strtotime($item['end_date']);
                                                                     $end_date = date('d F Y', $end_date);
-
                                                                     $date += $item['day'];
-
                                                                     @endphp
                                                                     <li class="list-group-item mt-1">{{$startdate}} <b>To</b> {{$end_date}} @ {{$item['day']}} ✖ {!!$currency->symbol ?? ' '!!} {{$item['tarrif']}}</li>
                                                                     @endforeach
                                                                 </ul>
-
-
                                                                 <input type="hidden" name="non_checkout_room[]" value="{{$row->room_id}}" />
-
                                                                 <input type="hidden" name="non_checkout_room_day" value="{{(int)$date}} " />
-
-
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-
-
-
-
                                                 <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$gettarrif['total_tarrif']}} </td>
                                                 @php
                                                 $totalroomamount = $totalroomamount + $gettarrif['total_tarrif'];
                                                 @endphp
-
-
                                                 @endif
                                                 <!-- if room alreay not checkout -->
-
-
-
                                                 </td>
                                             </tr>
                                             </td>
                                             @endforeach
-
-
-
-
-
                                             </tr>
-
                                             @php
                                             $totalamountextra = 0;
                                             @endphp
-
                                             @if(count($checkindata->checkin) > 0)
                                             <tr>
                                                 <th scope="row">Extra Service</th>
                                                 <td class="text-center">
-
-
-
                                                     @foreach($checkindata->checkin as $row)
                                                     <h6>Room No : {{$row->room_no}}</h6><br>
                                                     <div class="border" <p>{{$row->item_name}} {{$row->qty}} pcs</p>
                                                         <p>Rate @ {{$row->rate}} /= per pcs </p>
                                                         <p>Total :{!!$currency->symbol ?? ' '!!} {{$row->qty * $row->rate}}</p>
                                                     </div>
-
                                                     @php
                                                     $totalamountextra = $totalamountextra + $row->amount;
                                                     @endphp
@@ -400,34 +217,24 @@ $time = date("h:i");
                                                 </td>
                                                 <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$totalamountextra}}</td>
                                             </tr>
-
                                             @endif
-
                                             @php
                                             $totalfandb = 0;
                                             @endphp
-
                                             @if(count($checkindata->foodandbeverage))
-
                                             <tr>
                                                 <th scope="row">Food(F & B)</th>
                                                 <td class="text-center">
                                                     <h6>Room No : {{$checkindata->room_no}}({{$checkindata->roomtype->room_type ?? ''}})</h6><br>
-
                                                     @foreach($checkindata->foodandbeverage as $row)
                                                     <div class="border">
                                                         <p>{{$row->item_name}} {{$row->qty}} pcs</p>
                                                         <p>Rate @ {{$row->rate}} per pcs</p>
                                                     </div>
-
                                                     @php
                                                     $totalfandb = $totalfandb + $row->amount;
                                                     @endphp
-
-
                                                     @endforeach
-
-
                                                 </td>
                                                 <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$totalfandb}}</td>
                                             </tr>
@@ -435,7 +242,6 @@ $time = date("h:i");
                                             @php
                                             $restaurant = 0;
                                             @endphp
-
                                             @if(count($checkindata->restaurant) > 0)
                                             <tr>
                                                 <th scope="row">Ref. Invoice(Restaurant)</th>
@@ -444,29 +250,20 @@ $time = date("h:i");
                                                     @foreach($checkindata->restaurant as $row)
                                                     <p>{{$row->item->item_name ?? ''}} {{$row->qty}} pcs</p>
                                                     <p>Rate @ {{$row->rate}} per pcs</p>
-
                                                     @php
                                                     $head = App\Models\Restaurant_Order_head::where('invoice_no',$row->invoice_id)->first();
                                                     $restaurant = $restaurant + $head->gross_amount;
-
                                                     @endphp
-
                                                     @endforeach
                                                 </td>
                                                 <td class="text-center">{!!$currency->symbol ?? ' '!!} {{ $restaurant}}</td>
                                             </tr>
                                             @endif
-
-
-
                                         </tbody>
                                     </table>
                                 </div>
-
                             </div>
-
                         </div>
-
 
                         <div class="row">
                             <div class="col-sm-12">
@@ -474,7 +271,6 @@ $time = date("h:i");
                                     <h5 class="text-white">Advance & Refund</h5>
                                 </div>
                             </div>
-
                             <div class="col-sm-12">
                                 <div class="card">
                                     <table class="table table-bordered">
@@ -490,13 +286,11 @@ $time = date("h:i");
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             @php
                                             $totaladvance = 0;
                                             @endphp
                                             @if(count($checkindata->vouchers) > 0)
                                             @foreach($checkindata->vouchers as $row)
-
                                             <tr>
                                                 <th scope="row">{{$row->voucher_no}}</th>
                                                 <td>{{$row->date}}</td>
@@ -507,8 +301,6 @@ $time = date("h:i");
                                                     {{$row->price}}
                                                 </td>
                                                 </td>
-
-
                                                 <td class="text-center">
                                                     <a href="{{route('admin.checkout.invoice_print',$row->id)}}" class="badge bg-danger-light mr-2 printvoucher mouse_pointer" data-toggle="tooltip" data-placement="top" data-original-title="Print"> <i class="la la-print"></i></a>
                                                 </td>
@@ -517,23 +309,12 @@ $time = date("h:i");
                                             $totaladvance = $totaladvance + $row->amount;
                                             @endphp
                                             @endforeach
-
                                             @endif
-
                                         </tbody>
                                     </table>
                                 </div>
-
-
-
-
-
-
                             </div>
-
-
                         </div>
-
                         <!-- hidden field -->
                         <input type="hidden" name="checkout_id" value="{{$checkout->id}}">
                         <input type="hidden" name="tax_id" value="" id="tax_id">
@@ -575,7 +356,6 @@ $time = date("h:i");
                                                         <option value="3">Calculate On Room Discount</option>
                                                         <option value="4">Calculate On Net Amount</option>
                                                         <option value="5">Calculate On Gross Amount</option>
-
                                                     </select>
                                                     <small class="text-danger calculation_on_alt"> </small>
                                                 </td>
@@ -600,10 +380,8 @@ $time = date("h:i");
                                                     <button type="button" class="btn btn-sm btn-primary" id="tax_update">Update</button>
                                                 </td>
                                             </tr>
-
                                         </tbody>
                                     </table>
-
                                     <table class="table table-bordered" id="tax_details_amount">
                                         <thead>
                                             <tr>
@@ -620,7 +398,6 @@ $time = date("h:i");
                                             @if(count($tax_details) > 0)
                                             @foreach($tax_details as $row)
                                             <tr class="delelement">
-
                                                 <td>{{$row->tax_description_name}}</td>
                                                 @if($row->calculation_on == 1)
                                                 <td>Room Amount</td>
@@ -639,29 +416,23 @@ $time = date("h:i");
                                                 <td class="text-center">{{round($row->amount,2)}}</td>
                                                 <td class="text-center">
                                                     <a class="badge bg-primary-light tax_edit mr-2" data-toggle="tooltip" data-toggle="modal" data-target="#exampleModal" data-whatever="{{$row}}"><i class="lar la-edit"></i></a>
-
                                                     <a class="badge bg-danger-light mr-2 deletetax" data-toggle="tooltip" onclick="delete_row(this)" data-placement="top" data-whatever="{{$row->id}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
                                                 </td>
                                             </tr>
                                             @endforeach
                                             @endif
-
                                             <tr>
                                                 <th class="text-right" scope="row" colspan="5">Total Amount</th>
                                                 <th class="text-center">{!!$currency->symbol ?? ' '!!} {{round($checkout->net_amount,2)}}</th>
                                             </tr>
-
                                             <tr>
                                                 <th class="text-right" scope="row" colspan="5">Discount Amount</th>
                                                 <th class="text-center">{!!$currency->symbol ?? ' '!!} {{round($checkout->discount_amount,2)}}</th>
                                             </tr>
-
-
                                             <tr>
                                                 <th class="text-right" scope="row" colspan="5">Net Amount</th>
                                                 <th class="text-center">{!!$currency->symbol ?? ' '!!} {{round($checkout->gross_amount,2)}}</th>
                                             </tr>
-
                                             @php
                                             $paybleAmount =$checkout->outstanding_amount;
                                             @endphp
@@ -674,20 +445,14 @@ $time = date("h:i");
                                             <tr>
                                                 <th class="text-right" scope="row" colspan="5">{{$paybleAmount < 0 ?'Refund':'Payable'}} (In Word):</th>
                                                 <td class="text-center">
-
                                                     <code>{{$numToWord->numberTowords(abs($paybleAmount))}}</code>
                                                 </td>
                                                 <td></td>
-
                                             </tr>
                                         </tbody>
-
                                     </table>
                                 </div>
                             </div>
-
-
-
                         </div>
 
                         <div class="invoice_create card p-4">
@@ -699,36 +464,30 @@ $time = date("h:i");
                                             <li class="list-group-item invoice_item" data-toggle="modal" data-target="#foodlist" data-whatever="@getbootstrap">Food List Invoice</li>
                                             <li class="list-group-item invoice_item" data-toggle="modal" data-target="#eslistinvoice">Extra Service List Invoice</li>
                                             <li class="list-group-item invoice_item"><a id="recepipt_invoice" href="{{route('admin.checkout.show.voucher',$checkindata->booking_no)}}">Receipt Invoice</a></li>
-
                                             <li class="list-group-item invoice_item"> <a id="refund_invoice" href="{{route('admin.checkout.refund.voucher',$checkindata->booking_no)}}">Refund Invoice</a></li>
                                         </ul>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="invoice_alt">
                                         <ul class="list-group">
                                             <li class="list-group-item active">
                                                 <div class="form-check">
-                                                    <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
                                                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                                                 </div>
                                             </li>
-
                                             <li class="list-group-item">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="withoutFoodBill" class="form-check-input">
                                                     <label class="form-check-label" for="exampleCheck1">Print Invoice With Out Food Bill</label>
                                                 </div>
                                             </li>
-
                                             <li class="list-group-item">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="withoutExtraService" class="form-check-input">
                                                     <label class="form-check-label" for="exampleCheck1">Print Invoice With Out Extra Service</label>
                                                 </div>
                                             </li>
-
                                             <li class="list-group-item">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="withoutHealthClub" class="form-check-input">
@@ -741,33 +500,22 @@ $time = date("h:i");
                                                     <label class="form-check-label" for="exampleCheck1">Want to Print Invoice in other Currency? </label>
                                                 </div>
                                             </li>
-
-
                                         </ul>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 text-center p-4">
-
-
                                 <button type="submit" class="btn btn-primary mx-auto">Checkout & Print</button>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-
         </div>
     </form>
 </div>
-
-
-
 <!-- save and print -->
 
 @if(isset($data['identifier']))
@@ -781,49 +529,10 @@ $time = date("h:i");
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12 printableAreasaveprint">
-                        <style>
-                            table.items {
-                                border: 0.1mm solid #e7e7e7;
-                            }
-
-                            td {
-                                vertical-align: top;
-                            }
-
-                            .items td {
-                                border-left: 0.1mm solid #e7e7e7;
-                                border-right: 0.1mm solid #e7e7e7;
-                            }
-
-                            table thead td {
-                                text-align: center;
-                                border: 0.1mm solid #e7e7e7;
-                            }
-
-                            .items td.blanktotal {
-                                background-color: #EEEEEE;
-                                border: 0.1mm solid #e7e7e7;
-                                background-color: #FFFFFF;
-                                border: 0mm none #e7e7e7;
-                                border-top: 0.1mm solid #e7e7e7;
-                                border-right: 0.1mm solid #e7e7e7;
-                            }
-
-                            .items td.totals {
-                                text-align: right;
-                                border: 0.1mm solid #e7e7e7;
-                            }
-
-                            .items td.cost {
-                                text-align: "."center;
-                            }
-                        </style>
                         </head>
-
                         <body>
                             <table width="100%" style="font-family: sans-serif;" cellpadding="10">
                                 <tr>
@@ -842,20 +551,15 @@ $time = date("h:i");
                             </table>
                             <table width="100%" style="font-family: sans-serif;" cellpadding="10">
                                 <tr>
-
-
                                     <td width="49%" style="border: 0.1mm solid #eee; text-align: left;"><strong>Guest Name:</strong>{{$checkindata->guest_name}}
                                         <br>
-
                                         <b>Address: </b> {{$checkindata->address}} , {{$checkindata->city}}
                                         <br>
                                         <b>Phone: </b>{{$checkindata->mobile}}
                                     </td>
                                     <td width="2%">&nbsp;</td>
                                     <td width="49%" style="border: 0.1mm solid #eee;">
-
                                         <table width="100%" align="left" style="font-family: sans-serif; font-size: 14px;">
-
                                         </table>
                                         <table width="100%" align="right" style="font-family: sans-serif; font-size: 14px;">
                                             <tr>
@@ -910,10 +614,7 @@ $time = date("h:i");
                                         </th>
 
                                         <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$totalroomprice}}</td>
-
-
                                     </tr>
-
                                     <!-- room area end from here -->
                                     <tr>
                                         <th scope="row">Extra Service</th>
@@ -921,13 +622,11 @@ $time = date("h:i");
                                             @php
                                             $totalamountextra = 0;
                                             @endphp
-
                                             @foreach($checkindata->checkin as $row)
                                             <div class="border" <p>{{$row->item_name}} {{$row->qty}} pcs</p>
                                                 <p>Rate @ {{$row->rate}} /= per pcs </p>
                                                 <p>Total :{!!$currency->symbol ?? ' '!!} {{$row->qty * $row->rate}}</p>
                                             </div>
-
                                             @php
                                             $totalamountextra = $totalamountextra + $row->amount;
                                             @endphp
@@ -936,8 +635,6 @@ $time = date("h:i");
                                         <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$totalamountextra}}</td>
                                     </tr>
                                     <!-- Extra service end from here -->
-
-
                                     <!-- Food & Beverage start from here -->
                                     <tr>
                                                 <th scope="row">Food(F & B)</th>
@@ -947,15 +644,10 @@ $time = date("h:i");
                                                         <p>{{$row->item_name}} {{$row->qty}} pcs</p>
                                                         <p>Rate @ {{$row->rate}} per pcs</p>
                                                     </div>
-
                                                     @php
                                                     $totalfandb = $totalfandb + $row->amount;
                                                     @endphp
-
-
                                                     @endforeach
-
-
                                                 </td>
                                                 <td class="text-center">{!!$currency->symbol ?? ' '!!} {{$totalfandb}}</td>
                                             </tr>
@@ -1019,12 +711,6 @@ $time = date("h:i");
                                                 </td>
 
                                             </tr>
-
-
-
-
-
-
                                 </tbody>
                             </table>
 
@@ -1054,10 +740,7 @@ $time = date("h:i");
                                     </td>
                                 </tr>
                                 <br>
-
-
                             </table>
-
                     </div>
                     <br>
                     <button type="button" class="btn btn-primary mx-auto mt-5 savepritbtn">Print</button>
@@ -1069,12 +752,7 @@ $time = date("h:i");
 
 @endif
 
-
 <!-- food list invoice -->
-
-
-
-
 
 <div class="modal fade" id="foodlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -1087,109 +765,7 @@ $time = date("h:i");
             </div>
             <div class="modal-body">
                 <div class="invoice-card printfood">
-                    <style>
-                        .invoice_item:hover {
-                            background: gray;
-                            color: white;
-                            cursor: pointer;
-                        }
-
-
-                        .invoice-card {
-
-                            padding: 10px 2em;
-                            background-color: #fff;
-                            border-radius: 5px;
-                        }
-
-                        .invoice-card>div {
-                            margin: 5px 0;
-                        }
-
-                        .invoice-title {
-                            flex: 3;
-                        }
-
-                        .invoice-title #date {
-                            display: block;
-                            margin: 8px 0;
-                            font-size: 12px;
-                        }
-
-                        .invoice-title #main-title {
-                            display: flex;
-                            justify-content: space-between;
-                            margin-top: 2em;
-                        }
-
-                        .invoice-title #main-title h4 {
-                            letter-spacing: 2.5px;
-                        }
-
-                        .invoice-title span {
-                            color: rgba(0, 0, 0, 0.4);
-                        }
-
-                        .invoice-details {
-                            flex: 1;
-                            border-top: 0.5px dashed grey;
-                            border-bottom: 0.5px dashed grey;
-                            display: flex;
-                            align-items: center;
-                        }
-
-                        .invoice-table {
-                            width: 100%;
-                            border-collapse: collapse;
-                        }
-
-                        .invoice-table thead tr td {
-                            font-size: 12px;
-                            letter-spacing: 1px;
-                            color: grey;
-                            padding: 8px 0;
-                        }
-
-                        .invoice-table thead tr td:nth-last-child(1),
-                        .row-data td:nth-last-child(1),
-                        .calc-row td:nth-last-child(1) {
-                            text-align: right;
-                        }
-
-                        .invoice-table tbody tr td {
-                            padding: 8px 0;
-                            letter-spacing: 0;
-                        }
-
-                        .invoice-table .row-data #unit {
-                            text-align: center;
-                        }
-
-                        .invoice-table .row-data span {
-                            font-size: 13px;
-                            color: rgba(0, 0, 0, 0.6);
-                        }
-
-                        .invoice-footer {
-                            flex: 1;
-                            display: flex;
-                            justify-content: flex-end;
-                            align-items: center;
-                        }
-
-                        .invoice-footer #later {
-                            margin-right: 5px;
-                        }
-
-                        .btn#later {
-                            margin-right: 2em;
-                        }
-
-                        .company_info {
-                            font-size: 10px;
-                            font-weight: normal;
-                        }
-                    </style>
+                    
                     <div class="invoice-title">
                         <div id="main-title">
                             <h4>INVOICE</h4>

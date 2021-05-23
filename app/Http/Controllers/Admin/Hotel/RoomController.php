@@ -28,7 +28,9 @@ class RoomController extends Controller
     public function create(){
         $allbranch=Branch::where('is_deleted',0)->where('is_active',1)->select(['branch_name','id'])->latest()->get();
         $category=Room::where('is_deleted',0)->where('is_active',1)->select(['category'])->get();
-        return view('hotelbooking.roomsetup.create',compact('allbranch','category'));
+        $roomtypes = RoomType::where('is_deleted',0)->where('is_active',1)->get();
+        $floors = Floor::where('is_deleted',0)->where('is_active',1)->get();
+        return view('hotelbooking.roomsetup.create',compact('allbranch','category','roomtypes','floors'));
     }
     // get branch data
     public function getbranchdata($branch){

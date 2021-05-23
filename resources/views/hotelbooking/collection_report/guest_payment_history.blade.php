@@ -38,8 +38,6 @@
                                         <th scope="col">Date</th>
                                         <th scope="col">Guest Name</th>
                                         <th scope="col">Done By</th>
-                                        <th scope="col">Cash</th>
-                                        <th scope="col">Bank</th>
                                         <th scope="col">Debt</th>
                                         <th scope="col">Paid</th>
                                         <th scope="col">Balance</th>
@@ -52,8 +50,6 @@
                                         <td>{{$row->checkin_date}}</td>
                                         <td>{{$row->guest_name}}</td>
                                         <td>{{$row->admin->username ?? ''}}</td>
-                                        <td>{{$row->cashamount}}</td>
-                                        <td>{{$row->bankamount}}</td>
                                         <td>{{round($row->gross_amount ?? '',2)}}</td>
                                         <td>{{$row->voucher_amount}}</td>
                                         <td>{{round($row->outstanding_amount,2)}}</td>

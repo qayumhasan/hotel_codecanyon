@@ -3,7 +3,7 @@
 @section('content')
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
 @endphp
 <div class="content-page">
@@ -43,7 +43,6 @@ $time = date("h:i");
                                     $avg_booking = 0;
                                     $total_revenue = 0;
                                     @endphp
-
                                     @if(count($roomtypes) > 0)
                                     @foreach($roomtypes as $row)
                                     <tr>
@@ -62,7 +61,6 @@ $time = date("h:i");
                                         @else
                                         <td>0</td>
                                         @endif
-
                                         @if($row->NumberOfBooking !=0)
                                         <td>{{round($row->totalrevenues / $row->NumberOfBooking,2)}}</td>
                                         @else
@@ -70,7 +68,6 @@ $time = date("h:i");
                                         @endif
                                         <td>{{$row->totalrevenues}}</td>
                                     </tr>
-
                                     @php
                                     $booking_number = $booking_number + $row->NumberOfBooking;
                                     $total_night = $total_night + $row->NumberOfNight;
@@ -79,30 +76,22 @@ $time = date("h:i");
                                     }else{
                                         $avgnight = $avgnight + 0;
                                     }
-                                   
-                                   
-
                                     $no_of_guest = $no_of_guest + $row->numberofguest;
-
                                     $accumo_revenue = $accumo_revenue + $row->totalrevenues;
                                     if($row->NumberOfNight !=0){
                                         $avg_night =  $avg_night + round($row->totalrevenues/$row->NumberOfNight,2);
                                     }else{
                                         $avg_night =  $avg_night + 0;
                                     }
-
-
                                     if($row->NumberOfBooking !=0){
                                         $avg_booking =  $avg_booking + round($row->totalrevenues/$row->NumberOfBooking,2);
                                     }else{
                                         $avg_booking =  $avg_booking + 0;
                                     }
                                     $total_revenue = $total_revenue + $row->totalrevenues;
-
                                     @endphp
                                     @endforeach
                                     @endif
-                         
                                     <tr>
                                         <th>Total</th>
                                         <th>{{$booking_number}}</th>
@@ -114,29 +103,13 @@ $time = date("h:i");
                                         <th>{{$avg_booking}}</th>
                                         <th>{{$total_revenue}}</th>
                                     </tr>
-            
-
                                 </tbody>
                             </table>
-
-
-
-
-
-
-
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="row text-center">
             <div class="col-md-12">
                 <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
@@ -144,5 +117,4 @@ $time = date("h:i");
         </div>
     </div>
 </div>
-
 @endsection

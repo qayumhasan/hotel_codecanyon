@@ -1,24 +1,10 @@
 @extends('hotelbooking.master')
-@section('title', 'All Room | '.$seo->meta_title)
+@section('title', 'All Booking Show | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("Y-m-d");
+$current =date("Y/m/d");
 @endphp
-
-
-
-<style>
-    .search_area {
-        width: 100%;
-
-    }
-
-    #datatable_filter {
-        visibility: hidden;
-    }
-</style>
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -30,13 +16,11 @@ $current =date("Y-m-d");
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
-                           
+                        <table class="table table-bordered">                           
                             <tbody>
                                 <tr>
                                     <th scope="row">Room No</th>
                                     <td colspan="3" class="text-center"><b class="text-primary">{{$advancebooking->room->room_no??''}}</b></td>
-                                   
                                 </tr>
                                 <tr>
                                     <th scope="row">Booking No</th>
@@ -91,8 +75,4 @@ $current =date("Y-m-d");
         </div>
     </div>
 </div>
-
-
-
-
 @endsection

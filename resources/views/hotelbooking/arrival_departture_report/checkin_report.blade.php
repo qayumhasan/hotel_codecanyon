@@ -1,19 +1,13 @@
 @extends('hotelbooking.master')
-@section('title', 'CheckIn Report | '.$seo->meta_title)
+@section('title', 'CheckIn Report | '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
 @endphp
-
-
-
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -21,11 +15,6 @@ $time = date("h:i");
                         <div class="header-title">
                             <h4 class="card-title">CheckIn Report</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive room_ajax_data">
@@ -59,16 +48,7 @@ $time = date("h:i");
                                         </tr>
                                     @endforeach
                                 </tbody>
-
-
-
-
-
                             </table>
-
-
-
-
                         </div>
                     </div>
                 </div>
@@ -84,22 +64,14 @@ $time = date("h:i");
     </div>
 </div>
 
-
-
-
 <script>
     $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy/mm/dd',
     });
 </script>
-
 <script>
     $("#select_room_no").select2({
         placeholder: '----Select Room No----'
     });
 </script>
-
-
-
-
 @endsection

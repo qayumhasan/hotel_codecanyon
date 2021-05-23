@@ -1,26 +1,14 @@
 @extends('hotelbooking.master')
+@section('title', 'Advance Booking | '.$companyinformation->company_name)
 @section('content')
 
 @php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("d/m/Y");
+$current =date("Y/m/d");
 $time = date("h:i");
 @endphp
-<style>
-    .old_guest{
-        cursor: pointer;
-        border-bottom: 1px solid yellow;
-    }
-</style>
-
-
-<script src="{{asset('public/backend')}}/assets/js/select2.js"></script>
-<link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/select2.css">
-
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
@@ -122,10 +110,6 @@ $time = date("h:i");
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
                                     </div>
 
                                     <div class="row">
@@ -428,8 +412,6 @@ $time = date("h:i");
     var roomdata = [];
 
     var isdata = false;
-
-
     $(document).ready(function() {
         $('#guest_name_data').keypress(function(e) {
             console.log(e.target.value);
@@ -443,19 +425,9 @@ $time = date("h:i");
 
         var roomtype = document.querySelector('#room_type');
         var roomsetup = document.querySelector('#rooms');
-
-
-
-
-
         var getRooms = [];
-
         var rooms = [];
         roomtype.addEventListener('change', function(event) {
-
-
-
-
             $('#room_section').show();
             var id = event.target.value;
             rooms = [];
@@ -490,8 +462,6 @@ $time = date("h:i");
                             roomsetup.insertAdjacentHTML('afterend', newhtml);
                         })
 
-
-
                         roomdata.forEach(function(item) {
                             var checkteditem = document.querySelector('#checkeditem' + item.id);
                             if (checkteditem) {
@@ -514,56 +484,27 @@ $time = date("h:i");
         }
 
     })();
-
-
     var total = 0;
-
-
-
-
     function selectedRoom(el) {
-
-
-
         var room = [];
         if (el.checked == true) {
-            
             rooms.getRooms.filter(function(element) {
-
-
                 // return element.id == el.value;
                 element.filter(function(ele) {
                     if (ele.id == el.value) {
                         room.push(ele);
-
                         var dublicatitem = roomdata.find(function(item) {
                             return ele.id === item.id;
                         })
                         if (!dublicatitem) {
                             // if not found
                             roomdata.push(ele);
-                            
                         } else {
                             
                         }
                     }
                 })
-
             });
-
-
-            // var roomitem = [];
-            // roomdata.forEach(function(items) {
-            //     items.forEach(function(item) {
-            //         roomitem.push(item);
-            //     })
-            // })
-
-            // var dublicatitem = roomitem.find(function(item) {
-            //     return room[0].id === item.id;
-            // })
-
-
 
         } else if (el.checked == false) {
 
@@ -580,21 +521,12 @@ $time = date("h:i");
             roomdata = deletedublicat;
 
         }
-
-
-
-
         var room_id = room[0].id;
-
         var checkin = document.querySelector('#checkindate');
         var checkout = document.querySelector('#checkoutdate');
-
         if (checkin.value && checkout.value) {
             var checkindate = checkin.value;
             var checkoutdate = checkout.value;
-
-
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -608,55 +540,32 @@ $time = date("h:i");
                     checkout: checkoutdate,
                 },
                 success: function(data) {
-
                     if (!data) {
-
-                        
                             addRoom(room);
-                        
-
                     } else {
                         var message = 'Sorry! This Room is Booked from %checkindate% to %checkoutdate%';
-
                         var newmassage = message.replace('%checkindate%', data.checkindate);
                         var newmassage = newmassage.replace('%checkoutdate%', data.checkoutdate);
                         iziToast.warning({
                             position: 'topCenter',
-                            // message: 'Sorry! This Room is Booked with given Date and Time!',
                             message: newmassage,
                         });
                     }
                 }
             });
-
-
-
         } else {
             checkin.focus();
             checkout.focus();
-
             iziToast.warning({
                 position: 'topCenter',
                 message: 'Sorry! You Need to select a check-in and check-out date!',
             });
         }
-
-
-
-
     }
-
-
- 
-
     function addRoom(room) {
-
         var symbol = document.querySelector('#symbol').value;
-        
         var roomelement = document.querySelector('#selectedroom');
         var html = '<tr class="deletedelement" id="deletedelement%deletedid%"><td>%room% (%room_type%)</td><td>%symbol% %tariff% <input type="hidden" class="counttotal" value="%price%"/></td><td><span class="text-center" onclick="deleteroom(this)"><i class="fa fa-trash" aria-hidden="true"></i><input type="hidden" class="deducttotal" value="%detuctprice%"/> <input type="hidden" name="room[]" value="%room_id%" </span></td></tr>';
-
-
         var newhtml = html.replace('%room%', room[0].room_no);
         var newhtml = newhtml.replace('%room_type%', room[0].roomtype.room_type);
         var newhtml = newhtml.replace('%deletedid%', room[0].id);
@@ -666,20 +575,14 @@ $time = date("h:i");
         var newhtml = newhtml.replace('%room_id%', room[0].id);
         var newhtml = newhtml.replace('%symbol%', symbol);
         roomelement.insertAdjacentHTML('afterend', newhtml);
-
-
         var count = document.querySelectorAll('.counttotal');
         var tarriff = parseInt(count[0].attributes[2].value);
         total = total + tarriff;
         document.querySelector('#totaltariff').innerHTML =symbol+' '+ total;
-
-
     }
 
     function deleteroom(el) {
-
         var room_id = el.children[2].value;
-
         var checkteditem = document.querySelector('#checkeditem' +  room_id);
                             if (checkteditem) {
                                 checkteditem.checked = false;
@@ -736,25 +639,8 @@ $time = date("h:i");
 
                     $('#select_guest_name').val(data.id).selected;
 
-                    
-
-                    // toastr.success('Guest Insert Succssfully!');
-
-                    //log(data);
-
-                    //     $('.loading_button').hide();
-                    //     $('.submit_button').show();
-                    //     $('.error').html('');
-                    //     $('#add_income_form')[0].reset();
-                    //     $('#myModal1').modal('hide');
-                    //      setInterval(function() {
-                    //     window.location = "{{ url()->current() }}";
-                    // }, 700);
-
                 },
                 error: function(err) {
-
-
                     if (err.responseJSON.errors.title) {
                         $('#title').html(err.responseJSON.errors.title[0])
                     }
@@ -774,16 +660,6 @@ $time = date("h:i");
                     if (err.responseJSON.errors.mobile) {
                         $('#mobile').html(err.responseJSON.errors.mobile[0])
                     }
-                    //log(err.responseJSON.errors);
-                    // if (err.responseJSON.errors.header_id) {
-                    //     $('.header_error').html('Income header is required');
-
-                    //     $('.header').addClass('is-invalid');
-                    // } else {
-                    //     $('.header_error').html('');
-                    //     $('.header').removeClass('is-invalid');
-                    // }
-
                 }
             });
         });
@@ -794,14 +670,11 @@ $time = date("h:i");
 <script>
     $(document).ready(function() {
         $('#showguestname').click(function(e) {
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
-
             $.ajax({
                 type: 'get',
                 url: "{{route('admin.guest.name.list')}}",
@@ -828,13 +701,5 @@ $time = date("h:i");
 
     }
 </script>
-
-<!-- <script>
-    $("#select_guest_name").select2({
-        placeholder: '----Select Name----'
-    });
-</script> -->
-
-
 
 @endsection
