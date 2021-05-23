@@ -3,7 +3,7 @@
 
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 $bookingno = rand(11111,99999);
 $time = date("h:i");
 @endphp

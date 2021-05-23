@@ -54,14 +54,10 @@
                                 <i class="las la-home"></i><span>Dashboards</span>
                             </a>
                         </li>
-                        <li class="{{ request()->routeIs('admin.foodandbeverage.kothistory*') ? 'active' : '' }}">
-                            <a href="{{route('admin.foodandbeverage.kothistory')}}">
-                                <i class="las la-list-alt"></i><span>Kot History</span>
-                            </a>
-                        </li>
+                        
                         <li class=" ">
                             <a href="#user" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                                <i class="fas fa-bed"></i><span>Order</span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Order</span>
                                 <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
@@ -76,8 +72,12 @@
                                         <i class="las la-list-alt"></i><span>Complate Order</span>
                                     </a>
                                 </li>
-
                             </ul>
+                        </li>
+                        <li class="{{ request()->routeIs('admin.foodandbeverage.kothistory*') ? 'active' : '' }}">
+                            <a href="{{route('admin.foodandbeverage.kothistory')}}">
+                                <i class="las la-list-alt"></i><span>Kot History</span>
+                            </a>
                         </li>
                     </ul>
                 </nav>

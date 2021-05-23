@@ -14,7 +14,7 @@
 </style>
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
+$current = date("Y/m/d");
 @endphp
 <div class="content-page">
     <div class="container-fluid">
@@ -66,7 +66,6 @@ $current = date("m/d/Y");
                                                    <td>
                                                     <input type="text" class="form-control noradious" name="reference" value="{{$edit->reference}}">
                                                    </td>
-                                                   
                                                 </tr>
                                                 <tr>
                                                     <td><label>Narration:</label></td>
@@ -87,18 +86,16 @@ $current = date("m/d/Y");
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Sourch Account:</label>
                                             <div class="col-sm-6">
                                             <select id="account_head_main" name="account_head_main" class="form-control"> 
-
                                                 <option value="">--Select--</option>
                                                 @foreach($datasourche as $account)
                                                 <option value="{{$account->code}}">{{$account->desription_of_account}}</option>
                                                 @endforeach
-
                                             </select>
-                                                        <span style="font-size:12px;color:#776b6b" id="current_balance_sourch"></span>
-                                                        <input type="hidden" value="" name="sourch_cate_code" id="sourch_cate_code">
-                                                        <input type="hidden" value="" name="sourch_Accountcate_code" id="sourch_Accountcate_code">
-                                                        <input type="hidden" value="" name="sourch_subcate_codeone" id="sourch_subcate_codeone">
-                                                        <input type="hidden" value="" name="sourch_subcate_codetwo" id="sourch_subcate_codetwo">
+                                                <span style="font-size:12px;color:#776b6b" id="current_balance_sourch"></span>
+                                                <input type="hidden" value="" name="sourch_cate_code" id="sourch_cate_code">
+                                                <input type="hidden" value="" name="sourch_Accountcate_code" id="sourch_Accountcate_code">
+                                                <input type="hidden" value="" name="sourch_subcate_codeone" id="sourch_subcate_codeone">
+                                                <input type="hidden" value="" name="sourch_subcate_codetwo" id="sourch_subcate_codetwo">
                                             </div>
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Amount:</label>
                                             <div class="col-sm-2">
@@ -109,40 +106,32 @@ $current = date("m/d/Y");
                                         <div class="form-group row">
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Account Head Type:</label>
                                             <div class="col-sm-6">
-                                           
-                                                             @php
-                                                              
-                                                               $allcheckguest=App\Models\Checkin::where('booking_no',$booking_no)->select(['guest_name','guest_id'])->first();
-                                                               $allguest_id=App\Models\Guest::where('id',$allcheckguest->guest_id)->select(['guest_id'])->first();
-                                                               
-                                                            @endphp
-                                                            @php
-
-                                                            $balance=0;
-                                                                $allledger=DB::table('vAccountsHeadsLeadgerTbl')->where('Code',$allguest_id->guest_id)->select(['Balance'])->get();
-                                                                foreach($allledger as $ledger){
-                                                                        $balance=$balance + $ledger->Balance ;
-                                                                    }
-
-                                                            @endphp
-                                                            <input type="hidden" id="account_head" name="account_head" value="{{$allguest_id->guest_id}}">
-                                                            <input type="text" class="form-control" value="{{$allcheckguest->guest_name}}" disabled> 
-
-
-                                                        <span style="font-size:12px;color:#776b6b" id="current_balance_head">Current Balance: {{  $balance }}</span>
-
-                                                        <span style="color:red" id="accont_head_err"></span>
-                                                        <input type="hidden" value="" name="acchead_cate_code" id="acchead_cate_code">
-                                                        <input type="hidden" value="" name="acchead_Accountcate_code" id="acchead_Accountcate_code">
-                                                        <input type="hidden" value="" name="acchead_subcate_codeone" id="acchead_subcate_codeone">
-                                                        <input type="hidden" value="" name="acchead_subcate_codetwo" id="acchead_subcate_codetwo">
+                                            @php
+                                                $allcheckguest=App\Models\Checkin::where('booking_no',$booking_no)->select(['guest_name','guest_id'])->first();
+                                                $allguest_id=App\Models\Guest::where('id',$allcheckguest->guest_id)->select(['guest_id'])->first();
+                                            @endphp
+                                            @php
+                                                $balance=0;
+                                                $allledger=DB::table('vAccountsHeadsLeadgerTbl')->where('Code',$allguest_id->guest_id)->select(['Balance'])->get();
+                                                foreach($allledger as $ledger){
+                                                        $balance=$balance + $ledger->Balance ;
+                                                    }
+                                            @endphp
+                                                <input type="hidden" id="account_head" name="account_head" value="{{$allguest_id->guest_id}}">
+                                                <input type="text" class="form-control" value="{{$allcheckguest->guest_name}}" disabled> 
+                                                <span style="font-size:12px;color:#776b6b" id="current_balance_head">Current Balance: {{  $balance }}</span>
+                                                <span style="color:red" id="accont_head_err"></span>
+                                                <input type="hidden" value="" name="acchead_cate_code" id="acchead_cate_code">
+                                                <input type="hidden" value="" name="acchead_Accountcate_code" id="acchead_Accountcate_code">
+                                                <input type="hidden" value="" name="acchead_subcate_codeone" id="acchead_subcate_codeone">
+                                                <input type="hidden" value="" name="acchead_subcate_codetwo" id="acchead_subcate_codetwo">
                                             </div>
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Davit/Cradit:</label>
                                             <div class="col-sm-2">
-                                                            <select name="amount_cate" id="amount_cate" class="form-control">
-                                                                        <option value="Debit">Debit</option>
-                                                                        <option value="Cradit">Cradit</option>
-                                                                    </select>
+                                                <select name="amount_cate" id="amount_cate" class="form-control">
+                                                    <option value="Debit">Debit</option>
+                                                    <option value="Cradit">Cradit</option>
+                                                </select>
                                             </div>
                                          </div>
                                          <div class="form-group row">
@@ -151,9 +140,8 @@ $current = date("m/d/Y");
                                                  <input type="text" id="remarks" name="remarks"  class="form-control form-control-lg" placeholder="Remarks">
                                             </div>
                                             <div class="col-sm-4 text-right">
-                                            <a id="additem" class="btn-sm" style="padding: 10px;background: #4788ff; color: #fff; cursor:pointer">Add</a>
-                                                </div>
-                                           
+                                                <a id="additem" class="btn-sm" style="padding: 10px;background: #4788ff; color: #fff; cursor:pointer">Add</a>
+                                            </div>
                                          </div>
                                          <div class="form-group row" id="check_r"  style="display:none">
                                                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Cheque Referance: </label>
@@ -162,49 +150,38 @@ $current = date("m/d/Y");
                                                         <option value="">--select--</option>
                                                     </select>
                                                 </div>
-                                               
                                             </div>
-                                        
-
-                                            
-
-
                                          <div class="form-group row">
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Qty:</label>
                                             <div class="col-sm-1">
                                             <input type="checkbox" id="mainqty">                                            
                                             </div>
-                                          
-                                                <div class="col-sm-2 text-left qty" style="display:none">
-                                                    <input type="number" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Quantity">
-                                                </div>
-                                                <div class="col-sm-3 qty" style="display:none">
-                                                    <input type="number" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Price">
-                                                </div>
-                                            
+                                            <div class="col-sm-2 text-left qty" style="display:none">
+                                                <input type="number" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Quantity">
+                                            </div>
+                                            <div class="col-sm-3 qty" style="display:none">
+                                                <input type="number" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Price">
+                                            </div>
                                          </div>
                                          <div class="form-group row">
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">SubHead:</label>
                                             <div class="col-sm-1">
-                                            <input type="checkbox" id="mainsubheadone">                                         
+                                             <input type="checkbox" id="mainsubheadone">                                         
                                             </div>
-                                           
                                             <div class="col-sm-5 text-left subheadone" style="display:none">
-                                                        <select name="subcategory_codeone" id="subcategory_codeone" class="form-control">
-                                                            <option value="">--Select--</option>
-                                                            @foreach($allsubcategoryone as $subcate)
-                                                            <option value="{{$subcate->subcategory_codeone}}">{{$subcate->subcategory_nameone}}</option>
-                                                            @endforeach
-                                                        </select>
+                                                <select name="subcategory_codeone" id="subcategory_codeone" class="form-control">
+                                                    <option value="">--Select--</option>
+                                                    @foreach($allsubcategoryone as $subcate)
+                                                    <option value="{{$subcate->subcategory_codeone}}">{{$subcate->subcategory_nameone}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                            
                                          </div>
                                          <div class="form-group row">
                                             <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">SubHead-2:</label>
                                             <div class="col-sm-1">
                                             <input type="checkbox" id="mainsubheadtwo">                                       
                                             </div>
-                                           
                                             <div class="col-sm-5 text-left subheadtwo" style="display:none">
                                                 <select name="subcategory_codetwo" id="subcategory_codetwo" class="form-control">
                                                     <option value="">--Select--</option>
@@ -214,7 +191,6 @@ $current = date("m/d/Y");
                                                 </select>
                                             </div>
                                          </div>
-
                                 </div>
                         </div>
                     </div>
@@ -349,8 +325,6 @@ $(document).ready(function() {
    });
 });
 </script>
-
-
 <script type="text/javascript">
 $(document).ready(function() {
    $('#voucher_type').on('change', function(){
@@ -382,7 +356,6 @@ $(document).ready(function() {
    });
 });
 </script>
-
 <script type="text/javascript">
   $(document).ready(function() {
      $("#mainqty").on('click', function(){
@@ -418,7 +391,6 @@ $(document).ready(function() {
         
  });
 </script>
-
 <script type="text/javascript">
 $(document).ready(function() {
    $('#account_head_main').on('change', function(){
@@ -464,7 +436,6 @@ $(document).ready(function() {
    });
 });
 </script>
-
 <script>
 $(document).ready(function() {
    $('#account_head').on('change', function(){
@@ -580,10 +551,6 @@ $(document).ready(function() {
                 acchead_subcate_codetwo:acchead_subcate_codetwo,
                 hiddeninvoice:hiddeninvoice,
                 cheque_reference:cheque_reference,
-               
-
-
-
             },
 
             success: function(data) {

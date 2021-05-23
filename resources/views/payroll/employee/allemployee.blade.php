@@ -22,7 +22,7 @@
                               <th>Email</th>
                               <th>Department</th>
                               <th>Salary</th>
-                              <th>Manage</th>
+                              <!-- <th>Manage</th> -->
                            </tr>
                         </thead>
                         <tbody class="text-center">
@@ -37,9 +37,9 @@
                               <td>{{$data->email}}</td>
                               <td></td>
                               <td>{{$data->present_salary}} TK</td>
-                              <td>
+                              <!-- <td>
                                  <a class="badge bg-success-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View" href="{{url('admin/employee/view/'.$data->id)}}"><i class="lar la-eye"></i></a>
-                              </td>
+                              </td> -->
                            </tr>
                            @endforeach
                         </tbody>

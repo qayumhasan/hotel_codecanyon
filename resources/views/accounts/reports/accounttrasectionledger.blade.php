@@ -163,9 +163,11 @@ $current = date("Y/m/d");
 
                         </div>
                      </div>
+                     @if(isset($searchdata))
                      <div class="card-body text-center">
                         <a href="" class="btn btn-success">Print</a>
                      </div>
+                     @endif
             </div>
          </div>
       </div>
@@ -174,31 +176,7 @@ $current = date("Y/m/d");
 
 
 
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-   <div class="modal-dialog modal-lg">
-      <div class="modal-content text-center printableAreasaveprint">
-         <div class="modal-header ">
-            <h5 class="modal-title">INVOICE</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body" id="maindata">
 
-         </div>
-         <div class="modal-footer ">
-            <div class="col-md-12 text-right">
-               <p>PrintDate:17/90/34</p><br>
-            </div>
-            <div class="col-md-12">
-               <button type="button" class="btn btn-primary savepritbtn">Print</button>
-            </div>
-         </div>
-
-      </div>
-   </div>
-</div>
-</div>
 
 <script>
    $(function() {
