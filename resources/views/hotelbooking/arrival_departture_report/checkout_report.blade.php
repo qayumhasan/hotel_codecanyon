@@ -1,19 +1,13 @@
 @extends('hotelbooking.master')
-@section('title', 'CheckIn Report | '.$seo->meta_title)
+@section('title', 'CheckIn Report | '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
 @endphp
-
-
-
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -21,11 +15,6 @@ $time = date("h:i");
                         <div class="header-title">
                             <h4 class="card-title">CheckIn Report</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive room_ajax_data">
@@ -55,7 +44,6 @@ $time = date("h:i");
                                     $totaldiscount = 0;
                                     $netamount = 0;
                                 @endphp
-
                                 <tbody class="text-center">
                                     @foreach($checkins as $row)
                                     <tr>
@@ -82,52 +70,29 @@ $time = date("h:i");
                                         <td>{{$row->checkout->checkout_date ?? ''}}</td>
                                         <td>{{$row->additional_room_day}}</td>
                                         <td>{{$row->checkout->user->username ?? ''}}</td>
-
-
                                         @php
                                         $totalnight =  $totalnight + (int)$row->additional_room_day;
                                         $noofpax = $noofpax +$row->number_of_person;
-                               
                                         if(isset($row->checkout->discount_amount)){
                                             $totaldiscount  =  $totaldiscount + $row->checkout->discount_amount;
                                         }else{
                                             $totaldiscount  =  $totaldiscount + 0;
                                         }
-                                        
-
                                         if(isset($row->checkout->gross_amount)){
                                             $netamount  =  $netamount + $row->checkout->gross_amount;
                                         }else{
                                             $netamount  =  $netamount + 0;
                                         }
-                                        
-
                                         @endphp
-
-
                                     </tr>
                                     @endforeach
-
                                 </tbody>
-
-
-
-
-
                             </table>
-
-
-
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
-
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -135,7 +100,6 @@ $time = date("h:i");
                         <div class="header-title">
                             <h4 class="card-title">Summary Of Report</h4>
                         </div>
-
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -157,30 +121,21 @@ $time = date("h:i");
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
-
         <div class="row text-center">
             <div class="col-md-12">
                 <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
             </div>
         </div>
-
     </div>
 </div>
-
-
-
-
 <script>
     $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy/mm/dd',
     });
 </script>
 
@@ -189,5 +144,4 @@ $time = date("h:i");
         placeholder: '----Select Room No----'
     });
 </script>
-
 @endsection

@@ -1,30 +1,23 @@
 @extends('hotelbooking.master')
-@section('title', 'Invoice Summery | '.$seo->meta_title)
+@section('title', 'Invoice Summery | '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
 @endphp
-
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
-
                 <div class="card p-4">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
                             <h4 class="card-title">Guest Payment History</h4>
                         </div>
                     </div>
-
                     <form id="clean_duration_search">
                         <div class="form-group row mt-4">
-
                             <label for="inputPassword" class="col-sm-1 col-form-label"><b>Guest:</b></label>
                             <div class="col-sm-3">
                                 <select class="form-control form-control-sm select_room_no" name="guest_name" id="guest_name ">
@@ -32,39 +25,22 @@ $time = date("h:i");
                                     @foreach($guests as $row)
                                     <option value="{{$row->id}}">{{$row->guest_name}}</option>
                                     @endforeach
-
                                 </select>
                                 <small class="text-danger from_date"></small>
                             </div>
-
                             <button type="submit" class="btn btn-sm btn-primary mb-2">Search</button>
-
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
-
-
         <div class="row invoice_summery_ajax">
             <div class="col-sm-12 printableAreasaveprint">
-           
                 <div class="card">
-
-
-
-
-
-
-
-@if(count($invoicesummarys) > 0)
-    @foreach($invoicesummarys as $row)
-
+                    @if(count($invoicesummarys) > 0)
+                    @foreach($invoicesummarys as $row)
                     <div class="card-body ">
                         <div class="table-responsive guest_ajax_data">
-
-
                             <table class="table table-bordered">
                                 <thead class="thead-light">
                                     <tr>
@@ -77,16 +53,13 @@ $time = date("h:i");
                                 </thead>
                                 <tbody>
                                     <tr>
-
-
                                         <td>{{$row->guest_name}}</td>
                                         <td>{{$row->invoice_no}}</td>
                                         <td>{{$row->invoice_date}}</td>
                                         <td>{{round($row->outstanding_amount,2)}}</td>
                                         <!-- tax area start -->
-                                        
                                         <td rowspan="5">
-                                        @if(count($row->taxs) > 0)
+                                            @if(count($row->taxs) > 0)
                                             @foreach($row->taxs as $data)
                                             <div class="row">
                                                 <div class="col">
@@ -98,12 +71,10 @@ $time = date("h:i");
                                             </div>
                                             @endforeach
                                             @else
-                                           
                                             <div class="row">
                                                 <div class="col text-center"><strong>No Tax Amount Found!</strong></div>
                                             </div>
-                                           @endif
-                                           
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr class="thead-light">
@@ -112,24 +83,19 @@ $time = date("h:i");
                                         <th scope="col">Checkout Date</th>
                                         <th scope="col">No Of Night</th>
                                     </tr>
-                                   
                                     <tr>
                                         <td>{{$row->room_no}}</td>
                                         <td>{{$row->checkin_date}}</td>
                                         <td>{{$row->checkout_date}}</td>
                                         <td>{{$row->day}}</td>
-
                                     </tr>
-                                    
                                     <tr>
                                         <th scope="col">Booking Type</th>
                                         <th scope="col">Room Amount</th>
                                         <th scope="col">Food Amount</th>
                                         <th scope="col">Ep/Laundry Amount</th>
                                     </tr>
-
                                     <tr>
-
                                         @if($row->booking_type == 2)
                                         <td>Group Booking</td>
                                         @else
@@ -138,11 +104,9 @@ $time = date("h:i");
                                         <td>{{round($row->room_amount,2)}}</td>
                                         <td>{{round($row->fb_amount,2)}}</td>
                                         <td>{{round($row->extra_service_amount,2)}}</td>
-
                                     </tr>
                                 </tbody>
                             </table>
-
                             <table class="table table-bordered">
                                 <thead class="bg-success">
                                     <tr>
@@ -156,36 +120,26 @@ $time = date("h:i");
                                     </tr>
                                 </thead>
                                 <tbody>
-                      
                                     <tr>
                                         <td>{{$row->TransectionDate}}</td>
                                         <td>{{$row->voucher_type}}</td>
                                         <td></td>
                                         <td>{{$row->voucherNo}}</td>
-                                        
                                         <td>{{$row->TransectionAmount}}</td>
                                         <td>{{abs($row->TransectionAmount)}}</td>
                                         <td>Booking</td>
                                     </tr>
-                            
-                                
                                     <tr>
                                         <th colspan="6" class="text-right">Gross Amount</th>
                                         <td> {!!$currency->symbol ?? ' '!!} {{round($row->gross_amount,2)}}</td>
                                     </tr>
                                 </tbody>
                             </table>
-
-
-
-
                         </div>
                     </div>
-
+                @endforeach
+                @else
                 </div>
-    @endforeach
-@else
-                
                 <div class="card">
                     <div class="card-body ">
                         <table class="table table-bordered">
@@ -193,40 +147,32 @@ $time = date("h:i");
                                 <tr>
                                     <th scope="row">No Data Found!</th>
                                 </tr>
-                                
                             </tbody>
                         </table>
                     </div>
                 </div>
-             
-@endif
-
+                @endif
             </div>
         </div>
-
-
         <div class="row text-center">
             <div class="col-md-12">
-                <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
+                <button type="button" class="btn-sm btn-info mx-auto text-center savepritbtn">Print</button>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
 <script>
     $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy/mm/dd',
     });
 </script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $(".select_room_no").select2({
-        placeholder: '----Select Room No----'
-    });
+            placeholder: '----Select Room No----'
+        });
     })
 </script>
 
@@ -262,15 +208,10 @@ $time = date("h:i");
                     if (err.responseJSON.errors.from_date) {
                         $('.from_date').html(err.responseJSON.errors.from_date[0]);
                     }
-
-
                 }
 
             });
         });
     });
 </script>
-
-
-
 @endsection

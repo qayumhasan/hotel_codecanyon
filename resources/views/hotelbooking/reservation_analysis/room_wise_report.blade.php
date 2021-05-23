@@ -3,7 +3,7 @@
 @section('content')
 @php
 date_default_timezone_set("Asia/Dhaka");
-$date = date("d/m/Y");
+$date = date("Y/m/d");
 $time = date("h:i");
 @endphp
 <div class="content-page">

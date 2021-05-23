@@ -1,15 +1,8 @@
 @extends('hotelbooking.master')
-@section('title', 'Extra Service Report | '.$seo->meta_title)
+@section('title', 'Extra Service Report | '.$companyinformation->company_name)
 @section('content')
-
-
-
-
-
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -38,7 +31,6 @@
                                         <th>Total Charged</th>
                                     </tr>
                                 </thead>
-
                                 <tbody class="text-center">
                                     @foreach($services as $row)
                                         <tr>
@@ -48,46 +40,29 @@
                                             <td>{{$row->item_name}}</td>
                                             <td>{{$row->remarks}}</td>
                                             <td>{{$row->rate}}</td>
-                                            <td>{{$row->qty}}</td>
-                                            
+                                            <td>{{$row->qty}}</td>    
                                             <td>{{$row->itementry->unit->name ?? ''}}</td>
                                             <td>{{$row->user->username ?? ''}}</td>
                                             <td>{{$row->amount}}</td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
-
-
-
-
-
                             </table>
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row text-center">
             <div class="col-md-12">
                 <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
             </div>
         </div>
-
     </div>
 </div>
-
-
-
-
 <script>
     $('.datepicker').datepicker({
-        format: 'dd/mm/yyyy',
+        format: 'yyyy/mm/dd',
     });
 
 </script>

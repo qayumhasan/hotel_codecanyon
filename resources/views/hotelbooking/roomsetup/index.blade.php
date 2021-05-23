@@ -1,5 +1,5 @@
 @extends('hotelbooking.master')
-@section('title', 'All Room | '.$seo->meta_title)
+@section('title', 'All Room | '.$companyinformation->company_name)
 @section('content')
  <div class="content-page">
       <div class="container-fluid">
@@ -11,7 +11,7 @@
                         <h4 class="card-title">All Room</h4>
                      </div>
                      <span class="float-right mr-2">
-                        <a href="{{route('admin.branch.create')}}" class="btn btn-sm bg-primary">
+                        <a href="{{route('admin.room.create')}}" class="btn btn-sm bg-primary">
                            <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
                         </a>
                      </span>
@@ -33,7 +33,6 @@
                            <tbody class="text-center">
                               @foreach($room as $data)
                               <tr>
-                               
                                  <td>{{$data->room_no}}</td>
                                  <td>{{$data->branch->branch_name ?? ''}}</td>
                                  <td>{{$data->roomtype->room_type ?? ''}}</td>
@@ -45,9 +44,6 @@
                                  @else
                                  <span class="btn-sm btn-danger">Deactive</span>
                                  @endif
-                                 
-                                 
-                                 
                                   </td>
                                  <td>
                                    @if($data->is_active==1)
