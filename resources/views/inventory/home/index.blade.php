@@ -1,10 +1,9 @@
 @extends('inventory.master')
 @section('content')
+@php
 <div class="content-page">
         <div class="container-fluid">
             <div class="row">
-              
-               
                <div class="col-md-6 col-lg-3">
                   <div class="card card-block card-stretch card-height bg-primary rounded">
                      <div class="card-body">
@@ -12,8 +11,8 @@
                            <div class="icon iq-icon-box rounded iq-bg-primary rounded shadow" data-wow-delay="0.2s"> <i class="las la-users"></i>
                            </div>
                            <div class="iq-text">
-                              <h6 class="text-white">Total Item</h6>
-                              <h3 class="text-white">75</h3>
+                              <h6 class="text-white">Total Items</h6>
+                              <h3 class="text-white">{{$totalItems}}</h3>
                            </div>
                         </div>
                      </div>
@@ -27,7 +26,7 @@
                            </div>
                            <div class="iq-text">
                               <h6 class="text-white">Stock Center</h6>
-                              <h3 class="text-white">60</h3>
+                              <h3 class="text-white">{{$stockCenters}}</h3>
                            </div>
                         </div>
                      </div>
@@ -41,7 +40,7 @@
                            </div>
                            <div class="iq-text">
                               <h6 class="text-white">Purchase</h6>
-                              <h3 class="text-white">80</h3>
+                              <h3 class="text-white">{{$totalpurchases}}</h3>
                            </div>
                         </div>
                      </div>
@@ -55,7 +54,7 @@
                            </div>
                            <div class="iq-text">
                               <h6 class="text-white">Purchase Order</h6>
-                              <h3 class="text-white">45</h3>
+                              <h3 class="text-white">{{$purchaseOrders}}</h3>
                            </div>
                         </div>
                      </div>
@@ -69,18 +68,39 @@
                      </div>
                   </div>
                   <div class="card-body">
-                     <div id="layout-1-chart-06"></div>
+                     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                   </div>
                   </div>
                </div>
-
-
-            
-            
-             
-              
-               
             </div>
          </div>
       </div
+
+
 @endsection
+
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Purchase Overview"
+	},
+	axisY:{
+		includeZero: true
+	},
+	data: [{
+		type: "column", //change type to bar, line, area, pie, etc
+		//indexLabel: "{y}", //Shows y value on all Data Points
+		indexLabelFontColor: "#5A5757",
+		indexLabelPlacement: "outside",   
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
