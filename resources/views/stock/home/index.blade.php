@@ -83,7 +83,7 @@ $(document).ready(function(){
   var options = {
           series: [{
           name: 'Total Purchase',
-          data: [10, 65, 96, 46, 30, 58,97]
+          data: [{{$physicalstocks}},{{$stockCenters}},{{$totalpurchases}},{{$purchaseOrders}}]
         }],
           chart: {
           type: 'bar',
@@ -107,7 +107,7 @@ $(document).ready(function(){
           colors: ['transparent']
         },
         xaxis: {
-          categories: ['Purchase', 'Stock', '2020 Q3', '2020 Q4', '2020 Q5', '2020 Q6', '2020 Q7'],
+          categories: ['Physical Stocks', 'Stock Cente', 'Purchase', 'Purchase Order'],
         },
       yaxis: {
         show: true,
