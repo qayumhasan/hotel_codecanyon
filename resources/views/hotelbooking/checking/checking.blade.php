@@ -9,51 +9,6 @@ $bookingno = rand(11111,99999);
 $time = date("h:i");
 @endphp
 
-<style>
-    #delectimage {
-        position: absolute;
-        top: 0;
-        right: 2%;
-    }
-
-    .form-group {
-        margin-bottom: 1px;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-
-    .controll-from {
-        width: 100%;
-        border: 1px solid #ccc;
-        background: #FFF;
-        margin: 0 0 5px;
-        padding: 3px;
-        font-size: 10px;
-
-    }
-
-    .control-label {
-        font-size: 12px;
-    }
-
-    input:required:focus {
-        border: 1px solid red;
-        outline: none;
-    }
-
-    #rooms {
-        overflow: scroll;
-        max-height: 200px;
-    }
-
-    .old_guest {
-        cursor: pointer;
-        text-decoration: underline;
-    }
-</style>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -63,11 +18,8 @@ $time = date("h:i");
                         <div class="header-title">
                             <h4 class="card-title">Check-In</h4>
                         </div>
-
-
                     </div>
                 </div>
-
                 <form action="{{route('admin.checkin.store')}}" id="checkingdata" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -78,11 +30,8 @@ $time = date("h:i");
                                         <h4 class="card-title">Booking Details</h4>
                                     </div>
                                 </div>
-
-
                                 <div class="card-body">
                                     <div class="row">
-
                                         <table class="table table-borderless">
                                             <tbody>
                                                 <tr>
@@ -119,7 +68,6 @@ $time = date("h:i");
                                                         </div>
                                                     </td>
                                                 </tr>
-
                                                 <tr>
                                                     <th class="control-label" scope="row">Checkout Time</th>
                                                     <td>
@@ -129,7 +77,6 @@ $time = date("h:i");
                                                         </select>
                                                     </td>
                                                 </tr>
-
                                                 <tr>
                                                     <th class="control-label" scope="row">Link With Advanced Booking?</th>
                                                     <td>
@@ -151,7 +98,6 @@ $time = date("h:i");
                                                         <div class="col-12">
                                                             <input type="text" class="controll-from" id="pwd1" name="adv_guest_name" placeholder="Enter Guest Name">
                                                         </div>
-
                                                     </td>
                                                 </tr>
                                                 <tr class="advance_booking">
@@ -164,14 +110,10 @@ $time = date("h:i");
                                                 </tr>
                                             </tbody>
                                         </table>
-
                                     </div>
                                 </div>
-
                             </div>
-
                             <!-- Guest Registration Form -->
-
                             <div class="card shadow-sm shadow-showcase">
                                 <div class="card-header">
                                     <div class="row">
@@ -185,8 +127,6 @@ $time = date("h:i");
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="email">Title:</label>
@@ -215,8 +155,6 @@ $time = date("h:i");
                                             <input type="text" class="controll-from" required id="printname" name="print_name" placeholder="Enter Print Name">
                                         </div>
                                     </div>
-
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="email">Gender<small class="text-danger">*</small></label>
                                         <div class="col-sm-9">
@@ -226,28 +164,24 @@ $time = date("h:i");
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="pwd1">Father's Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="controll-from" id="pwd1" placeholder="Enter Father's Name" name="father_name">
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="pwd1">Address<small class="text-danger">*</small></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="controll-from" required id="address" placeholder="Enter Address" name="address">
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="city">City<small class="text-danger">*</small></label>
                                         <div class="col-sm-9">
                                             <input type="text" class="controll-from" name="city" id="city" required placeholder="Enter City">
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="pwd1">Mobile<small class="text-danger">*</small></label>
                                         <div class="col-sm-9">
@@ -260,7 +194,6 @@ $time = date("h:i");
                                             <input type="text" class="controll-from" name="nationality" required id="nationality" placeholder="Enter Nationality">
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-3 align-self-center" for="pwd1">Email</label>
                                         <div class="col-sm-9">
@@ -499,7 +432,7 @@ $time = date("h:i");
                                                 <input type="file" class="custom-file-input" id="client_img" name="client_img" required>
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
-                                            <span class="btn btn-warning" data-toggle="modal" data-target="#client_img"> Take a Image</span>
+                                      
                                         </div>
 
                                         <div class="col-md-6">
@@ -509,16 +442,11 @@ $time = date("h:i");
                                                 <label class="custom-file-label" for="customFile">Choose file</label>
 
                                             </div>
-                                            <span class="btn btn-warning" data-toggle="modal" data-target="#doc_img"> Take a Image</span>
                                         </div>
                                     </div>
 
-
-
                                 </div>
                             </div>
-
-
 
                         </div>
                         <div class="col-md-12" id="guestcheckindetails">
@@ -539,31 +467,7 @@ $time = date("h:i");
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4 border-right" id="rooms">
-                                            <!-- <div class="form-check pb-2 bt-2">
-                                            <input class="form-check-input" type="checkbox" value="" id="advance">
-                                            <label class="form-check-label" for="advance">
-                                                403 (Delux Rooms - 13000.00)
-                                            </label>
                                         </div>
-
-                                        <div class="form-check pb-2 bt-2">
-                                            <input class="form-check-input" type="checkbox" value="" id="advance">
-                                            <label class="form-check-label" for="advance">
-                                                403 (Delux Rooms - 13000.00)
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check pb-2 bt-2">
-                                            <input class="form-check-input" type="checkbox" value="" id="advance">
-                                            <label class="form-check-label" for="advance">
-                                                403 (Delux Rooms - 13000.00)
-                                            </label>
-                                        </div> -->
-
-
-
-                                        </div>
-
                                         <div class="col-md-8">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -579,26 +483,15 @@ $time = date("h:i");
                                                     </tr>
                                                 </thead>
                                                 <tbody id="addroomchoosearea">
-                                                    <!-- <tr>
-                                                    <th>105</th>
-                                                    <td>DELUXE ROOMS </td>
-                                                    <td><input type="number" class="controll-from" value="15000"></td>
-                                                    <td><input type="text" class="controll-from"></td>
-                                                </tr> -->
-
+                                              
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
-
                         </div>
                     </div>
-
 
                     <div class="row mb-5">
                         <div class="col-md-12">
@@ -606,23 +499,16 @@ $time = date("h:i");
                                 <span id="start-one">
                                     <button id="file-upload-btn" type="submit" class="btn btn-lg btn-primary">Submit</button>
                                 </span>
-
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>
-
-
         </div>
     </div>
 </div>
 
-
-
 <!-- Old Guest List -->
-
 
 <div class="modal fade" id="guestlist" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -634,16 +520,10 @@ $time = date("h:i");
                 </button>
             </div>
             <div class="modal-body" id="guest_name_list">
-
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
 
 <!-- Client Image -->
 <div class="modal fade" id="client_img" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -661,7 +541,6 @@ $time = date("h:i");
                         <div class="col-md-6">
                             <div id="my_camera"></div>
                             <br />
-
                             <input type="hidden" name="image" class="image-tag">
                         </div>
                         <div class="col-md-6">
@@ -669,10 +548,7 @@ $time = date("h:i");
                                 Your captured image will appear here...
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
             <div class="modal-footer">
@@ -682,8 +558,6 @@ $time = date("h:i");
         </div>
     </div>
 </div>
-
-
 
 <!-- Document Image -->
 <div class="modal fade" id="doc_img" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -701,16 +575,12 @@ $time = date("h:i");
                         <div class="col-md-6">
                             <div id="doc_camera"></div>
                             <br />
-
                             <input type="hidden" name="image" class="image-tag">
                         </div>
                         <div class="col-md-6">
                             <div id="results_doc">Your captured image will appear here...</div>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
             <div class="modal-footer">
@@ -720,44 +590,7 @@ $time = date("h:i");
         </div>
     </div>
 </div>
-
 <input type="hidden" id="except_room_id" value="{{$room->id}}" />
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
-
-<script language="JavaScript">
-    var webcam = Webcam.set({
-        width: 370,
-        height: 320,
-        image_format: 'jpeg',
-        jpeg_quality: 90
-    });
-
-    if (webcam) {
-        Webcam.attach('#my_camera');
-        Webcam.attach('#doc_camera');
-    }
-
-
-    function take_snapshot() {
-        Webcam.snap(function(data_uri) {
-
-
-            $(".image-tag").val(data_uri);
-            $(".client_web_img").val(data_uri);
-            document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>';
-        });
-    }
-
-    function take_snapshot_doc() {
-        Webcam.snap(function(data_uri) {
-            $(".image-tag").val(data_uri);
-            document.getElementById('results_doc').innerHTML = '<img src="' + data_uri + '"/>';
-        });
-    }
-</script>
-
 
 <script>
     $(document).ready(function() {
@@ -871,11 +704,6 @@ $time = date("h:i");
             });
 
         });
-
-
-
-
-
         return {
             init: function() {
                 return getRooms();
@@ -884,8 +712,6 @@ $time = date("h:i");
         }
 
     })(UIController);
-
-
     function chooseRoom(el) {
         var chooserooms = [];
         if (el.checked == true) {
@@ -896,70 +722,49 @@ $time = date("h:i");
 
             chooserooms.splice(el.value, 1);
             deleteRoom(el.value);
-
-
         }
     }
 
     function addchoosroom(rooms, value) {
         rooms.forEach(function(room) {
             var html = '<tr id="%id%" class="addroomdata"><th>%room_no%</th><td>%room_type% </td><td><input type="number" class="controll-from" name="add_room_price[]" value="%price%"></td><td><input type="number" class="controll-from" name="add_room_pax[]" value="1"></td><td><input type="text" class="controll-from" name="add_room_guest[]" ></td><td> <select class="controll-from" name="add_guest_gender[]"><option value="1">Male</option><option value="1">Female</option><option value="1">Other</option></select><input type="hidden" class="controll-from" name="add_room_id[]" value="%room_id%"></td><td><input type="text" class="controll-from" name="add_room_age[]" ></td></td><td><input type="text" class="controll-from" name="add_room_relation[]" ></td></tr>';
-
             var newhtml = html.replace('%room_no%', room.room_no);
             var newhtml = newhtml.replace('%id%', 'addchoosroom' + value);
             var newhtml = newhtml.replace('%room_type%', room.roomtype.room_type);
             var newhtml = newhtml.replace('%price%', room.tariff);
             var newhtml = newhtml.replace('%room_id%', room.id);
-
             document.querySelector('#addroomchoosearea').insertAdjacentHTML('beforeend', newhtml);
-
         });
     }
 
     function deleteRoom(value) {
-
         document.querySelector('#addchoosroom' + value).remove();
     }
-
-
     controller.init();
 </script>
-
 
 <script>
     $(document).ready(function() {
         $('#guestname').change(function(e) {
             var guestname = e.target.value;
-
-
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
-
             $.ajax({
                 type: 'get',
                 url: "{{ url('/admin/checkin/get/guest/info') }}/" + guestname,
-
                 success: function(data) {
                     if (data.length > 0) {
-                        alert('ok');
                     }
                 }
             });
         });
     });
-
-
     function enterPrintName(el) {
         $('#printname').val(el.value);
-
-
     }
-
-
     function getGuestData(el) {
         var guestname = el.value;
         $.ajaxSetup({
@@ -967,8 +772,6 @@ $time = date("h:i");
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-
         $.ajax({
             type: 'get',
             url: "{{ url('/admin/checkin/get/guest/info') }}/" + guestname,
@@ -979,6 +782,7 @@ $time = date("h:i");
                     swal({
                             title: "One Guest Name Found!",
                             text: "Please!Choose Another Name!",
+           
                             icon: "warning",
                             buttons: true,
                             dangerMode: true,
@@ -1011,12 +815,9 @@ $time = date("h:i");
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
-
             $.ajax({
                 type: 'get',
                 url: "{{route('admin.guest.name.list')}}",
-
                 success: function(data) {
                     $('#guest_name_list').empty();
                     $('#guest_name_list').append(data);
@@ -1030,7 +831,6 @@ $time = date("h:i");
     function getuserData(e) {
         var modal = $(e)
         var data = modal.data('whatever');
-        console.log(data);
         $('#guestID').val(data.id);
         $('#guestname').val(data.guest_name);
         $('#printname').val(data.print_name);
@@ -1042,23 +842,15 @@ $time = date("h:i");
         $('#id_no').val(data.id_no);
         $('#file_no').val(data.file_no);
         $('#file_no').val(data.file_no);
-        // $('#client_img').prop('required', false);
-
         $('#mobile').val(data.mobile);
         $('#email').val(data.email);
         $('#is_old').prop('checked', true);
         $('#guestgender').val(data.gender).selected;
         $('#person_title').val(data.title).selected;
         $('#doc_type').val(data.doc_type).selected;
-
-
         $('#guestlist').modal('hide');
-
-
         var id = data.id;
         showguestinfo(id);
-
-
     }
 
     function showguestinfo(id) {
@@ -1067,32 +859,14 @@ $time = date("h:i");
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-
         $.ajax({
             type: 'get',
             url: "{{url('/admin/guest/details')}}/" + id,
-
             success: function(data) {
-                console.log(data);
-
                 $('#guestcheckindetails').empty();
                 $('#guestcheckindetails').append(data);
             }
         });
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection

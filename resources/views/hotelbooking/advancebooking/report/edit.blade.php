@@ -1,15 +1,10 @@
 @extends('hotelbooking.master')
+@section('title', 'Edit Advance Booking | '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("Asia/Dhaka");
-$current =date("d/m/Y");
+$current =date("Y/m/d");
 @endphp
-
-<script src="{{asset('public/backend')}}/assets/js/select2.js"></script>
-<link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/select2.css">
-
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -50,10 +45,7 @@ $current =date("d/m/Y");
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                     <div class=" row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -77,10 +69,7 @@ $current =date("d/m/Y");
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -90,9 +79,7 @@ $current =date("d/m/Y");
                                                                     <option></option>
                                                                     @foreach($guests as $row)
                                                                     <option {{$advancebooking->guest_id == $row->id?'selected':' '}} value="{{$row->id}}">{{$row->guest_name}}</option>
-
                                                                     @endforeach
-
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-3">
@@ -100,12 +87,7 @@ $current =date("d/m/Y");
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
-
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -399,13 +381,7 @@ $current =date("d/m/Y");
 
         var roomtype = document.querySelector('#room_type');
         var roomsetup = document.querySelector('#rooms');
-
-
-
-
-
         var getRooms = [];
-
         var rooms = [];
         roomtype.addEventListener('change', function(event) {
             $('#room_section').show();
@@ -419,20 +395,15 @@ $current =date("d/m/Y");
             $.ajax({
                 type: 'get',
                 url: "{{ url('/admin/advance/booking/get/room') }}/" + id,
-
                 success: function(data) {
                     rooms.push(data);
                     getRooms.push(data);
-
-
                     if (data.length > 0) {
                         var deletedrooms = document.querySelectorAll('.delete_rooms');
                         deletedrooms.forEach(function(e) {
                             e.remove();
                         })
-
                         data.forEach(function(item, index) {
-
                             var html = '<div class="form-check delete_rooms"><input class="form-check-input" onclick="selectedRoom(this)" type="checkbox" value="%value%" id="defaultCheck1"><input type="hidden" value="%tarrif%"><label class="form-check-label" for="defaultCheck1">%room_no%( %room_type% )</label></div>';
                             var newhtml = html.replace('%room_no%', item.room_no);
                             var newhtml = newhtml.replace('%room_type%', item.roomtype.room_type);
@@ -440,13 +411,9 @@ $current =date("d/m/Y");
                             var newhtml = newhtml.replace('%tarrif%', item.tariff);
                             roomsetup.insertAdjacentHTML('afterend', newhtml);
                         })
-
                     }
-
                 }
             });
-
-
         });
 
         return {
@@ -456,14 +423,10 @@ $current =date("d/m/Y");
     })();
 
     var total = {{$advancebooking->tariff}};
-
     function selectedRoom(el) {
-
         var room = [];
         if (el.checked == true) {
             rooms.getRooms.filter(function(element) {
-
-
                 // return element.id == el.value;
                 element.filter(function(ele) {
                     if (ele.id == el.value) {
@@ -608,16 +571,6 @@ $current =date("d/m/Y");
                     console.log(data);
                     $('#addguest').modal('hide');
                     toastr.success(data.message);
-                    //log(data);
-
-                    //     $('.loading_button').hide();
-                    //     $('.submit_button').show();
-                    //     $('.error').html('');
-                    //     $('#add_income_form')[0].reset();
-                    //     $('#myModal1').modal('hide');
-                    //      setInterval(function() {
-                    //     window.location = "{{ url()->current() }}";
-                    // }, 700);
 
                 },
                 error: function(err) {
@@ -642,16 +595,6 @@ $current =date("d/m/Y");
                     if (err.responseJSON.errors.mobile) {
                         $('#mobile').html(err.responseJSON.errors.mobile[0])
                     }
-                    //log(err.responseJSON.errors);
-                    // if (err.responseJSON.errors.header_id) {
-                    //     $('.header_error').html('Income header is required');
-
-                    //     $('.header').addClass('is-invalid');
-                    // } else {
-                    //     $('.header_error').html('');
-                    //     $('.header').removeClass('is-invalid');
-                    // }
-
                 }
             });
         });
@@ -663,7 +606,4 @@ $current =date("d/m/Y");
         placeholder: '----Select Name----'
     });
 </script>
-
-
-
 @endsection

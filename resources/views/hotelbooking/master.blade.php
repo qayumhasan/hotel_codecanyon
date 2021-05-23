@@ -493,7 +493,6 @@
     <script src="{{asset('public/backend')}}/assets/js/izitost.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/fullcalender.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/select2.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/datatables.js"></script>
     <script src="{{asset('public/backend')}}/assets/jquery.PrintArea.js"></script>
     @yield('scripts')
@@ -560,10 +559,10 @@
     </script>
     <script>
         $('.datepickernew').datepicker({
-            format: 'dd-mm-yyyy',
+            format: 'yyyy/mm/dd',
         });
         $('#datepickerdaly').datepicker({
-        format: 'dd-mm-yyyy',
+            format: 'yyyy/mm/dd',
     });
     </script>
     <script>

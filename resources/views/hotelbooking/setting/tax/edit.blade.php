@@ -3,9 +3,8 @@
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
+$current = date("Y/m/d");
 @endphp
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -32,7 +31,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Date: *</label>
-                                                <input id="datepicker" type="text" class="form-control" name="tax_date" value="{{$tax->date}}" required />
+                                                <input id="datepicker" type="text" class="form-control form-control-sm" name="tax_date" value="{{$tax->date}}" required />
                                                 @error('tax_date')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -41,7 +40,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Tax Description: *</label>
-                                                <textarea class="form-control" name="tax_description" required>{{$tax->tax_description}}</textarea>
+                                                <textarea class="form-control form-control-sm" name="tax_description" required>{{$tax->tax_description}}</textarea>
                                                 @error('tax_description')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -50,7 +49,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Calculation: *</label>
-                                                <input type="text" class="form-control" name="calculation" value="{{$tax->calculation}}" required />
+                                                <input type="text" class="form-control form-control-sm" name="calculation" value="{{$tax->calculation}}" required />
                                                 @error('calculation')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -59,7 +58,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Base On: *</label>
-                                                <select class="form-control base_on" id="base_on" name="base_on">
+                                                <select class="form-control form-control-sm base_on" id="base_on" name="base_on">
                                                     <option @if($tax->base_on =='percentage' ) checked @endif value="percentage">Percentage</option>
                                                     <option @if($tax->base_on =='amount' ) checked @endif value="amount">Amount</option>
                                                 </select>
@@ -71,7 +70,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Percentage(%): *</label>
-                                                <input type="number" @if($tax->base_on =='percentage' ) '' @else disabled @endif step="0.01" class="form-control rate" name="rate" value="{{$tax->rate}}" />
+                                                <input type="number" @if($tax->base_on =='percentage' ) '' @else disabled @endif step="0.01" class="form-control form-control-sm rate" name="rate" value="{{$tax->rate}}" />
                                                 @error('rate')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -80,7 +79,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Amount($):*</label>
-                                                <input type="number" @if($tax->base_on =='amount' ) '' @else disabled @endif step="0.01" class="form-control amount" name="amount" value="{{$tax->amount}}" />
+                                                <input type="number" @if($tax->base_on =='amount' ) '' @else disabled @endif step="0.01" class="form-control form-control-sm amount" name="amount" value="{{$tax->amount}}" />
                                                 @error('rate')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -89,7 +88,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Status: *</label>
-                                                <select class="form-control" name="effect">
+                                                <select class="form-control form-control-sm" name="effect">
                                                     <option @if($tax->effect == "Add") selected @endif value="1">Add</option>
                                                     <option @if($tax->effect == "Deducted") selected @endif value="0">Deduct</option>
                                                 </select>

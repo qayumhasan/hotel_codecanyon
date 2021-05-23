@@ -3,7 +3,7 @@
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
+$current = date("Y/m/d");
 @endphp
 <div class="content-page">
     <div class="container-fluid">
@@ -31,7 +31,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Date: *</label>
-                                                <input id="datepicker" type="text" class="form-control" name="tax_date" value="{{$current}}" required />
+                                                <input id="datepicker" type="text" class="form-control form-control-sm" name="tax_date" value="{{$current}}" required />
                                                 @error('tax_date')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -40,7 +40,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Tax Description: *</label>
-                                                <textarea class="form-control" name="tax_description" placeholder="Enter Tax Description" required></textarea>
+                                                <textarea class="form-control form-control-sm" name="tax_description" placeholder="Enter Tax Description" required></textarea>
                                                 @error('tax_description')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -49,7 +49,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Calculation: *</label>
-                                                <input type="text" class="form-control" name="calculation" placeholder="Calculation" required />
+                                                <input type="text" class="form-control form-control-sm" name="calculation" placeholder="Calculation" required />
                                                 @error('calculation')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -58,7 +58,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Base On: *</label>
-                                                <select class="form-control base_on" id="base_on" name="base_on">
+                                                <select class="form-control form-control-sm base_on" id="base_on" name="base_on">
                                                     <option value="">--select--</option>
                                                     <option value="percentage">Percentage</option>
                                                     <option value="amount">Amount</option>
@@ -71,7 +71,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Percentage(%): *</label>
-                                                <input type="number" disabled step="0.01" class="form-control rate" name="rate" placeholder="Enter Rate" />
+                                                <input type="number" disabled step="0.01" class="form-control form-control-sm rate" name="rate" placeholder="Enter Rate" />
                                                 @error('rate')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -80,7 +80,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Amount($): *</label>
-                                                <input type="number" disabled step="0.01" class="form-control amount" name="amount" placeholder="Enter Amount" />
+                                                <input type="number" disabled step="0.01" class="form-control form-control-sm amount" name="amount" placeholder="Enter Amount" />
                                                 @error('rate')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -89,7 +89,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Status: *</label>
-                                                <select class="form-control" name="effect">
+                                                <select class="form-control form-control-sm" name="effect">
                                                     <option value="1">Add</option>
                                                     <option value="0">Deduct</option>
                                                 </select>

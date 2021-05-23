@@ -1,16 +1,6 @@
 @extends('hotelbooking.master')
-@section('title', 'Add Room | '.$seo->meta_title)
+@section('title', 'Add Room | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -38,7 +28,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Room No: *</label>
-                                            <input type="text" class="form-control" id="fname" name="room_no" placeholder="Room No"/>
+                                            <input type="text" class="form-control form-control-sm" id="fname" name="room_no" placeholder="Room No"/>
                                             @error('room_no')
                                                 <div style="color:red">{{ $message }}</div>
                                             @enderror
@@ -47,7 +37,7 @@
                                      <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Branch Name: *</label>
-                                            <select name="branch_id" class="form-control" id="branch_id">
+                                            <select name="branch_id" class="form-control form-control-sm" id="branch_id">
                                                 <option value="">--Select--</option>
                                                 @foreach($allbranch as $branch)
                                                     <option value="{{$branch->id}}">{{$branch->branch_name}}</option>
@@ -55,49 +45,51 @@
                                             </select>
                                             @error('branch_id')
                                                 <div style="color:red">{{ $message }}</div>
-                                            @enderror
-                                          
+                                            @enderror                       
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Room Type: </label>
-                                            <select name="room_type" class="form-control" id="room_type">
+                                            <select name="room_type" class="form-control form-control-sm" id="room_type">
                                                 <option value="">--Select--</option>
+                                                @foreach($roomtypes as $row)
+                                                    <option value="{{$row->id}}">{{$row->room_type}}</option>
+                                                @endforeach
                                             </select>
                                             @error('room_type')
                                                 <div style="color:red">{{ $message }}</div>
                                             @enderror
-                                          
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Floor: </label>
-                                            <select name="floor" class="form-control floor" id="floor">
+                                            <select name="floor" class="form-control form-control-sm floor" id="floor">
                                                 <option value="">--Select--</option>
+                                                @foreach($floors as $row)
+                                                <option value="{{$row->id}}">{{$row->name}}</option>
+                                                @endforeach
                                             </select>
                                             @error('floor')
                                                 <div style="color:red">{{ $message }}</div>
                                             @enderror
-                                          
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Toilet:</label>
-                                            <select name="toilet" class="form-control">
+                                            <select name="toilet" class="form-control form-control-sm">
                                                 <option value="">--Select--</option>
                                                 <option value="General">General</option>
                                                 <option value="English">English</option>
                                             </select>
-                                          
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Tariff:</label>
-                                           <Input type="text" name="tariff" class="form-control" id="tariff" placeholder="Price">
+                                           <Input type="text" name="tariff" class="form-control form-control-sm" id="tariff" placeholder="Price">
                                            @error('tariff')
                                                 <div style="color:red">{{ $message }}</div>
                                             @enderror
@@ -106,27 +98,24 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Category:</label>
-                                            <input type="text" id="category" name="category" class="form-control" list="allcategory" placeholder="Category" />
+                                            <input type="text" id="category" name="category" class="form-control form-control-sm" list="allcategory" placeholder="Category" />
                                             <datalist id="allcategory">
                                             @foreach($category as $cate)
                                                 <option value="{{$cate->category}}">{{$cate->category}}</option>
                                             @endforeach
                                             </datalist>
-                                       
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="lname">Room Details: </label>
-                                           <textarea name="room_details" id="editor3" cols="30" rows="10"></textarea>
+                                           <textarea class="form-control form-control-sm" name="room_details" id="editor3" cols="30" rows="5"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                     <div class="col-md-3">
                         <div class="card shadow-sm shadow-showcase">
                             <div class="card-header d-flex justify-content-between asif">
@@ -148,7 +137,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="card shadow-sm shadow-showcase">
                             <div class="card-body">
@@ -160,21 +148,15 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                 
                 </div>
             </form>
             </div>
-
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-<script>
-   CKEDITOR.replace('editor3');
-</script>
+
 
 <script type="text/javascript">
   $(document).ready(function() {

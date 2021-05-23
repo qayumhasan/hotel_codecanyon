@@ -6,19 +6,6 @@ date_default_timezone_set("Asia/Dhaka");
 $current =date("Y-m-d");
 @endphp
 
-
-
-<style>
-    .search_area {
-        width: 100%;
-
-    }
-
-    #datatable_filter {
-        visibility: hidden;
-    }
-</style>
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -28,11 +15,6 @@ $current =date("Y-m-d");
                         <div class="header-title">
                             <h4 class="card-title">Searching Room By Room Type</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
 
@@ -78,11 +60,6 @@ $current =date("Y-m-d");
                         <div class="header-title">
                             <h4 class="card-title">Advance Booking Day By Day Calender</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
                         <div id='top'>
@@ -93,8 +70,6 @@ $current =date("Y-m-d");
                         </div>
 
                         <div id='calendar'></div>
-
-
                     </div>
                 </div>
             </div>
@@ -105,8 +80,6 @@ $current =date("Y-m-d");
 <script>
     var searchbtn = document.querySelector('#searchbtn');
     searchbtn.addEventListener('click', function() {
-     
-        
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -116,15 +89,10 @@ $current =date("Y-m-d");
             type: 'get',
             url: "{{ url('/admin/advance/report/daybyday/') }}",
             data:$('#search_calender').serializeArray(),
-
             success: function(data) {
-                console.log(data);
-
-
                 var initialLocaleCode = 'en';
                 var localeSelectorEl = document.getElementById('locale-selector');
                 var calendarEl = document.getElementById('calendar');
-
                 var calendar = new FullCalendar.Calendar(calendarEl, {
                     headerToolbar: {
                         left: 'prev,next today',
@@ -139,68 +107,8 @@ $current =date("Y-m-d");
                     editable: true,
                     dayMaxEvents: true, // allow "more" link when too many events
                     events:data.data,
-                    
-                    // events: [
-                        
-                    //     {
-                    //         title: 'All Day Event',
-                    //         start: '2021-01-01'
-                    //     },
-                    //     {
-                    //         title: 'Long Event',
-                    //         start: '2021-01-07',
-                    //         end: '2021-01-10'
-                    //     },
-                    //     {
-                    //         groupId: 999,
-                    //         title: 'Repeating Event',
-                    //         start: '2021-01-09T16:00:00'
-                    //     },
-                    //     {
-                    //         groupId: 999,
-                    //         title: 'Repeating Event',
-                    //         start: '2021-01-16T16:00:00'
-                    //     },
-                    //     {
-                    //         title: 'Conference',
-                    //         start: '2021-01-11',
-                    //         end: '2021-01-13'
-                    //     },
-                    //     {
-                    //         title: 'Meeting',
-                    //         start: '2021-01-12T10:30:00',
-                    //         end: '2021-01-12T12:30:00'
-                    //     },
-                    //     {
-                    //         title: 'Lunch',
-                    //         start: '2020-09-12T12:00:00'
-                    //     },
-                    //     {
-                    //         title: 'Meeting',
-                    //         start: '2020-09-12T14:30:00'
-                    //     },
-                    //     {
-                    //         title: 'Happy Hour',
-                    //         start: '2020-09-12T17:30:00'
-                    //     },
-                    //     {
-                    //         title: 'Dinner',
-                    //         start: '2020-09-12T20:00:00'
-                    //     },
-                    //     {
-                    //         title: 'Birthday Party',
-                    //         start: '2020-09-13T07:00:00'
-                    //     },
-                    //     {
-                    //         title: 'Click for Google',
-                    //         url: 'http://google.com/',
-                    //         start: '2020-09-28'
-                    //     }
-                    // ]
                 });
-
                 calendar.render();
-
                 // build the locale selector's options
                 calendar.getAvailableLocaleCodes().forEach(function(localeCode) {
                     var optionEl = document.createElement('option');
@@ -209,23 +117,14 @@ $current =date("Y-m-d");
                     optionEl.innerText = localeCode;
                     localeSelectorEl.appendChild(optionEl);
                 });
-
                 // when the selected option changes, dynamically change the calendar option
                 localeSelectorEl.addEventListener('change', function() {
                     if (this.value) {
                         calendar.setOption('locale', this.value);
                     }
                 });
-
             }
         });
-
-
     });
-
-
 </script>
-
-
-
 @endsection

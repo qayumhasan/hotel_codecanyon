@@ -1,21 +1,8 @@
 @extends('hotelbooking.master')
-@section('title', 'In House Guest | '.$seo->meta_title)
+@section('title', 'In House Guest | '.$companyinformation->company_name)
 @section('content')
-
-<style>
-    .search_area {
-        width: 100%;
-
-    }
-
-    #datatable_filter {
-        visibility: hidden;
-    }
-</style>
-
 <div class="content-page">
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
@@ -23,11 +10,6 @@
                         <div class="header-title">
                             <h4 class="card-title">All In House Guest</h4>
                         </div>
-                        <!-- <span class="float-right mr-2">
-                            <a href="#" class="btn btn-sm bg-primary">
-                                <i class="ri-add-fill"><span class="pl-1">Add Room</span></i>
-                            </a>
-                        </span> -->
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -42,8 +24,7 @@
                                         <th>Total Pax</th>
                                         <th>In Date</th>
                                         <th>Exp.Out Date</th>
-                                        <th>Checkin By</th>
-                                        
+                                        <th>Checkin By</th>          
                                     </tr>
                                 </thead>
                                 <tfoot class="text-center">
@@ -57,14 +38,10 @@
                                         <th>In Date</th>
                                         <th>Exp.Out Date</th>
                                         <th>Checkin By</th>
-                                       
                                     </tr>
                                 </tfoot>
                                 <tbody class="text-center">
-
-
                                     @foreach($inhouseguest as $row)
-
                                     <tr>
                                         <td>{{$row->checkin->booking_no ?? ''}}</td>
                                         <td>{{$row->checkin->room_no ?? ''}}</td>
@@ -78,10 +55,6 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
-
-
-
-
                             </table>
                         </div>
                     </div>
@@ -102,10 +75,8 @@
         $('#datatable thead th').each(function() {
             var title = $('#datatable thead th').eq($(this).index()).text();
             if (title != 'Action') {
-
                 $(this).html('<input class="search_area form-control form-control-sm" type="text" placeholder="' + title + '" />');
             }
-
         });
 
         // DataTable
