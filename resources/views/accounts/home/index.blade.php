@@ -74,4 +74,62 @@
       </div>
    </div>
 </div>
+
+<script>
+$(document).ready(function(){
+   if (jQuery("#layout-1-chart-06").length) {
+  var options = {
+          series: [{
+          name: 'Total Purchase',
+          data: [{{$totalcategores}},{{$totalmaincategores}},{{$totalChartofAccounts}},{{$totalTransitions}}]
+        }],
+          chart: {
+          type: 'bar',
+          height: 310
+        },
+    colors: ['#05bbc9','#876cfe'],
+
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '25%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['Categories', 'Main Categories', 'Chart Of Accounts', 'Transitions'],
+        },
+      yaxis: {
+        show: true,
+        labels: {
+          minWidth: 20,
+          maxWidth: 20
+        }
+      },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands"
+            }
+          }
+        }
+        };
+
+    var chart = new ApexCharts(document.querySelector("#layout-1-chart-06"), options);
+        chart.render();
+}
+});
+
+</script>
 @endsection
