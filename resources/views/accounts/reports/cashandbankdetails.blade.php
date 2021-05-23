@@ -201,13 +201,7 @@ $current = date("Y/m/d");
                                     @endif
                                  </table>
                               </div>
-
-
-
-
                            </div>
-
-
 
                         </div>
                      </div>
@@ -221,11 +215,6 @@ $current = date("Y/m/d");
       </div>
    </div>
 </div>
-
-
-
-
-
 <script>
    $(function() {
       $(".savepritbtn").on('click', function() {

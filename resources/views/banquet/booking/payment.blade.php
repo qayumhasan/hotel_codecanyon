@@ -81,8 +81,8 @@ $current = date("Y/m/d");
 
                                             @endphp
 
-                                            <input type="hidden" name="account_head" id="account_head" value="{{$booking_number}}">
-                                            <input type="text" class="form-control" value="{{$banquetname->guest_name}}( {{$banquetname->booking_no}} )" disabled>
+                                            <input type="hidden" name="account_head"  id="account_head" value="{{$booking_number}}">
+                                             <input type="text"  class="form-control" value="{{$banquetname->guest_name}}( {{$banquetname->booking_no}} )" disabled>
 
                                             <span style="color:red" id="accont_head_err"></span>
                                             <input type="hidden" value="" name="acchead_cate_code" id="acchead_cate_code">
@@ -593,7 +593,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice").val();
         // alert(invoice);
-        $.post('{{ url(' / get / alldatatransection / data / ') }}/' + invoice, {
+        $.post('{{ url('/get/alldatatransection/data/') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -612,8 +612,7 @@ $current = date("Y/m/d");
 <script>
     function Datadelete(el) {
         //alert(el.value);
-        $.post('{{route('
-            get.transection.delete ')}}', {
+        $.post('{{route('get.transection.delete')}}', {
                 _token: '{{ csrf_token() }}',
                 tran_id: el.value
             },
@@ -629,8 +628,7 @@ $current = date("Y/m/d");
 <script>
     function editdata(el) {
 
-        $.post('{{route('
-            get.alldatatransection.edit ')}}', {
+        $.post('{{route('get.alldatatransection.edit')}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },

@@ -137,9 +137,11 @@ $current = date("Y/m/d");
                            @endif
                         </div>
                      </div>
+                     @if(isset($searchdata))
                      <div class="card-body text-center">
                         <a href="#" class="btn btn-success savepritbtn">Print</a>
                      </div>
+                     @endif
                </div>
             </div>
          </div>

@@ -75,7 +75,7 @@ $current = date("Y/m/d");
                                     @endphp
 
 
-                                    <td> @if($amount->dr_amount==NULL) {{$amount->cr_amount}} @elseif($amount->cr_amount==NULL) {{$data->dr_amount}} @endif</td>
+                                    <td> @if($amount->dr_amount==NULL) {{$amount->cr_amount}} @elseif($amount->cr_amount==NULL) {{$amount->dr_amount}} @endif</td>
                                     <td>
                                        <a class="badge bg-success-light mr-2" data-toggle="tooltip" data-placement="top" href="" data-original-title="Print"><i class="la la-print"></i></a>
                                        <a class="badge bg-primary-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/account/transectionhead/edit/'.$sdata->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
@@ -113,20 +113,17 @@ $current = date("Y/m/d");
                                     @php
                                     $amount=App\Models\AccountTransectionDetails::where('voucher_no',$data->voucher_no)->select(['dr_amount','cr_amount'])->first();
                                     @endphp
-                                    <td> </td>
+                                    <td> @if($amount->dr_amount==NULL) {{$amount->cr_amount}} @elseif($amount->cr_amount==NULL) {{$amount->dr_amount}} @endif</td>
                                     <td>
                                        <a class="badge bg-success-light mr-2 print_click" data-id="{{$data->id}}" data-original-title="Print"><i class="la la-print"></i></a>
                                        <a class="badge bg-primary-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/account/transectionhead/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
                                        <a id="delete" class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/account/transectionhead/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
-
                                     </td>
                                  </tr>
                                  @endforeach
                               </tbody>
                            </table>
-
                            @endif
-
                         </div>
                      </div>
                      <div class="card-body text-center">
@@ -137,7 +134,6 @@ $current = date("Y/m/d");
       </div>
    </div>
 </div>
-
 
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
    <div class="modal-dialog modal-lg">

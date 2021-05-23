@@ -3,7 +3,7 @@
 
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 @endphp
 
 @section('content')
@@ -18,10 +18,6 @@ $current = date("d/m/Y");
         border-radius: 0px;
     }
 </style>
-@php
-date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
-@endphp
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -44,19 +40,19 @@ $current = date("m/d/Y");
 
                                         <div class="col-md-12">
 
-                                        
-                                        <table class="table table-borderless">
-                                            <tbody>
-                                               
-                                                <tr>
-                                                    <td class="text-center"><label>Narration:</label></td>
-                                                    <td colspan="5">
-                                                     <input type="hidden" id="voucher_name" name="voucher_name" value="Cash Receipt Voucher">
-                                                     <input type="hidden" name="reference" value="{{$guestname->booking_no}}">
-                                                        <textarea name="narration" class="form-control noradious"></textarea>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+
+                                            <table class="table table-borderless">
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td class="text-center"><label>Narration:</label></td>
+                                                        <td colspan="5">
+                                                            <input type="hidden" id="voucher_name" name="voucher_name" value="Cash Receipt Voucher">
+                                                            <input type="hidden" name="reference" value="{{$guestname->booking_no}}">
+                                                            <textarea name="narration" class="form-control noradious"></textarea>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
 
                                             </table>
                                         </div>
@@ -65,84 +61,78 @@ $current = date("m/d/Y");
 
                             </div>
                             <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
-                                
-                                <div class="form-group row">
-                                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Sourch Account:</label>
-                                    <div class="col-sm-6">
-                                        @php
-                                        $datasourche=App\Models\ChartOfAccount::where('maincategory_code',19)->get();
+                                <div class="card-body">
 
-                                        $allsubcategoryone=App\Models\AccountSubCategoryOne::where('is_deleted',0)->where('is_active',1)->get();
-                                        $allsubcategorytwo=App\Models\AccountSubCategoryTwo::where('is_deleted',0)->where('is_active',1)->get();
-                                        @endphp
-                                        <select id="account_head_main" name="account_head_main" class="form-control noradious">
-                                            <option value="">--Select--</option>
-                                            @foreach($datasourche as $sorch_ofaccgg)
-                                            <option value="{{$sorch_ofaccgg->code}}">{{$sorch_ofaccgg->desription_of_account}}</option>
-                                            @endforeach
-                                        </select>
-                                        <span style="font-size:12px;color:#776b6b" id="current_balance_sourch"></span>
-                                        <input type="hidden" value="" name="sourch_cate_code" id="sourch_cate_code">
-                                        <input type="hidden" value="" name="sourch_Accountcate_code" id="sourch_Accountcate_code">
-                                        <input type="hidden" value="" name="sourch_subcate_codeone" id="sourch_subcate_codeone">
-                                        <input type="hidden" value="" name="sourch_subcate_codetwo" id="sourch_subcate_codetwo">
-                                    </div>
-                                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Amount:</label>
-                                        <div class="col-sm-2">
-                                        <input type="number" class="form-control form-control-lg" id="amount" name="amount" placeholder="">
-                                        <span style="color:red;font-size:10px;" id="accont_amount"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Account Head Type:</label>
-                                    <div class="col-sm-6">
-                                                            @php
-                                                            $allguest=App\Models\Guest::where('id',$guestname->guest_id)->first();
-                                                            $balance=0;
-                                                            $allledger=DB::table('vAccountsHeadsLeadgerTbl')->where('Code',$allguest->guest_id)->select(['Balance'])->get();
-                                                                    foreach($allledger as $ledger){
-                                                                        $balance=$balance + $ledger->Balance ;
-                                                                    }
+                                    <div class="form-group row">
+                                        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Sourch Account:</label>
+                                        <div class="col-sm-6">
+                                            @php
+                                            $datasourche=App\Models\ChartOfAccount::where('maincategory_code',19)->get();
 
-                                                            @endphp
-
-                                                            <input type="hidden" id="account_head" name="account_head" value="{{$allguest->guest_id}}">
-
-
-                                                
-                                                <span style="font-size:12px;color:#776b6b" id="current_balance_head">Current Balance:{{ $balance}}</span>
-                                                <input type="text" class="form-control" value="{{$guestname->guest_name}}" disabled>
-                                                <span style="color:red" id="accont_head_err"></span>
-                                                <input type="hidden" value="" name="acchead_cate_code" id="acchead_cate_code">
-                                                <input type="hidden" value="" name="acchead_Accountcate_code" id="acchead_Accountcate_code">
-                                                <input type="hidden" value="" name="acchead_subcate_codeone" id="acchead_subcate_codeone">
-                                                <input type="hidden" value="" name="acchead_subcate_codetwo" id="acchead_subcate_codetwo">
-                                    </div>
-                                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Davit/Cradit:</label>
-                                    <div class="col-sm-2">
-                                                    <select name="amount_cate" id="amount_cate" class="form-control">
-                                                                <option value="Debit">Debit</option>
-                                                                <option value="Cradit">Cradit</option>
-                                                            </select>
-                                    </div>
-                                 </div>
-                                 <div class="form-group row">
-                                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Remarks: </label>
-                                    <div class="col-sm-6">
-                                         <input type="text" id="remarks" name="remarks"  class="form-control form-control-lg" placeholder="Remarks">
-                                    </div>
-                                    <div class="col-sm-4 text-right">
-                                    <a id="additem" class="btn-sm" style="padding: 10px;background: #4788ff; color: #fff; cursor:pointer">Add</a>
+                                            $allsubcategoryone=App\Models\AccountSubCategoryOne::where('is_deleted',0)->where('is_active',1)->get();
+                                            $allsubcategorytwo=App\Models\AccountSubCategoryTwo::where('is_deleted',0)->where('is_active',1)->get();
+                                            @endphp
+                                            <select id="account_head_main" name="account_head_main" class="form-control noradious">
+                                                <option value="">--Select--</option>
+                                                @foreach($datasourche as $sorch_ofaccgg)
+                                                <option value="{{$sorch_ofaccgg->code}}">{{$sorch_ofaccgg->desription_of_account}}</option>
+                                                @endforeach
+                                            </select>
+                                            <span style="font-size:12px;color:#776b6b" id="current_balance_sourch"></span>
+                                            <input type="hidden" value="" name="sourch_cate_code" id="sourch_cate_code">
+                                            <input type="hidden" value="" name="sourch_Accountcate_code" id="sourch_Accountcate_code">
+                                            <input type="hidden" value="" name="sourch_subcate_codeone" id="sourch_subcate_codeone">
+                                            <input type="hidden" value="" name="sourch_subcate_codetwo" id="sourch_subcate_codetwo">
                                         </div>
-                                   
-                                 </div>
+                                        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Amount:</label>
+                                        <div class="col-sm-2">
+                                            <input type="number" class="form-control form-control-lg" id="amount" name="amount" placeholder="">
+                                            <span style="color:red;font-size:10px;" id="accont_amount"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Account Head Type:</label>
+                                        <div class="col-sm-6">
+                                            @php
+                                            $allguest=App\Models\Guest::where('id',$guestname->guest_id)->first();
+                                            $balance=0;
+                                            $allledger=DB::table('vAccountsHeadsLeadgerTbl')->where('Code',$allguest->guest_id)->select(['Balance'])->get();
+                                            foreach($allledger as $ledger){
+                                            $balance=$balance + $ledger->Balance ;
+                                            }
 
-                            </div>
-                            <!-- card body ses -->
-                                
+                                            @endphp
 
+                                            <input type="hidden" id="account_head" name="account_head" value="{{$allguest->guest_id}}">
+                                            <input type="text" class="form-control" value="{{$guestname->guest_name}}" disabled>
+                                            <span style="color:red" id="accont_head_err"></span>
+                                            <input type="hidden" value="" name="acchead_cate_code" id="acchead_cate_code">
+                                            <input type="hidden" value="" name="acchead_Accountcate_code" id="acchead_Accountcate_code">
+                                            <input type="hidden" value="" name="acchead_subcate_codeone" id="acchead_subcate_codeone">
+                                            <input type="hidden" value="" name="acchead_subcate_codetwo" id="acchead_subcate_codetwo">
+                                            <span style="font-size:12px;color:#776b6b" id="current_balance_head">Current Balance:{{ $balance}}</span>
+                                        </div>
+                                        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Davit/Cradit:</label>
+                                        <div class="col-sm-2">
+                                            <select name="amount_cate" id="amount_cate" class="form-control">
+                                                <option value="Debit">Debit</option>
+                                                <option value="Cradit">Cradit</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg text-right">Remarks: </label>
+                                        <div class="col-sm-6">
+                                            <input type="text" id="remarks" name="remarks" class="form-control form-control-lg" placeholder="Remarks">
+                                        </div>
+                                        <div class="col-sm-4 text-right">
+                                            <a id="additem" class="btn-sm" style="padding: 10px;background: #4788ff; color: #fff; cursor:pointer">Add</a>
+                                        </div>
 
+                                    </div>
+
+                                </div>
+                                <!-- card body ses -->
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -190,18 +180,14 @@ $current = date("m/d/Y");
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
                                     <div class="card shadow-sm shadow-showcase">
                                         <div class="card-body">
                                             <div class="row">
-                                            <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-success">Submit</button>
-                                            </div>
-                                              
-                                           
+                                                <div class="col-md-12 text-right">
+                                                    <button type="submit" class="btn btn-success">Submit</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -219,19 +205,13 @@ $current = date("m/d/Y");
                             </div>
                             <div class="card-body">
                                 <div class="row" id="transectiondata">
-
-
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                   
             </div>
             </form>
         </div>
-
     </div>
 </div>
 </div>
@@ -569,10 +549,6 @@ $current = date("m/d/Y");
                         acchead_subcate_codetwo: acchead_subcate_codetwo,
                         hiddeninvoice: hiddeninvoice,
                         cheque_reference: cheque_reference,
-
-
-
-
                     },
 
                     success: function(data) {
@@ -587,21 +563,15 @@ $current = date("m/d/Y");
                         $('#amount').val("");
                         $('#accounttransecti_id').val("");
                         $('#account_head_main').val("");
-
-
                         $('#sourch_cate_code').val("");
                         $('#sourch_Accountcate_code').val("");
                         $('#sourch_subcate_codeone').val("");
                         $('#sourch_subcate_codetwo').val("");
-
                         $('#acchead_cate_code').val("");
                         $('#acchead_Accountcate_code').val("");
                         $('#acchead_subcate_codeone').val("");
                         $('#acchead_subcate_codetwo').val("");
                         $('#cheque_reference').val("");
-
-
-
                         alldata();
 
                     },
@@ -613,10 +583,6 @@ $current = date("m/d/Y");
 
                 });
             }
-
-
-
-
         });
     });
 </script>
@@ -628,7 +594,7 @@ $current = date("m/d/Y");
         //alert("ok");
         var invoice = $("#invoice").val();
 
-        $.post('{{ url('/get/alldatatransection/data/') }}/'+invoice, {
+        $.post('{{ url('/get/alldatatransection/data/') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -660,49 +626,49 @@ $current = date("m/d/Y");
     }
 </script>
 <script>
-$(document).ready(function() {
-   $('#account_head_main').on('change', function(){
-       var source_account = $(this).val();
-        //alert(source_account);
-       if(source_account) {
-           $.ajax({
-               url: "{{  url('/get/admin/source_account/current/blance/') }}/"+source_account,
-               type:"GET",
-               dataType:"json",
-               success:function(data) {
-                  
-                        $('#current_balance_sourch').html("Current Balance:" +data);
-                    
-                    
-                }
-           });
-       }
+    $(document).ready(function() {
+        $('#account_head_main').on('change', function() {
+            var source_account = $(this).val();
+            //alert(source_account);
+            if (source_account) {
+                $.ajax({
+                    url: "{{  url('/get/admin/source_account/current/blance/') }}/" + source_account,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
 
-   });
-});
+                        $('#current_balance_sourch').html("Current Balance:" + data);
+
+
+                    }
+                });
+            }
+
+        });
+    });
 </script>
 
 <script>
-$(document).ready(function() {
-   $('#account_head').on('change', function(){
-       var head_account = $(this).val();
-        //alert(head_account);
-       if(head_account) {
-           $.ajax({
-               url: "{{  url('/get/admin/head_account/current/blance/') }}/"+head_account,
-               type:"GET",
-               dataType:"json",
-               success:function(data) {
-                  
-                        $('#current_balance_head').html("Current Balance: " +data);
-                    
-                    
-                }
-           });
-       }
+    $(document).ready(function() {
+        $('#account_head').on('change', function() {
+            var head_account = $(this).val();
+            //alert(head_account);
+            if (head_account) {
+                $.ajax({
+                    url: "{{  url('/get/admin/head_account/current/blance/') }}/" + head_account,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
 
-   });
-});
+                        $('#current_balance_head').html("Current Balance: " + data);
+
+
+                    }
+                });
+            }
+
+        });
+    });
 </script>
 
 
@@ -711,25 +677,22 @@ $(document).ready(function() {
 
 
 <script>
-function editdata(el) {
-       
-        $.post('{{route('get.alldatatransection.edit')}}', {_token: '{{ csrf_token() }}',item_id: el.value},
+    function editdata(el) {
+
+        $.post('{{route('get.alldatatransection.edit')}}', {
+                _token: '{{ csrf_token() }}',
+                item_id: el.value
+            },
             function(data) {
                 // console.log(data)
-
                 $("#location").val(data.location);
                 $("#account_head").val(data.account_head_details);
-
                 $("#account_head_main").val(data.account_head_details);
-
                 $("#price").val(data.price);
                 $("#accounttransecti_id").val(data.id);
-
                 if (data.qty) {
                     $(".qty").show();
                     $("#qty").val(data.qty);
-
-
                     var checkeditem = document.querySelector('#mainqty');
                     console.dir(checkeditem.checked = true);
 
@@ -737,7 +700,6 @@ function editdata(el) {
                     var checkeditem = document.querySelector('#mainqty');
                     console.dir(checkeditem.checked = false);
                     $(".qty").hide();
-
                 }
                 if (data.subcategory_codeone) {
                     var checkeditem = document.querySelector('#mainsubheadone');
@@ -763,171 +725,139 @@ function editdata(el) {
                 }
                 $("#qty").val(data.qty);
                 $("#remarks").val(data.remarks);
-
-
                 if (data.dr_amount) {
-
                     $("#amount").val(data.dr_amount);
                     $("#amount_cate").val('Debit').selected;
-
-
                 } else {
-
-
                     $("#amount").val(data.cr_amount);
                     $("#amount_cate").val('Cradit').selected;
 
                 }
-
-
-
             });
 
 
     }
 </script>
 
-
-
-
-
-
-
-
-
-
-
 @if(Session::has('accounthead'))
-<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog"  aria-hidden="true">
-   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="text-center printableAreasaveprintsectioninvoice">
-            <div class="modal-header" >
-                <h5 class="modal-title">INVOICE</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body ">
-                <div class="row">
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="text-center printableAreasaveprintsectioninvoice">
+                <div class="modal-header">
+                    <h5 class="modal-title">INVOICE</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body ">
+                    <div class="row">
                         @if(Session::has('accounthead'))
-                                    @php
-                                        $accounthead =session('accounthead');
-                                    
-                                        $totalamount=0;
-                                    @endphp
+                        @php
+                        $accounthead =session('accounthead');
+
+                        $totalamount=0;
+                        @endphp
                         @endif
-                    <div class="col-md-4">
-                        <img src="{{asset('public/uploads/logo/'.$logos->logo)}}" alt="" height="40px">
-                        
-                        <h6 style="margin-top:5px;font-size:10px">ChequeNo: {{ $accounthead['accountnew']->checque_reference }}<span id="ChequeNo"></span></h6>
-                        
-                    </div>
-                    <div class="col-md-4">
-                        <h3></h3>
-                        <h6></h6>
-                    </div>
-                    <div class="col-md-4">
-                        <h6 style="margin-top:5px;font-size:10px">VoucherNo: {{ $accounthead['accountnew']->voucher_no }}<span id="voucherno"></span></h6>
-                        <h6>Date:{{ $accounthead['accountnew']->date }}<span class="date"></span></h6>
-                        <p style="margin-top:2px;font-size:10px">ReferenceChecque:<span id="referenceno">{{ $accounthead['accountnew']->reference }}</span></p>
-                    </div>
-                    
-                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <img src="{{asset('public/uploads/logo/'.$logos->logo)}}" alt="" height="40px">
+                            <h6 style="margin-top:5px;font-size:10px">ChequeNo: {{ $accounthead['accountnew']->checque_reference }}<span id="ChequeNo"></span></h6>
+                        </div>
+                        <div class="col-md-4">
+                            <h3></h3>
+                            <h6></h6>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 style="margin-top:5px;font-size:10px">VoucherNo: {{ $accounthead['accountnew']->voucher_no }}<span id="voucherno"></span></h6>
+                            <h6>Date:{{ $accounthead['accountnew']->date }}<span class="date"></span></h6>
+                            <p style="margin-top:2px;font-size:10px">ReferenceChecque:<span id="referenceno">{{ $accounthead['accountnew']->reference }}</span></p>
+                        </div>
+
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
                                 <div class="card-body">
                                     <div class="row asif">
                                         <div class="col-md-12 text-left">
-                                        Narration:{{ $accounthead['accountnew']->narration }} <span id="Narration"></span>
+                                            Narration:{{ $accounthead['accountnew']->narration }} <span id="Narration"></span>
                                         </div>
                                         <div class="col-md-12" style="font-size:12px">
-                                        <div class="card" id="">
-                                        <div class="card-body">
-                                            <table border="1" width="100%">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                    <th scope="col">A/C CODE</th>
-                                                    <th scope="col">HeadofAccount</th>
-                                                    <th scope="col">Details</th>
-                                                    <th scope="col">Dabit</th>
-                                                    <th scope="col">Cradit</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                        $total_amount=0;
-                                                        $accounts = $accounthead['accounthead'];
-                                                    
-                                                    @endphp
-                                                    @foreach($accounts as $head)
-                                                                    <tr>
-                                                                    <th scope="row">{{$head->account_head_code}}</th>
-                                                                    <td>{{$head->account_head_details}}</td>
-                                                                    <td>{{$head->remarks}}</td>
-                                                                    <td>{{$head->dr_amount}}</td>
-                                                                    <td>{{$head->cr_amount}}</td>
-                                                                </tr>
-                                                                @php
-                                                                    $total_amount=$total_amount + $head->dr_amount;
-                                                                @endphp
-                                                    
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                            <table  border="0"  width="100%">
-                                                <tbody>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td>Total: {{$total_amount}}</td>
-                                                    
-                                                    </tr>
-                                                
-                                                </tbody>
-                                            </table>
-                                            
+                                            <div class="card" id="">
+                                                <div class="card-body">
+                                                    <table border="1" width="100%">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th scope="col">A/C CODE</th>
+                                                                <th scope="col">HeadofAccount</th>
+                                                                <th scope="col">Details</th>
+                                                                <th scope="col">Dabit</th>
+                                                                <th scope="col">Cradit</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @php
+                                                            $total_amount=0;
+                                                            $accounts = $accounthead['accounthead'];
+
+                                                            @endphp
+                                                            @foreach($accounts as $head)
+                                                            <tr>
+                                                                <th scope="row">{{$head->account_head_code}}</th>
+                                                                <td>{{$head->account_head_details}}</td>
+                                                                <td>{{$head->remarks}}</td>
+                                                                <td>{{$head->dr_amount}}</td>
+                                                                <td>{{$head->cr_amount}}</td>
+                                                            </tr>
+                                                            @php
+                                                            $total_amount=$total_amount + $head->dr_amount;
+                                                            @endphp
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                    <table border="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td>Total: {{$total_amount}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 row" style="margin-bottom:20px;font-size:10px">
+
+                                                <table width="100%">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">In Word: ( {{$numToWord->numberTowords($total_amount)}} )</th>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td> Total: {{$total_amount}} | {{$total_amount}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            <br>
+                                            <div class="col-md-12 row">
+                                                <table width="100%" style="font-size:12px">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row"> <span style="border-top:2px solid #000; width:50%;"> PreparedBy:</span></th>
+                                                            <td> <span style="border-top:2px solid #000; width:50%;"> CheckedBy:</span></td>
+                                                            <td><span style="border-top:2px solid #000; width:50%;"> VerifiedBy:</span></td>
+                                                            <td> <span style="border-top:2px solid #000; width:50%;"> ApproveBy:</span></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 row" style="margin-bottom:20px;font-size:10px">
-
-                                                <table  width="100%">
-                                                    <tbody>
-                                                    
-                                                    <tr>
-                                                        <th scope="row">In Word: ( {{$numToWord->numberTowords($total_amount)}} )</th>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td> Total: {{$total_amount}} | {{$total_amount}}</td>
-                                                    </tr>
-                                                                
-                                                    </tbody>
-                                                </table>
-                                           
-                                        </div>
-                                        <br>
-                                        <div class="col-md-12 row">
-                                                <table  width="100%" style="font-size:12px">
-                                                    <tbody>
-                                                    
-                                                    <tr>
-                                                        <th scope="row">  <span style="border-top:2px solid #000; width:50%;"> PreparedBy:</span></th>
-                                                        <td> <span style="border-top:2px solid #000; width:50%;"> CheckedBy:</span></td>
-                                                        <td><span style="border-top:2px solid #000; width:50%;"> VerifiedBy:</span></td>
-                                                        <td> <span style="border-top:2px solid #000; width:50%;"> ApproveBy:</span></td>
-                                                        <td></td>
-                                                    </tr>
-                                                                
-                                                    </tbody>
-                                                </table>
-                                     
-                                       
-                                        </div>
-                                    
                                     </div>
                                 </div>
                             </div>
@@ -935,36 +865,32 @@ function editdata(el) {
                     </div>
                 </div>
             </div>
+            <div class="modal-footer ">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-primary savepritbtnareainvoice"><i class="fa fa-print"></i></button>
+                </div>
             </div>
-                    
-                        <div class="modal-footer ">
-                                <div class="col-md-12 text-center">
-                                    <button type="button" class="btn btn-primary savepritbtnareainvoice"><i class="fa fa-print"></i></button>
-                                </div>
-                        </div>
-           
-            </div>
-         </div>
-      </div>
-   </div>
-</div> 
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
 @endif
 
 @if(Session::has('accounthead'))
 <script>
-   $(document).ready(function() {
-      $('#exampleModal').modal('show');
-   });
+    $(document).ready(function() {
+        $('#exampleModal').modal('show');
+    });
 </script>
 
- {{ Session::forget('accounthead')}}
+{{ Session::forget('accounthead')}}
 @endif
-
 <script>
-
     $(function() {
         $(".savepritbtnareainvoice").on('click', function() {
-               // alert("ok");
+            // alert("ok");
             var mode = 'iframe'; //popup
             var close = mode == "popup";
             var options = {
@@ -976,17 +902,5 @@ function editdata(el) {
         });
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection

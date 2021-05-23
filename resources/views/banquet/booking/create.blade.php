@@ -162,9 +162,7 @@ $time = date("h:i");
                                             <div class="form-group">
                                                 <label for="fname">Function Date To:</label>
                                                 <Input type="text" name="date_of_function_to" class="form-control datepicker" value="{{$current}}">
-                                                @error('mobile')
-                                                <div style="color:red">{{ $message }}</div>
-                                                @enderror
+                                               
                                             </div>
                                         </div>
                                         <div class="col-md-4">

@@ -552,7 +552,7 @@
     <script>
         $('#datepicker').datepicker();
     </script>
-    <script>
+      <script>
         $('.datepicker').datepicker({
             format: 'yyyy/mm/dd',
         });

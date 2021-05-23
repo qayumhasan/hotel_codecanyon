@@ -30,7 +30,7 @@ class LoginController extends Controller
               'messege' => 'Login success!',
               'alert-type' =>'success'
           	);
-            return redirect()->intended(route('admin.dashboard'))->with($notification);
+            return redirect()->intended(route('admin.dashboard'));
           }elseif(Auth::guard('admin')->attempt(['username' => $request->email, 'password' => $request->password],$request->remember)){
 		      	 $notification = array(
 		          'messege' => 'Login success!',

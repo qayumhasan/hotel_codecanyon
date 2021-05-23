@@ -8,12 +8,9 @@ use App\Models\Seo;
 use App\Models\Addon;
 use App\Models\ImageManager;
 use App\Models\CompanyInformation;
-
 use App\Models\Currency;
 use App\Traits\CalculatePerDayRoomTarrif;
-
 use App\Traits\NumberToWord;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**

@@ -30,7 +30,7 @@
                                                 <td>{{$aldata->item_name}}</td>
                                                 <td>{{$aldata->qty}}</td>
                                                 <td>{{$aldata->amount}}</td>
-                                                <td>if($aldata->billing_status ==0)No @else Yes @endif</td>
+                                                <td>@if($aldata->billing_status ==0)No @else Yes @endif</td>
                                                 <td><a type="button"  class="btn-sm singleinvoiceprint" data-id="{{$aldata->id}}"><i class="la la-print"></i></a></td>
                                             </tr>
                                         @endforeach

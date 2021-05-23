@@ -3,14 +3,11 @@
 
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("d/m/Y");
+$current = date("Y/m/d");
 $bookingno = rand(11111,99999);
 $time = date("h:i");
 @endphp
-
 @section('content')
-
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
@@ -23,7 +20,6 @@ $time = date("h:i");
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-12 col-lg-12">
                 <div class="card p-4">
                     <h4 class="card-title">Money Receipt Register</h4>
@@ -66,22 +62,14 @@ $time = date("h:i");
                     </table>
                     @else
                     <table>
-                 
-
                     <tr>
                         <th class="text-center"> No Data Found!</th>
                     </tr>
-
                     </table>
                     @endif
                 </div>
             </div>
-
-
         </div>
-
-
-
     </div>
 </div>
 
