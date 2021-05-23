@@ -63,15 +63,75 @@
             <div class="card card-block card-stretch card-height">
                <div class="card-header border-none">
                   <div class="header-title">
-                     <h4 class="card-title">Purchase Overview</h4>
+                     <h4 class="card-title">Overview</h4>
                   </div>
                </div>
                <div class="card-body">
-                  <div id="layout-1-chart-06"></div>
+                  <div id="layout-1-chart-06">
+                  
+                  </div>
                </div>
             </div>
          </div>
       </div>
    </div>
+   
 </div>
+<script>
+$(document).ready(function(){
+   if (jQuery("#layout-1-chart-06").length) {
+  var options = {
+          series: [{
+          name: 'Total Purchase',
+          data: [10, 65, 96, 46, 30, 58,97]
+        }],
+          chart: {
+          type: 'bar',
+          height: 310
+        },
+    colors: ['#05bbc9','#876cfe'],
+
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '25%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: ['Purchase', 'Stock', '2020 Q3', '2020 Q4', '2020 Q5', '2020 Q6', '2020 Q7'],
+        },
+      yaxis: {
+        show: true,
+        labels: {
+          minWidth: 20,
+          maxWidth: 20
+        }
+      },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands"
+            }
+          }
+        }
+        };
+
+    var chart = new ApexCharts(document.querySelector("#layout-1-chart-06"), options);
+        chart.render();
+}
+});
+
+</script>
 @endsection

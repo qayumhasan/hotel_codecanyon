@@ -5528,61 +5528,61 @@ if (jQuery('#calendar1').length) {
     })
   }
 
-  if (jQuery("#layout-1-chart-06").length) {
-  var options = {
-          series: [{
-          name: 'Total Likes',
-          data: [86, 65, 96, 46, 30, 58,97]
-        }, {
-          name: 'Total Share',
-          data: [55, 95, 45, 98, 55, 99,44]
-        }],
-          chart: {
-          type: 'bar',
-          height: 310
-        },
-    colors: ['#05bbc9','#876cfe'],
+//   if (jQuery("#layout-1-chart-06").length) {
+//   var options = {
+//           series: [{
+//           name: 'Total Likes',
+//           data: [86, 65, 96, 46, 30, 58,97]
+//         }, {
+//           name: 'Total Share',
+//           data: [55, 95, 45, 98, 55, 99,44]
+//         }],
+//           chart: {
+//           type: 'bar',
+//           height: 310
+//         },
+//     colors: ['#05bbc9','#876cfe'],
 
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: '25%',
-            endingShape: 'rounded'
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ['transparent']
-        },
-        xaxis: {
-          categories: ['2020 Q1', '2020 Q2', '2020 Q3', '2020 Q4', '2020 Q5', '2020 Q6', '2020 Q7'],
-        },
-      yaxis: {
-        show: true,
-        labels: {
-          minWidth: 20,
-          maxWidth: 20
-        }
-      },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "$ " + val + " thousands"
-            }
-          }
-        }
-        };
+//         plotOptions: {
+//           bar: {
+//             horizontal: false,
+//             columnWidth: '25%',
+//             endingShape: 'rounded'
+//           },
+//         },
+//         dataLabels: {
+//           enabled: false
+//         },
+//         stroke: {
+//           show: true,
+//           width: 2,
+//           colors: ['transparent']
+//         },
+//         xaxis: {
+//           categories: ['2020 Q1', '2020 Q2', '2020 Q3', '2020 Q4', '2020 Q5', '2020 Q6', '2020 Q7'],
+//         },
+//       yaxis: {
+//         show: true,
+//         labels: {
+//           minWidth: 20,
+//           maxWidth: 20
+//         }
+//       },
+//         fill: {
+//           opacity: 1
+//         },
+//         tooltip: {
+//           y: {
+//             formatter: function (val) {
+//               return "$ " + val + " thousands"
+//             }
+//           }
+//         }
+//         };
 
-    var chart = new ApexCharts(document.querySelector("#layout-1-chart-06"), options);
-        chart.render();
-}
+//     var chart = new ApexCharts(document.querySelector("#layout-1-chart-06"), options);
+//         chart.render();
+// }
 //layout-2
   if (jQuery('#layout-2-chart-01').length) {
     const options = {

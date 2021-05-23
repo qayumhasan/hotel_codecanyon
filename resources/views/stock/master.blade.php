@@ -379,45 +379,34 @@
 
     <!-- Backend Bundle JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/backend-bundle.min.js"></script>
-
     <!-- Flextree Javascript-->
     <script src="{{asset('public/backend')}}/assets/js/flex-tree.min.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/tree.js"></script>
     <script src="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.js"></script>
-
     <!-- Table Treeview JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/table-treeview.js"></script>
-
     <!-- Masonary Gallery Javascript -->
     <script src="{{asset('public/backend')}}/assets/js/masonry.pkgd.min.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/imagesloaded.pkgd.min.js"></script>
-
     <!-- Mapbox Javascript -->
     <script src="{{asset('public/backend')}}/assets/js/mapbox-gl.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/mapbox.js"></script>
     <script src="{{asset('public/backend')}}/assets/js/datepiker.js"></script>
-
     <!-- Fullcalender Javascript -->
     <script src="{{asset('public/backend')}}//assets/vendor/fullcalendar/core/main.js"></script>
     <script src="{{asset('public/backend')}}//assets/vendor/fullcalendar/daygrid/main.js"></script>
     <script src="{{asset('public/backend')}}/assets/vendor/fullcalendar/timegrid/main.js"></script>
     <script src="{{asset('public/backend')}}/assets/vendor/fullcalendar/list/main.js"></script>
-
     <!-- SweetAlert JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/sweetalert.js"></script>
-
     <!-- Vectoe Map JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/vector-map-custom.js"></script>
-
     <!-- Chart Custom JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/customizer.js"></script>
-
     <!-- Chart Custom JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/chart-custom.js"></script>
-
     <!-- slider JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/slider.js"></script>
-
     <!-- alert -->
     <script src="{{asset('public/backend')}}/assets/js/izitost.js"></script>
 

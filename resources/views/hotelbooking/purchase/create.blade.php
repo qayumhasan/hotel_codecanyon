@@ -718,8 +718,7 @@ $current = date("Y/m/d");
 <script>
     function getallitem() {
 
-        $.get('{{ url('
-            get / allitem / item / ') }}', {
+        $.get('{{ url("get/allitem/item/") }}', {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -864,7 +863,6 @@ $current = date("Y/m/d");
             $.ajax({
                 type: 'GET',
                 url: "{{route('tax.insert.data')}}",
-                //data: $('#tax_cal').serializeArray(),
                 data: {
                     tax_id: tax_id,
                     calculation_on: calculation_on,
@@ -907,7 +905,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url(' / get / alltax / data / ') }}/' + invoice, {
+        $.post('{{ url('/get/alltax/data/') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -961,7 +959,7 @@ $current = date("Y/m/d");
     function taxDatadelete(el) {
 
         //alert(el.value);
-        $.post('{{route('get.taxdata.delete')}}', {
+        $.post('{{route("get.taxdata.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 tax_id: el.value
             },
@@ -1044,7 +1042,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('/get/itempurchase/data/') }}/' + invoice, {
+        $.post('{{ url("/get/itempurchase/data/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -1068,12 +1066,11 @@ $current = date("Y/m/d");
             var rate = $(".rate").val();
             var amount = $(".amount").val();
             var invoice_no = $(".invoice").val();
-            //alert(invoice);
+            //alert(invoice_no);
 
             $.ajax({
                 type: 'GET',
                 url: "{{route('itempurchese.insert.data')}}",
-                //data: $('#option-choice-form').serializeArray(),
                 data: {
                     item_name: item_name,
                     unit: unit,
@@ -1095,8 +1092,6 @@ $current = date("Y/m/d");
                     $("#i_id").val("");
                     $(".rate").val("");
                     $(".amount").val("");
-
-
                     alltaxfile();
                     totalamount();
                     alldatashow();
@@ -1122,8 +1117,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('
-            get / total / amount / ') }}/' + invoice, {
+        $.post('{{ url('get/total/amount/') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -1157,7 +1151,7 @@ $current = date("Y/m/d");
 <script>
     function taxedit(el) {
 
-        $.post('{{route('get.taxitem.edit')}}', {
+        $.post('{{route("get.taxitem.edit")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -1182,7 +1176,7 @@ $current = date("Y/m/d");
     function cartDatadelete(el) {
 
 
-        $.post('{{route('get.purchaseitem.delete')}}', {
+        $.post('{{route("get.purchaseitem.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -1190,9 +1184,7 @@ $current = date("Y/m/d");
                 $('#addtocartshow').html(data);
 
                 if (data) {
-                    //   iziToast.success({  message: 'Delete success ',
-                    //                           'position':'topCenter'
-                    //                       });
+                   
                 }
 
 
@@ -1208,7 +1200,7 @@ $current = date("Y/m/d");
     function cartdata(el) {
 
         //alert(el.value)
-        $.post('{{route('get.itempurchase.edit')}}', {
+        $.post('{{route("get.itempurchase.edit")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -1234,7 +1226,7 @@ $current = date("Y/m/d");
 <script>
     function getallsuplier() {
 
-        $.get('{{ url('get/allsupplier/supplier/') }}', {
+        $.get('{{ url("get/allsupplier/supplier/") }}', {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
