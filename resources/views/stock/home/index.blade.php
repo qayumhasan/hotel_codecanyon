@@ -10,8 +10,8 @@
                      <div class="icon iq-icon-box rounded iq-bg-primary rounded shadow" data-wow-delay="0.2s"> <i class="las la-users"></i>
                      </div>
                      <div class="iq-text">
-                        <h6 class="text-white">Total Item</h6>
-                        <h3 class="text-white">75</h3>
+                        <h6 class="text-white">Total Physical Stocks</h6>
+                        <h3 class="text-white">{{$physicalstocks}}</h3>
                      </div>
                   </div>
                </div>
@@ -25,7 +25,7 @@
                      </div>
                      <div class="iq-text">
                         <h6 class="text-white">Stock Center</h6>
-                        <h3 class="text-white">60</h3>
+                        <h3 class="text-white">{{$stockCenters}}</h3>
                      </div>
                   </div>
                </div>
@@ -39,7 +39,7 @@
                      </div>
                      <div class="iq-text">
                         <h6 class="text-white">Purchase</h6>
-                        <h3 class="text-white">80</h3>
+                        <h3 class="text-white">{{$totalpurchases}}</h3>
                      </div>
                   </div>
                </div>
@@ -53,7 +53,7 @@
                      </div>
                      <div class="iq-text">
                         <h6 class="text-white">Purchase Order</h6>
-                        <h3 class="text-white">45</h3>
+                        <h3 class="text-white">{{$purchaseOrders}}</h3>
                      </div>
                   </div>
                </div>

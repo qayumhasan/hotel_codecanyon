@@ -8,6 +8,8 @@ use App\Models\ItemEntry;
 use App\Models\StockCenter;
 use App\Models\PhysicalStockHead;
 use App\Models\PhysicalStockDetails;
+use App\Models\PurchaseHead;
+use App\Models\PurchaseOrderHead;
 use DB;
 use Carbon\Carbon;
 use Auth;
@@ -21,7 +23,11 @@ class PhysicalStockController extends Controller
     // dashboard
     public function dashboard()
     {
-        return view('stock.home.index');
+        $physicalstocks = PhysicalStockHead::where('is_active',1)->where('is_deleted',0)->count();
+        $stockCenters = StockCenter::where('is_active',1)->where('is_deleted',0)->count();
+        $totalpurchases = PurchaseHead::count();
+        $purchaseOrders = PurchaseOrderHead::where('is_active',1)->where('is_deleted',0)->count(); 
+        return view('stock.home.index',compact('physicalstocks','stockCenters','totalpurchases','purchaseOrders'));
     }
     // create
     public function create()

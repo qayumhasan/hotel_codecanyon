@@ -523,6 +523,8 @@ $current = date("m/d/Y");
     <!-- alert -->
     <script src="{{asset('public/backend')}}/assets/js/izitost.js"></script>
 
+    <script src="{{asset('public/backend')}}/assets/js/canvasjs.js"></script>
+
     <script>
         @if(Session::has('messege'))
         var type = "{{Session::get('alert-type','info')}}"
