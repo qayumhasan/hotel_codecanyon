@@ -71,7 +71,6 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                        
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -80,9 +79,6 @@
                                             <div class="header-title">
                                                 <h4 class="card-title">All Account SubCategory</h4>
                                             </div>
-                                            <span class="float-right mr-2">
-                                             
-                                            </span>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
@@ -104,7 +100,6 @@
                                                             <td>{{$data->subcategory_codeone}}</td>
                                                             <td>{{$data->subcategory_nametwo}}</td>
                                                             <td>{{$data->subcategory_codetwo}}</td>
-                                                        
                                                             <td>
                                                             @if($data->is_active==1)
                                                             <span class="btn btn-success btn-sm">Active<span>
@@ -119,8 +114,7 @@
                                                                 <a class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/account/subcategorytwo/active/'.$data->id)}}" data-original-title="Deactive"><i class="la la-thumbs-down"></i></a>
                                                             @endif
                                                             <a class="badge bg-primary-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/account/subcategorytwo/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
-                                                            <a id="delete" class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/accounts/subcategorytwo/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
-                                                            
+                                                            <!-- <a id="delete" class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/accounts/subcategorytwo/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a> -->                    
                                                             </td>
                                                         </tr>
                                                     @endforeach

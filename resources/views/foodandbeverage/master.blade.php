@@ -21,13 +21,75 @@
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
-        .form-control {
-            border: 1px solid #443f3f;
-        }
-    </style>
+    .form-control {
+        border: 1px solid #443f3f;
+    }
+   .card-item {
+      transform-style: preserve-3d;
+      border-radius: 5px;
+      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+   }
 
+   .status-heading {
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+   }
+   .list-group-item{
+      font-size: 12px;
+      padding: 8px 0 0 10px;
+
+   }
+   .list-group{
+      border-radius: 0px;
+   }
+   .service{
+      padding-top: 8px;
+   }
+   .service ul li{
+      list-style-type: none;
+      font-size: 12px;
+      padding: 3px 0;
+   }
+   .bg-navyblue {
+      background-color: #66CCFF;
+      color: #ffffff;
+   }
+
+   .bg-yellow {
+      background: #FFFF66;
+   }
+
+   .bg-green {
+      background-color: #99CC00;
+   }
+   .bg-menu{
+      background: #E7E9E6;
+      color: #1D627E;
+      font-weight: bold;
+   }
+   .text-color-service{
+      color: #1D627E;
+      font-weight: bold;
+   }
+   .row.asif {
+    border: 1px solid #cecece;
+}
+.form-control {
+    height: 30px;
+   
+}
+.card {
+    padding: 9px 0px;
+}
+
+.badge {
+    border: none;
+}   
+</style>
 </head>
-
 <body>
     <div id="loading">
         <div id="loading-center"></div>
@@ -35,7 +97,6 @@
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
-
         <div class="iq-sidebar  sidebar-default ">
             <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
                 <a href="{{route('admin.inventory.home')}}" class="header-logo">
@@ -54,7 +115,6 @@
                                 <i class="las la-home"></i><span>Dashboards</span>
                             </a>
                         </li>
-                        
                         <li class=" ">
                             <a href="#user" class="collapsed" data-toggle="collapse" aria-expanded="false">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i><span>Order</span>
@@ -328,29 +388,25 @@
             case 'success':
 
                 iziToast.success({
-                    message: '{{ Session::get('
-                    messege ') }}',
+                    message: '{{ Session::get('messege') }}',
                     'position': 'topCenter'
                 });
                 brack;
             case 'info':
                 iziToast.info({
-                    message: '{{ Session::get('
-                    messege ') }}',
+                    message: '{{ Session::get('messege') }}',
                     'position': 'topRight'
                 });
                 brack;
             case 'warning':
                 iziToast.warning({
-                    message: '{{ Session::get('
-                    messege ')}}',
+                    message: '{{ Session::get('messege')}}',
                     'position': 'topRight'
                 });
                 break;
             case 'error':
                 iziToast.error({
-                    message: '{{ Session::get('
-                    messege ')}}',
+                    message: '{{ Session::get('messege')}}',
                     'position': 'topRight'
                 });
                 break;

@@ -1,73 +1,6 @@
 @extends('foodandbeverage.master')
 @section('content')
-<style>
-   .card-item {
-      transform-style: preserve-3d;
-      border-radius: 5px;
-      box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-   }
 
-   .status-heading {
-      font-size: 24px;
-      font-weight: bold;
-      color: black;
-   }
-   .list-group-item{
-      font-size: 12px;
-      padding: 8px 0 0 10px;
-
-   }
-   .list-group{
-      border-radius: 0px;
-   }
-   .service{
-      padding-top: 8px;
-   }
-   .service ul li{
-      list-style-type: none;
-      font-size: 12px;
-      padding: 3px 0;
-   }
-
-
-   .bg-navyblue {
-      background-color: #66CCFF;
-      color: #ffffff;
-   }
-
-   .bg-yellow {
-      background: #FFFF66;
-   }
-
-   .bg-green {
-      background-color: #99CC00;
-   }
-   .bg-menu{
-      background: #E7E9E6;
-      color: #1D627E;
-      font-weight: bold;
-   }
-   .text-color-service{
-      color: #1D627E;
-      font-weight: bold;
-   }
-   .row.asif {
-    border: 1px solid #cecece;
-}
-.form-control {
-    height: 30px;
-   
-}
-.card {
-    padding: 9px 0px;
-}
-
-.badge {
-    border: none;
-}   
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
@@ -76,7 +9,6 @@ $time = date("h:i");
 
 <div class="content-page">
    <div class="container-fluid">
-  
       <div class="row">
          @foreach($rooms as $row)
          <div class="col-md-6 col-lg-4">

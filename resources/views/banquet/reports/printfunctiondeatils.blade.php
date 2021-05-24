@@ -51,7 +51,6 @@ $current = date("Y/m/d");
                                         <th>Name</th>
                                         <th>Mobile</th>
                                         <th>Entry Date</th>
-
                                         <th>Print</th>
                                     </tr>
                                 </thead>
@@ -60,12 +59,12 @@ $current = date("Y/m/d");
 
                                     @foreach($searchdata as $data)
                                     <tr>
-                                        <td>{{$data->date_of_function_form}}</td>
-                                        <td>{{$data->date_of_function_to}}</td>
+                                        <td>{{ date("Y-m-d",strtotime($data->date_of_function_form)) }}</td>
+                                        <td>{{ date("Y-m-d",strtotime($data->date_of_function_to)) }}</td>
                                         <td>{{$data->venue->venue_name}}</td>
                                         <td>{{$data->guest_name}}</td>
                                         <td>{{$data->mobile}}</td>
-                                        <td>{{$data->booking_date}}</td>
+                                        <td>{{ date("Y-m-d",strtotime($data->booking_date)) }}</td>
                                         <td><a class="banquetdata" type="button" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}"><i class="fa fa-print"></i></a> </td>
 
                                     </tr>

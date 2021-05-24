@@ -152,7 +152,6 @@
                      </ul>
                   </div>
                </div>
-          
              </div>
              <!--  -->
            </div>
@@ -168,7 +167,6 @@
                      <ul class="list-inline p-0 m-0">
                         <li class="mb-3">
                            <div class="d-flex align-items-center">
-                              <!-- <div class="badge badge-primary iq-number">1</div> -->
                               <div class="ml-4">
                                  <p class="mb-0 font-size-16">Father Name: {{$data->father_name}}</p>
                               </div>
@@ -176,7 +174,6 @@
                         </li>
                         <li class="mb-3">
                            <div class="d-flex align-items-center">
-                              <!-- <div class="badge badge-primary iq-number">2</div> -->
                               <div class="ml-4">
                                  <p class="mb-0 font-size-16">Mother Name: {{$data->mother_name}}</p>
                               </div>
@@ -184,7 +181,6 @@
                         </li>
                         <li class="mb-3">
                            <div class="d-flex align-items-center">
-                              
                               <div class="ml-4">
                                  <p class="mb-0 font-size-16">Gender: {{$data->gender}}</p>
                               </div>
@@ -214,10 +210,6 @@
                            <span><i class="fas fa-map-marker-alt mr-3 font-size-20"></i></span>
                            <p class="mb-0 font-size-16 line-height">{{$data->present_address}}</p>
                         </li>
-                        <!-- <li class="mb-3 d-flex">
-                           <span><i class="fas fa-phone-volume mr-3 font-size-20"></i></span>
-                           <p class="mb-0 font-size-16 line-height"></p>
-                        </li> -->
                         <li class="mb-3 d-flex">
                            <span><i class="fas fa-envelope-open mr-3 font-size-20"></i></span>
                            <p class="mb-0 font-size-16 line-height">john@property.com</p>
@@ -240,6 +232,4 @@
         </div>
     </div>
 </div>
-
-
 @endsection

@@ -37,12 +37,11 @@ $current = date("Y/m/d");
                                     <option value="AorC Payble Journal Voucher" @if(isset($voucher)) @if($voucher == 'AorC Payble Journal Voucher')  selected @endif  @endif>A/C Payble Journal Voucher</option>
                                     <option value="Adjustment Journal Voucher" @if(isset($voucher)) @if($voucher == 'Adjustment Journal Voucher')  selected @endif  @endif>Adjustment Journal Voucher</option>
                                     <option value="Account Opening Voucher" @if(isset($voucher)) @if($voucher == 'Account Opening Voucher')  selected @endif  @endif>Account Opening Voucher</option>
-        
                                 </select>
                            </div>
                      </div>
                      <div class="col-md-3">
-                          <button type="submit" class="btn btn-success">Search</button>
+                          <button type="submit" class="btn btn-success mt-4">Search</button>
                      </div>
                   </div>
                   <form>
@@ -56,7 +55,6 @@ $current = date("Y/m/d");
                                        <th>Voucher No</th>
                                        <th>Voucher Type</th>
                                        <th>Date</th>
-                                       
                                        <th>Account Head</th>
                                        <th>Code</th>
                                        <th>Dabit Amount</th>
@@ -86,7 +84,6 @@ $current = date("Y/m/d");
                                      $totaldavitamount=$totaldavitamount + $sdata->DabitAmount ;
                                      $totalcreditamount=$totalcreditamount + $sdata->CreditAmount ;
                                      $totalbalance = $totalbalance +( $sdata->Balance) ;
-
                                     @endphp
                                  @endforeach
                                  </tbody>
@@ -112,7 +109,6 @@ $current = date("Y/m/d");
                                        <th>Voucher No</th>
                                        <th>Voucher Type</th>
                                        <th>Date</th>
-                                       
                                        <th>Account Head</th>
                                        <th>Code</th>
                                        <th>Dabit Amount</th>
@@ -127,7 +123,6 @@ $current = date("Y/m/d");
                                  <td>{{$data->VoucherNo}}</td>
                                  <td>{{$data->VoucherType}}</td>
                                  <td>{{$data->date}}</td>
-                               
                                  <td>{{$data->Accounts}}</td>
                                  <td>{{$data->Code}}</td>
                                  <td>{{$data->DabitAmount}}</td>
@@ -141,9 +136,11 @@ $current = date("Y/m/d");
                           
                      </div>
                   </div>
-                  <div class="card-body text-center">
-                     <a href="#" class="btn btn-success savepritbtn">Print</a>
-                  </div>
+                  @if(isset($searchdata))
+                     <div class="card-body text-center">
+                        <a href="#" class="btn btn-success savepritbtn">Print</a>
+                     </div>
+                  @endif
                </div>
             </div>
          </div>

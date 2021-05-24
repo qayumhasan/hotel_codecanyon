@@ -18,7 +18,6 @@
                               <th>#</th>
                               <th>Invoice No</th>
                               <th>Booking No</th>
-                              <th>Date</th>
                               <th>Item Name</th>
                               <th>Number OF Qty</th>
                               <th>Remarks</th>
@@ -31,7 +30,6 @@
                               <td>{{++$key}}</td>
                               <td>{{$data->invoice_id}}</td>
                               <td>{{$data->booking_no}}</td>
-                              <td>{{$data->date}}</td>
                               <td>{{$data->item_name}}</td>
                               <td>{{$data->qty}}</td>
                               <td>{{$data->remarks}}</td>

@@ -66,7 +66,7 @@ $current = date("Y/m/d");
                         </div>
                      </div>
                      <div class="col-md-2">
-                        <button type="submit" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success mt-4">Search</button>
                      </div>
                   </div>
                   <form>

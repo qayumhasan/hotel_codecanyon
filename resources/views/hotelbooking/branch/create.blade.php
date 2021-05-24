@@ -28,7 +28,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Branch ID: *</label>
-                                                <input type="text" class="form-control" id="branch_id" name="branch_id" placeholder="Branch ID" required />
+                                                <input type="text" class="form-control form-control-sm" id="branch_id" name="branch_id" placeholder="Branch ID" required />
                                                 @error('branch_id')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -37,7 +37,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Branch Name: *</label>
-                                                <input type="text" class="form-control" id="branch_name" name="branch_name" placeholder="Branch Name" required />
+                                                <input type="text" class="form-control form-control-sm" id="branch_name" name="branch_name" placeholder="Branch Name" required />
                                                 @error('branch_name')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -46,25 +46,25 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Mobile: *</label>
-                                                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile" />
+                                                <input type="text" class="form-control form-control-sm" id="mobile" name="mobile" placeholder="Mobile" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Email: *</label>
-                                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" />
+                                                <input type="text" class="form-control form-control-sm" id="email" name="email" placeholder="Email" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Web Address: *</label>
-                                                <input type="text" class="form-control" id="web_address" name="web_address" placeholder="Web Address" />
+                                                <input type="text" class="form-control form-control-sm" id="web_address" name="web_address" placeholder="Web Address" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="lname">Address: *</label>
-                                                <textarea name="address" class="form-control" id="address" cols="30" rows="5"></textarea>
+                                                <textarea name="address" class="form-control form-control-sm" id="address" cols="30" rows="5"></textarea>
                                             </div>
                                         </div>
                                     </div>

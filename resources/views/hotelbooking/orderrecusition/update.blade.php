@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('inventory.master')
 @section('title', 'Update Order Recusition|'.$companyinformation->company_name)
 @section('content')
 
@@ -115,7 +115,6 @@ $current = date("Y/m/d");
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -155,6 +154,146 @@ $current = date("Y/m/d");
     </div>
 </div>
 </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('select[name="item_name"]').on('change', function() {
+            var item_name = $(this).val();
+            if (item_name) {
+                $.ajax({
+                    url: "{{  url('/get/item/all/orderrecu/') }}/" + item_name,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('#unit').val(data.unit_name);
+                        $('#unit_name').val(data.name);
+                        $('#Qty').val(1);
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#addnow').on('click', function() {
+            $('#searchPreloader').show();
+            var i_id = $("#i_id").val();
+            var item_name = $("#item_name").val();
+            var unit = $("#unit").val();
+            var qty = $("#Qty").val();
+            var invoice_no = $("#invoice_no").val();
+            var date = $("#date").val();
+            $.ajax({
+                type: 'GET',
+                url: "{{url('/get/item/insert/lol')}}",
+                data: {
+                    i_id: i_id,
+                    item_name: item_name,
+                    unit: unit,
+                    qty: qty,
+                    i_id: i_id,
+                    invoice_no: invoice_no,
+                    date: date,
+                },
+                success: function(data) {
+                    $('#item_err').html('');
+                    totalqty();
+                    $('#searchPreloader').hide();
+                    $('#item_name').val("");
+                    $('#unit').val("");
+                    $('#unit_name').val("");
+                    $('#Qty').val("");
+                    $("#i_id").val("");
+                    alldatashow();
+                    mainshow();
+                },
+                error: function(err) {
+                    $('#item_err').html(err.responseJSON.errors.item_name[0]);
+                }
+            });
+        });
+    });
+</script>
+<script>
+    function alldatashow() {
+      
+        var invoice = $("#invoice_no").val();
+        $.post('{{ url("/get/item/showlol/") }}/' + invoice, {
+                _token: '{{ csrf_token() }}'
+            },
+            function(data) {
+                $('#showallitem').html(data);
+            });
+    }
+    alldatashow();
+</script>
+<script>
+    function cartDatadelete(el) {
+        $('#searchPreloader').show();
+        $.post('{{route("get.item.delete")}}', {
+                _token: '{{ csrf_token() }}',
+                item_id: el.value
+            },
+            function(data) {
+                $('#addtocartshow').html(data);
+                totalqty();
+                if (data) {
+                    $('#searchPreloader').hide();
+                }
+            });
+        alldatashow();
+    }
+</script>
+<script>
+    function cartdata(el) {
+        $.post('{{route("get.item.edit")}}', {
+                _token: '{{ csrf_token() }}',
+                item_id: el.value
+            },
+            function(data) {
+                $("#item_name").val(data.item_id).selected;
+                $("#i_id").val(data.id);
+                $("#unit").val(data.unit);
+                $("#unit_name").val(data.name);
+                $("#Qty").val(data.qty);
+            });
+        alldatashow();
+    }
+</script>
+
+<script>
+    function totalqty() {
+        var invoice = $("#invoice_no").val();
+        $.post('{{ url("get/totalqty/orderrequ/") }}/' + invoice, {
+                _token: '{{ csrf_token() }}'
+            },
+            function(data) {
+                $('.num_of_qty').val(data.number_qty);
+                $('.num_of_item').val(data.number_item);
+            });
+    }
+    totalqty();
+</script>
+<script>
+    $(function() {
+        $(".savepritbtnareainvoice").on('click', function() {
+            var mode = 'iframe'; //popup
+            var close = mode == "popup";
+            var options = {
+                mode: mode,
+                popClose: close
+            };
+            $("div.printableAreasaveprintsectioninvoice").printArea(options);
+            <?php session()->forget('kotnewdata'); ?>
+        });
+    });
+</script>
+
+
+
+
 @if(Session::has('kotnewdata'))
 <div class="modal fade" id="kotinvoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -226,142 +365,4 @@ $current = date("Y/m/d");
 </script>
 {{session()->forget('kotnewdata')}}
 @endif
-@endsection
-@section('scripts')
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="item_name"]').on('change', function() {
-            var item_name = $(this).val();
-            if (item_name) {
-                $.ajax({
-                    url: "{{  url('/get/item/all/orderrecu/') }}/" + item_name,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        $('#unit').val(data.unit_name);
-                        $('#unit_name').val(data.name);
-                        $('#Qty').val(1);
-                    }
-                });
-            }
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#addnow').on('click', function() {
-            $('#searchPreloader').show();
-            var i_id = $("#i_id").val();
-            var item_name = $("#item_name").val();
-            var unit = $("#unit").val();
-            var qty = $("#Qty").val();
-            var invoice_no = $("#invoice_no").val();
-            var date = $("#date").val();
-            $.ajax({
-                type: 'GET',
-                url: "{{url('/get/item/insert/lol')}}",
-                data: {
-                    i_id: i_id,
-                    item_name: item_name,
-                    unit: unit,
-                    qty: qty,
-                    i_id: i_id,
-                    invoice_no: invoice_no,
-                    date: date,
-                },
-                success: function(data) {
-                    $('#item_err').html('');
-                    totalqty();
-                    $('#searchPreloader').hide();
-                    $('#item_name').val("");
-                    $('#unit').val("");
-                    $('#unit_name').val("");
-                    $('#Qty').val("");
-                    $("#i_id").val("");
-                    alldatashow();
-                    mainshow();
-                },
-                error: function(err) {
-                    $('#item_err').html(err.responseJSON.errors.item_name[0]);
-                }
-            });
-        });
-    });
-</script>
-<script>
-    function alldatashow() {
-        var invoice = $("#invoice_no").val();
-        $.post('{{ url(' / get / item / showlol / ') }}/' + invoice, {
-                _token: '{{ csrf_token() }}'
-            },
-            function(data) {
-                $('#showallitem').html(data);
-            });
-    }
-    alldatashow();
-</script>
-<script>
-    function cartDatadelete(el) {
-        $('#searchPreloader').show();
-        $.post('{{route('
-            get.item.delete ')}}', {
-                _token: '{{ csrf_token() }}',
-                item_id: el.value
-            },
-            function(data) {
-                $('#addtocartshow').html(data);
-                totalqty();
-                if (data) {
-                    $('#searchPreloader').hide();
-                }
-            });
-        alldatashow();
-    }
-</script>
-<script>
-    function cartdata(el) {
-        $.post('{{route('
-            get.item.edit ')}}', {
-                _token: '{{ csrf_token() }}',
-                item_id: el.value
-            },
-            function(data) {
-                $("#item_name").val(data.item_id).selected;
-                $("#i_id").val(data.id);
-                $("#unit").val(data.unit);
-                $("#unit_name").val(data.name);
-                $("#Qty").val(data.qty);
-            });
-        alldatashow();
-    }
-</script>
-
-<script>
-    function totalqty() {
-        var invoice = $("#invoice_no").val();
-        $.post('{{ url('
-            get / totalqty / orderrequ / ') }}/' + invoice, {
-                _token: '{{ csrf_token() }}'
-            },
-            function(data) {
-                $('.num_of_qty').val(data.number_qty);
-                $('.num_of_item').val(data.number_item);
-            });
-    }
-    totalqty();
-</script>
-<script>
-    $(function() {
-        $(".savepritbtnareainvoice").on('click', function() {
-            var mode = 'iframe'; //popup
-            var close = mode == "popup";
-            var options = {
-                mode: mode,
-                popClose: close
-            };
-            $("div.printableAreasaveprintsectioninvoice").printArea(options);
-            <?php session()->forget('kotnewdata'); ?>
-        });
-    });
-</script>
 @endsection

@@ -51,7 +51,7 @@ $current = date("m/d/Y");
                                        <label>Employee Id: *</label>
                                        <input type="text" class="form-control form-control-sm" name="employee_id" id="employee_id" placeholder="Employee Id" value="{{$data->employee_id}}"/>
                                        @error('emaployee_id')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -60,7 +60,7 @@ $current = date("m/d/Y");
                                        <label>Date:*</label>
                                      <input type="text" name="date" class="datepicker form-control form-control-sm" value="{{ $current }}" >
                                       @error('date')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -70,7 +70,7 @@ $current = date("m/d/Y");
                                        <input type="text" class="form-control form-control-sm" name="employee_name" placeholder="Employee Name" value="{{$data->employee_name}}" />
                                        <input type="hidden" name="id" value="{{$data->id}}">
                                       @error('employee_name')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -84,41 +84,10 @@ $current = date("m/d/Y");
                                            <option value="Other">Other</option>
                                        </datalist>
                                        @error('employee_type')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
-                                 <!-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>District: *</label>
-                                        <input type="text" name="district" class="form-control form-control-sm" list="district" placeholder="--select--" value="{{$data->district}}" />
-                                       <datalist id="district">
-                                       @php
-                                          $alldistrict=DB::table('District_tbl')->get();
-                                       @endphp
-                                            @foreach($alldistrict as $dis)
-                                            <option value="{{$dis->District}}"></option>
-                                            @endforeach
-                                       </datalist>
-                                       @error('district')
-                                          <div class="alert-danger">{{ $message }}</div>
-                                      @enderror
-                                    </div>
-                                 </div> -->
-                                 <!-- <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Police-Station: </label>
-                                       <select class="form-control form-control-sm" name="police_station" id="police_station">
-                                       @php
-                                          $allthana=DB::table('Thana_tbl')->get();
-                                       @endphp
-                                          @foreach($allthana as $thana)
-                                          <option value="{{$thana->Thana}}">{{$thana->Thana}}</option>
-                                          @endforeach
-                                       </select>
-                                    </div>
-                                 </div> -->
-                                
                               </div>
                            </div>
                   
@@ -194,7 +163,7 @@ $current = date("m/d/Y");
                                        <label>Mobile Number: *</label>
                                        <input type="text" class="form-control form-control-sm" name="mobile_number" placeholder="Mobile Number" value="{{$data->mobile_number}}" />
                                        @error('mobile_number')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -203,7 +172,7 @@ $current = date("m/d/Y");
                                        <label>Family Contact Number: *</label>
                                        <input type="text" class="form-control form-control-sm" name="family_mobile_number" placeholder="Family Contact Number" value="{{$data->family_mobile_number}}" />
                                       @error('family_mobile_number')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div cstyle="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -212,7 +181,7 @@ $current = date("m/d/Y");
                                        <label>Email: *</label>
                                        <input type="email" class="form-control form-control-sm" name="email" placeholder="Email" value="{{$data->email}}"/>
                                        @error('email')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -272,7 +241,6 @@ $current = date("m/d/Y");
                                        <img src="{{asset('public/uploads/employee/'.$data->image)}}" height="45px">
                                      </div>
                                   </div>
-                              
                               </div>
                            </div>
                         
@@ -296,7 +264,7 @@ $current = date("m/d/Y");
                                             @endforeach
                                        </datalist>
                                        @error('present_designation')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -305,7 +273,7 @@ $current = date("m/d/Y");
                                        <label>Working Hour: *</label>
                                        <input type="text" class="form-control form-control-sm" name="working_hour" placeholder="Working Hour" value="{{$data->working_hour}}" />
                                        @error('working_hour')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -314,7 +282,7 @@ $current = date("m/d/Y");
                                        <label>Present Salary: *</label>
                                        <input type="text" class="form-control form-control-sm" name="present_salary" placeholder="Present Salary" value="{{$data->present_salary}}" />
                                       @error('present_salary')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -377,9 +345,6 @@ $current = date("m/d/Y");
                               </div>
                            </div>
                            <button type="submit" class="btn btn-primary float-right" value="Submit">Submit</button>
-                           
-                       
-
                      </form>
                   </div>
                </div>
