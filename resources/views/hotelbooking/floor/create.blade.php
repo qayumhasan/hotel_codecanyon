@@ -5,19 +5,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Add Floor</h4>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
+                            <div class="card-header d-flex justify-content-between bg-header">
                                 <div class="header-title">
-                                    <h4 class="card-title">Floor Content</h4>
+                                    <h4 class="card-title">Add Floor</h4>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -27,7 +20,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Floor Name: *</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Floor Name" required />
+                                                <input type="text" class="form-control form-control-sm" name="name" placeholder="Floor Name" required />
                                                 @error('name')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -36,7 +29,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Branch Name: *</label>
-                                                <select class="form-control" name="branch_id">
+                                                <select class="form-control form-control-sm" name="branch_id">
                                                     @foreach($branch as $allbranch)
                                                     <option value="{{$allbranch->id}}">{{$allbranch->branch_name}}</option>
                                                     @endforeach
@@ -56,7 +49,7 @@
                                     <div class="row">
                                         <div class="col-md-8 text-center">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary mt-4">Add Floor</button>
                                             </div>
                                         </div>
                                     </div>
@@ -66,11 +59,11 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="card">
-                                            <div class="card-header d-flex justify-content-between">
+                                            <div class="card-header d-flex justify-content-between bg-header">
                                                 <div class="header-title">
                                                     <h4 class="card-title">All Floor</h4>
                                                 </div>

@@ -50,18 +50,10 @@ use App\Http\Controllers\Admin\Banquet\BanquetReportController;
 // payroll
 use App\Http\Controllers\Admin\Payroll\PayrollController;
 use App\Http\Controllers\Admin\Payroll\EmployeeSelaryController;
-
 use App\Http\Controllers\Admin\AddonManagerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\MediaManagerController;
 use App\Http\Controllers\Admin\DepartmentController;
-
-
-
-
-
-
-
 
 Route::get('/', function () {
     return redirect('admin/login');

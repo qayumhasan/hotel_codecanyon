@@ -8,9 +8,9 @@ $current = date("m/d/Y");
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
+            <div class="offset-lg-1 col-lg-10">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header p-2">
                         <div class="header-title">
                             <h4 class="card-title">Add Supplier</h4>
                         </div>
@@ -20,25 +20,20 @@ $current = date("m/d/Y");
                 <form action="{{route('admin.supplier.store')}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Supplier Content</h4>
-                                    </div>
-                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Date: </label>
-                                                <input type="text" class="form-control datepicker" name="date" placeholder="" value="{{$current}}" />
+                                                <input type="text" class="form-control form-control-sm datepicker" name="date" placeholder="" value="{{$current}}" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Title: *</label>
-                                                <input type="text" class="form-control" name="title" placeholder="Title" />
+                                                <input type="text" class="form-control form-control-sm" name="title" placeholder="Title" />
                                                 <input type="hidden" name="account_head" value="Accounts Payable - Purchase" />
                                                 <input type="hidden" name="account_head_code" value="212-28-0040-10132" />
                                                 @error('title')
@@ -49,7 +44,7 @@ $current = date("m/d/Y");
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Name: *</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Name" id="name" />
+                                                <input type="text" class="form-control form-control-sm" name="name" placeholder="Name" id="name" />
                                                 @error('name')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -58,61 +53,61 @@ $current = date("m/d/Y");
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Print Name: *</label>
-                                                <input type="text" class="form-control" name="print_name" id="print_name" placeholder="Print Name" />
+                                                <input type="text" class="form-control form-control-sm" name="print_name" id="print_name" placeholder="Print Name" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Designation:</label>
-                                                <Input type="text" name="designation" class="form-control" placeholder="Designation">
+                                                <Input type="text" name="designation" class="form-control form-control-sm" placeholder="Designation">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">TIN Vat No:</label>
-                                                <Input type="text" name="tin_vat_no" class="form-control" placeholder="TIN Vat No">
+                                                <Input type="text" name="tin_vat_no" class="form-control form-control-sm" placeholder="TIN Vat No">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Address 1: *</label>
-                                                <textarea class="form-control" name="addressline_one"></textarea>
+                                                <textarea class="form-control form-control-sm" name="addressline_one"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Address 2: </label>
-                                                <textarea class="form-control" name="addressline_two"></textarea>
+                                                <textarea class="form-control form-control-sm" name="addressline_two"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">City: </label>
-                                                <input type="text" class="form-control" name="city" placeholder="City" />
+                                                <input type="text" class="form-control form-control-sm" name="city" placeholder="City" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Zip Code:</label>
-                                                <input type="text" class="form-control" name="zip_code" placeholder="Zip Code" />
+                                                <input type="text" class="form-control form-control-sm" name="zip_code" placeholder="Zip Code" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">TelePhone:</label>
-                                                <Input type="text" name="telephone" class="form-control" placeholder="TelePhone">
+                                                <Input type="text" name="telephone" class="form-control form-control-sm" placeholder="TelePhone">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Contact Person:</label>
-                                                <Input type="text" name="contact_persion" class="form-control" placeholder="Contact Person">
+                                                <Input type="text" name="contact_persion" class="form-control form-control-sm" placeholder="Contact Person">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Mobile:</label>
-                                                <Input type="text" name="mobile" class="form-control" placeholder="Mobile">
+                                                <Input type="text" name="mobile" class="form-control form-control-sm" placeholder="Mobile">
                                                 @error('mobile')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
@@ -121,23 +116,13 @@ $current = date("m/d/Y");
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Email:</label>
-                                                <Input type="text" name="email" class="form-control" placeholder="Email">
+                                                <Input type="text" name="email" class="form-control form-control-sm" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Gender</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title mt-4">Gender</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="gender" id="customRadio-1" class="custom-control-input bg-primary" value="Male" checked>
                                                 <label class="custom-control-label" for="customRadio-1"> Male </label>
@@ -151,18 +136,8 @@ $current = date("m/d/Y");
                                                 <label class="custom-control-label" for="customRadio-3"> Other </label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Publish</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title mt-4">Publish</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="is_active" id="customRadio-8" class="custom-control-input bg-primary" value="1" checked>
                                                 <label class="custom-control-label" for="customRadio-8"> Active </label>
@@ -173,14 +148,11 @@ $current = date("m/d/Y");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Add Supplier
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

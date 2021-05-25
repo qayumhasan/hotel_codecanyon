@@ -120,14 +120,15 @@
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
                             <ul id="branch" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class="{{ request()->routeIs('admin.branch.create*') ? 'active' : '' }}">
+                                    <a href="{{route('admin.branch.create')}}">
+                                        <i class="las la-list-alt"></i><span>Add Branch</span>
+                                    </a>
+                                </li>
+
                                 <li class="{{ request()->routeIs('admin.branch.index*') ? 'active' : '' }}">
                                     <a href="{{route('admin.branch.index')}}">
                                         <i class="las la-list-alt"></i><span>All Branch</span>
-                                    </a>
-                                </li>
-                                <li class="{{ request()->routeIs('admin.branch.create*') ? 'active' : '' }}">
-                                    <a href="{{route('admin.branch.create')}}">
-                                        <i class="las la-list-alt"></i><span>Add Branch</span>
                                     </a>
                                 </li>
                             </ul>
@@ -153,16 +154,17 @@
                                 <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                             </a>
                             <ul id="supplier" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class="{{ request()->routeIs('admin.supplier.create*') ? 'active' : '' }}">
+                                    <a href="{{route('admin.supplier.create')}}">
+                                        <i class="las la-list-alt"></i><span>Add Supplier</span>
+                                    </a>
+                                </li>
                                 <li class="{{ request()->routeIs('admin.supplier.index*') ? 'active' : '' }}">
                                     <a href="{{route('admin.supplier.index')}}">
                                         <i class="las la-list-alt"></i><span>All Supplier</span>
                                     </a>
                                 </li>
-                                <li class="{{ request()->routeIs('admin.supplier.create*') ? 'active' : '' }}">
-                                    <a href="{{route('admin.supplier.create')}}">
-                                        <i class="las la-list-alt"></i><span>Add Supplier</span>
-                                    </a>
-                                </li>
+                               
                             </ul>
                         </li>
                         <li>
@@ -199,13 +201,6 @@
                                 
                             </ul>
                         </li>
-                        <!-- addon manager start from here -->
-                        <li>
-                            <a href="{{route('admin.addon.manager')}}">
-                                <i class="fas fa-puzzle-piece"></i><span>Addon Manager</span>
-                            </a>
-                        </li>
-                        <!-- addon manager end from here -->
                     </ul>
                 </nav>
                 <div class="p-3"></div>
@@ -312,9 +307,9 @@
                                                             <div class="media align-items-center mb-4">
                                                                 <img src="{{asset('public/uploads/admin/'.Auth::user()->profile_photo_path)}}" alt="profile-bg" class="rounded img-fluid avatar-80">
                                                                 <div class="media-body profile-detail ml-3">
-                                                                    <h3>{{Auth::user()->name}}</h3>
+                                                                    <h4>{{Auth::user()->name}}</h4>
                                                                     <div class="d-flex flex-wrap">
-                                                                        <p class="mb-1">Web designer</p>
+                                                                        <p class="mb-1">{{Auth::user()->userRole->role_name}}</p>
                                                                         <a href="{{ route('admin.logout') }}" class="ml-3">Sign Out</a>
                                                                     </div>
                                                                 </div>
@@ -347,35 +342,8 @@
                                                                         <div class="rounded iq-card-icon-small">
                                                                             <i class="ri-account-box-line"></i>
                                                                         </div>
-                                                                        <h6 class="mb-0 ">Pass Change</h6>
+                                                                        <h6 class="mb-0 ">Change Password</h6>
                                                                     </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="personal-details">
-                                                            <h5 class="card-title mb-3 mt-3">Personal Details</h5>
-                                                            <div class="row align-items-center mb-2">
-                                                                <div class="col-sm-6">
-                                                                    <h6>Address:</h6>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <p class="mb-0">{{Auth::user()->address}}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row align-items-center mb-2">
-                                                                <div class="col-sm-6">
-                                                                    <h6>Phone:</h6>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <p class="mb-0">{{Auth::user()->phone}}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row align-items-center mb-2">
-                                                                <div class="col-sm-6">
-                                                                    <h6>Email:</h6>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <p class="mb-0">{{Auth::user()->email}}</p>
                                                                 </div>
                                                             </div>
                                                         </div>

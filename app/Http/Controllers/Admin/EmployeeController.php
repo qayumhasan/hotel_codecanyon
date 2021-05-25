@@ -65,18 +65,6 @@ class EmployeeController extends Controller
    	        'image' => 'required',
              ]);
          }
-	    // $validated = $request->validate([
-      //
-	    //     'date' => 'required',
-	    //     'employee_name' => 'required',
-	    //     'employee_type' => 'required',
-	    //     'mobile_number' => 'required',
-	    //     'email' => 'required',
-	    //     'present_designation' => 'required',
-	    //     'working_hour' => 'required',
-	    //     'present_salary' => 'required',
-	    //     'image' => 'required',
-	    // ]);
 	    $data = new Employee;
         if($request->checkvalue==1){
         $data->employee_id = $request->employee_id;
@@ -104,8 +92,6 @@ class EmployeeController extends Controller
         $data->national_id = $request->national_id;
         $data->present_address = $request->present_address;
         $data->permanent_address = $request->permanent_address;
-
-
         $data->present_designation = $request->present_designation;
         $data->working_hour = $request->working_hour;
         $data->present_salary = $request->present_salary;

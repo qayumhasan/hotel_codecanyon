@@ -9,11 +9,11 @@
                          @csrf
                         <div class="row">
                            <div class="col-lg-2"></div>
-                         <div class="col-lg-8">
+                         <div class="offset-lg-1 col-lg-6">
                               <div class="card">
-                                 <div class="card-header d-flex justify-content-between">
+                                 <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
-                                       <h4 class="card-title">PassWord Change</h4>
+                                       <h4 class="card-title">Change Password</h4>
                                     </div>
                                  </div>
                                  <div class="card-body">
@@ -21,16 +21,16 @@
                                    
                                        <div class="form-group">
                                           <label for="email">Old Password:</label>
-                                          <input type="password" name="oldpass" class="form-control">
+                                          <input type="password" name="oldpass" class="form-control form-control-sm">
                                           <input type="hidden" name="id" value="{{Auth::user()->id}}">
                                        </div>
                                        <div class="form-group">
                                           <label for="pwd">New Password:</label>
-                                          <input type="password" name="password" class="form-control" id="pwd">
+                                          <input type="password" name="password" class="form-control form-control-sm" id="pwd">
                                        </div>
                                         <div class="form-group">
                                           <label for="pwd">Confirm Password:</label>
-                                          <input type="password" name="password_confirmation" class="form-control" id="pwd">
+                                          <input type="password" name="password_confirmation" class="form-control form-control-sm" id="pwd">
                                        </div>
                                     
                                        <button type="submit" class="btn btn-primary">Submit</button>

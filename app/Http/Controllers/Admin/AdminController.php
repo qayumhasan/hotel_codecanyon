@@ -8,6 +8,7 @@ use App\Models\AdminRole;
 use Illuminate\Support\Facades\Hash;
 use Image;
 use App\Models\Admin;
+use App\Models\Checkin;
 use App\Models\Employee;
 use App\Models\Guest;
 use App\Models\Room;
@@ -33,7 +34,8 @@ class AdminController extends Controller
 		$guest = Guest::where('is_active', 1)->where('is_deleted', 0)->count();
 		$supplier = Supplier::where('is_active', 1)->where('is_deleted', 0)->count();
 		$user = Admin::where('status', 1)->where('is_deleted', 0)->count();
-		return view('backend.home.index', compact('availableRoom', 'houseKippingRoom', 'bookingRoom', 'maintanceRoom', 'employee', 'guest', 'supplier', 'user'));
+		$checkins = Checkin::where('is_occupy',1)->limit(10)->get();
+		return view('backend.home.index', compact('availableRoom', 'houseKippingRoom', 'bookingRoom', 'maintanceRoom', 'employee', 'guest', 'supplier', 'user','checkins'));
 	}
 
 

@@ -5,20 +5,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Update Floor</h4>
-                        </div>
-                       <a href="{{route('admin.floor.create')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">Add Floor</span></i></button></a>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
+                            <div class="card-header d-flex justify-content-between bg-header">
                                 <div class="header-title">
-                                    <h4 class="card-title">Floor Content</h4>
+                                    <h4 class="card-title">Add Floor</h4>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -28,7 +20,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Floor Name: *</label>
-                                                <input type="text" class="form-control" name="name" placeholder="Floor Name" value="{{$edit->name}}"/>
+                                                <input type="text" class="form-control form-control-sm" name="name" placeholder="Floor Name" value="{{$edit->name}}"/>
                                                 <input type="hidden" name="id" value="{{$edit->id}}">
                                                 @error('name')
                                                     <div style="color:red">{{ $message }}</div>
@@ -38,7 +30,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Branch Name: *</label>
-                                                <select class="form-control" name="branch_id">
+                                                <select class="form-control form-control-sm" name="branch_id">
                                                     @foreach($branch as $allbranch)
                                                     <option value="{{$allbranch->id}}" @if($edit->branch_id == $allbranch->id) selected @endif>{{$allbranch->branch_name}}</option>
                                                     @endforeach                            
@@ -48,7 +40,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="fname">Status: *</label>
-                                                <select class="form-control" name="is_active">
+                                                <select class="form-control form-control-sm" name="is_active">
                                                     <option value="1" @if($edit->is_active==1) selected @endif>Active</option>
                                                     <option value="0" @if($edit->is_active==0) selected @endif>Deactive</option>
                                                 </select>
@@ -56,9 +48,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12 text-center">
+                                        <div class="col-md-12 text-center mt-4">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <button type="submit" class="btn btn-success">Update Floor</button>
                                             </div>
                                         </div>
                                     </div>
@@ -68,11 +60,11 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="row">
                                     <div class="col-md-12">
                                      <div class="card">
-                                        <div class="card-header d-flex justify-content-between">
+                                        <div class="card-header d-flex justify-content-between bg-header">
                                             <div class="header-title">
                                                 <h4 class="card-title">All Floor</h4>
                                             </div>
