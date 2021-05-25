@@ -120,7 +120,7 @@
                                                                     <a class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/account/subcategoryone/active/'.$data->id)}}" data-original-title="Deactive"><i class="la la-thumbs-down"></i></a>
                                                                     @endif
                                                                     <a class="badge bg-primary-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/account/subcategoryone/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
-                                                                    <a id="delete" class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/accounts/subcategoryone/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
+                                                                    <!-- <a id="delete" class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/accounts/subcategoryone/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a> -->
                                                                 </td>
                                                             </tr>
                                                             @endforeach

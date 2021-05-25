@@ -42,6 +42,7 @@
                                  <td>
                                    <a class="badge bg-primary-light mr-2" href="{{url('admin/employee/edit/'.$data->id)}}"> <i class="lar la-edit"></i></a>
                                    <a id="delete" class="badge bg-danger-light mr-2" href="{{url('admin/employee/delete/'.$data->id)}}"> <i class="la la-trash"></i></a> 
+
                                    <a class="badge bg-success-light mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View" href="{{url('admin/employee/view/'.$data->id)}}"><i class="lar la-eye"></i></a>
                                     <span class="badge bg-primary-light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Action"
                                           href="#">

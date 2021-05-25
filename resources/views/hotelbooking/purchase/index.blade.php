@@ -28,7 +28,7 @@
                               <th>Total Amount</th>
                               <th>Payment</th>
                               <th>Due</th>
-                              <th>status</th>
+                             
                               <th>Action</th>
                            </tr>
                         </thead>
@@ -42,20 +42,9 @@
                               <td>{{round($data->total_amount,2)}}</td>
                               <td>{{round($data->payment,2)}}</td>
                               <td>{{round($data->due,2)}}</td>
+                             
                               <td>
-                                 @if($data->is_active==1)
-                                 <span class=" btn-info btn-sm">pending</span>
-                                 @else
-                                 <span class=" btn-danger btn-sm">Deactive</span>
-                                 @endif
-
-                              </td>
-                              <td>
-                                 @if($data->is_active==1)
-                                 <a class="badge bg-info-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/purchase/deactive/'.$data->id)}}" data-original-title="Active"><i class="la la-thumbs-up"></i></a>
-                                 @else
-                                 <a class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/purchase/active/'.$data->id)}}" data-original-title="Deactive"><i class="la la-thumbs-down"></i></a>
-                                 @endif
+                            
                                  <a class="badge bg-primary-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/purchase/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
                                  <a id="delete" class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/purchase/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
                               </td>

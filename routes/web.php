@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\Hotel\HotelServiceController;
 use App\Http\Controllers\Admin\Stock\PhysicalStockController;
 use App\Http\Controllers\Admin\Stock\StockReportController;
 use App\Http\Controllers\Admin\UserRoleController;
+
 use App\Http\Controllers\Admin\FoodAndBeverage\FoodAndBeverageController;
 use App\Http\Controllers\Admin\Banquet\BanquetController;
 use App\Http\Controllers\Admin\Banquet\HallController;
@@ -785,9 +786,6 @@ Route::middleware((['admin']))->prefix(md5('admin/currency'))->group(function(){
    Route::post('/update',[CurrencyController::class,'update'])->name('admin.currency.update');
    Route::get('/delete/{id}',[CurrencyController::class,'delete'])->name('admin.currency.delete');
 });
-
-
-
 Route::get('/page',[MediaManagerController::class, 'insert'])->name('page');
 Route::post('/media',[MediaManagerController::class, 'mediaManager'])->name('admin.media.file.upload');
 Route::post('/get/image',[MediaManagerController::class, 'getImage'])->name('admin.media.file.use');
@@ -795,17 +793,11 @@ Route::get('/show/image',[MediaManagerController::class, 'showImage'])->name('ad
 Route::get('/media/manager/pagination/{id}',[MediaManagerController::class, 'showPaginationImage'])->name('admin.media.manager.pagination');
 Route::get('admin/media/manager/delete/{id}',[MediaManagerController::class, 'mediaDelete']);
 Route::get('test',[MediaManagerController::class, 'test']);
-
-
 Route::get('admin/checkout/invoice/tax/data/delete/{id}',[CheckingController::class,'deleteTaxData']);
 Route::get('admin/checkin/get/guest/info/{id}',[CheckingController::class,'guestInfo']);
-
 Route::get('/admin/service/list/{id}',[CheckingController::class,'serviceList']);
-
 Route::get('/admin/guest/details/{id}',[CheckingController::class,'guestCheckinDetails']);
-
 Route::get('/admin/guest/name/list',[CheckingController::class,'guestNameList'])->name('admin.guest.name.list');
-
 Route::get('admin/userrole/manage',[UserRoleController::class,'index'])->name('admin.userrole.permissionnew');
 Route::post('admin/userrole/manage/update',[UserRoleController::class,'update'])->name('admin.userrole.permission');
 

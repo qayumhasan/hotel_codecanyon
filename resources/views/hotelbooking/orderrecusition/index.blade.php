@@ -26,7 +26,6 @@
                                  <th>Date</th>
                                  <th>Number OF Qty</th>
                                  <th>Remarks</th>
-                                 <th>status</th>
                                  <th>Action</th>
                               </tr>
                            </thead>
@@ -38,14 +37,6 @@
                                  <td>{{$data->date}}</td>
                                  <td>{{$data->num_of_qty}}</td>
                                  <td>{{$data->remarks}}</td>
-                                 <td>
-                                 @if($data->is_active==1)
-                                 <span class=" btn-info btn-sm">pending</span>
-                                 @else
-                                 <span class=" btn-danger btn-sm">Deactive</span>
-                                 @endif
-
-                                 </td>
                                  <td>
                                    <a class="badge bg-primary-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/ordercusition/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
                                    <a id="delete" class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/ordercusition/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>

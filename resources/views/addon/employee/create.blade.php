@@ -27,6 +27,7 @@ $current = date("m/d/Y");
                            <div class="form-card text-left">
                               <div class="row">
                                  <div class="col-7">
+                                 <div class="col-5">
                                     <h4 class="mb-4">Account Information:</h4>
                                  </div>
                               </div>
@@ -46,14 +47,14 @@ $current = date("m/d/Y");
                                        <label>Employee Id: *</label>
                                        <input type="text" class="form-control form-control-sm" name="employee_id" placeholder="Employee Id" value=""/>
                                        @error('employee_id')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                     <div class="form-group" id="hasnoid">
                                        <label>Employee Id: *</label>
                                        <input type="text" class="form-control form-control-sm" name="employee_newid"  placeholder="Employee Id" value="{{$employeeid}}" />
                                        @error('employee_neid')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -62,7 +63,7 @@ $current = date("m/d/Y");
                                        <label>Date:*</label>
                                      <input type="text" name="date"  class="datepicker form-control form-control-sm form-control form-control-sm-sm" value="{{ $current }}">
                                       @error('date')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -71,7 +72,7 @@ $current = date("m/d/Y");
                                        <label>Empoyee Name: *</label>
                                        <input type="text" class="form-control form-control-sm" name="employee_name" placeholder="Employee Name" value="{{old('employee_name')}}" />
                                       @error('employee_name')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -85,7 +86,7 @@ $current = date("m/d/Y");
                                            <option value="Other">Other</option>
                                        </datalist>
                                        @error('employee_type')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -160,7 +161,7 @@ $current = date("m/d/Y");
                                        <label>Mobile Number: *</label>
                                        <input type="text" class="form-control form-control-sm" name="mobile_number" placeholder="Mobile Number" />
                                        @error('mobile_number')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -169,7 +170,7 @@ $current = date("m/d/Y");
                                        <label>Family Contact Number: *</label>
                                        <input type="text" class="form-control form-control-sm" name="family_mobile_number" placeholder="Family Contact Number" />
                                       @error('family_mobile_number')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -178,7 +179,7 @@ $current = date("m/d/Y");
                                        <label>Email: *</label>
                                        <input type="text" class="form-control form-control-sm" name="email" placeholder="Email" />
                                        @error('email')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -252,7 +253,7 @@ $current = date("m/d/Y");
                                             @endforeach
                                        </datalist>
                                        @error('present_designation')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -261,7 +262,7 @@ $current = date("m/d/Y");
                                        <label>Working Hour: *</label>
                                        <input type="text" class="form-control form-control-sm" name="working_hour" placeholder="Working Hour" />
                                        @error('working_hour')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>
@@ -270,7 +271,7 @@ $current = date("m/d/Y");
                                        <label>Present Salary: *</label>
                                        <input type="text" class="form-control form-control-sm" name="present_salary" placeholder="Present Salary" />
                                       @error('present_salary')
-                                          <div class="alert-danger">{{ $message }}</div>
+                                          <div style="color:red">{{ $message }}</div>
                                       @enderror
                                     </div>
                                  </div>

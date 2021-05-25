@@ -23,14 +23,14 @@ $current = date("Y/m/d");
                <form action="{{route('admin.account.reports.onlydatewise')}}" method="POST">
                   <div class="card-header d-flex justify-content-center">
                      @csrf
-                     <div class="col-md-4">
+                     <div class="col-md-3">
                         <div class="form-group">
                            <label for="fname">Date: *</label>
                            <input type="text" id="date" name="formdate" class="form-control noradious datepicker" @if(isset($date)) value="{{$date}}" @else value="{{$current}}" @endif>
                         </div>
                      </div>
                      <div class="col-md-3">
-                        <button type="submit" class="btn btn-success">Search</button>
+                        <button type="submit" class="btn btn-success mt-4">Search</button>
                      </div>
                   </div>
                   <form>

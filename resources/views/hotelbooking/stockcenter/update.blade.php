@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                     </div>
-                            </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -67,11 +67,6 @@
                                                 <div class="header-title">
                                                     <h4 class="card-title">All Stock Center</h4>
                                                 </div>
-                                                <span class="float-right mr-2">
-                                                    <!-- <a href="{{route('admin.branch.create')}}" class="btn btn-sm bg-primary">
-                                                <i class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                                                </a> -->
-                                                </span>
                                             </div>
                                             <div class="card-body">
                                                 <div class="table-responsive">
@@ -91,10 +86,10 @@
                                                                 <td>{{$data->name}}</td>
                                                                 <td>
                                                                     @if($data->is_active==1)
-                                                                    <span class="btn btn-success btn-sm">Active<span>
-                                                                            @else
-                                                                            <span class="btn btn-danger btn-sm">Deactive<span>
-                                                                                    @endif
+                                                                        <span class="btn btn-success btn-sm">Active<span>
+                                                                    @else
+                                                                        <span class="btn btn-danger btn-sm">Deactive<span>
+                                                                    @endif
                                                                 </td>
                                                                 <td>
                                                                     @if($data->is_active==1)
@@ -104,7 +99,6 @@
                                                                     @endif
                                                                     <a class="badge bg-primary-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/stockcenter/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
                                                                     <a id="delete" class="badge bg-danger-light mr-2" data-toggle="tooltip" data-placement="top" href="{{url('admin/stockcenter/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
-
                                                                 </td>
                                                             </tr>
                                                             @endforeach

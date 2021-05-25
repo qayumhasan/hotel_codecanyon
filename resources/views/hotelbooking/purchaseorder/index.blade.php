@@ -26,7 +26,7 @@
                                  <th>Date</th>
                                  <th>Number Of Qty</th>
                                  <th>Number Of Item</th>
-                                 <th>status</th>
+                                 
                                  <th>Action</th>
                               </tr>
                            </thead>
@@ -36,23 +36,9 @@
                                  <td>{{++$key}}</td>
                                  <td>{{$data->invoice_no}}</td>
                                  <td>{{$data->date}}</td>
-                                 
                                  <td>{{$data->number_of_qty}}</td>
                                  <td>{{$data->number_of_item}}</td>
                                  <td>
-                                 @if($data->is_active==1)
-                                 <span class=" btn-info btn-sm">pending</span>
-                                 @else
-                                 <span class=" btn-danger btn-sm">Deactive</span>
-                                 @endif
-
-                                 </td>
-                                 <td>
-                                   @if($data->is_active==1)
-                                   <a class="badge bg-info-light mr-2"  data-toggle="tooltip" data-placement="top"  href="{{url('admin/itementry/deactive/'.$data->id)}}" data-original-title="Active"><i class="la la-thumbs-up"></i></a>
-                                   @else
-                                    <a class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/itementry/active/'.$data->id)}}" data-original-title="Deactive"><i class="la la-thumbs-down"></i></a>
-                                   @endif
                                    <a class="badge bg-primary-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/purchaseorder/edit/'.$data->id)}}" data-original-title="Edit"><i class="lar la-edit"></i></a>
                                    <a id="delete" class="badge bg-danger-light mr-2"  data-toggle="tooltip" data-placement="top" href="{{url('admin/purchaseorder/delete/'.$data->id)}}" data-original-title="Delete"> <i class="la la-trash"></i></a>
                                  </td>

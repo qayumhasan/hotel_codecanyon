@@ -315,7 +315,6 @@ $current = date("Y/m/d");
         $('#voucher_type').on('change', function() {
             var voucher_type = $(this).val();
             //alert("okkkkkk");
-
             if (voucher_type) {
                 $.ajax({
                     url: "{{  url('/get/admin/vouchertype/accountheadaccount/') }}/" + voucher_type,
@@ -405,13 +404,10 @@ $current = date("Y/m/d");
 <script type="text/javascript">
     $(document).ready(function() {
         $('#voucher_type').on('change', function() {
-
             var mainval = $(this).val();
             $("#voucher_name").val(mainval);
             var item = document.querySelector('#voucher_type').disabled = true;
             alldata();
-
-
         });
     });
 </script>
@@ -419,7 +415,6 @@ $current = date("Y/m/d");
     $(document).ready(function() {
         $('#voucher_type').on('change', function() {
             $("#plus_icon").show();
-
             var v_val = $(this).val();
             if (v_val == "Bank Receipt Voucher") {
                 $("#check_r").show();
@@ -429,7 +424,6 @@ $current = date("Y/m/d");
                 $("#check_r").hide();
             }
             alldata();
-
         });
     });
 </script>
@@ -437,36 +431,27 @@ $current = date("Y/m/d");
 <script type="text/javascript">
     $(document).ready(function() {
         $("#mainqty").on('click', function() {
-
             if ($(this).is(":checked")) {
                 $(".qty").show();
             } else {
                 $(".qty").hide();
             }
-
         });
 
         $("#mainsubheadone").on('click', function() {
-
             if ($(this).is(":checked")) {
                 $(".subheadone").show();
             } else {
                 $(".subheadone").hide();
             }
-
         });
         $("#mainsubheadtwo").on('click', function() {
-
             if ($(this).is(":checked")) {
                 $(".subheadtwo").show();
             } else {
                 $(".subheadtwo").hide();
             }
-
         });
-
-
-
     });
 </script>
 
@@ -474,7 +459,6 @@ $current = date("Y/m/d");
     $(document).ready(function() {
         $('#account_head_main').on('change', function() {
             var account_head = $(this).val();
-            //alert(account_head);
             if (account_head) {
                 $.ajax({
                     url: "{{  url('/get/admin/sourchofaccount/all/') }}/" + account_head,
@@ -490,7 +474,6 @@ $current = date("Y/m/d");
             } else {
                 //alert('danger');
             }
-
         });
     });
 </script>
@@ -500,7 +483,6 @@ $current = date("Y/m/d");
     $(document).ready(function() {
         $('#account_head').on('change', function() {
             var account_head = $(this).val();
-            // alert(account_head);
             if (account_head) {
                 $.ajax({
                     url: "{{  url('/get/admin/headofaccount/all/') }}/" + account_head,
@@ -511,7 +493,6 @@ $current = date("Y/m/d");
                         $("#acchead_Accountcate_code").val(data.maincategory_code);
                         $("#acchead_subcate_codeone").val(data.subcategoryone_code);
                         $("#acchead_subcate_codetwo").val(data.subcategorytwo_code);
-
                     }
                 });
             } else {
@@ -524,11 +505,9 @@ $current = date("Y/m/d");
 <script>
     $(document).ready(function() {
         $('#additem').on('click', function() {
-
             var vouchertype = $("#voucher_type").val();
             if (vouchertype == '') {
                 alert("Please select Voucher Type");
-
             } else {
 
                 var subcategory_codetwo = $("#subcategory_codetwo").val();
@@ -536,7 +515,6 @@ $current = date("Y/m/d");
                 var remarks = $("#remarks").val();
                 var qty = $("#qty").val();
                 var price = $("#price").val();
-
                 var account_head = $("#account_head").val();
                 var account_head_main = $("#account_head_main").val();
                 //alert(account_head_main);
@@ -551,21 +529,18 @@ $current = date("Y/m/d");
                 var sourch_Accountcate_code = $("#sourch_Accountcate_code").val();
                 var sourch_subcate_codeone = $("#sourch_subcate_codeone").val();
                 var sourch_subcate_codetwo = $("#sourch_subcate_codetwo").val();
-
                 var acchead_cate_code = $("#acchead_cate_code").val();
                 var acchead_Accountcate_code = $("#acchead_Accountcate_code").val();
                 var acchead_subcate_codeone = $("#acchead_subcate_codeone").val();
                 var acchead_subcate_codetwo = $("#acchead_subcate_codetwo").val();
                 var hiddeninvoice = $("#hiddeninvoice").val();
                 var cheque_reference = $("#cheque_reference").val();
-
                 //alert(voucher_name);
                 $.ajax({
                     type: 'GET',
                     url: "{{route('account.transection.insert')}}",
                     //data: $('#tax_cal').serializeArray(),
                     data: {
-
                         subcategory_codetwo: subcategory_codetwo,
                         subcategory_codeone: subcategory_codeone,
                         remarks: remarks,
@@ -591,10 +566,6 @@ $current = date("Y/m/d");
                         acchead_subcate_codetwo: acchead_subcate_codetwo,
                         hiddeninvoice: hiddeninvoice,
                         cheque_reference: cheque_reference,
-
-
-
-
                     },
 
                     success: function(data) {
@@ -609,23 +580,16 @@ $current = date("Y/m/d");
                         $('#amount').val("");
                         $('#accounttransecti_id').val("");
                         $('#account_head_main').val("");
-
-
                         $('#sourch_cate_code').val("");
                         $('#sourch_Accountcate_code').val("");
                         $('#sourch_subcate_codeone').val("");
                         $('#sourch_subcate_codetwo').val("");
-
                         $('#acchead_cate_code').val("");
                         $('#acchead_Accountcate_code').val("");
                         $('#acchead_subcate_codeone').val("");
                         $('#acchead_subcate_codetwo').val("");
                         $('#cheque_reference').val("");
-
-
-
                         alldata();
-
                     },
 
                     error: function(err) {
@@ -635,10 +599,6 @@ $current = date("Y/m/d");
 
                 });
             }
-
-
-
-
         });
     });
 </script>
@@ -650,17 +610,14 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice").val();
         // alert(invoice);
-        $.post('{{ url('/get/alldatatransection/data/') }}/' + invoice, {
+        $.post('{{ url("/get/alldatatransection/data/") }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
-
                 $('#transectiondata').html(data);
-
             });
 
     }
-
     alldata();
 </script>
 
@@ -669,7 +626,7 @@ $current = date("Y/m/d");
 <script>
     function Datadelete(el) {
         //alert(el.value);
-        $.post('{{route('get.transection.delete')}}', {
+        $.post('{{route("get.transection.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 tran_id: el.value
             },
@@ -685,8 +642,7 @@ $current = date("Y/m/d");
 <script>
     function editdata(el) {
 
-        $.post('{{route('
-            get.alldatatransection.edit ')}}', {
+        $.post('{{route("get.alldatatransection.edit")}}', {
                 _token: '{{ csrf_token() }}',
                 item_id: el.value
             },
@@ -695,25 +651,18 @@ $current = date("Y/m/d");
 
                 $("#location").val(data.location);
                 $("#account_head").val(data.account_head_details);
-
                 $("#account_head_main").val(data.account_head_details);
-
                 $("#price").val(data.price);
                 $("#accounttransecti_id").val(data.id);
-
                 if (data.qty) {
                     $(".qty").show();
                     $("#qty").val(data.qty);
-
-
                     var checkeditem = document.querySelector('#mainqty');
                     console.dir(checkeditem.checked = true);
-
                 } else {
                     var checkeditem = document.querySelector('#mainqty');
                     console.dir(checkeditem.checked = false);
                     $(".qty").hide();
-
                 }
                 if (data.subcategory_codeone) {
                     var checkeditem = document.querySelector('#mainsubheadone');
@@ -739,31 +688,16 @@ $current = date("Y/m/d");
                 }
                 $("#qty").val(data.qty);
                 $("#remarks").val(data.remarks);
-
-
                 if (data.dr_amount) {
-
                     $("#amount").val(data.dr_amount);
                     $("#amount_cate").val('Debit').selected;
-
-
                 } else {
-
-
                     $("#amount").val(data.cr_amount);
                     $("#amount_cate").val('Cradit').selected;
-
                 }
-
-
-
             });
-
-
     }
 </script>
-
-
 <script>
     $(document).ready(function() {
         $('#account_head_main').on('change', function() {
@@ -775,10 +709,7 @@ $current = date("Y/m/d");
                     type: "GET",
                     dataType: "json",
                     success: function(data) {
-
                         $('#current_balance_sourch').html("Current Balance:" + data);
-
-
                     }
                 });
             }

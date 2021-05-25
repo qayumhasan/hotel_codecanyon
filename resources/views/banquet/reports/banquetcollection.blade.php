@@ -61,7 +61,7 @@
                               <td>{{$data->venue->venue_name}}</td>
                               <td>{{$data->guest_name}}</td>
                               <td>{{$data->mobile}}</td>
-                              <td>{{$data->booking_date}}</td>
+                              <td>{{ date("Y-m-d",strtotime($data->booking_date)) }}</td>
                               <td>
                                  @if($data->is_active==1)
                                  <span class=" btn-success btn-sm">Active</span>
