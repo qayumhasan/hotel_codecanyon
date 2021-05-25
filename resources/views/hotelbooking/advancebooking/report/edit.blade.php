@@ -10,7 +10,7 @@ $current =date("Y/m/d");
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Edit Advance Booking</h4>
                         </div>
@@ -81,10 +81,10 @@ $current =date("Y/m/d");
                                                                     <option {{$advancebooking->guest_id == $row->id?'selected':' '}} value="{{$row->id}}">{{$row->guest_name}}</option>
                                                                     @endforeach
                                                                 </select>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <button type="button" data-toggle="modal" data-target="#addguest" class="btn btn-primary">Add Guest</button>
-                                                            </div>
+                                                            </div>  
+                                                        <div class="col-md-3">
+                                                            <button type="button" data-toggle="modal" data-target="#addguest" class="btn btn-sm btn-primary "><i class="fas fa-plus m-0"></i></button>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                 </div>

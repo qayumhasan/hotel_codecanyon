@@ -5,22 +5,13 @@
 date_default_timezone_set("asia/dhaka");
 $current = date("m/d/Y");
 @endphp
-<style>
-  .form-control form-control-sm {
-
-    border: 1px solid #443f3f;
-  
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/datepicker/css/bootstrap-datepicker3.css')}}">
 <div class="content-page">
       <div class="container-fluid">
          <div class="row">
             <div class="col-sm-12 col-lg-12">
-               <div class="iq-card">
-                  <div class="iq-card-header d-flex justify-content-between">
-                     <div class="iq-header-title">
+               <div class="iq-card card">
+                  <div class="iq-card-header d-flex justify-content-between bg-header p-2">
+                     <div class="iq-header-title mr-2 mt-1">
                         <h4 class="card-title">Update Employee</h4>
                      </div>
                      <span class="float-right mr-2">
@@ -29,22 +20,15 @@ $current = date("m/d/Y");
                         </a>
                      </span>
                   </div>
-                  <div class="iq-card-body">
+                  <div class="iq-card-body card-body">
                      <form action="{{route('admin.employee.update')}}" method="post" id="form-wizard1" class="text-center mt-4" enctype="multipart/form-data">
-                      @csrf
-                     
-                      
-                       
+                      @csrf 
                            <div class="form-card text-left">
                               <div class="row">
                                  <div class="col-7">
-                                    <h3 class="mb-4">Account Information:</h3>
-                                 </div>
-                                 <div class="col-5">
-                                  
+                                    <h4 class="mb-4">Account Information:</h4>
                                  </div>
                               </div>
-                        
                               <div class="row">
                                  <div class="col-md-6">
                                     <div class="form-group">
@@ -88,47 +72,12 @@ $current = date("m/d/Y");
                                       @enderror
                                     </div>
                                  </div>
-                                 <!-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>District: *</label>
-                                        <input type="text" name="district" class="form-control form-control-sm" list="district" placeholder="--select--" value="{{$data->district}}" />
-                                       <datalist id="district">
-                                       @php
-                                          $alldistrict=DB::table('District_tbl')->get();
-                                       @endphp
-                                            @foreach($alldistrict as $dis)
-                                            <option value="{{$dis->District}}"></option>
-                                            @endforeach
-                                       </datalist>
-                                       @error('district')
-                                          <div class="alert-danger">{{ $message }}</div>
-                                      @enderror
-                                    </div>
-                                 </div> -->
-                                 <!-- <div class="col-md-6">
-                                    <div class="form-group">
-                                       <label>Police-Station: </label>
-                                       <select class="form-control form-control-sm" name="police_station" id="police_station">
-                                       @php
-                                          $allthana=DB::table('Thana_tbl')->get();
-                                       @endphp
-                                          @foreach($allthana as $thana)
-                                          <option value="{{$thana->Thana}}">{{$thana->Thana}}</option>
-                                          @endforeach
-                                       </select>
-                                    </div>
-                                 </div> -->
-                                
                               </div>
-                           </div>
-                  
+                           </div>           
                            <div class="form-card text-left">
-                              <div class="row">
+                           <div class="row mt-4">
                                  <div class="col-7">
-                                    <h3 class="mb-4">Personal Information:</h3>
-                                 </div>
-                                 <div class="col-5">
-                                  
+                                    <h4 class="mb-4">Personal Information:</h4>
                                  </div>
                               </div>
                               <div class="row">
@@ -250,24 +199,24 @@ $current = date("m/d/Y");
                                  <div class="col-md-3">
                                      <div class="form-group">
                                        <input type="file" class="custom-file-input" id="customFile" name="image">
-                                       <label class="custom-file-label" for="customFile">Image(200px*190px)</label>
+                                       <label class="custom-file-label m-3" for="customFile">Image(200px*190px)</label>
                                      </div>
                                   </div>
                                   <div class="col-md-1"></div>
                                   <div class="col-md-3">
                                      <div class="form-group">
                                        <input type="file" class="custom-file-input" id="customFile" name="cv">
-                                       <label class="custom-file-label" for="customFile">CV(PDF)</label>
+                                       <label class="custom-file-label m-3" for="customFile">CV(PDF)</label>
                                      </div>
                                   </div>
                                   <div class="col-md-1"></div>
                                   <div class="col-md-3">
                                      <div class="form-group">
                                        <input type="file" class="custom-file-input" id="customFile" name="joining_letter">
-                                       <label class="custom-file-label" for="customFile">Joining Letter(PDF)</label>
+                                       <label class="custom-file-label m-3" for="customFile">Joining Letter(PDF)</label>
                                      </div>
                                   </div>
-                                   <div class="col-md-3">
+                                   <div class="col-md-3 mt-4">
                                      <div class="form-group">
                                        <img src="{{asset('public/uploads/employee/'.$data->image)}}" height="45px">
                                      </div>
@@ -275,14 +224,10 @@ $current = date("m/d/Y");
                               
                               </div>
                            </div>
-                        
                            <div class="form-card text-left">
-                              <div class="row">
+                              <div class="row mt-4">
                                  <div class="col-7">
-                                    <h3 class="mb-4">Experience & Salary Information:</h3>
-                                 </div>
-                                 <div class="col-5">
-                                  
+                                    <h4 class="mb-4">Experience & Salary Information:</h4>
                                  </div>
                               </div>
                                   <div class="row">
@@ -376,10 +321,7 @@ $current = date("m/d/Y");
                                  </div>
                               </div>
                            </div>
-                           <button type="submit" class="btn btn-primary float-right" value="Submit">Submit</button>
-                           
-                       
-
+                           <button type="submit" class="btn btn-primary mt-4" value="Submit">Submit</button>
                      </form>
                   </div>
                </div>
@@ -387,22 +329,16 @@ $current = date("m/d/Y");
          </div>
       </div>
     </div>
-<link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/datepicker/css/bootstrap-datepicker3.css')}}">
-<script src="{{asset('public/backend/assets/datepicker/js/bootstrap-datepicker.js')}}"></script>
-
 <script type="text/javascript">
   $(document).ready(function() {
      $('input[name="district"]').on('change', function(){
          var district = $(this).val();
-         //alert(district);
-
          if(district) {
              $.ajax({
                  url: "{{  url('/get/policestation/all/') }}/"+district,
                  type:"GET",
                  dataType:"json",
                  success:function(data) {
-
                         $('#police_station').empty();
                         $('#police_station').append(' <option value="">--Select--</option>');
                         $.each(data,function(index,districtObj){
@@ -417,15 +353,4 @@ $current = date("m/d/Y");
      });
  });
 </script>
-
-<script>
-    $(document).ready(function() {
-        $('.datepicker').datepicker({
-            format: 'dd-mm-yyyy',
-            autoclose: true
-        });
-    })
-</script>
-@
-
 @endsection

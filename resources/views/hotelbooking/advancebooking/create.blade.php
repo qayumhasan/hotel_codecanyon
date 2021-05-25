@@ -1,7 +1,6 @@
 @extends('hotelbooking.master')
 @section('title', 'Advance Booking | '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("Asia/Dhaka");
 $current =date("Y/m/d");
@@ -12,7 +11,7 @@ $time = date("h:i");
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Advance Booking</h4>
                         </div>
@@ -266,7 +265,7 @@ $time = date("h:i");
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </div>

@@ -71,7 +71,7 @@ $time = date("h:i");
                                     @php
                                     $booking_number = $booking_number + $row->NumberOfBooking;
                                     $total_night = $total_night + $row->NumberOfNight;
-                                    if($row->NumberOfBooking !=0){
+                                    if($row->NumberOfBooking !=0 && $row->NumberOfNight !=0){
                                         $avgnight = $avgnight +  ($row->NumberOfBooking /$row->NumberOfNight);
                                     }else{
                                         $avgnight = $avgnight + 0;

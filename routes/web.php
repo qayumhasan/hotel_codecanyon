@@ -39,11 +39,6 @@ use App\Http\Controllers\Admin\Hotel\HotelServiceController;
 use App\Http\Controllers\Admin\Stock\PhysicalStockController;
 use App\Http\Controllers\Admin\Stock\StockReportController;
 use App\Http\Controllers\Admin\UserRoleController;
-
-
-
-
-
 use App\Http\Controllers\Admin\FoodAndBeverage\FoodAndBeverageController;
 use App\Http\Controllers\Admin\Banquet\BanquetController;
 use App\Http\Controllers\Admin\Banquet\HallController;
@@ -54,18 +49,10 @@ use App\Http\Controllers\Admin\Banquet\BanquetReportController;
 // payroll
 use App\Http\Controllers\Admin\Payroll\PayrollController;
 use App\Http\Controllers\Admin\Payroll\EmployeeSelaryController;
-
 use App\Http\Controllers\Admin\AddonManagerController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\MediaManagerController;
 use App\Http\Controllers\Admin\DepartmentController;
-
-
-
-
-
-
-
 
 Route::get('/', function () {
     return redirect('admin/login');

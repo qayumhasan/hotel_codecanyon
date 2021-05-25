@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Add Department</h4>
                         </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="col-sm-8">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Department List</h4>
                         </div>
@@ -61,7 +61,7 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$row->name}}</td>
                                     <td>
-                                        <img src="{{asset('public/uploads/departments')}}/{{$row->image}}" alt="" width="20%" />
+                                        <img src="{{asset('public/uploads/departments')}}/{{$row->image}}" width="10%" />
                                     </td>
                                     <td>
                                         @if($row->is_active == 1)
@@ -115,7 +115,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <img src="" alt=" " id="image" class="img-fluid w-100"/>
+                        <img src="" alt=" " id="image" class="img-fluid img-width"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -5,8 +5,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Add RoomType</h4>
                         </div>
@@ -15,11 +15,6 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
-                                <div class="header-title">
-                                    <h4 class="card-title">RoomType Content</h4>
-                                </div>
-                            </div>
                             <div class="card-body">
                             <form action="{{route('admin.roomtype.store')}}" method="POST">
                                  @csrf
@@ -72,7 +67,7 @@
                                     <div class="row">
                                         <div class="col-md-8 text-center">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary mt-4">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -82,7 +77,6 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                        
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">

@@ -13,7 +13,7 @@ $time = date("h:i");
       <div class="row">
          <div class="col-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">{{$row->room_type}}</h4>
                   </div>
@@ -58,11 +58,9 @@ $time = date("h:i");
                            <li class="list-group-item bg-menu">
                               <a class="bg-menu" href="#"><i class="fa fa-history" aria-hidden="true"></i> At a Glance</a>
                            </li>
-
                            <li class="list-group-item bg-menu">
                               <a class="bg-menu" href="{{route('admin.checking.index',$row->id)}}"><i class="fa fa-globe" aria-hidden="true"></i> Check In</a>
                            </li>
-
                            <li class="list-group-item bg-menu">
                               <a class="bg-menu checkinHistorybtn" data-toggle="modal" data-target="#checkinhistory" id="{{$row->id}}" href="{{url('admin/checkin/room/history/'.$row->id)}}"><i class="fa fa-calendar-check" aria-hidden="true"></i> History
                               </a>
@@ -109,7 +107,7 @@ $time = date("h:i");
                      <div class="col-6 p-0">
                         <div class="service">
                            <ul>
-                              <li class="text-color-service">{{$row->checkin->guestname}}</li>
+                              <li class="text-color-service">{{$row->checkin->guest_name}}</li>
                               <li>{{$row->checkin->mobile }}</li>
                               <li>{{$row->checkin->company_name}}</li>
                            </ul>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'All Employee | '.$seo->meta_title)
+@section('title', 'All Employee | '.$companyinformation->company_name)
 @section('content')
  <div class="content-page">
       <div class="container-fluid">
@@ -48,7 +48,6 @@
                                           <div class="dropdown">
                                              <span class="text-primary dropdown-toggle action-item" id="moreOptions1" data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false" href="#">
-                                                
                                              </span>
                                              <div class="dropdown-menu" aria-labelledby="moreOptions1">
                                                 <a class="dropdown-item" href="#">View Cv</a>
