@@ -8,7 +8,7 @@
          <div class="row">
             <div class="col-xl-3 col-lg-4">
                   <div class="card">
-                     <div class="card-header d-flex justify-content-between">
+                     <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                            <h4 class="card-title">Add New User</h4>
                         </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="col-xl-9 col-lg-8">
                   <div class="card">
-                     <div class="card-header d-flex justify-content-between">
+                     <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                            <h4 class="card-title">New User Information</h4>
                         </div>

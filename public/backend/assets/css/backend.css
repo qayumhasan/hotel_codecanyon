@@ -11679,9 +11679,8 @@ a.text-skyblue:hover,a.text-skyblue:focus
 
 .card .card-header
 {
-  background: transparent;
   border-radius: 0;
-  padding: 20px;
+  padding: 13px;
   margin-bottom: 0;
   align-items: center !important;
   border-bottom: 1px solid #f1f1f1;
@@ -27291,6 +27290,12 @@ fieldset[disabled] .btn
   bottom: 0;
   position: absolute;
 }
+.bg-header{
+  background:#C3C3E5;
+}
+.img-width{
+  width: 50%;
+}
 
 @keyframes loader1
 {
@@ -29024,7 +29029,7 @@ fieldset[disabled] .btn
 {
   background: #fafbfe;
   position: relative;
-  padding-bottom: 240px;
+  padding-bottom: 175px;
   border-radius: 0 0 8px 8px;
 }
 

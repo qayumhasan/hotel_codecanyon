@@ -1,20 +1,12 @@
 @extends('hotelbooking.master')
-@section('title', 'Update Room | '.$seo->meta_title)
+@section('title', 'Update Room | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-lg-2 col-lg-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Update Room</h4>
                         </div>
@@ -24,19 +16,14 @@
                 <form action="{{route('admin.room.update')}}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
-                                <div class="header-title">
-                                    <h4 class="card-title">Room Content</h4>
-                                </div>
-                            </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Room No: *</label>
-                                            <input type="text" class="form-control" id="fname" name="room_no" placeholder="Room No" value="{{$edit->room_no}}"/>
+                                            <input type="text" class="form-control form-control-sm" id="fname" name="room_no" placeholder="Room No" value="{{$edit->room_no}}"/>
                                             <input type="hidden" name="id" value="{{$edit->id}}"/>
                                             @error('room_no')
                                                 <div style="color:red">{{ $message }}</div>
@@ -46,7 +33,7 @@
                                      <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Branch Name: *</label>
-                                            <select name="branch_id" class="form-control" id="branch_id">
+                                            <select name="branch_id" class="form-control form-control-sm" id="branch_id">
                                                 <option value="">--Select--</option>
                                                 @foreach($allbranch as $branch)
                                                     <option value="{{$branch->id}}" @if($edit->branch_id == $branch->id) selected @endif>{{$branch->branch_name}}</option>
@@ -64,7 +51,7 @@
                                             @php
                                                 $allroomtype=App\Models\RoomType::where('is_deleted',0)->where('branch_id',$edit->branch_id)->latest()->get();
                                             @endphp
-                                            <select name="room_type" class="form-control" id="room_type">
+                                            <select name="room_type" class="form-control form-control-sm" id="room_type">
                                                 @foreach($allroomtype as $roomtype)
                                                     <option value="{{$roomtype->id}}" @if($edit->room_type == $roomtype->id) selected @endif >{{$roomtype->room_type}}</option>
                                                 @endforeach
@@ -81,7 +68,7 @@
                                             @php
                                                 $allfloor=App\Models\Floor::where('is_deleted',0)->where('branch_id',$edit->branch_id)->latest()->get();
                                             @endphp
-                                            <select name="floor" class="form-control floor" id="floor">
+                                            <select name="floor" class="form-control form-control-sm floor" id="floor">
                                                 @foreach($allfloor as $floor)
                                                 <option value="{{$floor->id}}"  @if($edit->floor == $floor->id) selected @endif>{{$floor->name}}</option>
                                                 @endforeach
@@ -95,7 +82,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Toilet:</label>
-                                            <select name="toilet" class="form-control">
+                                            <select name="toilet" class="form-control form-control-sm">
                                                 <option value="">--Select--</option>
                                                 <option value="General" @if($edit->toilet=='General') selected @endif>General</option>
                                                 <option value="English" @if($edit->toilet=='English') selected @endif>English</option>
@@ -106,7 +93,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Tariff:</label>
-                                           <Input type="text" name="tariff" class="form-control" id="tariff" placeholder="Price" value="{{$edit->tariff}}">
+                                           <Input type="text" name="tariff" class="form-control form-control-sm" id="tariff" placeholder="Price" value="{{$edit->tariff}}">
                                            @error('tariff')
                                                 <div style="color:red">{{ $message }}</div>
                                             @enderror
@@ -115,7 +102,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Category:</label>
-                                            <input type="text" id="category" name="category" class="form-control" list="allcategory" placeholder="Category" value="{{$edit->category}}"/>
+                                            <input type="text" id="category" name="category" class="form-control form-control-sm" list="allcategory" placeholder="Category" value="{{$edit->category}}"/>
                                             <datalist id="allcategory">
                                             @foreach($category as $cate)
                                                 <option value="{{$cate->category}}">{{$cate->category}}</option>
@@ -127,25 +114,13 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="lname">Room Details: </label>
-                                           <textarea name="room_details" id="editor3" cols="30" rows="10">{{$edit->room_details}}</textarea>
+                                           <textarea name="room_details" class="form-control form-control-sm" id="editor3" cols="30" rows="5">{{$edit->room_details}}</textarea>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
-                                <div class="header-title">
-                                    <h4 class="card-title">Publish</h4>
-                                </div>
-                            </div>
-                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
+                                    <h4 class="card-title mt-4">Publish</h4>
                                         <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                             <input type="radio" name="is_active" id="customRadio-1" class="custom-control-input bg-primary" value="1" @if($edit->is_active==1) checked @endif>
                                             <label class="custom-control-label" for="customRadio-1"> Active </label>
@@ -156,15 +131,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div id="file-upload-form" class="uploader-file">
-                                            <button type="submit" class="btn btn-success">Update</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +142,6 @@
 
                         </div>
                     </div>
-                 
                 </div>
             </form>
             </div>
@@ -180,11 +149,6 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-<script>
-   CKEDITOR.replace('editor3');
-</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
      $('select[name="branch_id"]').on('change', function(){

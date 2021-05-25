@@ -20,9 +20,9 @@ class Currency extends Model
     public function getStatusAttribute()
     {
         if($this->attributes['is_default'] == '1'){
-            return '<button type="button" class="btn btn-primary">Active</button>';
+            return '<button type="button" class="btn btn-sm btn-success">Active</button>';
         }else{
-            return '<button type="button" class="btn btn-danger">In Active</button>';
+            return '<button type="button" class="btn btn-sm btn-danger">Inactive</button>';
         }
     }
 }

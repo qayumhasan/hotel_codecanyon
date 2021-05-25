@@ -4,7 +4,7 @@
 <div class="content-page">
    <div class="container-fluid">
       <div class="row">
-         <div class="col-lg-12">
+         <div class="offset-lg-2 col-lg-8">
             <div class="card">
                <div class="card-body p-0">
                   <div class="iq-edit-list usr-edit">
@@ -73,7 +73,7 @@
                </div>
             </div>
          </div>
-         <div class="col-lg-12">
+         <div class="offset-lg-2 col-lg-8">
             <div class="iq-edit-list-data">
                <div class="tab-content">
                   @if(Session::has('soft_success'))
@@ -89,8 +89,8 @@
                                  @endif
                                  <!-- app settings area start from here -->
                                  <div class="card">
-                                    <div class="card-header d-flex justify-content-between">
-                                       <div class="iq-header-title">
+                                    <div class="card-header d-flex justify-content-between bg-header">
+                                       <div class="header-title">
                                           <h4 class="card-title">App Information</h4>
                                        </div>
                                     </div>
@@ -100,28 +100,28 @@
                                           <div class=" row align-items-center">
                                              <div class="form-group col-sm-6">
                                                 <label for="fname">App Name :</label>
-                                                <input type="text" class="form-control" name="company_name" id="fname" placeholder="Company Name" value="{{$companyinformation->company_name}}">
+                                                <input type="text" class="form-control form-control-sm" name="company_name" id="fname" placeholder="Company Name" value="{{$companyinformation->company_name}}">
                                                 <input type="hidden" name="id" value="{{$companyinformation->id}}">
                                              </div>
 
                                              <div class="form-group col-sm-6">
                                                 <label for="lname">Mobile Number :</label>
-                                                <input type="text" class="form-control" name="mobile" id="lname" placeholder="Mobile Number" value="{{$companyinformation->mobile}}">
+                                                <input type="text" class="form-control form-control-sm" name="mobile" id="lname" placeholder="Mobile Number" value="{{$companyinformation->mobile}}">
                                              </div>
                                              <div class="form-group col-sm-6">
                                                 <label for="uname">Email Id :</label>
-                                                <input type="text" class="form-control" name="email" id="uname" placeholder="Email Id" value="{{$companyinformation->email}}">
+                                                <input type="text" class="form-control form-control-sm" name="email" id="uname" placeholder="Email Id" value="{{$companyinformation->email}}">
                                              </div>
                                              <div class="form-group col-sm-6">
                                                 <label for="uname">Fax :</label>
-                                                <input type="text" class="form-control" name="fax" id="uname" placeholder="Fax" value="{{$companyinformation->fax}}">
+                                                <input type="text" class="form-control form-control-sm" name="fax" id="uname" placeholder="Fax" value="{{$companyinformation->fax}}">
                                              </div>
                                              <div class="form-group col-sm-6">
                                                 <label for="cname">Address :</label>
-                                                <textarea class="form-control" name="address" placeholder="Address">{{$companyinformation->address}}</textarea>
+                                                <textarea class="form-control form-control-sm" name="address" placeholder="Address">{{$companyinformation->address}}</textarea>
                                              </div>
                                           </div>
-                                          <button type="submit" class="btn btn-primary mr-2">Update</button>
+                                          <button type="submit" class="btn btn-primary mr-2 mt-2">Update</button>
                                        </form>
                                     </div>
                                  </div>
@@ -140,8 +140,8 @@
                                              @endif
                                              <!-- Logo settings area start from here -->
                                              <div class="card">
-                                                <div class="card-header d-flex justify-content-between">
-                                                   <div class="iq-header-title">
+                                                <div class="card-header d-flex justify-content-between bg-header">
+                                                   <div class="header-title">
                                                       <h4 class="card-title">Logo</h4>
                                                    </div>
                                                 </div>
@@ -172,7 +172,7 @@
                                                          </div>
                                                       </div>
                                                       <div class="form-group row">
-                                                         <button type="submit" class="btn btn-primary mr-2">Update</button>
+                                                         <button type="submit" class="btn btn-primary mr-2 mt-2">Update</button>
                                                       </div>
                                                    </form>
                                                 </div>
@@ -218,8 +218,8 @@
                                                                                  <div class="row">
                                                                                     <div class="col-sm-12">
                                                                                        <div class="card">
-                                                                                          <div class="card-header d-flex justify-content-between">
-                                                                                             <div class="iq-header-title">
+                                                                                          <div class="card-header d-flex justify-content-between bg-header">
+                                                                                             <div class="header-title">
                                                                                                 <h4 class="card-title">
                                                                                                    Smtp</h4>
                                                                                              </div>
@@ -232,51 +232,51 @@
                                                                                                       <label for="lname">Mail
                                                                                                          Host :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_HOST">
-                                                                                                      <input type="text" class="form-control" name="MAIL_HOST" placeholder="Mail Host" value="{{ env('MAIL_HOST') }}">
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_HOST" placeholder="Mail Host" value="{{ env('MAIL_HOST') }}">
                                                                                                    </div>
                                                                                                    <div class="form-group col-sm-6">
                                                                                                       <label for="uname">Mail
                                                                                                          Port :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_PORT">
-                                                                                                      <input type="text" class="form-control" name="MAIL_PORT" value="{{ env('MAIL_PORT') }}" placeholder="Mail Port" required>
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_PORT" value="{{ env('MAIL_PORT') }}" placeholder="Mail Port" required>
                                                                                                    </div>
                                                                                                    <div class="form-group col-sm-6">
                                                                                                       <label for="uname">Mail
                                                                                                          UserName
                                                                                                          :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_USERNAME">
-                                                                                                      <input type="text" class="form-control" name="MAIL_USERNAME" value="{{ env('MAIL_USERNAME') }}" placeholder="Mail UserName" required>
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_USERNAME" value="{{ env('MAIL_USERNAME') }}" placeholder="Mail UserName" required>
                                                                                                    </div>
                                                                                                    <div class="form-group col-sm-6">
                                                                                                       <label for="cname">Mail
                                                                                                          Password
                                                                                                          :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_PASSWORD">
-                                                                                                      <input type="text" class="form-control" name="MAIL_PASSWORD" value="{{ env('MAIL_PASSWORD') }}" placeholder="Mail Password" required>
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_PASSWORD" value="{{ env('MAIL_PASSWORD') }}" placeholder="Mail Password" required>
                                                                                                    </div>
                                                                                                    <div class="form-group col-sm-6">
                                                                                                       <label for="cname">Mail
                                                                                                          Encryption
                                                                                                          :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_ENCRYPTION">
-                                                                                                      <input type="text" class="form-control" name="MAIL_ENCRYPTION" value="{{ env('MAIL_ENCRYPTION') }}" placeholder="Mail Encription" required>
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_ENCRYPTION" value="{{ env('MAIL_ENCRYPTION') }}" placeholder="Mail Encription" required>
                                                                                                    </div>
                                                                                                    <div class="form-group col-sm-6">
                                                                                                       <label for="cname">Mail
                                                                                                          Form Name
                                                                                                          :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_FROM_NAME">
-                                                                                                      <input type="text" class="form-control" name="MAIL_FROM_NAME" value="{{ env('MAIL_FROM_NAME') }}" placeholder="Mail Form Name" required>
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_FROM_NAME" value="{{ env('MAIL_FROM_NAME') }}" placeholder="Mail Form Name" required>
                                                                                                    </div>
                                                                                                    <div class="form-group col-sm-6">
                                                                                                       <label for="cname">Mail
                                                                                                          Form Address
                                                                                                          :</label>
                                                                                                       <input type="hidden" name="types[]" value="MAIL_FROM_ADDRESS">
-                                                                                                      <input type="text" class="form-control" name="MAIL_FROM_ADDRESS" value="{{ env('MAIL_FROM_ADDRESS') }}" placeholder="Mail Form Address" required>
+                                                                                                      <input type="text" class="form-control form-control-sm" name="MAIL_FROM_ADDRESS" value="{{ env('MAIL_FROM_ADDRESS') }}" placeholder="Mail Form Address" required>
                                                                                                    </div>
                                                                                                 </div>
-                                                                                                <button type="submit" class="btn btn-primary mr-2">Update</button>
+                                                                                                <button type="submit" class="btn btn-primary mr-2 mt-2">Update</button>
                                                                                              </form>
                                                                                           </div>
                                                                                        </div>
