@@ -53,8 +53,6 @@ $current = date("Y/m/d");
                                       
                                     </div>
                                 </div>
-                            
-                              
                                 <hr>
                                 <div class="card-header d-flex justify-content-between asif">
                                     <div class="header-title">
@@ -225,8 +223,7 @@ $current = date("Y/m/d");
         var unit_id=$("#unit").val();
         var unit_name=$("#unit_name").val();
         var i_id=$("#i_id").val();
-        // alert(invoice_no);
-        //alert(itemname);
+       
             $.ajax({
                 type: 'GET',
                 url: "{{route('physicalstock.details.insert')}}",
@@ -243,19 +240,16 @@ $current = date("Y/m/d");
                     $('#allitemdata').empty();
                     getphysicalitem();
                     getphysicalitemqty();
-                    $(".itemname").val("");
-                    $("#qty").val("");
+                    $(".itemname").val(" ");
+                    $("#qty").val(" ");
                     $("#unit").val("");
                     $("#unit_name").val("");
                     $("#i_id").val("");
-                    //$('.alldataitem').append(data);
-                
                 },
 
                 error: function (err) {
-                //console.log(err.responseJSON.errors.itemname[0]);
                 
-                $('#item_err').html(err.responseJSON.errors.itemname[0]);
+                    $('#item_err').html(err.responseJSON.errors.itemname[0]);
                
                 }
             
@@ -437,17 +431,6 @@ $current = date("Y/m/d");
 
 </script>
 <!-- tax create -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 <script>

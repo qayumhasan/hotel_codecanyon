@@ -169,6 +169,7 @@ class PhysicalStockController extends Controller
                 'is_active' => $request->is_active,
                 'entry_date' => Carbon::now()->toDateTimeString(),
                 'entry_by' => Auth::user()->id,
+                'is_deleted' => 0,
                 'created_at' => Carbon::now()->toDateTimeString(),
             ]);
             if ($insert) {
