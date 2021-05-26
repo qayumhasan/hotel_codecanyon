@@ -1,21 +1,14 @@
 @extends('inventory.master')
-@section('title', 'Create Stock Center | '.$seo->meta_title)
+@section('title', 'Create Stock Center | '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Add Stock Center</h4>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
+                            <div class="card-header d-flex justify-content-between bg-header">
                                 <div class="header-title">
                                     <h4 class="card-title">Stock Center Content</h4>
                                 </div>
@@ -44,9 +37,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8 text-center">
+                                        <div class="col-md-8 text-center mt-4">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -56,11 +49,11 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
+                            <div class="card-body m-0 p-0">
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header d-flex justify-content-between">
+                                    <div class="col-md-12 p-0">
+                                        <div class="card m-0">
+                                            <div class="card-header d-flex justify-content-between bg-header">
                                                 <div class="header-title">
                                                     <h4 class="card-title">All Stock Center</h4>
                                                 </div>

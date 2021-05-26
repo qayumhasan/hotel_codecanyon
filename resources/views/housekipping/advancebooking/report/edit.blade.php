@@ -10,11 +10,10 @@ $current =date("Y/m/d");
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Edit Advance Booking</h4>
                         </div>
-                        <a href=""><button class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">Edit Advance Booking</span></i></button></a>
                     </div>
                 </div>
                 <form action="{{route('admin.housekeeping.advance.booking.update',$advancebooking->id)}}" method="POST">

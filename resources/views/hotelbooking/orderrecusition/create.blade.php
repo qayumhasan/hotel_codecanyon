@@ -1,5 +1,5 @@
 @extends('inventory.master')
-@section('title', 'Create Order Recusition|'.$seo->meta_title)
+@section('title', 'Create Order Recusition|'.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
@@ -10,13 +10,13 @@ $current = date("Y/m/d");
         <form action="{{url('/get/item/order/submit/lol')}}" method="post">
             @csrf
             <div class="row">
-                <div class="col-md-8">
+                <div class="offset-lg-2 col-md-8">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between">
+                        <div class="card-header d-flex justify-content-between bg-header">
                             <div class="header-title">
                                 <h4 class="card-title">Order Recusition</h4>
                             </div>
-                            <a href="{{route('admin.ordercusition.index')}}"><i class="ri-add-fill"><span class="pl-1">All Order</span></i></a>
+                            <a class="btn btn-sm bg-primary" href="{{route('admin.ordercusition.index')}}"><i class="ri-add-fill"><span class="pl-1">All Order</span></i></a>
                         </div>
                     </div>
                     <div class="row">
@@ -116,27 +116,9 @@ $current = date("Y/m/d");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                </div>
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" class="btn btn-primary mx-auto text-center">Submit</button>
                                         </div>
                                     </div>
                                 </div>

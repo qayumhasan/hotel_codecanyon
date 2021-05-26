@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header d-flex text-center">
+                    <div class="card-header d-flex text-center bg-header">
                         <div class="header-title mx-auto">
                             <h4 class="card-title">Occupancy Report</h4>
                         </div>
@@ -56,9 +56,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            
-                            @foreach($rooms as $row)
-                          
+
+                                @foreach($rooms as $row)
+
                                 <tr>
                                     <th scope="row">{{$row->room_no}}</th>
                                     <td>{{$row->checkin->guest_name?? ''}}</td>
@@ -70,16 +70,16 @@
                                     <td>{{$row->roomtype->room_type?? ''}}</td>
                                     @if($row->room_status == 3)
                                     <td class="text-danger">
-                                    Full</td>
+                                        Full</td>
                                     @else
                                     <td class="text-primary">Vacant</td>
                                     @endif
                                     <td>{{$row->checkin->tarif?? ''}}</td>
                                     <td>{{$row->checkin->user->username?? ''}}</td>
-                                    
-                                    
+
+
                                 </tr>
-                            @endforeach
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -88,11 +88,10 @@
                 </div>
             </div>
         </div>
-
-        <div class="row text-center">
-            <div class="col-md-12">
-                <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
-            </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
         </div>
     </div>
 </div>

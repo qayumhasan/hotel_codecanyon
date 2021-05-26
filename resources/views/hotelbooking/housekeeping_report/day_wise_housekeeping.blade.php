@@ -36,7 +36,7 @@ $time = date("h:i");
         <div class="row">
             <div class="col-sm-12">
                 <div class="card printableAreasaveprint">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Day Wise House Keeping</h4>
                         </div>

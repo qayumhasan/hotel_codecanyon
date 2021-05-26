@@ -16,7 +16,7 @@ $time = date("h:i");
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between">
+                        <div class="card-header d-flex justify-content-between bg-header">
                             <div class="header-title">
                                 <h4 class="card-title">Issue To Room</h4>
                             </div>
@@ -47,7 +47,7 @@ $time = date("h:i");
                     <div class="card">
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="card-header d-flex justify-content-between border">
+                                <div class="card-header d-flex justify-content-between border bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Issue To Room</h4>
                                     </div>
@@ -80,7 +80,7 @@ $time = date("h:i");
                                 </div>
                             </div>
                             <div class="col-sm-8 ">
-                                <div class="card-header d-flex justify-content-between border">
+                                <div class="card-header d-flex justify-content-between border bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Issue To Room Items</h4>
                                     </div>

@@ -36,7 +36,7 @@ $time = date("h:i");
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="checkout_details bg-secondary p-3">
+                    <div class="checkout_details bg-header p-2">
                         <h5 class="text-white">Invoice Details</h5>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ $time = date("h:i");
             <div class="addcheckout">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="checkout_details bg-secondary p-3">
+                        <div class="checkout_details bg-header p-2">
                             <h5 class="text-white">Services</h5>
                         </div>
                     </div>
@@ -267,7 +267,7 @@ $time = date("h:i");
 
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="checkout_details bg-secondary p-3">
+                                <div class="checkout_details bg-header p-2">
                                     <h5 class="text-white">Advance & Refund</h5>
                                 </div>
                             </div>
@@ -282,7 +282,6 @@ $time = date("h:i");
                                                 <th scope="col">Mode</th>
                                                 <th scope="col">Against</th>
                                                 <th class="text-center" scope="col">Amount</th>
-                                                <th class="text-center" scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -301,9 +300,6 @@ $time = date("h:i");
                                                     {{$row->price}}
                                                 </td>
                                                 </td>
-                                                <td class="text-center">
-                                                    <a href="{{route('admin.checkout.invoice_print',$row->id)}}" class="badge bg-danger-light mr-2 printvoucher mouse_pointer" data-toggle="tooltip" data-placement="top" data-original-title="Print"> <i class="la la-print"></i></a>
-                                                </td>
                                             </tr>
                                             @php
                                             $totaladvance = $totaladvance + $row->amount;
@@ -321,7 +317,7 @@ $time = date("h:i");
                         <!-- hidden field -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="checkout_details bg-secondary p-3">
+                                <div class="checkout_details bg-header p-2">
                                     <h5 class="text-white">Tax Calculation</h5>
                                 </div>
                             </div>
@@ -460,41 +456,39 @@ $time = date("h:i");
                                 <div class="col-md-6">
                                     <div class="invoice_alt">
                                         <ul class="list-group">
-                                            <li class="list-group-item active">Make Invoice</li>
-                                            <li class="list-group-item invoice_item" data-toggle="modal" data-target="#foodlist" data-whatever="@getbootstrap">Food List Invoice</li>
-                                            <li class="list-group-item invoice_item" data-toggle="modal" data-target="#eslistinvoice">Extra Service List Invoice</li>
-                                            <li class="list-group-item invoice_item"><a id="recepipt_invoice" href="{{route('admin.checkout.show.voucher',$checkindata->booking_no)}}">Receipt Invoice</a></li>
-                                            <li class="list-group-item invoice_item"> <a id="refund_invoice" href="{{route('admin.checkout.refund.voucher',$checkindata->booking_no)}}">Refund Invoice</a></li>
+                                            <li class="list-group-item active p-2">Make Invoice</li>
+                                            <li class="list-group-item invoice_item p-2" data-toggle="modal" data-target="#foodlist" data-whatever="@getbootstrap">Food List Invoice</li>
+                                            <li class="list-group-item invoice_item p-2" data-toggle="modal" data-target="#eslistinvoice">Extra Service List Invoice</li>
+                                            <li class="list-group-item invoice_item p-2"><a id="recepipt_invoice" href="{{route('admin.checkout.show.voucher',$checkindata->booking_no)}}">Receipt Invoice</a></li>
+                                            <li class="list-group-item invoice_item p-2"> <a id="refund_invoice" href="{{route('admin.checkout.refund.voucher',$checkindata->booking_no)}}">Refund Invoice</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="invoice_alt">
                                         <ul class="list-group">
-                                            <li class="list-group-item active">
-                                                <div class="form-check">
-                                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                                </div>
+                                            <li class="list-group-item active p-2">
+                                                    <label class="form-check-label text-white" for="exampleCheck1">Check me out</label>
                                             </li>
-                                            <li class="list-group-item">
+                                            <li class="list-group-item p-2">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="withoutFoodBill" class="form-check-input">
                                                     <label class="form-check-label" for="exampleCheck1">Print Invoice With Out Food Bill</label>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
+                                            <li class="list-group-item p-2">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="withoutExtraService" class="form-check-input">
                                                     <label class="form-check-label" for="exampleCheck1">Print Invoice With Out Extra Service</label>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
+                                            <li class="list-group-item p-2">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="withoutHealthClub" class="form-check-input">
                                                     <label class="form-check-label" for="exampleCheck1">Print Invoice With Out Health Club Bill</label>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
+                                            <li class="list-group-item p-2">
                                                 <div class="form-check">
                                                     <input type="checkbox" name="othercurrency" class="form-check-input">
                                                     <label class="form-check-label" for="exampleCheck1">Want to Print Invoice in other Currency? </label>
@@ -821,11 +815,6 @@ $time = date("h:i");
                                 $restaurant = $restaurant + $row->amount;
                                 @endphp
                                 @endforeach
-
-
-
-
-
                                 <tr class="calc-row">
                                     <td colspan="2">Total</td>
                                     <td>{!!$currency->symbol ?? ' '!!} {{$totalfandb + $restaurant}}</td>
@@ -833,15 +822,11 @@ $time = date("h:i");
                             </tbody>
                         </table>
                     </div>
-
-
-                    <div class="invoice-footer">
+                </div>
+                <div class="invoice-footer">
                         <button type="button" class="btn btn-sm btn-outline-secondary mr-4" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-sm btn-outline-primary savefood">Print</button>
                     </div>
-
-
-                </div>
             </div>
 
         </div>
@@ -866,109 +851,6 @@ $time = date("h:i");
             </div>
             <div class="modal-body">
                 <div class="invoice-card printextraservice">
-                    <style>
-                        .invoice_item:hover {
-                            background: gray;
-                            color: white;
-                            cursor: pointer;
-                        }
-
-
-                        .invoice-card {
-
-                            padding: 10px 2em;
-                            background-color: #fff;
-                            border-radius: 5px;
-                        }
-
-                        .invoice-card>div {
-                            margin: 5px 0;
-                        }
-
-                        .invoice-title {
-                            flex: 3;
-                        }
-
-                        .invoice-title #date {
-                            display: block;
-                            margin: 8px 0;
-                            font-size: 12px;
-                        }
-
-                        .invoice-title #main-title {
-                            display: flex;
-                            justify-content: space-between;
-                            margin-top: 2em;
-                        }
-
-                        .invoice-title #main-title h4 {
-                            letter-spacing: 2.5px;
-                        }
-
-                        .invoice-title span {
-                            color: rgba(0, 0, 0, 0.4);
-                        }
-
-                        .invoice-details {
-                            flex: 1;
-                            border-top: 0.5px dashed grey;
-                            border-bottom: 0.5px dashed grey;
-                            display: flex;
-                            align-items: center;
-                        }
-
-                        .invoice-table {
-                            width: 100%;
-                            border-collapse: collapse;
-                        }
-
-                        .invoice-table thead tr td {
-                            font-size: 12px;
-                            letter-spacing: 1px;
-                            color: grey;
-                            padding: 8px 0;
-                        }
-
-                        .invoice-table thead tr td:nth-last-child(1),
-                        .row-data td:nth-last-child(1),
-                        .calc-row td:nth-last-child(1) {
-                            text-align: right;
-                        }
-
-                        .invoice-table tbody tr td {
-                            padding: 8px 0;
-                            letter-spacing: 0;
-                        }
-
-                        .invoice-table .row-data #unit {
-                            text-align: center;
-                        }
-
-                        .invoice-table .row-data span {
-                            font-size: 13px;
-                            color: rgba(0, 0, 0, 0.6);
-                        }
-
-                        .invoice-footer {
-                            flex: 1;
-                            display: flex;
-                            justify-content: flex-end;
-                            align-items: center;
-                        }
-
-                        .invoice-footer #later {
-                            margin-right: 5px;
-                        }
-
-                        .btn#later {
-                            margin-right: 2em;
-                        }
-
-                        .company_info {
-                            font-size: 10px;
-                            font-weight: normal;
-                        }
-                    </style>
                     <div class="invoice-title">
                         <div id="main-title">
                             <h4>INVOICE</h4>
@@ -1012,12 +894,6 @@ $time = date("h:i");
                             </tbody>
                         </table>
                     </div>
-
-
-
-
-
-
                 </div>
             </div>
             <div class="modal-footer">

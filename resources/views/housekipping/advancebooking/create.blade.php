@@ -6,18 +6,12 @@ date_default_timezone_set("Asia/Dhaka");
 $current =date("d/m/Y");
 $time = date("h:i");
 @endphp
-
-
-<script src="{{asset('public/backend')}}/assets/js/select2.js"></script>
-<link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/select2.css">
-
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Advance Booking</h4>
                         </div>

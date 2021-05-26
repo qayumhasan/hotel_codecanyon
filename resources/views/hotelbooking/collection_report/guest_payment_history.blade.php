@@ -21,10 +21,10 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row printableAreasaveprint">
             <div class="col-sm-12">
-                <div class="card printableAreasaveprint">
-                    <div class="card-header d-flex justify-content-between">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Guest Payment History</h4>
                         </div>

@@ -1,18 +1,16 @@
 @extends('inventory.master')
-@section('title', 'Update Purchase Order| '.$seo->meta_title)
+@section('title', 'Update Purchase Order| '.$companyinformation->company_name)
 @section('content')
-
 @php
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
 @endphp
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-md-2 col-md-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Update Purchase Order</h4>
                         </div>
@@ -107,7 +105,7 @@ $current = date("Y/m/d");
                         </div>
                         <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">All Item</h4>
                                     </div>
@@ -120,15 +118,10 @@ $current = date("Y/m/d");
                         </div>
                     </div>
                 </div>
-            <div class="col-md-4">
+            <div class="offset-md-2 col-md-8">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between">
-                                <div class="header-title">
-                                    <h4 class="card-title"></h4>
-                                </div>
-                            </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -139,7 +132,7 @@ $current = date("Y/m/d");
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Number Of Item: </label>
                                             <input type="text" class="form-control num_of_item" value="{{$edit->number_of_item}}" disabled>
@@ -147,7 +140,7 @@ $current = date("Y/m/d");
 
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Number Of Quantity: </label>
                                             <input type="number" class="form-control num_of_qty" value="{{$edit->number_of_item}}" disabled>
@@ -155,15 +148,9 @@ $current = date("Y/m/d");
 
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-4 text-center">
                                         <div>
-                                            <button type="submit" class="btn btn-success">Update</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>

@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header d-flex text-center">
+                    <div class="card-header d-flex text-center bg-header">
                         <div class="header-title mx-auto">
                             <h4 class="card-title">Occupancy Report</h4>
                         </div>
@@ -80,12 +80,11 @@
                     </div>
                 </div>
             </div>
-        </div
-        <div class="row text-center">
-            <div class="col-md-12">
-                <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
-            </div>
-        </div>
     </div>
 </div>
+<div class="row text-center">
+            <div class="col-md-12">
+                <button type="button" class="btn-sm btn-info mx-auto  savepritbtn">Print</button>
+            </div>
+        </div>
 @endsection

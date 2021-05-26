@@ -11,7 +11,7 @@ $time = date("h:i");
         <div class="row">
             <div class="col-sm-12">
                 <div class="card p-4">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header mb-4">
                         <div class="header-title">
                             <h4 class="card-title">Restaurant Post To Room Report</h4>
                         </div>

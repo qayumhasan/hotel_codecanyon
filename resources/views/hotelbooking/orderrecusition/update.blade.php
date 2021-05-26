@@ -11,9 +11,9 @@ $current = date("Y/m/d");
         <form action="{{route('admin.ordercusition.update')}}" method="post">
             @csrf
             <div class="row">
-                <div class="col-md-8">
+                <div class="offset-lg-2 col-md-8">
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between">
+                        <div class="card-header d-flex justify-content-between bg-header">
                             <div class="header-title">
                                 <h4 class="card-title">Update Order Recusition</h4>
                             </div>
@@ -116,32 +116,9 @@ $current = date("Y/m/d");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                    </div>
-                                </div>
-                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="id" value="{{$edit->id}}">
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-success">Update</button>
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </div>
                                 </div>

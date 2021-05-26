@@ -1,22 +1,12 @@
 @extends('restaurant.chui.master')
-@section('title', 'Add Restaurant Table | '.$seo->meta_title)
+@section('title', 'Add Restaurant Table | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
-
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-lg-2 col-lg-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Add Table</h4>
                         </div>
@@ -26,19 +16,14 @@
                 <form action="{{route('admin.restaurnat.table.store')}}" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
-                                <div class="header-title">
-                                    <h4 class="card-title">Table Content</h4>
-                                </div>
-                            </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Table No: *</label>
-                                            <input type="text" class="form-control" id="fname" name="table_no" placeholder="Table No"/>
+                                            <input type="text" class="form-control form-control-sm" id="fname" name="table_no" placeholder="Table No"/>
                                             @error('table_no')
                                                 <div style="color:red">{{ $message }}</div>
                                             @enderror
@@ -47,7 +32,7 @@
                                      <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Branch Name: *</label>
-                                            <select name="branch_id" class="form-control" id="branch_id">
+                                            <select name="branch_id" class="form-control form-control-sm" id="branch_id">
                                                 <option value="">--Select--</option>
                                                 @foreach($allbranch as $branch)
                                                     <option value="{{$branch->id}}">{{$branch->branch_name}}</option>
@@ -62,8 +47,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Table Type: </label>
-                                            <select name="table_type" class="form-control" id="table_type">
-
+                                            <select name="table_type" class="form-control form-control-sm" id="table_type">
                                                 <option selected disabled value="">--Select Table Type--</option>
                                                 @foreach($types as $row)
                                                     <option value="{{$row->id}}">{{$row->table_type}}</option>
@@ -80,25 +64,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="lname">Table Details: </label>
-                                           <textarea name="table_details" id="editor3" cols="30" rows="10"></textarea>
+                                           <textarea name="table_details" class="form-control form-control-sm" id="editor3" cols="30" rows="5"></textarea>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
-                                <div class="header-title">
-                                    <h4 class="card-title">Publish</h4>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
                                     <div class="col-md-12">
+                                        <h4 class="card-title mt-4">Publish</h4>
                                         <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                             <input type="radio" checked name="is_active" id="customRadio-1" class="custom-control-input bg-primary" value="1">
                                             <label class="custom-control-label" for="customRadio-1"> Active </label>
@@ -108,24 +78,15 @@
                                             <label class="custom-control-label" for="customRadio-2"> DeActive </label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
-                                <div class="row">
                                     <div class="col-md-12">
                                         <div id="file-upload-form" class="uploader-file">
-                                            <button type="submit" class="btn btn-success">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                 
                 </div>
             </form>
             </div>
@@ -133,10 +94,4 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-<script>
-   CKEDITOR.replace('editor3');
-</script>
-
-
 @endsection

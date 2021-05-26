@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Update Order Recusition</h4>
                         </div>
@@ -73,7 +73,7 @@
         <form action="{{route('orderhead.update')}}" method="post">
             @csrf
                     <div class="col-md-12">
-                        <div class="card shadow-sm shadow-showcase">
+                        <div class="card shadow-sm shadow-showcase bg-header">
                             <div class="card-header d-flex justify-content-between">
                                 <div class="header-title">
                                     <h4 class="card-title">All Item</h4>

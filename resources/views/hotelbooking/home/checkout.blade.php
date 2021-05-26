@@ -12,7 +12,7 @@ $time = date("h:i");
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="checkout_details bg-secondary p-3">
+                    <div class="checkout_details bg-header p-2">
                         <h5 class="text-white">Checkout Details </h5>
                     </div>
                 </div>
@@ -84,7 +84,7 @@ $time = date("h:i");
             <!-- guest details area start from here -->
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="checkout_details bg-secondary p-3">
+                    <div class="checkout_details bg-header p-2">
                         <h5 class="text-white">Guest Details</h5>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ $time = date("h:i");
             <div class="addcheckout">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="checkout_details bg-secondary p-3">
+                        <div class="checkout_details bg-header p-2">
                             <h5 class="text-white">Services</h5>
                         </div>
                     </div>
@@ -328,7 +328,7 @@ $time = date("h:i");
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="checkout_details bg-secondary p-3">
+                                <div class="checkout_details bg-header p-2">
                                     <h5 class="text-white">Advance</h5>
                                 </div>
                             </div>

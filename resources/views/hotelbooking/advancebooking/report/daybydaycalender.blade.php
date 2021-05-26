@@ -1,5 +1,5 @@
 @extends('hotelbooking.master')
-@section('title', 'Day By Day Report | '.$seo->meta_title)
+@section('title', 'Day By Day Report | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("Asia/Dhaka");
@@ -11,7 +11,7 @@ $current =date("Y-m-d");
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Searching Room By Room Type</h4>
                         </div>
@@ -28,7 +28,7 @@ $current =date("Y-m-d");
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-1 col-form-label">Room Type</label>
                                 <div class="col-sm-4">
-                                    <select class="form-control" id="exampleFormControlSelect1" name="room_type">
+                                    <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="room_type">
                                         <option selected disabled>--Room Type---</option>
                                         @foreach($roomtypes as $row)
                                             <option value="{{$row->id}}">{{$row->room_type}}</option>
@@ -37,7 +37,7 @@ $current =date("Y-m-d");
                                 </div>
                                 <label for="inputPassword" class="col-sm-1 col-form-label">Year</label>
                                 <div class="col-sm-4">
-                                    <select class="form-control" id="exampleFormControlSelect2" name="year">
+                                    <select class="form-control form-control-sm" id="exampleFormControlSelect2" name="year">
                                         
                                         @for($i=$firstYear;$i<=$lastYear;$i++) <option {{(int)date('Y') == $i ?'selected':''}} value="{{$i}}">{{$i}}</option>
                                      @endfor
@@ -56,7 +56,7 @@ $current =date("Y-m-d");
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between  bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Advance Booking Day By Day Calender</h4>
                         </div>

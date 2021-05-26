@@ -11,7 +11,7 @@ $time = date("h:i");
       <div class="row">
          @if(count($tables) >0)
          @foreach($tables as $row)
-         <div class="col-md-6 col-lg-4">
+         <div class="col-md-6 col-lg-3">
             <div class="cardoverflow-hidden card-min-height">
                <div class="card-item">
                   <div class="status text-center 
@@ -54,7 +54,6 @@ $time = date("h:i");
                            <ul>
                               <li class="text-color-service">Available</li>
                               <li> Available</li>
-                              <li>Available</li>
                            </ul>
                         </div>
                      </div>

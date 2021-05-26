@@ -1,7 +1,6 @@
 @extends('banquet.master')
-@section('title', 'Voucher | '.$seo->meta_title)
+@section('title', 'Voucher | '.$companyinformation->company_name)
 @section('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 @php
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
@@ -11,7 +10,7 @@ $current = date("Y/m/d");
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Receipt Voucher</h4>
                         </div>

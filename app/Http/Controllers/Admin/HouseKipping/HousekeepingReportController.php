@@ -46,9 +46,11 @@ class HousekeepingReportController extends Controller
             'from_date'=>'required',
             'to_date'=>'required',
         ]);
-        
-        $rooms=HouseKeeping::whereBetween('log_date', [$request->from_date, $request->to_date])->where('is_active',1)->where('is_deleted',0)->get();
 
+        $form_date = $request->from_date;
+        $to_date = $request->to_date;
+
+        $rooms=HouseKeeping::whereBetween('log_date', [$form_date, $to_date])->where('keeping_assign_name','!=',null)->get();
         return view('housekipping.report.ajax.allajax_data',compact('rooms'));
     }
 
@@ -64,7 +66,7 @@ class HousekeepingReportController extends Controller
             'room_no'=>'required',
         ]);
         
-        $rooms=HouseKeeping::where('room_id',$request->room_no)->orwhereBetween('log_date', [$request->from_date, $request->to_date])->where('is_active',1)->where('is_deleted',0)->get();
+        $rooms=HouseKeeping::where('room_id',$request->room_no)->where('keeping_assign_name','!=',null)->whereBetween('log_date', [$request->from_date, $request->to_date])->get();
         return view('housekipping.report.ajax.allajax_data',compact('rooms'));
     }
 
@@ -77,16 +79,10 @@ class HousekeepingReportController extends Controller
 
     public function employeeWiseGetAjaxData(Request $request)
     {
-
-        
         $request->validate([
             'keeping_name'=>'required',
-        ]);
-
-
-    
-        
-        $rooms=HouseKeeping::where('keeping_name',$request->keeping_name)->orwhereBetween('log_date', [$request->from_date, $request->to_date])->where('is_active',1)->where('is_deleted',0)->get();
+        ]);   
+        $rooms=HouseKeeping::where('keeping_name',$request->keeping_name)->whereBetween('log_date', [$request->from_date, $request->to_date])->where('keeping_assign_name','!=',null)->get();
         return view('housekipping.report.ajax.allajax_data',compact('rooms'));
     }
 }

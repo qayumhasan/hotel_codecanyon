@@ -7,13 +7,6 @@ $time = date("h:i");
 
 @section('content')
 
-
-
-
-
-
-
-
     <div class="row">
         <div class="col-sm-12 col-lg-12">
 
@@ -209,16 +202,12 @@ $time = date("h:i");
                             </div>
                             <div class="card-body">
                                 <div class="row" id="transectiondata">
-
-
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
             </div>
             </form>

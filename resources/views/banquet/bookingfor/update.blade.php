@@ -1,12 +1,12 @@
 @extends('banquet.master')
-@section('title', 'Booking For | '.$seo->meta_title)
+@section('title', 'Booking For | '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Update Booking For</h4>
                         </div>

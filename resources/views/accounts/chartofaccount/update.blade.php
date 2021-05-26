@@ -1,12 +1,12 @@
 @extends('accounts.master')
-@section('title', 'Chart Of Account Update| '.$seo->meta_title)
+@section('title', 'Chart Of Account Update| '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-lg-1 col-lg-10">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Update Chart Of Account</h4>
                         </div>
@@ -16,16 +16,10 @@
                 <form action="{{route('admin.chartofaccount.update')}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Chart Of Account Content</h4>
-                                    </div>
-                                </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-1"></div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Category Name: *</label>
@@ -41,14 +35,12 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Category Code: *</label>
                                                 <input type="text" class="form-control" id="catecategory_code" value="{{$edit->category_code}}" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-1"></div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Main Category Name: </label>
@@ -65,17 +57,14 @@
                                                 @error('maincategory_name')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
-
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">MainCategory Code:</label>
                                                 <input type="text" class="form-control" id="maincatecategory_code" value="{{$edit->maincategory_code}}" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-1"></div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">SubCategory Name One: </label>
@@ -87,22 +76,18 @@
                                                     @foreach($allsubcategoryone as $subone)
                                                     <option value="{{$subone->id}}" @if($edit->subcategoryone_id == $subone->id) selected @endif>{{$subone->subcategory_nameone}}</option>
                                                     @endforeach
-
                                                 </select>
                                                 @error('subcateone')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
-
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">SubCategory One Code:</label>
                                                 <input type="text" class="form-control" id="subcatecategory_codeone" value="{{$edit->subcategoryone_code}}" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-1"></div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">SubCategory Name Two: </label>
@@ -113,23 +98,18 @@
                                                     @foreach($allsubcategorytwo as $sucatetwo)
                                                     <option value="{{$sucatetwo->id}}" @if($edit->subcategorytwo_id == $sucatetwo->id) selected @endif>{{$sucatetwo->subcategory_nametwo}}</option>
                                                     @endforeach
-
-
                                                 </select>
                                                 @error('subcate_two')
                                                 <div style="color:red">{{ $message }}</div>
                                                 @enderror
-
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">SubCategory Two Code:</label>
                                                 <input type="text" class="form-control" value="{{$edit->subcategorytwo_code}}" disabled>
                                             </div>
                                         </div>
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-1"></div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Description Of Account: *</label>
@@ -140,28 +120,14 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="fname">Description Of Account Code:</label>
                                                 <input type="text" class="form-control" value="{{$edit->code}}" disabled>
                                             </div>
                                         </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Publish</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
                                         <div class="col-md-12">
+                                            <h4 class="card-title mt-4">Publish</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="is_active" id="customRadio-8" class="custom-control-input bg-primary" value="1" checked>
                                                 <label class="custom-control-label" for="customRadio-8"> Active </label>
@@ -171,24 +137,15 @@
                                                 <label class="custom-control-label" for="customRadio-9"> Deactive </label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 text-center">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>

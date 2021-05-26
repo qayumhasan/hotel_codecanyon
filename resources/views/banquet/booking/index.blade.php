@@ -1,5 +1,5 @@
 @extends('banquet.master')
-@section('title', 'All Banquet | '.$seo->meta_title)
+@section('title', 'All Banquet | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
@@ -10,7 +10,7 @@ $current = date("Y/m/d");
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">All Banquet</h4>
                   </div>

@@ -5,7 +5,7 @@
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between asif">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">Month Wise Attendence Report</h4>
                   </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-3">
                               <div class="form-group mt-4">
                               <label for=""></label>
-                              <button class="btn btn-success" type="submit">view</button>
+                              <button class="btn btn-primary" type="submit">view</button>
                               </div>
                         </div>
                      </div>
