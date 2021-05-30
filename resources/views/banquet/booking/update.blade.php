@@ -1,5 +1,5 @@
 @extends('banquet.master')
-@section('title', 'Booking Create | '.$seo->meta_title)
+@section('title', 'Booking Create | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
@@ -9,21 +9,13 @@ $time = date("h:i");
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Booking Update</h4>
-                        </div>
-                        <a href="{{route('admin.banquet.index')}}"><button class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">All Item</span></i></button></a>
-                    </div>
-                </div>
+            <div class="offset-lg-1 col-lg-10">
                 <form action="{{route('admin.banquet.update',$edit->id)}}" method="POST" enctype='multipart/form-data'>
                     @csrf
                     <div class="row">
                         <div class="col-md-10">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Guest Registration</h4>
                                     </div>
@@ -105,7 +97,7 @@ $time = date("h:i");
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Booking Details</h4>
                                     </div>
@@ -181,7 +173,7 @@ $time = date("h:i");
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Pax Details</h4>
                                     </div>
@@ -244,7 +236,7 @@ $time = date("h:i");
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Item Details</h4>
                                     </div>
@@ -311,7 +303,7 @@ $time = date("h:i");
                                     </div>
                                 </div>
                                 <!-- done -->
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Tax Details</h4>
                                     </div>
@@ -385,7 +377,7 @@ $time = date("h:i");
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Select Menu</h4>
                                     </div>
@@ -439,7 +431,7 @@ $time = date("h:i");
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="card-header d-flex justify-content-between asif">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Total</h4>
                                     </div>
@@ -463,19 +455,7 @@ $time = date("h:i");
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Publish</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
+                                    
                                         <div class="col-md-12">
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="is_active" id="customRadio-8" class="custom-control-input bg-primary" value="1" @if($edit->is_active == 1) checked @endif>
@@ -487,23 +467,16 @@ $time = date("h:i");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <input type="hidden" class="total_pax_amount" value="{{$edit->total_pax_amount}}">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>

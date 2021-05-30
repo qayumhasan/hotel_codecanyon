@@ -11,9 +11,9 @@ $time = date("h:i");
         <div class="row">
             <div class="col-sm-12">
                 <div class="card p-4">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
-                            <h4 class="card-title">Guest Payment History</h4>
+                            <h4 class="card-title">Invoice Summery</h4>
                         </div>
                     </div>
                     <form id="clean_duration_search">
@@ -154,9 +154,9 @@ $time = date("h:i");
                 @endif
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col-md-12">
-                <button type="button" class="btn-sm btn-info mx-auto text-center savepritbtn">Print</button>
+        <div class="row">
+        <div class="col-md-12">
+                <button type="button" class="btn-sm btn-info savepritbtn">Print</button>
             </div>
         </div>
     </div>

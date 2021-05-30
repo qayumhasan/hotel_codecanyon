@@ -1,12 +1,12 @@
 @extends('inventory.master')
-@section('title', 'Create Item|'.$seo->meta_title)
+@section('title', 'Create Item|'.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-lg-1 col-lg-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Add Item</h4>
                         </div>
@@ -16,13 +16,8 @@
                 <form action="{{route('admin.itementry.store')}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Item Content</h4>
-                                    </div>
-                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -108,23 +103,8 @@
                                                 </label>
                                             </div>
                                         </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Menu Type</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title">Menu Type</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="menu_type" id="customRadio-1" class="custom-control-input bg-primary" value="Food" checked>
                                                 <label class="custom-control-label" for="customRadio-1"> Food </label>
@@ -146,19 +126,8 @@
                                                 <label class="custom-control-label" for="customRadio-5"> House-kipping </label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Publish</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <h4 class="card-title">Publish</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="is_active" id="customRadio-8" class="custom-control-input bg-primary" value="1" checked>
                                                 <label class="custom-control-label" for="customRadio-8"> Active </label>
@@ -168,16 +137,12 @@
                                                 <label class="custom-control-label" for="customRadio-9"> Deactive </label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -185,11 +150,9 @@
 
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

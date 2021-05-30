@@ -1,10 +1,7 @@
 @extends('accounts.master')
-@section('title', 'All Account Transection | '.$seo->meta_title)
+@section('title', 'All Account Transection | '.$companyinformation->company_name)
 @section('content')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{asset('public/backend')}}/assets/jquery.PrintArea.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
-</script>
 <script src="{{asset('public/backend/')}}/divjs/divjs.js"></script>
 @php
 date_default_timezone_set("asia/dhaka");
@@ -15,7 +12,7 @@ $current = date("Y/m/d");
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">Date Wise Transection Reports</h4>
                   </div>
@@ -30,7 +27,7 @@ $current = date("Y/m/d");
                         </div>
                      </div>
                      <div class="col-md-3">
-                        <button type="submit" class="btn btn-success mt-4">Search</button>
+                        <button type="submit" class="btn btn-primary mt-4">Search</button>
                      </div>
                   </div>
                   <form>

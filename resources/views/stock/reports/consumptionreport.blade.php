@@ -1,15 +1,6 @@
 @extends('stock.master')
-@section('title', 'Consumption Report| '.$seo->meta_title)
+@section('title', 'Consumption Report| '.$companyinformation->company_name)
 @section('content')
-<style>
-
-.table thead th {
- 
-    background: darkgray;
-    border-bottom: 2px solid #2f2929;
-    color: #fff;
-}
-</style>
 @php
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
@@ -19,7 +10,7 @@ $current = date("Y/m/d");
          <div class="row">
             <div class="col-sm-12">
                <div class="card">
-                  <div class="card-header d-flex justify-content-between">
+                  <div class="card-header d-flex justify-content-between bg-header">
                      <div class="header-title">
                         <h4 class="card-title">Consumption Report</h4>
                      </div>
@@ -64,9 +55,10 @@ $current = date("Y/m/d");
                               @enderror
                            </div>
                         </div>
-                        <div class="col-md-3 mt-4">
+                        <div class="col-md-3 mt-2">
                            <div class="form-group">
-                              <button class="btn-sm btn-success">Search</button>
+                              <label for="fname"></label><br>
+                              <button class="btn-sm btn-primary">Search</button>
                            </div>
                         </div>
                     </div>

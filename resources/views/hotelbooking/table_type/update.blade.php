@@ -1,31 +1,15 @@
 @extends('restaurant.chui.master')
-@section('title', 'Create Table Type | '.$seo->meta_title)
+@section('title', 'Create Table Type | '.$companyinformation->company_name)
 @section('content')
-<style>
-.form-control {
-    height: 32px;
-}
-.card-header.d-flex.justify-content-between.asif {
-    background-color: #c1b8b8;
-}
-</style>
+
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Update Table Type</h4>
-                        </div>
-                       <a href="{{route('admin.restaurnat.table.type.create')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">Add Table Type</span></i></button></a>
-                    </div>
-                </div>
-               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
+                            <div class="card-header d-flex justify-content-between bg-header">
                                 <div class="header-title">
                                     <h4 class="card-title">Table Type Content</h4>
                                 </div>
@@ -76,9 +60,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8 text-center">
+                                        <div class="col-md-8 text-center mt-4">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <button type="submit" class="btn btn-primary">Update</button>
                                             </div>
                                         </div>
                                     </div>
@@ -88,20 +72,14 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm shadow-showcase">
-                        
-                            <div class="card-body">
+                            <div class="card-body p-0">
                                 <div class="row">
                                     <div class="col-md-12">
                                      <div class="card">
-                                        <div class="card-header d-flex justify-content-between">
+                                        <div class="card-header d-flex justify-content-between bg-header">
                                             <div class="header-title">
                                                 <h4 class="card-title">All Table Type</h4>
                                             </div>
-                                            <span class="float-right mr-2">
-                                                <!-- <a href="{{route('admin.branch.create')}}" class="btn btn-sm bg-primary">
-                                                <i class="ri-add-fill"><span class="pl-1">Add New</span></i>
-                                                </a> -->
-                                            </span>
                                         </div>
                                         <div class="card-body">
                                             <div class="table-responsive">

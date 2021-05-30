@@ -1,15 +1,13 @@
 @extends('inventory.master')
-@section('title', 'Stock TypeWise|'.$seo->meta_title)
+@section('title', 'Stock TypeWise|'.$companyinformation->company_name)
 @section('content')
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('public/backend')}}/printThis.js"></script>
 <div class="content-page">
    <div class="container-fluid">
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">StockType Wise Product Purchase Report:<span style="font-size:12px"> {{$maindate}}</span></h4>
                   </div>
@@ -43,7 +41,7 @@
                         </div>
                         <div class="col-md-1">
                            <div class="form-group">
-                              <button class="btn-sm btn-success">Search</button>
+                              <button class="btn-sm btn-primary">Search</button>
                            </div>
                         </div>
                      </div>

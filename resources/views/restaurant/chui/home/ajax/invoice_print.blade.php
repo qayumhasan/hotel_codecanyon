@@ -39,7 +39,7 @@
                         <td>{{$row->amount}}</td>
                         <td>{{$row->complementitem->item_name??''}}</td>
                     <tr>
-                        @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>

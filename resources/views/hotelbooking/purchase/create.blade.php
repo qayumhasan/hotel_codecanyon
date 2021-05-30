@@ -1,17 +1,16 @@
 @extends('inventory.master')
-@section('title', 'Add Purchase | '.$seo->meta_title)
+@section('title', 'Add Purchase | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
 @endphp
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-md-2 col-md-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Purchase</h4>
                         </div>
@@ -22,7 +21,7 @@ $current = date("Y/m/d");
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card shadow-sm shadow-showcase">
+                            <div class="card shadow-sm shadow-showcase m-0">
                                 <div class="card-body">
                                     <div class="row" id="mainfile">
                                         <div class="col-md-3">
@@ -135,7 +134,7 @@ $current = date("Y/m/d");
                         </div>
                         <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">All Item</h4>
                                     </div>
@@ -148,7 +147,7 @@ $current = date("Y/m/d");
                         </div>
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Tax</h4>
                                     </div>
@@ -214,64 +213,45 @@ $current = date("Y/m/d");
                             </div>
                         </div>
                     </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between">
-                                <div class="header-title">
-                                    <h4 class="card-title"></h4>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="fname">Naration: *</label>
-                                            <textarea class="form-control" name="narration"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="fname">Total Amount: *</label>
-                                            <input type="text" class="form-control totalamount" value="" disabled>
-                                            <input type="hidden" name="totalamount" class="form-control totalamount" value="">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="fname">Paid: *</label>
-                                            <input type="number" class="form-control paidamount" name="paidamount">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="fname">Due: *</label>
-                                            <input type="text" class="form-control dueamount" value="" disabled>
-                                            <input type="hidden" class="form-control dueamount" name="dueamount" value="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div>
-                                            <button type="submit" class="btn btn-success">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="fname">Naration: *</label>
+                                <textarea class="form-control" name="narration"></textarea>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="fname">Total Amount: *</label>
+                                <input type="text" class="form-control totalamount" value="" disabled>
+                                <input type="hidden" name="totalamount" class="form-control totalamount" value="">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fname">Paid: *</label>
+                                <input type="number" class="form-control paidamount" name="paidamount">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fname">Due: *</label>
+                                <input type="text" class="form-control dueamount" value="" disabled>
+                                <input type="hidden" class="form-control dueamount" name="dueamount" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center mt-4">
+                            <div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
             </div>
             </form>
         </div>
@@ -285,7 +265,6 @@ $current = date("Y/m/d");
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-hidden="true" id="itementrymodal">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12 col-lg-12">
@@ -905,7 +884,7 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('/get/alltax/data/') }}/' + invoice, {
+        $.post('{{ url(' / get / alltax / data / ') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -1117,7 +1096,8 @@ $current = date("Y/m/d");
         //alert("ok");
         var invoice = $("#invoice_no").val();
         //alert(invoice);
-        $.post('{{ url('get/total/amount/') }}/' + invoice, {
+        $.post('{{ url('
+            get / total / amount / ') }}/' + invoice, {
                 _token: '{{ csrf_token() }}'
             },
             function(data) {
@@ -1184,7 +1164,7 @@ $current = date("Y/m/d");
                 $('#addtocartshow').html(data);
 
                 if (data) {
-                   
+
                 }
 
 

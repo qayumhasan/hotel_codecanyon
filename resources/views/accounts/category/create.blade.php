@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
-                            <h4 class="card-title">Add Account Category</h4>
+                            <h4 class="card-title">All Account Category</h4>
                         </div>
                     </div>
                 </div>
@@ -21,11 +21,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                      <div class="card">
-                                        <div class="card-header d-flex justify-content-between">
-                                            <div class="header-title">
-                                                <h4 class="card-title">All Account Category</h4>
-                                            </div>
-                                        </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table id="datatable" class="table data-table table-striped table-bordered" >

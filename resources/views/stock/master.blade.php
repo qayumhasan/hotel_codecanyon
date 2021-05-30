@@ -22,7 +22,9 @@
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/vendor/mapbox/mapbox-gl.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/izitost.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{asset('public/backend')}}/assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/select2.css">
+    <script src="{{asset('public/backend')}}/assets/js/select2.js"></script>
     <style>
         .form-control {
             border: 1px solid #443f3f;
@@ -442,7 +444,7 @@
         }
         @endif
     </script>
-    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+
     <script>
         $(document).on("click", "#delete", function(e) {
             e.preventDefault();
@@ -464,7 +466,6 @@
         });
     </script>
     <!-- app JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script>
         $('.datepicker').datepicker({
             format: 'yyyy/mm/dd',

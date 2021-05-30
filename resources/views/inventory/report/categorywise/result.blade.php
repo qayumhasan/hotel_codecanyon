@@ -1,15 +1,13 @@
 @extends('inventory.master')
-@section('title', 'Category Wise|'.$seo->meta_title)
+@section('title', 'Category Wise|'.$companyinformation->company_name)
 @section('content')
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('public/backend')}}/printThis.js"></script>
 <div class="content-page">
    <div class="container-fluid">
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">Category Wise Product Purchase Report Result:<span style="font-size:12px"> {{$maindate}}</span></h4>
                   </div>

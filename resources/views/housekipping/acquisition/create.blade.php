@@ -7,9 +7,9 @@ $current =date("Y/m/d");
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="offset-md-1 col-md-10">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Order Recusition</h4>
                         </div>
@@ -77,7 +77,7 @@ $current =date("Y/m/d");
                         @csrf
                     <div class="col-md-12">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between">
+                            <div class="card-header d-flex justify-content-between bg-header">
                                 <div class="header-title">
                                     <h4 class="card-title">All Item</h4>
                                 </div>
@@ -91,11 +91,11 @@ $current =date("Y/m/d");
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="offset-md-1 col-md-10">
                 <div class="row">
                     <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Item Name</h4>
                                     </div>
@@ -111,14 +111,10 @@ $current =date("Y/m/d");
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
                                             </div>
                                         </div>
                                     </div>

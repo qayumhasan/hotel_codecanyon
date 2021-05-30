@@ -5,13 +5,12 @@
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
 @endphp
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-md-2 col-md-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Update Purchase</h4>
                         </div>
@@ -22,7 +21,7 @@ $current = date("Y/m/d");
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card shadow-sm shadow-showcase">
+                            <div class="card shadow-sm shadow-showcase m-0">
                                 <div class="card-body">
                                     <div class="row" id="mainfile">
                                         <div class="col-md-3">
@@ -90,7 +89,7 @@ $current = date("Y/m/d");
 
                             </div>
 
-                            <div class="card shadow-sm shadow-showcase">
+                            <div class="card shadow-sm shadow-showcase m-0">
                                 <div class="card-body">
                                     <div class="row" id="mainfile">
                                         <div class="col-md-3">
@@ -149,7 +148,7 @@ $current = date("Y/m/d");
 
                         <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">All Item</h4>
                                     </div>
@@ -162,7 +161,7 @@ $current = date("Y/m/d");
                         </div>
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Tax</h4>
                                     </div>
@@ -228,60 +227,42 @@ $current = date("Y/m/d");
                             </div>
                         </div>
                     </div>
-                </div>
-            <div class="col-md-4">
-                <div class="row">
+
+                    <div class="card m-0 p-4">
+                    <div class="row mt-3">
                     <div class="col-md-12">
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between">
-                                <div class="header-title">
-                                    <h4 class="card-title"></h4>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="fname">Naration: *</label>
-                                            <textarea class="form-control" name="narration" row="5">
-                                            {{$edit->narration}}
-                                            </textarea>
+                            <div class="form-group">
+                                <label for="fname">Naration: *</label>
+                                <textarea class="form-control" name="narration" row="5">
+                                {{$edit->narration}}
+                                </textarea>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="fname">Total Amount: *</label>
-                                            <input type="text" class="form-control totalamount" value="" disabled>
-                                            <input type="hidden" name="totalamount" class="form-control totalamount" value="{{$edit->total_amount}}">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="fname">Paid: *</label>
-                                            <input type="number" class="form-control paidamount" name="paidamount" value="{{$edit->payment}}">
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div>
-                                            <button type="submit" class="btn btn-success">Update</button>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fname">Total Amount: *</label>
+                                <input type="text" class="form-control totalamount" value="" disabled>
+                                <input type="hidden" name="totalamount" class="form-control totalamount" value="{{$edit->total_amount}}">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fname">Paid: *</label>
+                                <input type="number" class="form-control paidamount" name="paidamount" value="{{$edit->payment}}">
+
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <div>
+                                <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
             </div>
             </form>
         </div>
@@ -395,13 +376,13 @@ $current = date("Y/m/d");
 
 <script>
     function taxDatadelete(el) {
-        
+
         $.post('{{route("get.taxdata.delete")}}', {
                 _token: '{{ csrf_token() }}',
                 tax_id: el.value
             },
             function(data) {
-              
+
 
                 alltaxfile();
                 totalamount();
@@ -608,7 +589,7 @@ $current = date("Y/m/d");
                 $('#addtocartshow').html(data);
 
                 if (data) {
-                   
+
                 }
 
 

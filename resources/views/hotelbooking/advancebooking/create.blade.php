@@ -9,7 +9,7 @@ $time = date("h:i");
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
+            <div class="offset-lg-1 col-lg-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
@@ -21,7 +21,7 @@ $time = date("h:i");
                 <form action="{{route('admin.advance.booking.store')}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
                                 <div class="card-header">
                                     <div class="row">
@@ -57,8 +57,6 @@ $time = date("h:i");
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                     <div class="row">
@@ -140,7 +138,6 @@ $time = date("h:i");
                                     </div>
 
                                     <div class="row">
-
                                         <div class="col-lg-12">
                                             <div class="form-group" id="room_section">
                                                 <label for="exampleInputEmail1">Room Selection</label>
@@ -148,7 +145,6 @@ $time = date("h:i");
                                                     <div class="col-sm-6 border-right">
 
                                                         <div class="room_list mt-3" id="rooms">
-
                                                         </div>
                                                     </div>
 
@@ -157,16 +153,12 @@ $time = date("h:i");
                                                             <table class="table table-bordered">
                                                                 <thead>
                                                                     <tr>
-
                                                                         <th scope="col">Room</th>
                                                                         <th scope="col">Tariff</th>
                                                                         <th scope="col">Action</th>
-
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="selectedroom">
-
-
                                                                 </tbody>
                                                                 <tbody>
 
@@ -183,8 +175,6 @@ $time = date("h:i");
 
                                             </div>
                                         </div>
-
-
                                     </div>
 
                                     <div class="row">
@@ -213,7 +203,6 @@ $time = date("h:i");
 
 
                                     <div class="row">
-
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Remarks</label>
@@ -225,28 +214,12 @@ $time = date("h:i");
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
-
-
                                     </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Publish</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
+                                            <h4 class="card-title mt-4">Publish</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="is_active" id="customRadio-1" class="custom-control-input bg-primary" value="1" checked>
                                                 <label class="custom-control-label" for="customRadio-1"> Active </label>
@@ -257,11 +230,6 @@ $time = date("h:i");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
@@ -270,14 +238,11 @@ $time = date("h:i");
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
@@ -696,8 +661,6 @@ $time = date("h:i");
         $('#select_guest_name').val(data.id).selected;
         // $('#old_guest_data').prop('checked', true);
         $('#guestlist').modal('hide');
-
-
     }
 </script>
 

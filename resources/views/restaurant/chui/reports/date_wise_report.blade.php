@@ -39,7 +39,7 @@ $current = date("Y/m/d");
             @foreach($datewise as $key=>$row)
             <div class="col-sm-12">
                 <div class="card m-0 border-bottom">
-                    <div class="card-header d-flex justify-content-between p-1">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">{{$key}}</h4>
                         </div>
