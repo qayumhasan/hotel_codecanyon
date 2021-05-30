@@ -4,7 +4,7 @@
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
-$current = date("m/d/Y");
+$current =date("Y/m/d");
 @endphp
 <div class="content-page">
       <div class="container-fluid">
@@ -366,7 +366,7 @@ $current = date("m/d/Y");
 <script>
     $(document).ready(function() {
         $('.datepicker').datepicker({
-            format: 'dd-mm-yyyy',
+            format: 'yyyy/mm/dd',
             autoclose: true
         });
     });
