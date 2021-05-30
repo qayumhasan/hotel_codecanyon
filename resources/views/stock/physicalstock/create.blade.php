@@ -216,8 +216,8 @@ $current = date("Y/m/d");
                     $('#allitemdata').empty();
                     getphysicalitem();
                     getphysicalitemqty();
-                    $(".itemname").val("");
-                    $("#qty").val("");
+                    $(".itemname").val(" ");
+                    $("#qty").val(" ");
                     $("#unit").val("");
                     $("#unit_name").val("");
                     $("#i_id").val("");
@@ -229,7 +229,6 @@ $current = date("Y/m/d");
                     //console.log(err.responseJSON.errors.itemname[0]);
 
                     $('#item_err').html(err.responseJSON.errors.itemname[0]);
-
                 }
 
             });
