@@ -10,7 +10,7 @@ $current = date("Y/m/d");
          <div class="row">
             <div class="col-sm-12">
                <div class="card">
-                  <div class="card-header d-flex justify-content-between">
+                  <div class="card-header d-flex justify-content-between bg-header">
                      <div class="header-title">
                         <h4 class="card-title">Category Wise Sells Report</h4>
                      </div>
@@ -47,7 +47,7 @@ $current = date("Y/m/d");
                         </div>
                         <div class="col-md-2 mt-4">
                            <div class="form-group">
-                              <button class="btn-sm btn-success">Search</button>
+                              <button class="btn-sm btn-primary">Search</button>
                            </div>
                         </div>
                     </div>

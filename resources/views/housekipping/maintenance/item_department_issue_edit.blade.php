@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-sm-4">
-                                <div class="card-header d-flex justify-content-between border">
+                                <div class="card-header d-flex justify-content-between border bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">Issue To Room</h4>
                                     </div>

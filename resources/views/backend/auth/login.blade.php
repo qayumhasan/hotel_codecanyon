@@ -18,7 +18,7 @@
                            @enderror
                         </div>
                      </div>
-                     <div class="col-lg-12">
+                     <div class="col-lg-12 mt-2">
                         <div class="floating-label form-group">
                            <input name="password" class="floating-input form-control" type="password" placeholder=" ">
                            <label>Password</label>

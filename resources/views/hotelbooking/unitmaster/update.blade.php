@@ -1,23 +1,14 @@
 @extends('inventory.master')
-@section('title', 'Update Unit | '.$seo->meta_title)
+@section('title', 'Update Unit | '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Update Unit</h4>
-                        </div>
-                       <a href="{{route('admin.unit.create')}}"><button  class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">Add Unit</span></i></button></a>
-                    </div>
-                </div>
-               
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between asif">
+                            <div class="card-header d-flex justify-content-between bg-header">
                                 <div class="header-title">
                                     <h4 class="card-title">Unit Content</h4>
                                 </div>
@@ -58,13 +49,13 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card shadow-sm shadow-showcase">
+                        <div class="card shadow-sm shadow-showcase m-0">
                         
-                            <div class="card-body">
+                            <div class="card-body m-0 p-0">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 p-0">
                                      <div class="card">
-                                        <div class="card-header d-flex justify-content-between">
+                                        <div class="card-header d-flex justify-content-between bg-header">
                                             <div class="header-title">
                                                 <h4 class="card-title">All Unit</h4>
                                             </div>

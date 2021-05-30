@@ -1,5 +1,5 @@
 @extends('stock.master')
-@section('title', 'Daily Stock Report | '.$seo->meta_title)
+@section('title', 'Daily Stock Report | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
@@ -10,7 +10,7 @@ $current = date("Y/m/d");
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">Daily Stock Report</h4>
                   </div>
@@ -34,9 +34,10 @@ $current = date("Y/m/d");
                               <input type="text" class="form-control datepicker" name="todate" value="{{$current}}" />
                            </div>
                         </div>
-                        <div class="col-md-4 mt-4">
+                        <div class="col-md-4 mt-2">
                            <div class="form-group">
-                              <button class="btn-sm btn-success">Search</button>
+                              <label for="fname"></label><br>
+                              <button class="btn-sm btn-primary">Search</button>
                            </div>
                         </div>
                      </div>

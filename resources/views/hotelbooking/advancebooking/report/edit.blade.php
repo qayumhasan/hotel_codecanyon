@@ -8,19 +8,18 @@ $current =date("Y/m/d");
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
+            <div class="offset-lg-1 col-lg-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Edit Advance Booking</h4>
                         </div>
-                        <a href=""><button class="btn btn-sm bg-primary"><i class="ri-add-fill"><span class="pl-1">Edit Advance Booking</span></i></button></a>
                     </div>
                 </div>
                 <form action="{{route('admin.advance.booking.update',$advancebooking->id)}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
                                 <div class="card-header d-flex justify-content-between">
                                     <div class="header-title">
@@ -42,230 +41,204 @@ $current =date("Y/m/d");
                                                 <label for="staticEmail" class="col-sm-4 col-form-label">Booked Date:</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" value="{{$advancebooking->booking_date}}" name="booked_date" required class="form-control datepicker form-control-sm"">
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class=" row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-3 col-form-label">CheckIn Date:</label>
-                                                            <div class="col-sm-5">
-                                                                <input type="text" required value="{{$advancebooking->checkindate}}" name="checkindate" class="form-control datepicker form-control-sm" id="checkindate">
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <input type="time" required name="checkintime" class="form-control form-control-sm" value="{{$advancebooking->checkintime}}">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-4 col-form-label">CheckOut Date:</label>
-                                                            <div class="col-sm-4">
-                                                                <input type="text" required value="{{$advancebooking->checkoutdate}}" name="checkoutdate" class="form-control datepicker form-control-sm" id="checkoutdate">
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <input type="time" required name="checkouttime" class="form-control form-control-sm" value="{{$advancebooking->checkouttime}}">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-3 col-form-label">Guest Name :</label>
-                                                            <div class="col-sm-6">
-                                                                <select class="form-control form-control-sm" required name="guest_name" id="select_guest_name">
-                                                                    <option></option>
-                                                                    @foreach($guests as $row)
-                                                                    <option {{$advancebooking->guest_id == $row->id?'selected':' '}} value="{{$row->id}}">{{$row->guest_name}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>  
-                                                        <div class="col-md-3">
-                                                            <button type="button" data-toggle="modal" data-target="#addguest" class="btn btn-sm btn-primary "><i class="fas fa-plus m-0"></i></button>
-                                                        </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-3 col-form-label">Room Type :</label>
-                                                            <div class="col-sm-6">
-                                                                <select class="form-control form-control-sm" required name="room_type" id="room_type">
-                                                                    <option selected disabled>---Select Room Type ------</option>
-                                                                    @foreach($roomtypes as $row)
-                                                                    <option {{$advancebooking->room_type == $row->id ?'selected':''}} value="{{$row->id}}">{{$row->room_type}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                @error('room_type')
-                                                                <span class="text-danger">{{$message}}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-4 col-form-label">No OF Rooms :</label>
-                                                            <div class="col-sm-6">
-                                                                <input type="number" required class="form-control form-control-sm" name="no_of_room" value="{{$advancebooking->no_of_rooms}}" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group" id="room_section">
-                                                            <label for="exampleInputEmail1">Room Selection</label>
-                                                            <div class="row border p-4">
-                                                                <div class="col-sm-6 border-right">
-
-                                                                    <div class="room_list mt-3" id="rooms">
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-sm-6">
-                                                                    <div class="selected_room">
-                                                                        <table class="table table-bordered">
-                                                                            <thead>
-                                                                                <tr>
-
-                                                                                    <th scope="col">Room</th>
-                                                                                    <th scope="col">Tariff</th>
-                                                                                    <th scope="col">Action</th>
-
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="selectedroom">
-                                                                                <tr class="deletedelement" id="deletedelement{{$advancebooking->id}}">
-                                                                                    <td>{{$advancebooking->room->room_no ?? ''}} ( {{$advancebooking->roomtype->room_type ?? ''}} )</td>
-                                                                                    <td>$ {{$advancebooking->tariff}} <input type="hidden" class="counttotal" value="{{$advancebooking->tariff}}" /></td>
-                                                                                    <td><span class="text-center" onclick="deleteroom(this)"><i class="fa fa-trash" aria-hidden="true"></i><input type="hidden" class="deducttotal" value="{{$advancebooking->tariff}}" /> <input type="hidden" name="room[]" value="{{$advancebooking->room_id}}" </span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                            <tbody>
-
-                                                                                <tr>
-                                                                                    <td>Total:</td>
-                                                                                    <td id="totaltariff">$ {{$advancebooking->tariff}}</td>
-                                                                                </tr>
-
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-3 col-form-label">Thru Agent :</label>
-                                                            <div class="col-sm-6">
-                                                                <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="thru_agent">
-                                                                    <option {{$advancebooking->thru_agent== 'agoda'?'selected':''}} value="agoda">Agoda</option>
-                                                                    <option {{$advancebooking->thru_agent== 'booking.com'?'selected':''}} value="booking.com">Booking.com</option>
-                                                                    <option {{$advancebooking->thru_agent== 'makemytrip'?'selected':''}} value="makemytrip">Makemytrip</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="staticEmail" class="col-sm-4 col-form-label">Booking Source :</label>
-                                                            <div class="col-sm-6">
-                                                                <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="find_us">
-                                                                    <option {{$advancebooking->booking_source== 'auto/texi'?'selected':''}} value="auto/texi">Auto/Texi</option>
-                                                                    <option {{$advancebooking->booking_source== 'direct'?'selected':''}} value="direct">Direct</option>
-                                                                    <option {{$advancebooking->booking_source== 'friends'?'selected':''}} value="friends">Friends</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="row">
-
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Remarks</label>
-                                                            <div class="row">
-                                                                <div class="col-sm-12 border-right">
-
-                                                                    <div class="room_list mt-3">
-                                                                        <textarea name="remarks" class="form-control form-control-sm">
-                                                                        {{$advancebooking->remarks}}
-                                                                        </textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <div class="card shadow-sm shadow-showcase">
-                                            <div class="card-header d-flex justify-content-between">
-                                                <div class="header-title">
-                                                    <h4 class="card-title">Publish</h4>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="custom-control custom-radio custom-radio-color-checked custom-control">
-                                                            <input {{$advancebooking->is_active == 1?'checked':''}} type="radio" name="is_active" id="customRadio-1" class="custom-control-input bg-primary" value="1">
-                                                            <label class="custom-control-label"  for="customRadio-1"> Publish </label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio custom-radio-color-checked custom-control mt-1">
-                                                            <input type="radio" name="is_active" id="customRadio-2"
-                                                            {{$advancebooking->is_active == 0?'checked':''}} name="customRadio-10" class="custom-control-input bg-warning" value="0">
-                                                            <label class="custom-control-label" for="customRadio-2"> Draft </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="card shadow-sm shadow-showcase">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div id="file-upload-form" class="uploader-file">
-                                                            <button type="submit" class="btn btn-success">Submit</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
                                 </div>
+                            </div>
+                        </div>
+                        <div class=" row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-3 col-form-label">CheckIn Date:</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" required value="{{$advancebooking->checkindate}}" name="checkindate" class="form-control datepicker form-control-sm" id="checkindate">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" required name="checkintime" class="form-control form-control-sm" value="{{$advancebooking->checkintime}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-4 col-form-label">CheckOut Date:</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" required value="{{$advancebooking->checkoutdate}}" name="checkoutdate" class="form-control datepicker form-control-sm" id="checkoutdate">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="time" required name="checkouttime" class="form-control form-control-sm" value="{{$advancebooking->checkouttime}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-3 col-form-label">Guest Name :</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control form-control-sm" required name="guest_name" id="select_guest_name">
+                                                <option></option>
+                                                @foreach($guests as $row)
+                                                <option {{$advancebooking->guest_id == $row->id?'selected':' '}} value="{{$row->id}}">{{$row->guest_name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" data-toggle="modal" data-target="#addguest" class="btn btn-sm btn-primary "><i class="fas fa-plus m-0"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-3 col-form-label">Room Type :</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control form-control-sm" required name="room_type" id="room_type">
+                                                <option selected disabled>---Select Room Type ------</option>
+                                                @foreach($roomtypes as $row)
+                                                <option {{$advancebooking->room_type == $row->id ?'selected':''}} value="{{$row->id}}">{{$row->room_type}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('room_type')
+                                            <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-4 col-form-label">No OF Rooms :</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" required class="form-control form-control-sm" name="no_of_room" value="{{$advancebooking->no_of_rooms}}" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-12">
+                                    <div class="form-group" id="room_section">
+                                        <label for="exampleInputEmail1">Room Selection</label>
+                                        <div class="row border p-4">
+                                            <div class="col-sm-6 border-right">
+
+                                                <div class="room_list mt-3" id="rooms">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <div class="selected_room">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th scope="col">Room</th>
+                                                                <th scope="col">Tariff</th>
+                                                                <th scope="col">Action</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="selectedroom">
+                                                            <tr class="deletedelement" id="deletedelement{{$advancebooking->id}}">
+                                                                <td>{{$advancebooking->room->room_no ?? ''}} ( {{$advancebooking->roomtype->room_type ?? ''}} )</td>
+                                                                <td>$ {{$advancebooking->tariff}} <input type="hidden" class="counttotal" value="{{$advancebooking->tariff}}" /></td>
+                                                                <td><span class="text-center" onclick="deleteroom(this)"><i class="fa fa-trash" aria-hidden="true"></i><input type="hidden" class="deducttotal" value="{{$advancebooking->tariff}}" /> <input type="hidden" name="room[]" value="{{$advancebooking->room_id}}" </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tbody>
+
+                                                            <tr>
+                                                                <td>Total:</td>
+                                                                <td id="totaltariff">$ {{$advancebooking->tariff}}</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-3 col-form-label">Thru Agent :</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="thru_agent">
+                                                <option {{$advancebooking->thru_agent== 'agoda'?'selected':''}} value="agoda">Agoda</option>
+                                                <option {{$advancebooking->thru_agent== 'booking.com'?'selected':''}} value="booking.com">Booking.com</option>
+                                                <option {{$advancebooking->thru_agent== 'makemytrip'?'selected':''}} value="makemytrip">Makemytrip</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label for="staticEmail" class="col-sm-4 col-form-label">Booking Source :</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="find_us">
+                                                <option {{$advancebooking->booking_source== 'auto/texi'?'selected':''}} value="auto/texi">Auto/Texi</option>
+                                                <option {{$advancebooking->booking_source== 'direct'?'selected':''}} value="direct">Direct</option>
+                                                <option {{$advancebooking->booking_source== 'friends'?'selected':''}} value="friends">Friends</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Remarks</label>
+                                        <div class="row">
+                                            <div class="col-sm-12 border-right">
+
+                                                <div class="room_list mt-3">
+                                                    <textarea name="remarks" class="form-control form-control-sm">
+                                                    {{$advancebooking->remarks}}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4 class="card-title mt-4">Publish</h4>
+                                                <div class="custom-control custom-radio custom-radio-color-checked custom-control">
+                                                    <input {{$advancebooking->is_active == 1?'checked':''}} type="radio" name="is_active" id="customRadio-1" class="custom-control-input bg-primary" value="1">
+                                                    <label class="custom-control-label" for="customRadio-1"> Publish </label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-radio-color-checked custom-control mt-1">
+                                                    <input type="radio" name="is_active" id="customRadio-2" {{$advancebooking->is_active == 0?'checked':''}} name="customRadio-10" class="custom-control-input bg-warning" value="0">
+                                                    <label class="custom-control-label" for="customRadio-2"> Draft </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="file-upload-form" class="uploader-file">
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
@@ -376,7 +349,6 @@ $current =date("Y/m/d");
 
 
 <script>
- 
     var rooms = (function() {
 
         var roomtype = document.querySelector('#room_type');
@@ -422,7 +394,12 @@ $current =date("Y/m/d");
 
     })();
 
-    var total = {{$advancebooking->tariff}};
+    var total = {
+        {
+            $advancebooking - > tariff
+        }
+    };
+
     function selectedRoom(el) {
         var room = [];
         if (el.checked == true) {
@@ -513,7 +490,7 @@ $current =date("Y/m/d");
 
 
         var roomelement = document.querySelector('#selectedroom');
-        
+
         var html = '<tr class="deletedelement" id="deletedelement%deletedid%"><td>%room% (%room_type%)</td><td>$ %tariff% <input type="hidden" class="counttotal" value="%price%"/></td><td><span class="text-center" onclick="deleteroom(this)"><i class="fa fa-trash" aria-hidden="true"></i><input type="hidden" class="deducttotal" value="%detuctprice%"/> <input type="hidden" name="room[]" value="%room_id%" </span></td></tr>';
 
 
@@ -533,7 +510,7 @@ $current =date("Y/m/d");
         document.querySelector('#totaltariff').innerHTML = total;
 
 
-       
+
 
 
     }

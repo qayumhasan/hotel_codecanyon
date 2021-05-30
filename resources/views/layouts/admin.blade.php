@@ -607,12 +607,6 @@
     @yield('scripts')
     <!-- date piker js -->
     <script src="{{asset('public/backend')}}/assets/js/datepiker.js"></script>
-    <script>
-        $('.datepicker').datepicker();
-        $(document).ready(function(){
-            CKEDITOR.replace('editor3');
-        });
-    </script>
     <!-- app JavaScript -->
     <script src="{{asset('public/backend')}}/assets/js/app.js"></script>
 </body>

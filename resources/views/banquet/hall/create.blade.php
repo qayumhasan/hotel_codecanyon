@@ -1,12 +1,12 @@
 @extends('banquet.master')
-@section('title', 'Add Venue | '.$seo->meta_title)
+@section('title', 'Add Venue | '.$companyinformation->company_name)
 @section('content')
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 col-lg-12">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-lg-2 col-lg-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Add Venue</h4>
                         </div>
@@ -16,13 +16,8 @@
                 <form action="{{route('admin.hall.create')}}" method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Venue Content</h4>
-                                    </div>
-                                </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -68,20 +63,8 @@
                                                 <textarea name="google_map" class="form-control" placeholder="Google map"></textarea>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between asif">
-                                    <div class="header-title">
-                                        <h4 class="card-title">Publish</h4>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
                                         <div class="col-md-12">
+                                        <h4 class="card-title mt-4">Publish</h4>
                                             <div class="custom-control custom-radio custom-radio-color-checked custom-control">
                                                 <input type="radio" name="is_active" id="customRadio-8" class="custom-control-input bg-primary" value="1" checked>
                                                 <label class="custom-control-label" for="customRadio-8"> Active </label>
@@ -91,15 +74,9 @@
                                                 <label class="custom-control-label" for="customRadio-9"> Deactive </label>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
-                                    <div class="row">
                                         <div class="col-md-12">
                                             <div id="file-upload-form" class="uploader-file">
-                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="submit" class="btn btn-primary">Add Venue</button>
                                             </div>
                                         </div>
                                     </div>

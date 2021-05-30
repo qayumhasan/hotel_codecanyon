@@ -48,7 +48,7 @@ $current = date("Y/m/d");
             @foreach($paymentwise as $key=>$row)
             <div class="col-sm-12">
                 <div class="card m-0">
-                    <div class="card-header p-1 d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             @if($key == 1)
                             <h4 class="card-title">Cash</h4>

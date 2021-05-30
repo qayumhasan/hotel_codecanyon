@@ -21,22 +21,7 @@
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/izitost.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/css/fullcalender.css">
     <link rel="stylesheet" href="{{asset('public/backend')}}/assets/Bootstrap-4-Tag-Input-Plugin-jQuery/tagsinput.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <style>
-        .form-control {
-        height: 32px;
-        border: 1px solid #443f3f;
-        }
-        .card-header.d-flex.justify-content-between.asif {
-            background-color: #c1b8b8;
-        }
-        .noradious{
-        border-radius:0px;
-    }
-    .badge {
-        border:none;
-    }
-    </style>
+    <script src="{{asset('public/backend')}}/assets/js/jquery.js"></script>
 </head>
 
 <body>
@@ -417,36 +402,31 @@
             case 'success':
 
                 iziToast.success({
-                    message: '{{ Session::get('
-                    messege ') }}',
+                    message: '{{ Session::get('messege') }}',
                     'position': 'topCenter'
                 });
                 brack;
             case 'info':
                 iziToast.info({
-                    message: '{{ Session::get('
-                    messege ') }}',
+                    message: '{{ Session::get('messege') }}',
                     'position': 'topRight'
                 });
                 brack;
             case 'warning':
                 iziToast.warning({
-                    message: '{{ Session::get('
-                    messege ')}}',
+                    message: '{{ Session::get('messege')}}',
                     'position': 'topRight'
                 });
                 break;
             case 'error':
                 iziToast.error({
-                    message: '{{ Session::get('
-                    messege ')}}',
+                    message: '{{ Session::get('messege')}}',
                     'position': 'topRight'
                 });
                 break;
         }
         @endif
     </script>
-    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
     <script>
         $(document).on("click", "#delete", function(e) {
             e.preventDefault();
@@ -468,7 +448,6 @@
         });
     </script>
     <!-- app JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script>
         $('.datepicker').datepicker({
             format: 'yyyy/mm/dd',

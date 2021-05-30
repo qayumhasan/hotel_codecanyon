@@ -1,17 +1,16 @@
 @extends('inventory.master')
-@section('title', 'Add StockTransfer | '.$seo->meta_title)
+@section('title', 'Add StockTransfer | '.$companyinformation->company_name)
 @section('content')
 @php
 date_default_timezone_set("asia/dhaka");
 $current = date("Y/m/d");
 @endphp
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <div class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+            <div class="offset-lg-2 col-md-8">
+                <div class="card m-0">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Stock Transfer</h4>
                         </div>
@@ -70,8 +69,8 @@ $current = date("Y/m/d");
                                 </div>
                             </div>
 
-                            <div class="card shadow-sm shadow-showcase">
-                                <div class="card-body">
+                            <div class="card shadow-sm shadow-showcase m-0">
+                                <div class="card-body"> 
                                     <div class="row" id="mainfile">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -118,17 +117,13 @@ $current = date("Y/m/d");
 
                         <div class="col-md-12">
                             <div class="card shadow-sm shadow-showcase">
-                                <div class="card-header d-flex justify-content-between">
+                                <div class="card-header d-flex justify-content-between bg-header">
                                     <div class="header-title">
                                         <h4 class="card-title">All Item</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="row" id="showallitem">
-
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -136,15 +131,10 @@ $current = date("Y/m/d");
 
                     </div>
             </div>
-            <div class="col-md-4">
+            <div class="offset-lg-2 col-md-8">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-header d-flex justify-content-between">
-                                <div class="header-title">
-                                    <h4 class="card-title"></h4>
-                                </div>
-                            </div>
+                        <div class="card shadow-sm shadow-showcase m-0">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -155,7 +145,7 @@ $current = date("Y/m/d");
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Number Of Item: </label>
                                             <input type="text" class="form-control num_of_item" value="" disabled>
@@ -163,7 +153,7 @@ $current = date("Y/m/d");
 
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="fname">Number Of Quantity: </label>
                                             <input type="number" class="form-control num_of_qty" disabled>
@@ -172,17 +162,10 @@ $current = date("Y/m/d");
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card shadow-sm shadow-showcase">
-                            <div class="card-body">
                                 <div class="row">
-                                    <!-- <input type="hidden" name="finalamount" class="finalamount">
-                                        <input type="hidden" name="finalpaidamount" class="finalpaidamount">
-                                        <input type="hidden" name="finaldueamount" class="finaldueamount"> -->
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mt-4 text-center">
                                         <div>
-                                            <button type="submit" class="btn btn-success">Submit</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </div>
                                 </div>

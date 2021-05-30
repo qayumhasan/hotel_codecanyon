@@ -1,7 +1,6 @@
 @extends('inventory.master')
-@section('title', 'Daily Purchase| '.$seo->meta_title)
+@section('title', 'Daily Purchase| '.$companyinformation->company_name)
 @section('content')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{asset('public/backend')}}/printThis.js"></script>
 @php
 date_default_timezone_set("asia/dhaka");
@@ -12,7 +11,7 @@ $current = date("Y/m/d");
       <div class="row">
          <div class="col-sm-12">
             <div class="card">
-               <div class="card-header d-flex justify-content-between">
+               <div class="card-header d-flex justify-content-between bg-header">
                   <div class="header-title">
                      <h4 class="card-title">Daily Purchase Report:<span style="font-size:12px"> </span></h4>
                   </div>
@@ -35,7 +34,7 @@ $current = date("Y/m/d");
                         </div>
                         <div class="col-md-1">
                            <div class="form-group">
-                              <button class="btn-sm btn-success">Search</button>
+                              <button class="btn-sm btn-primary">Search</button>
                            </div>
                         </div>
                      </div>

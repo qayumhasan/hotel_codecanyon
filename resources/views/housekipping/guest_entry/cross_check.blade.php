@@ -37,7 +37,7 @@ $time = date("h:i");
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between bg-header">
                         <div class="header-title">
                             <h4 class="card-title">Actual No of Guest Entry Cross Check</h4>
                         </div>
